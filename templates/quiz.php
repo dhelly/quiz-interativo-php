@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Interativo - Inútil App</title>
     <style>
-        /* CSS idêntico ao template quiz.html anterior */
         :root {
             --primary-color: #2c3e50;
             --secondary-color: #34495e;
@@ -257,13 +256,78 @@
             font-weight: 600;
             font-size: 0.9em;
         }
+
+        /* NOVO: Container para preview da explicação */
+        .preview-explicacao {
+            background: var(--secondary-color);
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--warning-color);
+            display: none;
+        }
+
+        .preview-explicacao.mostrar {
+            display: block;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .preview-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            color: var(--warning-color);
+            font-weight: 600;
+        }
+
+        .preview-content {
+            line-height: 1.5;
+        }
+
+        .toggle-explicacao {
+            background: transparent;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+            margin-top: 10px;
+            transition: all 0.2s ease;
+            width: auto;
+        }
+
+        .toggle-explicacao:hover {
+            background: var(--accent-color);
+            color: var(--text-light);
+        }
+
+        .acoes-questao {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .resposta-correta {
+            background: rgba(39, 174, 96, 0.1);
+            border-left: 4px solid var(--success-color);
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 15px;
+            display: none;
+        }
+
+        .resposta-correta.mostrar {
+            display: block;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         
         <div class="header">
-            <h1>🎓 Quiz Jurídico - Inútil App</h1>
+            <h1>🎓 Quiz Interativo - Inútil App</h1>
         </div>
 
         <div class="content">
@@ -299,11 +363,27 @@
 
             <div class="pergunta"><?php echo $dados['questao']['pergunta']; ?></div>
 
+            <!-- NOVO: Preview da explicação -->
+            <div class="preview-explicacao" id="previewExplicacao">
+                <div class="preview-header">
+                    <span>📚 Visualização da Explicação</span>
+                </div>
+                <div class="preview-content" id="previewContent">
+                    <?php echo $dados['questao']['explicacao_feedback']; ?>
+                </div>
+            </div>
+
+            <!-- NOVO: Resposta correta (modo estudo) -->
+            <div class="resposta-correta" id="respostaCorreta">
+                <strong>✅ Resposta Correta:</strong> 
+                <span id="textoRespostaCorreta"><?php echo $dados['questao']['resposta_correta']; ?></span>
+            </div>
+
             <form method="POST" action="index.php?acao=responder" id="quizForm">
                 
                 <div class="opcoes-container">
                     <?php foreach ($dados['questao']['opcoes_disponiveis'] as $opcao): ?>
-                        <label class="opcao-label" onclick="selectOption(this)">
+                        <label class="opcao-label" onclick="selectOption(this)" data-value="<?php echo $opcao; ?>">
                             <input type="radio" name="resposta" value="<?php echo $opcao; ?>" required>
                             <?php echo $opcao; ?>
                         </label>
@@ -313,9 +393,17 @@
                 <input type="hidden" name="questao_id" value="<?php echo $dados['questao']['id']; ?>">
                 <input type="hidden" name="acertos_anteriores" value="<?php echo $dados['acertos_total']; ?>">
                 
-                <button type="submit" id="submitBtn" disabled>
-                    Responder e Avançar →
-                </button>
+                <div class="acoes-questao">
+                    <button type="submit" id="submitBtn" disabled>
+                        Responder e Avançar →
+                    </button>
+                    <button type="button" class="toggle-explicacao" onclick="toggleExplicacao()">
+                        👁️ Mostrar Explicação
+                    </button>
+                    <button type="button" class="toggle-explicacao" onclick="mostrarRespostaCorreta()">
+                        🎯 Mostrar Resposta
+                    </button>
+                </div>
             </form>
 
             <div class="admin-panel">
@@ -330,15 +418,58 @@
     </div>
 
     <script>
+        let explicacaoVisivel = false;
+        let respostaVisivel = false;
+
         function selectOption(label) {
+            // Remove seleção anterior
             document.querySelectorAll('.opcao-label').forEach(l => {
                 l.classList.remove('selected');
             });
             
+            // Adiciona seleção atual
             label.classList.add('selected');
+            
+            // Habilita o botão
             document.getElementById('submitBtn').disabled = false;
+
+            // Mostra a explicação automaticamente quando seleciona uma opção
+            if (!explicacaoVisivel) {
+                toggleExplicacao();
+            }
         }
 
+        function toggleExplicacao() {
+            const preview = document.getElementById('previewExplicacao');
+            const botao = document.querySelector('.toggle-explicacao');
+            
+            if (explicacaoVisivel) {
+                preview.classList.remove('mostrar');
+                botao.textContent = '👁️ Mostrar Explicação';
+                explicacaoVisivel = false;
+            } else {
+                preview.classList.add('mostrar');
+                botao.textContent = '👁️ Ocultar Explicação';
+                explicacaoVisivel = true;
+            }
+        }
+
+        function mostrarRespostaCorreta() {
+            const respostaDiv = document.getElementById('respostaCorreta');
+            const botao = document.querySelectorAll('.toggle-explicacao')[1];
+            
+            if (respostaVisivel) {
+                respostaDiv.classList.remove('mostrar');
+                botao.textContent = '🎯 Mostrar Resposta';
+                respostaVisivel = false;
+            } else {
+                respostaDiv.classList.add('mostrar');
+                botao.textContent = '🎯 Ocultar Resposta';
+                respostaVisivel = true;
+            }
+        }
+
+        // Validação do formulário
         document.getElementById('quizForm').addEventListener('submit', function(e) {
             const selected = document.querySelector('input[name="resposta"]:checked');
             if (!selected) {
@@ -347,22 +478,72 @@
             }
         });
 
-        document.querySelectorAll('input[type="radio"]').forEach(radio => {
-            radio.addEventListener('change', function() {
-                document.getElementById('submitBtn').disabled = false;
-            });
-        });
-
+        // Teclas de atalho
         document.addEventListener('keydown', function(e) {
+            // Teclas 1-4 para selecionar opções
             if (e.key >= '1' && e.key <= '4') {
                 const index = parseInt(e.key) - 1;
                 const options = document.querySelectorAll('input[type="radio"]');
                 if (options[index]) {
                     options[index].checked = true;
-                    selectOption(options[index].closest('.opcao-label'));
+                    const label = options[index].closest('.opcao-label');
+                    selectOption(label);
                 }
             }
+
+            // Tecla E para mostrar/ocultar explicação
+            if (e.key === 'e' || e.key === 'E') {
+                toggleExplicacao();
+            }
+
+            // Tecla R para mostrar/ocultar resposta
+            if (e.key === 'r' || e.key === 'R') {
+                mostrarRespostaCorreta();
+            }
+
+            // Tecla Enter para submeter (apenas se uma opção estiver selecionada)
+            if (e.key === 'Enter' && document.querySelector('input[name="resposta"]:checked')) {
+                document.getElementById('quizForm').submit();
+            }
         });
+
+        // Mostra as teclas de atalho na primeira vez
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                if (!localStorage.getItem('atalhosMostrados')) {
+                    alert('💡 Dica: Use as teclas 1-4 para selecionar respostas, "E" para explicação, "R" para resposta correta.');
+                    localStorage.setItem('atalhosMostrados', 'true');
+                }
+            }, 1000);
+        });
+
+        // Análise da resposta selecionada vs correta
+        function analisarResposta() {
+            const respostaSelecionada = document.querySelector('input[name="resposta"]:checked');
+            if (!respostaSelecionada) return;
+
+            const respostaCorreta = "<?php echo $dados['questao']['resposta_correta']; ?>";
+            const todasOpcoes = document.querySelectorAll('.opcao-label');
+
+            todasOpcoes.forEach(opcao => {
+                opcao.style.transition = 'all 0.3s ease';
+                if (opcao.dataset.value === respostaCorreta) {
+                    opcao.style.background = 'rgba(39, 174, 96, 0.2)';
+                    opcao.style.borderColor = 'var(--success-color)';
+                } else if (opcao.dataset.value === respostaSelecionada.value && respostaSelecionada.value !== respostaCorreta) {
+                    opcao.style.background = 'rgba(231, 76, 60, 0.2)';
+                    opcao.style.borderColor = 'var(--error-color)';
+                }
+            });
+        }
+
+        // Opcional: Adicionar botão para análise (modo estudo)
+        const botaoAnalise = document.createElement('button');
+        botaoAnalise.type = 'button';
+        botaoAnalise.className = 'toggle-explicacao';
+        botaoAnalise.textContent = '🔍 Analisar Resposta';
+        botaoAnalise.onclick = analisarResposta;
+        document.querySelector('.acoes-questao').appendChild(botaoAnalise);
     </script>
 </body>
 </html>

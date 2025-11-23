@@ -455,6 +455,19 @@ function exibirPainelAdmin($quiz_data) {
                                     </a>
                                 </div>
                             </div>
+
+
+                            <div class="action-panel">
+                                <div class="action-title">💡 Novas Funcionalidades</div>
+                                <p><strong>Modo Estudo Ativo:</strong></p>
+                                <ul style="margin-left: 20px; margin-bottom: 15px; color: var(--text-muted);">
+                                    <li>👁️ Visualização da explicação durante a questão</li>
+                                    <li>🎯 Revele a resposta correta para estudo</li>
+                                    <li>🔍 Análise de respostas em tempo real</li>
+                                    <li>⌨️ Atalhos de teclado (1-4, E, R, Enter)</li>
+                                </ul>
+                            </div>
+
                         </div>
                     </div>
                 </div>
