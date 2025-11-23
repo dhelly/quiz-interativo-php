@@ -1,0 +1,29 @@
+[
+    {
+      "id": 15,
+      "pergunta": "A inconstitucionalidade por omissão ocorre quando o legislador permanece inerte diante de uma norma constitucional de eficácia limitada, obstando o exercício de um direito previsto na Constituição.",
+      "resposta_correta": "Certo",
+      "opcoes_disponiveis": ["Certo", "Errado"],
+      "explicacao_feedback": "A inconstitucionalidade por omissão caracteriza-se pela falta de regulamentação de um dispositivo constitucional que depende de lei (norma de eficácia limitada), impedindo a fruição de um direito.",
+      "topico": "Direito Constitucional",
+      "nivel": "Intermediário"
+    },
+    {
+      "id": 16,
+      "pergunta": "O princípio da reserva do possível é ilimitado e pode ser invocado para justificar a inação do Estado em prover direitos sociais essenciais.",
+      "resposta_correta": "Errado",
+      "opcoes_disponiveis": ["Certo", "Errado"],
+      "explicacao_feedback": "O princípio da reserva do possível não é absoluto. Sua invocação deve ser devidamente justificada e não pode levar à inércia total do Estado, especialmente no que tange aos direitos fundamentais e ao mínimo existencial.",
+      "topico": "Direito Constitucional",
+      "nivel": "Avançado"
+    },
+    {
+      "id": 17,
+      "pergunta": "O Habeas Corpus é o remédio constitucional cabível para proteger direito líquido e certo não amparado por Habeas Data ou Habeas Corpus.",
+      "resposta_correta": "Errado",
+      "opcoes_disponiveis": ["Certo", "Errado"],
+      "explicacao_feedback": "A descrição corresponde ao **Mandado de Segurança**. O Habeas Corpus protege a liberdade de locomoção.",
+      "topico": "Direito Processual Constitucional",
+      "nivel": "Básico"
+    }
+  ]
