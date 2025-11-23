@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Jurídico - Inútil App</title>
+    <title>Quiz Interativo - Inútil App</title>
     <style>
         :root {
             --primary-color: #2c3e50;
@@ -300,7 +300,7 @@
     <div class="container">
         
         <div class="header">
-            <h1>🎓 Quiz Jurídico - Inútil App</h1>
+            <h1>🎓 Quiz Interativo - Inútil App</h1>
         </div>
 
         <div class="content">
