@@ -3,16 +3,14 @@ require_once 'carregar_dados.php';
 
 $acao = $_GET['acao'] ?? 'quiz';
 $questao_id = $_GET['id'] ?? null;
+$acertos = $_GET['acertos'] ?? 0;
 
 // Carrega os dados do quiz
 $quiz_data = carregarDadosQuiz();
 
 switch ($acao) {
     case 'quiz':
-        exibirQuiz($quiz_data, $questao_id);
-        break;
-    case 'responder':
-        processarResposta($quiz_data);
+        exibirQuiz($quiz_data, $questao_id, $acertos);
         break;
     case 'admin':
         exibirAdmin($quiz_data);
@@ -25,7 +23,7 @@ switch ($acao) {
         break;
 }
 
-function exibirQuiz($quiz_data, $questao_id = null) {
+function exibirQuiz($quiz_data, $questao_id = null, $acertos = 0) {
     if (empty($quiz_data)) {
         die("Erro: Nenhuma questão encontrada. Verifique o arquivo de dados.");
     }
@@ -55,91 +53,32 @@ function exibirQuiz($quiz_data, $questao_id = null) {
         }
     }
     
+    // Encontra próxima questão
+    $proxima_id = null;
+    $encontrou_atual = false;
+    foreach ($quiz_data as $questao) {
+        if ($questao['id'] == $questao_atual['id']) {
+            $encontrou_atual = true;
+            continue;
+        }
+        if ($encontrou_atual && !$proxima_id) {
+            $proxima_id = $questao['id'];
+            break;
+        }
+    }
+    
     $dados = [
         'questao' => $questao_atual,
         'numero_questao' => $numero_sequencial,
         'total_perguntas' => count($quiz_data),
-        'acertos_total' => 0,
-        'feedback' => null
-    ];
-    
-    include 'templates/quiz.php';
-}
-
-function processarResposta($quiz_data) {
-    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-        header('Location: index.php');
-        exit;
-    }
-    
-    $questao_id = (int)$_POST['questao_id'];
-    $resposta = $_POST['resposta'];
-    $acertos_anteriores = (int)$_POST['acertos_anteriores'];
-    
-    // Encontra a questão atual
-    $questao_atual = null;
-    $proxima_questao = null;
-    $encontrou_atual = false;
-    
-    foreach ($quiz_data as $questao) {
-        if ($questao['id'] == $questao_id) {
-            $questao_atual = $questao;
-            $encontrou_atual = true;
-            continue;
-        }
-        if ($encontrou_atual && !$proxima_questao) {
-            $proxima_questao = $questao;
-        }
-    }
-    
-    if (!$questao_atual) {
-        die("Questão não encontrada.");
-    }
-    
-    // Verifica resposta
-    $acertou = (strtoupper(trim($resposta)) === strtoupper(trim($questao_atual['resposta_correta'])));
-    
-    if ($acertou) {
-        $acertos_anteriores++;
-        $mensagem_feedback = "✅ Certo! Isso mesmo. A resposta correta era {$questao_atual['resposta_correta']}.";
-    } else {
-        $mensagem_feedback = "❌ Errado. A resposta correta é <strong>{$questao_atual['resposta_correta']}</strong>. Sua resposta foi <strong>{$resposta}</strong>.";
-    }
-    
-    $feedback = [
-        'mensagem' => $mensagem_feedback,
+        'acertos_total' => (int)$acertos,
+        'feedback' => null,
+        'proxima_id' => $proxima_id,
+        'resposta_correta' => $questao_atual['resposta_correta'],
         'explicacao' => $questao_atual['explicacao_feedback']
     ];
     
-    if ($proxima_questao) {
-        // Próxima questão
-        $numero_sequencial = 1;
-        foreach ($quiz_data as $i => $q) {
-            if ($q['id'] == $proxima_questao['id']) {
-                $numero_sequencial = $i + 1;
-                break;
-            }
-        }
-        
-        $dados = [
-            'questao' => $proxima_questao,
-            'numero_questao' => $numero_sequencial,
-            'total_perguntas' => count($quiz_data),
-            'acertos_total' => $acertos_anteriores,
-            'feedback' => $feedback
-        ];
-        
-        include 'templates/quiz.php';
-    } else {
-        // Fim do quiz
-        $dados = [
-            'acertos_total' => $acertos_anteriores,
-            'total_perguntas' => count($quiz_data),
-            'feedback' => $feedback
-        ];
-        
-        include 'templates/fim_quiz.php';
-    }
+    include 'templates/quiz.php';
 }
 
 function exibirAdmin($quiz_data) {

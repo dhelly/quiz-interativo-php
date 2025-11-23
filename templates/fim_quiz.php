@@ -54,13 +54,27 @@
             color: var(--accent-color);
         }
         
-        .feedback {
+        .estatisticas {
             background: var(--secondary-color);
             padding: 20px;
             border-radius: 6px;
             margin: 20px 0;
-            text-align: left;
             border: 1px solid var(--border-color);
+        }
+        
+        .barra-progresso {
+            height: 20px;
+            background: var(--bg-dark);
+            border-radius: 10px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+        
+        .progresso-preenchido {
+            height: 100%;
+            background: var(--accent-color);
+            border-radius: 10px;
+            transition: width 1s ease-in-out;
         }
         
         button {
@@ -117,26 +131,32 @@
             <?php echo $dados['acertos_total']; ?>/<?php echo $dados['total_perguntas']; ?>
         </div>
         
-        <div style="font-size: 1.2em; margin-bottom: 20px; color: var(--text-muted);">
-            <?php echo number_format($percentual, 1); ?>% de acertos
-        </div>
-
-        <?php if ($dados['feedback']): ?>
-            <div class="feedback">
-                <strong>Última questão:</strong><br>
-                <?php echo $dados['feedback']['mensagem']; ?><br>
-                <?php if ($dados['feedback']['explicacao']): ?>
-                    <div style="margin-top: 10px; padding-left: 10px; border-left: 3px solid var(--accent-color); color: var(--text-muted);">
-                        <?php echo $dados['feedback']['explicacao']; ?>
-                    </div>
-                <?php endif; ?>
+        <div class="estatisticas">
+            <div style="font-size: 1.2em; margin-bottom: 10px; color: var(--text-muted);">
+                <?php echo number_format($percentual, 1); ?>% de acertos
             </div>
-        <?php endif; ?>
+            
+            <div class="barra-progresso">
+                <div class="progresso-preenchido" style="width: <?php echo $percentual; ?>%"></div>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; font-size: 0.9em; color: var(--text-muted);">
+                <span>0%</span>
+                <span>100%</span>
+            </div>
+        </div>
 
         <div class="action-buttons">
             <button onclick="location.href='index.php'">🔄 Reiniciar Quiz</button>
             <button class="btn-success" onclick="location.href='admin.php'">⚙️ Painel Admin</button>
         </div>
     </div>
+
+    <script>
+        // Anima a barra de progresso
+        setTimeout(() => {
+            document.querySelector('.progresso-preenchido').style.width = '<?php echo $percentual; ?>%';
+        }, 500);
+    </script>
 </body>
 </html>
