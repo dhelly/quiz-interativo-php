@@ -1,29 +1,242 @@
 [
     {
-      "id": 15,
-      "pergunta": "A inconstitucionalidade por omissão ocorre quando o legislador permanece inerte diante de uma norma constitucional de eficácia limitada, obstando o exercício de um direito previsto na Constituição.",
-      "resposta_correta": "Certo",
-      "opcoes_disponiveis": ["Certo", "Errado"],
-      "explicacao_feedback": "A inconstitucionalidade por omissão caracteriza-se pela falta de regulamentação de um dispositivo constitucional que depende de lei (norma de eficácia limitada), impedindo a fruição de um direito.",
-      "topico": "Direito Constitucional",
-      "nivel": "Intermediário"
+        "id": 1,
+        "pergunta": "A teoria da nulidade, adotada majoritariamente pela doutrina brasileira por influência do direito norte-americano, estabelece que a lei inconstitucional é um ato nulo ('nascido morto'). Contudo, o sistema jurídico brasileiro contemporâneo admite a modulação dos efeitos da decisão de inconstitucionalidade, permitindo que a eficácia da declaração inicie apenas a partir do trânsito em julgado ou outro momento futuro, por razões de segurança jurídica ou excepcional interesse social.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "A questão está correta e aborda a **flexibilização do princípio da nulidade**. Embora a regra geral no Brasil seja a teoria da nulidade (efeitos *ex tunc*), a jurisprudência e o arcabouço normativo evoluíram para permitir a modulação dos efeitos (efeitos *ex nunc* ou prospectivos) em casos excepcionais[cite: 11, 12, 23, 24].",
+        "topico": "Direito Constitucional",
+        "nivel": "Avançado"
     },
     {
-      "id": 16,
-      "pergunta": "O princípio da reserva do possível é ilimitado e pode ser invocado para justificar a inação do Estado em prover direitos sociais essenciais.",
-      "resposta_correta": "Errado",
-      "opcoes_disponiveis": ["Certo", "Errado"],
-      "explicacao_feedback": "O princípio da reserva do possível não é absoluto. Sua invocação deve ser devidamente justificada e não pode levar à inércia total do Estado, especialmente no que tange aos direitos fundamentais e ao mínimo existencial.",
-      "topico": "Direito Constitucional",
-      "nivel": "Avançado"
+        "id": 2,
+        "pergunta": "Na Constituição de 1891, influenciada pelo modelo norte-americano, foi introduzido o controle judicial de constitucionalidade no Brasil pela via incidental; todavia, a ausência de previsão para conferir eficácia 'erga omnes' às decisões gerava insegurança jurídica e multiplicidade de demandas.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "A questão está correta. [cite_start]A Constituição de 1891 previu o controle difuso (via incidental), mas falhou em prover um mecanismo para dar efeitos gerais ('erga omnes') às decisões, o que era um problema do sistema da época[cite: 82, 83].",
+        "topico": "Direito Constitucional",
+        "nivel": "Intermediário"
     },
     {
-      "id": 17,
-      "pergunta": "O Habeas Corpus é o remédio constitucional cabível para proteger direito líquido e certo não amparado por Habeas Data ou Habeas Corpus.",
-      "resposta_correta": "Errado",
-      "opcoes_disponiveis": ["Certo", "Errado"],
-      "explicacao_feedback": "A descrição corresponde ao **Mandado de Segurança**. O Habeas Corpus protege a liberdade de locomoção.",
-      "topico": "Direito Processual Constitucional",
-      "nivel": "Básico"
+        "id": 3,
+        "pergunta": "Segundo a doutrina, a existência de uma constituição rígida é pressuposto para o controle de constitucionalidade. Portanto, em Estados que adotam constituições flexíveis, é impossível a realização de qualquer tipo de controle de constitucionalidade, visto que qualquer lei ordinária possui potencial para modificar o texto constitucional.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "A questão utiliza a **Armadilha do Absoluto**. [cite_start]Embora a rigidez seja a regra, a doutrina reconhece *excepcionalmente* a possibilidade de controle em constituições flexíveis quando houver **vício formal** na elaboração da norma[cite: 45, 46].",
+        "topico": "Direito Constitucional",
+        "nivel": "Avançado"
+    },
+    {
+        "id": 4,
+        "pergunta": "A inconstitucionalidade formal, também denominada nomoestática, ocorre quando há desrespeito ao processo legislativo de elaboração da norma, como no caso de vício de iniciativa ou desobediência ao quórum de votação.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "A questão utiliza a **Inversão de Qualificadores**. A inconstitucionalidade formal é denominada **nomodinâmica** (dinamismo\/movimento do processo). [cite_start]A inconstitucionalidade material é que é chamada de **nomoestática** (estática\/conteúdo)[cite: 134, 138, 142, 144].",
+        "topico": "Direito Constitucional",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 5,
+        "pergunta": "A inconstitucionalidade formal subjetiva ocorre quando há inobservância da fase de iniciativa do processo legislativo, como no caso de um parlamentar apresentar projeto de lei sobre matéria de competência exclusiva do Presidente da República.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "A questão está correta. [cite_start]O vício na fase de iniciativa caracteriza a inconstitucionalidade formal propriamente dita do tipo **subjetiva** (quem iniciou o processo não tinha legitimidade)[cite: 153, 154, 155].",
+        "topico": "Direito Constitucional",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 6,
+        "pergunta": "A declaração de inconstitucionalidade 'por arrastamento' (ou por atração) ocorre quando o STF reconhece a invalidade de normas acessórias dependentes de uma norma principal declarada inconstitucional, sendo esta técnica uma exceção ao princípio do pedido em Ações Diretas de Inconstitucionalidade.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "A questão está correta. [cite_start]A inconstitucionalidade por arrastamento permite que o STF declare inválidas normas não impugnadas explicitamente na petição inicial, desde que haja relação de dependência, excepcionando o princípio da adstrição ao pedido[cite: 214, 228, 229, 230].",
+        "topico": "Direito Constitucional",
+        "nivel": "Avançado"
+    },
+    {
+        "id": 7,
+        "pergunta": "O julgamento do caso *Marbury vs. Madison*, em 1803, consolidou o controle difuso nos Estados Unidos, fundamentando-se em cláusula explícita da Constituição norte-americana que atribuía à Suprema Corte a competência para anular leis incompatíveis com a Carta Magna.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "A questão utiliza a **Falsa Causalidade\/Premissa Falsa**. [cite_start]A decisão é célebre justamente porque **não havia previsão explícita** na Constituição norte-americana; o juiz John Marshall construiu a tese da supremacia constitucional implicitamente[cite: 64].",
+        "topico": "Direito Constitucional",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 8,
+        "pergunta": "A Constituição de 1988 ampliou significativamente o controle concentrado de constitucionalidade; como consequência dessa mudança, o Procurador-Geral da República passou a deter a exclusividade na legitimidade para a propositura da Ação Direta de Inconstitucionalidade (ADI).",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "A questão utiliza a **Falsa Causalidade** (O 'Certo + Certo = Errado'). [cite_start]A CF\/88 realmente ampliou o controle concentrado, mas, ao contrário do afirmado, ela **acabou** com a exclusividade do PGR, ampliando o rol de legitimados[cite: 107, 108].",
+        "topico": "Direito Constitucional",
+        "nivel": "Básico"
+    },
+    {
+        "id": 9,
+        "pergunta": "O STF entende que atos normativos secundários, como decretos regulamentares, quando em desconformidade com a Constituição, configuram inconstitucionalidade indireta ou reflexa, a qual não desafia o controle concentrado via Ação Direta de Inconstitucionalidade (ADI), sendo tratada como crise de legalidade.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "A questão está correta. [cite_start]A ofensa reflexa ou indireta (ato secundário viola ato primário que viola a CF) é considerada mera ilegalidade pelo STF e não autoriza o uso da ADI, que exige ofensa direta[cite: 210, 211, 212].",
+        "topico": "Direito Constitucional",
+        "nivel": "Avançado"
+    },
+    {
+        "id": 10,
+        "pergunta": "O controle de constitucionalidade brasileiro admite a tese da inconstitucionalidade superveniente, caracterizada quando uma lei, constitucional no momento de sua edição, torna-se incompatível com uma nova Constituição ou Emenda Constitucional promulgada posteriormente.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "A questão utiliza a **Inversão de Conceito Jurisprudencial**. [cite_start]Embora doutrinariamente classificável, o STF entende que **não existe** inconstitucionalidade superveniente no Brasil; trata-se de um caso de **não recepção** (revogação) da lei anterior incompatível[cite: 242, 243, 245].",
+        "topico": "Direito Constitucional",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 11,
+        "pergunta": "A inconstitucionalidade material pode decorrer não apenas do contraste direto entre o texto legal e a norma constitucional, mas também da aferição do excesso de poder legislativo, caracterizado pela violação ao princípio da proporcionalidade em suas vertentes de proibição de excesso e proibição de proteção deficiente.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "A questão está correta. [cite_start]A inconstitucionalidade material abrange tanto o conteúdo explícito quanto o abuso do poder de legislar, verificado pelo desrespeito à proporcionalidade (excesso ou proteção deficiente)[cite: 139, 140, 141].",
+        "topico": "Direito Constitucional",
+        "nivel": "Avançado"
+    },
+    {
+        "id": 12,
+        "pergunta": "A Constituição de 1937, de índole autoritária, extinguiu o controle difuso de constitucionalidade realizado pelo Poder Judiciário, transferindo a competência de fiscalização das leis integralmente para o Poder Executivo.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "A questão utiliza a **Armadilha do Absoluto\/Exagero**. [cite_start]A CF de 1937 **manteve** o controle difuso, mas enfraqueceu o Judiciário ao permitir que o Presidente submetesse a declaração de inconstitucionalidade ao Parlamento, que poderia tornar a decisão judicial sem efeito[cite: 91].",
+        "topico": "Direito Constitucional",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 13,
+        "pergunta": "Ao contrário do veto parcial do Presidente da República, que deve abranger texto integral de artigo, parágrafo, inciso ou alínea, a declaração de inconstitucionalidade parcial pelo Judiciário pode recair sobre expressões ou palavras isoladas, desde que tal supressão não subverta o sentido e o alcance da norma.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "A questão está correta. [cite_start]Pelo princípio da parcelaridade, o Judiciário pode declarar inconstitucional apenas uma palavra, diferentemente do veto político, desde que não atue como legislador positivo alterando o sentido da norma[cite: 184, 187, 188, 189, 191].",
+        "topico": "Direito Constitucional",
+        "nivel": "Avançado"
+    },
+    {
+        "id": 14,
+        "pergunta": "A Emenda Constitucional nº 45\/2004, conhecida como Reforma do Judiciário, criou o instituto da Súmula Vinculante e restringiu o rol de legitimados para a propositura da Ação Declaratória de Constitucionalidade (ADC), diferenciando-o do rol aplicável à Ação Direta de Inconstitucionalidade (ADI).",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "A questão utiliza a **Inversão de Qualificadores**. [cite_start]A EC 45\/2004, na verdade, **ampliou** o rol de legitimados da ADC, equiparando-o aos legitimados da ADI[cite: 114, 115].",
+        "topico": "Direito Constitucional",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 15,
+        "pergunta": "Segundo o Prof. Pedro Lenza, a inconstitucionalidade por vício de decoro parlamentar, exemplificada pelo caso do 'Mensalão', enquadra-se tecnicamente como uma espécie de inconstitucionalidade formal propriamente dita, decorrente de falha no procedimento objetivo de votação.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "A questão utiliza a **Classificação Incorreta**. [cite_start]O vício de decoro parlamentar (compra de votos) é tratado como uma categoria autônoma, um vício na **formação da vontade** do parlamentar, e não estritamente como inconstitucionalidade formal (processo) ou material (conteúdo) tradicional[cite: 167, 168].",
+        "topico": "Direito Constitucional",
+        "nivel": "Avançado"
+    },
+    {
+        "id": 16,
+        "pergunta": "A inconstitucionalidade formal orgânica verifica-se quando há desrespeito às regras de competência legislativa constitucionalmente estabelecidas, como no caso de um município que edita lei tratando de direito penal, matéria de competência privativa da União.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "A questão está correta. [cite_start]O vício formal orgânico diz respeito à competência do ente federativo para tratar da matéria[cite: 151, 152].",
+        "topico": "Direito Constitucional",
+        "nivel": "Básico"
+    },
+    {
+        "id": 17,
+        "pergunta": "A Constituição de 1934 inovou ao atribuir ao Senado Federal a competência para suspender a execução, no todo ou em parte, de lei ou ato declarado inconstitucional por decisão definitiva do Supremo Tribunal Federal, conferindo eficácia 'erga omnes' à decisão proferida no controle difuso.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "A questão está correta. [cite_start]A Constituição de 1934 resolveu o problema da falta de efeitos gerais do controle difuso (presente na de 1891) ao criar essa competência do Senado[cite: 84].",
+        "topico": "Direito Constitucional",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 18,
+        "pergunta": "A inconstitucionalidade por omissão ocorre exclusivamente quando o legislador deixa de editar norma regulamentadora de dispositivo constitucional de eficácia limitada, inviabilizando o exercício de um direito constitucionalmente assegurado.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "A questão está correta. [cite_start]A inconstitucionalidade por omissão pressupõe a inércia diante de uma norma que carece de regulamentação (eficácia limitada) para produzir plenos efeitos[cite: 129, 130].",
+        "topico": "Direito Constitucional",
+        "nivel": "Básico"
+    },
+    {
+        "id": 19,
+        "pergunta": "O sistema austríaco de controle de constitucionalidade, idealizado por Hans Kelsen, caracterizava-se pela outorga de competência a um Tribunal Constitucional para julgar, de forma difusa e concreta, a compatibilidade das leis com a Constituição.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "A questão utiliza a **Inversão de Qualificadores**. O sistema austríaco introduziu o controle **concentrado** e **abstrato**, e não difuso e concreto. [cite_start]O órgão julgava a lei em tese, sem vínculo com um caso concreto[cite: 66, 67, 68].",
+        "topico": "Direito Constitucional",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 20,
+        "pergunta": "A violação de pressupostos objetivos do ato normativo gera inconstitucionalidade formal; exemplo disso é a edição de Medida Provisória que não atenda aos requisitos constitucionais de relevância e urgência.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "A questão está correta. [cite_start]A inobservância de requisitos essenciais (pressupostos objetivos), como urgência e relevância em MPs, ou plebiscito na criação de municípios, gera inconstitucionalidade formal[cite: 161, 162, 163].",
+        "topico": "Direito Constitucional",
+        "nivel": "Intermediário"
     }
-  ]
+]
