@@ -1,16 +1,23 @@
 <?php
+session_start();
 require_once 'carregar_dados.php';
 
 $acao = $_GET['acao'] ?? 'quiz';
 $questao_id = $_GET['id'] ?? null;
 $acertos = $_GET['acertos'] ?? 0;
+$modo_revisao = $_GET['modo_revisao'] ?? false;
+
+// Inicializa sessão de questões erradas se não existir
+if (!isset($_SESSION['questoes_erradas'])) {
+    $_SESSION['questoes_erradas'] = [];
+}
 
 // Carrega os dados do quiz
 $quiz_data = carregarDadosQuiz();
 
 switch ($acao) {
     case 'quiz':
-        exibirQuiz($quiz_data, $questao_id, $acertos);
+        exibirQuiz($quiz_data, $questao_id, $acertos, $modo_revisao);
         break;
     case 'admin':
         exibirAdmin($quiz_data);
@@ -18,14 +25,37 @@ switch ($acao) {
     case 'reload':
         recarregarDados();
         break;
+    case 'revisar_erradas':
+        revisarQuestoesErradas($quiz_data);
+        break;
+    case 'limpar_revisao':
+        limparRevisao();
+        break;
     default:
         exibirQuiz($quiz_data);
         break;
 }
 
-function exibirQuiz($quiz_data, $questao_id = null, $acertos = 0) {
+function exibirQuiz($quiz_data, $questao_id = null, $acertos = 0, $modo_revisao = false) {
     if (empty($quiz_data)) {
         die("Erro: Nenhuma questão encontrada. Verifique o arquivo de dados.");
+    }
+    
+    // Se for modo revisão, usa apenas as questões erradas
+    if ($modo_revisao) {
+        $questoes_revisao = [];
+        foreach ($quiz_data as $questao) {
+            if (in_array($questao['id'], $_SESSION['questoes_erradas'])) {
+                $questoes_revisao[] = $questao;
+            }
+        }
+        
+        if (empty($questoes_revisao)) {
+            header('Location: fim_quiz.php?acertos=' . $acertos . '&total=' . count($quiz_data) . '&modo_revisao=1&sem_erradas=1');
+            exit;
+        }
+        
+        $quiz_data = $questoes_revisao;
     }
     
     // Encontra a questão atual
@@ -75,10 +105,28 @@ function exibirQuiz($quiz_data, $questao_id = null, $acertos = 0) {
         'feedback' => null,
         'proxima_id' => $proxima_id,
         'resposta_correta' => $questao_atual['resposta_correta'],
-        'explicacao' => $questao_atual['explicacao_feedback']
+        'explicacao' => $questao_atual['explicacao_feedback'],
+        'modo_revisao' => $modo_revisao,
+        'total_erradas' => count($_SESSION['questoes_erradas'])
     ];
     
     include 'templates/quiz.php';
+}
+
+function revisarQuestoesErradas($quiz_data) {
+    if (empty($_SESSION['questoes_erradas'])) {
+        header('Location: fim_quiz.php?sem_erradas=1');
+        exit;
+    }
+    
+    header('Location: index.php?modo_revisao=1');
+    exit;
+}
+
+function limparRevisao() {
+    $_SESSION['questoes_erradas'] = [];
+    header('Location: index.php');
+    exit;
 }
 
 function exibirAdmin($quiz_data) {

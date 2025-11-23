@@ -40,7 +40,7 @@ function exibirPainelAdmin($quiz_data) {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Painel Admin - Inútil App</title>
+        <title>Painel Admin - Inútil.App</title>
         <style>
             /* CSS idêntico ao do template admin.html anterior */
             :root {
