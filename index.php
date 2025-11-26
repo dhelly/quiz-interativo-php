@@ -2,6 +2,18 @@
 session_start();
 require_once 'carregar_dados.php';
 
+$quizzes_disponiveis = listarQuizzes();
+
+if (isset($_GET['carregar_quiz'])) {
+    $caminho_quiz = $_GET['carregar_quiz'];
+    $quiz_data = carregarQuiz($caminho_quiz);
+    if ($quiz_data) {
+        salvarDadosQuiz($quiz_data);
+        header('Location: index.php');
+        exit;
+    }
+}
+
 $acao = $_GET['acao'] ?? 'quiz';
 $questao_id = $_GET['id'] ?? null;
 $acertos = $_GET['acertos'] ?? 0;
