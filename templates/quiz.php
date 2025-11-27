@@ -6,356 +6,12 @@
     <title>
         <?php echo $dados['modo_revisao'] ? '📚 Revisão de Erradas - ' : '🎓 Quiz Interativo - '; ?>Inútil.App
     </title>
-    <style>
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #34495e;
-            --accent-color: #3498db;
-            --success-color: #27ae60;
-            --warning-color: #f39c12;
-            --error-color: #e74c3c;
-            --text-light: #ecf0f1;
-            --text-muted: #bdc3c7;
-            --bg-dark: #1a252f;
-            --bg-card: #2c3e50;
-            --border-color: #34495e;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background: var(--bg-dark);
-            color: var(--text-light); 
-            margin: 0;
-            padding: 20px;
-            min-height: 100vh;
-            line-height: 1.6;
-        }
-        
-        .container { 
-            max-width: 900px; 
-            margin: 20px auto;
-            background: var(--bg-card);
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            border: 1px solid var(--border-color);
-            overflow: hidden;
-        }
-        
-        .header {
-            background: var(--secondary-color);
-            padding: 20px 30px;
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .header h1 {
-            color: var(--text-light);
-            font-size: 1.5em;
-            font-weight: 600;
-            margin: 0;
-        }
-        
-        .modo-revisao {
-            background: var(--warning-color);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-size: 0.8em;
-            font-weight: bold;
-        }
-        
-        .content {
-            padding: 30px;
-        }
-        
-        .progresso {
-            background: var(--secondary-color);
-            padding: 15px 20px;
-            border-radius: 6px;
-            margin-bottom: 25px;
-            border: 1px solid var(--border-color);
-        }
-        
-        .progresso-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-            font-size: 0.9em;
-            color: var(--text-muted);
-        }
-        
-        .progresso-bar {
-            height: 6px;
-            background: var(--bg-dark);
-            border-radius: 3px;
-            overflow: hidden;
-        }
-        
-        .progresso-fill {
-            height: 100%;
-            background: var(--accent-color);
-            transition: width 0.3s ease;
-        }
-        
-        .pergunta { 
-            font-size: 1.2em; 
-            margin-bottom: 25px; 
-            line-height: 1.6;
-            background: var(--secondary-color);
-            padding: 20px;
-            border-radius: 6px;
-            border-left: 4px solid var(--accent-color);
-        }
-        
-        .feedback { 
-            padding: 20px; 
-            border-radius: 6px; 
-            margin-bottom: 25px;
-            border: 1px solid var(--border-color);
-            animation: slideIn 0.3s ease-out;
-            display: none;
-        }
-        
-        .feedback.mostrar {
-            display: block;
-        }
-        
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .acerto { 
-            background: rgba(39, 174, 96, 0.1); 
-            border-left: 4px solid var(--success-color);
-        }
-        
-        .erro { 
-            background: rgba(231, 76, 60, 0.1); 
-            border-left: 4px solid var(--error-color);
-        }
-        
-        .explicacao { 
-            margin-top: 15px; 
-            font-size: 0.95em;
-            background: rgba(52, 73, 94, 0.5);
-            padding: 15px;
-            border-radius: 4px;
-            border-left: 3px solid var(--accent-color);
-        }
-        
-        .questao-info {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-        
-        .badge {
-            background: var(--accent-color);
-            padding: 6px 12px;
-            border-radius: 4px;
-            font-size: 0.8em;
-            font-weight: 500;
-            color: var(--text-light);
-        }
-        
-        .badge.topico {
-            background: var(--secondary-color);
-        }
-        
-        .badge.nivel {
-            background: var(--success-color);
-        }
-        
-        .badge.errada {
-            background: var(--error-color);
-        }
-        
-        .opcoes-container {
-            margin: 25px 0;
-        }
-        
-        .opcao-label {
-            display: block;
-            background: var(--secondary-color);
-            padding: 15px 20px 15px 45px;
-            margin-bottom: 10px;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border: 1px solid var(--border-color);
-            position: relative;
-        }
-        
-        .opcao-label:hover {
-            background: #3a506b;
-        }
-        
-        .opcao-label.selecionada {
-            border-color: var(--accent-color);
-            background: #3a506b;
-        }
-        
-        .opcao-label.correta {
-            background: rgba(39, 174, 96, 0.2);
-            border-color: var(--success-color);
-        }
-        
-        .opcao-label.incorreta {
-            background: rgba(231, 76, 60, 0.2);
-            border-color: var(--error-color);
-        }
-        
-        .numero-opcao {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: var(--accent-color);
-            color: white;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8em;
-            font-weight: bold;
-        }
-        
-        button { 
-            background: var(--accent-color);
-            color: var(--text-light); 
-            border: none; 
-            padding: 15px 30px; 
-            border-radius: 6px; 
-            cursor: pointer; 
-            font-size: 1em;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            width: 100%;
-            margin-top: 10px;
-            border: 1px solid var(--border-color);
-        }
-        
-        button:hover { 
-            background: #2980b9;
-            transform: translateY(-2px);
-        }
-        
-        button:disabled {
-            background: var(--secondary-color);
-            cursor: not-allowed;
-            transform: none;
-            opacity: 0.6;
-        }
-        
-        .btn-avancar {
-            background: var(--success-color);
-        }
-        
-        .btn-avancar:hover {
-            background: #219653;
-        }
-        
-        .btn-revisao {
-            background: var(--warning-color);
-        }
-        
-        .btn-revisao:hover {
-            background: #e67e22;
-        }
-        
-        .admin-panel {
-            background: var(--secondary-color);
-            padding: 15px 20px;
-            border-radius: 6px;
-            margin-top: 25px;
-            border: 1px solid var(--border-color);
-            font-size: 0.9em;
-        }
-        
-        .admin-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 8px;
-            flex-wrap: wrap;
-        }
-        
-        .admin-links a {
-            color: var(--accent-color);
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-        
-        .admin-links a:hover {
-            color: var(--text-light);
-        }
-        
-        .questao-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        
-        .questao-numero {
-            background: var(--accent-color);
-            color: var(--text-light);
-            padding: 8px 16px;
-            border-radius: 4px;
-            font-weight: 600;
-            font-size: 0.9em;
-        }
-
-        .estatistica-resposta {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-            font-size: 0.9em;
-            color: var(--text-muted);
-        }
-
-        .contador-acertos {
-            background: var(--success-color);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-weight: bold;
-        }
-        
-        .contador-erradas {
-            background: var(--error-color);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-weight: bold;
-        }
-        
-        .info-revisao {
-            background: rgba(243, 156, 18, 0.1);
-            border-left: 4px solid var(--warning-color);
-            padding: 15px;
-            border-radius: 6px;
-            margin-bottom: 20px;
-            font-size: 0.9em;
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <div class="container">
+<body class="pagina-quiz">
+    <div class="container-quiz">
         
-        <div class="header">
+        <div class="header-quiz">
             <h1>
                 <?php if ($dados['modo_revisao']): ?>
                     📚 Revisão de Questões Erradas
@@ -368,15 +24,15 @@
             <?php endif; ?>
         </div>
 
-        <div class="content">
+        <div class="content-quiz">
             <?php if ($dados['modo_revisao']): ?>
-                <div class="info-revisao">
+                <div class="info-revisao-quiz">
                     <strong>📖 Modo Revisão:</strong> Você está revisando <?php echo $dados['total_erradas']; ?> questão(ões) que errou anteriormente.
                     <a href="index.php?acao=limpar_revisao" style="color: var(--warning-color); margin-left: 10px;">🔄 Limpar Histórico</a>
                 </div>
             <?php endif; ?>
             
-            <div class="progresso">
+            <div class="progresso-quiz">
                 <div class="progresso-info">
                     <span>Questão <?php echo $dados['numero_questao']; ?> de <?php echo $dados['total_perguntas']; ?></span>
                     <span>
@@ -399,11 +55,11 @@
 
             <div class="questao-header">
                 <div class="questao-info">
-                    <span class="badge">ID: <?php echo $dados['questao']['id']; ?></span>
-                    <span class="badge topico"><?php echo $dados['questao']['topico']; ?></span>
-                    <span class="badge nivel"><?php echo $dados['questao']['nivel']; ?></span>
+                    <span class="badge-quiz">ID: <?php echo $dados['questao']['id']; ?></span>
+                    <span class="badge-quiz topico"><?php echo $dados['questao']['topico']; ?></span>
+                    <span class="badge-quiz nivel"><?php echo $dados['questao']['nivel']; ?></span>
                     <?php if (in_array($dados['questao']['id'], $_SESSION['questoes_erradas'])): ?>
-                        <span class="badge errada">❌ Errada Anteriormente</span>
+                        <span class="badge-quiz errada">❌ Errada Anteriormente</span>
                     <?php endif; ?>
                 </div>
                 <div class="questao-numero">#<?php echo $dados['numero_questao']; ?></div>
@@ -421,7 +77,7 @@
             </div>
 
             <!-- Botão de avançar (inicialmente oculto) -->
-            <button class="btn-avancar" id="btnAvancar" style="display: none;">
+            <button class="btn-quiz btn-avancar" id="btnAvancar" style="display: none;">
                 <?php if ($dados['proxima_id']): ?>
                     ➡️ Avançar para Próxima Questão
                 <?php else: ?>
