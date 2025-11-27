@@ -22,7 +22,9 @@
 
 body { 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-    background: var(--bg-dark);
+    /* background: var(--bg-dark); */
+    background: linear-gradient(135deg, #90a2f1 0%, #935cca 100%);
+    background-attachment: fixed; /* Para fixar o gradiente na tela toda */
     color: var(--text-light); 
     margin: 0;
     padding: 20px;
