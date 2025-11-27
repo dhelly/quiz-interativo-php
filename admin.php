@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once 'carregar_dados.php';
+require_once 'validar_quiz.php';
 
 $acao = $_GET['acao'] ?? 'panel';
 $quiz_data = carregarDadosQuiz();
@@ -30,6 +31,9 @@ switch ($acao) {
     case 'excluir-quiz':
         excluirQuizAdmin();
         break;
+    case 'download-template':
+            downloadTemplate();
+            break;
     case 'download-quiz':
         downloadQuiz();
         break;
@@ -41,6 +45,9 @@ switch ($acao) {
 function exibirPainelAdmin($quiz_data) {
     $quizzes_salvos = listarQuizzes();
     $disciplinas = obterDisciplinas();
+
+    // Converter dados para markdown para o editor
+    $dados_para_editor = $quiz_data; // Manter originais (já em markdown)
     
     $dados = [
         'total_questoes' => count($quiz_data),
@@ -419,30 +426,107 @@ function exibirPainelAdmin($quiz_data) {
 
             // ========== EDITOR JSON ==========
             function loadCurrentJson() {
-                showAlert('JSON atual carregado!', 'success');
+                // Recarrega a página para obter os dados mais recentes
+                location.reload();
             }
 
             async function saveJson() {
+                // Validação no lado do cliente primeiro
+                if (!validarJsonAntesEnvio()) {
+                    return;
+                }
+                
                 const jsonData = document.getElementById('jsonEditor').value;
                 
                 try {
-                    // Validação básica
+                    // Parse e validação adicional
                     const dados = JSON.parse(jsonData);
                     
-                    // Validação da estrutura
-                    let dadosValidos = true;
-                    for (const questao of dados) {
-                        if (!questao.opcoes_disponiveis || !Array.isArray(questao.opcoes_disponiveis)) {
-                            dadosValidos = false;
-                            break;
-                        }
+                    // Validação mais detalhada no cliente
+                    const erros = [];
+                    
+                    if (!Array.isArray(dados)) {
+                        erros.push('O JSON deve ser um array de questões');
+                    } else if (dados.length === 0) {
+                        erros.push('O array de questões não pode estar vazio');
+                    } else {
+                        // Valida cada questão individualmente
+                        dados.forEach((questao, index) => {
+                            const numeroQuestao = index + 1;
+                            
+                            // Verifica campos obrigatórios
+                            const camposObrigatorios = ['id', 'pergunta', 'resposta_correta', 'opcoes_disponiveis', 'explicacao_feedback', 'topico', 'nivel'];
+                            camposObrigatorios.forEach(campo => {
+                                if (!questao.hasOwnProperty(campo)) {
+                                    erros.push(`Questão ${numeroQuestao}: Campo obrigatório '${campo}' não encontrado`);
+                                }
+                            });
+                            
+                            // Valida tipos
+                            if (questao.id && typeof questao.id !== 'number') {
+                                erros.push(`Questão ${numeroQuestao}: ID deve ser um número`);
+                            }
+                            
+                            if (questao.pergunta && (typeof questao.pergunta !== 'string' || questao.pergunta.trim().length < 10)) {
+                                erros.push(`Questão ${numeroQuestao}: Pergunta deve ter pelo menos 10 caracteres`);
+                            }
+                            
+                            if (questao.resposta_correta && typeof questao.resposta_correta !== 'string') {
+                                erros.push(`Questão ${numeroQuestao}: resposta_correta deve ser uma string`);
+                            }
+                            
+                            if (questao.opcoes_disponiveis) {
+                                if (!Array.isArray(questao.opcoes_disponiveis)) {
+                                    erros.push(`Questão ${numeroQuestao}: opcoes_disponiveis deve ser um array`);
+                                } else if (questao.opcoes_disponiveis.length < 2) {
+                                    erros.push(`Questão ${numeroQuestao}: opcoes_disponiveis deve ter pelo menos 2 opções`);
+                                } else {
+                                    // Verifica se todas as opções são strings
+                                    questao.opcoes_disponiveis.forEach((opcao, opcaoIndex) => {
+                                        if (typeof opcao !== 'string') {
+                                            erros.push(`Questão ${numeroQuestao}: Opção ${opcaoIndex + 1} deve ser uma string`);
+                                        }
+                                    });
+                                    
+                                    // Verifica se a resposta_correta está nas opções
+                                    if (questao.resposta_correta && !questao.opcoes_disponiveis.includes(questao.resposta_correta)) {
+                                        erros.push(`Questão ${numeroQuestao}: resposta_correta "${questao.resposta_correta}" não está presente nas opcoes_disponiveis`);
+                                    }
+                                }
+                            }
+                            
+                            if (questao.explicacao_feedback && (typeof questao.explicacao_feedback !== 'string' || questao.explicacao_feedback.trim().length < 10)) {
+                                erros.push(`Questão ${numeroQuestao}: explicacao_feedback deve ter pelo menos 10 caracteres`);
+                            }
+                            
+                            if (questao.topico && typeof questao.topico !== 'string') {
+                                erros.push(`Questão ${numeroQuestao}: topico deve ser uma string`);
+                            }
+                            
+                            if (questao.nivel && typeof questao.nivel !== 'string') {
+                                erros.push(`Questão ${numeroQuestao}: nivel deve ser uma string`);
+                            }
+                        });
+                        
+                        // Verifica IDs duplicados
+                        const ids = [];
+                        dados.forEach(questao => {
+                            if (questao.id) {
+                                if (ids.includes(questao.id)) {
+                                    erros.push(`ID duplicado: ${questao.id}`);
+                                }
+                                ids.push(questao.id);
+                            }
+                        });
                     }
                     
-                    if (!dadosValidos) {
-                        showAlert('Erro: O campo "opcoes_disponiveis" deve ser um array em todas as questões.', 'error');
+                    // Se há erros, não envia para o servidor
+                    if (erros.length > 0) {
+                        showAlert('Erros de validação encontrados:\n' + erros.join('\n'), 'error');
                         return;
                     }
                     
+                    // Se passou na validação, envia para o servidor
                     const response = await fetch('admin.php?acao=salvar-json', {
                         method: 'POST',
                         headers: {
@@ -452,22 +536,36 @@ function exibirPainelAdmin($quiz_data) {
                     });
                     
                     const result = await response.text();
-                    showAlert('Dados salvos com sucesso!', 'success');
                     
-                    // Atualiza a página após 2 segundos
-                    setTimeout(() => location.reload(), 2000);
+                    // Verifica se a resposta do servidor indica sucesso ou erro
+                    if (response.ok) {
+                        showAlert(result, 'success');
+                        // Atualiza a página após 2 segundos
+                        setTimeout(() => location.reload(), 2000);
+                    } else {
+                        // Se o servidor retornou um erro (status 4xx, 5xx)
+                        showAlert('Erro no servidor: ' + result, 'error');
+                    }
+                    
                 } catch (error) {
-                    showAlert('Erro ao salvar JSON: ' + error, 'error');
+                    // Captura erros de JSON.parse ou outros erros de rede
+                    if (error instanceof SyntaxError) {
+                        showAlert('Erro de sintaxe JSON: ' + error.message, 'error');
+                    } else {
+                        showAlert('Erro ao salvar JSON: ' + error.message, 'error');
+                    }
                 }
             }
 
             function formatJson() {
                 try {
                     const jsonData = JSON.parse(document.getElementById('jsonEditor').value);
+                    
+                    // Apenas formata o JSON, não converte markdown
                     document.getElementById('jsonEditor').value = JSON.stringify(jsonData, null, 2);
                     showAlert('JSON formatado com sucesso!', 'success');
                 } catch (error) {
-                    showAlert('Erro ao formatar JSON: ' + error, 'error');
+                    showAlert('Erro ao formatar JSON: ' + error.message, 'error');
                 }
             }
 
@@ -542,10 +640,14 @@ function exibirPainelAdmin($quiz_data) {
                     });
 
                     const result = await response.text();
-                    showAlert('Arquivo carregado com sucesso!', 'success');
                     
-                    // Atualiza a página após 2 segundos
-                    setTimeout(() => location.reload(), 2000);
+                    if (response.ok) {
+                        showAlert(result, 'success');
+                        // Atualiza a página após 2 segundos
+                        setTimeout(() => location.reload(), 2000);
+                    } else {
+                        showAlert('Erro no upload: ' + result, 'error');
+                    }
                 } catch (error) {
                     showAlert('Erro no upload: ' + error, 'error');
                 }
@@ -644,6 +746,91 @@ function exibirPainelAdmin($quiz_data) {
                     fecharModalSalvarComo();
                 }
             }
+
+            // Validação no lado do cliente para melhor UX
+            function validarJsonAntesEnvio() {
+                const jsonEditor = document.getElementById('jsonEditor');
+                const jsonData = jsonEditor.value;
+                
+                try {
+                    const dados = JSON.parse(jsonData);
+                    
+                    // Validações básicas no cliente
+                    if (!Array.isArray(dados)) {
+                        throw new Error('O JSON deve ser um array de questões');
+                    }
+                    
+                    if (dados.length === 0) {
+                        throw new Error('O array não pode estar vazio');
+                    }
+                    
+                    for (let i = 0; i < dados.length; i++) {
+                        const questao = dados[i];
+                        const numeroQuestao = i + 1;
+                        
+                        // Campos obrigatórios
+                        const camposObrigatorios = ['id', 'pergunta', 'resposta_correta', 'opcoes_disponiveis', 'explicacao_feedback', 'topico', 'nivel'];
+                        for (const campo of camposObrigatorios) {
+                            if (!questao.hasOwnProperty(campo)) {
+                                throw new Error(`Questão ${numeroQuestao}: Campo '${campo}' não encontrado`);
+                            }
+                        }
+                        
+                        // Tipo dos campos
+                        if (typeof questao.id !== 'number') {
+                            throw new Error(`Questão ${numeroQuestao}: ID deve ser um número`);
+                        }
+                        
+                        if (typeof questao.pergunta !== 'string' || questao.pergunta.trim().length < 10) {
+                            throw new Error(`Questão ${numeroQuestao}: Pergunta deve ter pelo menos 10 caracteres`);
+                        }
+                        
+                        if (!Array.isArray(questao.opcoes_disponiveis) || questao.opcoes_disponiveis.length < 2) {
+                            throw new Error(`Questão ${numeroQuestao}: Deve ter pelo menos 2 opções disponíveis`);
+                        }
+                        
+                        // Verifica se resposta_correta está nas opções
+                        if (!questao.opcoes_disponiveis.includes(questao.resposta_correta)) {
+                            throw new Error(`Questão ${numeroQuestao}: A resposta correta não está nas opções disponíveis`);
+                        }
+                    }
+                    
+                    return true;
+                } catch (error) {
+                    showAlert('Erro de validação: ' + error.message, 'error');
+                    return false;
+                }
+            }
+
+            // Função para formatar JSON e converter markdown para HTML
+            function formatJson() {
+                try {
+                    const jsonData = JSON.parse(document.getElementById('jsonEditor').value);
+                    
+                    // Aplica sanitização no lado do cliente (opcional, para preview)
+                    const dadosSanitizados = sanitizarMarkdownJson(jsonData);
+                    
+                    document.getElementById('jsonEditor').value = JSON.stringify(dadosSanitizados, null, 2);
+                    showAlert('JSON formatado e markdown convertido com sucesso!', 'success');
+                } catch (error) {
+                    showAlert('Erro ao formatar JSON: ' + error, 'error');
+                }
+            }
+
+            // Função auxiliar para sanitizar markdown no JSON (lado do cliente)
+            function sanitizarMarkdownJson(dados) {
+                return dados.map(questao => {
+                    return {
+                        ...questao,
+                        pergunta: questao.pergunta.replace(/`([^`]+)`/g, '<code>$1</code>'),
+                        explicacao_feedback: questao.explicacao_feedback.replace(/`([^`]+)`/g, '<code>$1</code>'),
+                        opcoes_disponiveis: questao.opcoes_disponiveis ? 
+                            questao.opcoes_disponiveis.map(opcao => 
+                                opcao.replace(/`([^`]+)`/g, '<code>$1</code>')
+                            ) : []
+                    };
+                });
+            }
         </script>
     </body>
     </html>
@@ -656,41 +843,50 @@ function salvarJson() {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $json_data = $_POST['json_data'] ?? '';
         
-        if (!empty($json_data)) {
-            try {
-                $dados = json_decode($json_data, true);
-                if (json_last_error() === JSON_ERROR_NONE) {
-                    // Validar estrutura dos dados
-                    $dados_validos = true;
-                    foreach ($dados as $questao) {
-                        if (!isset($questao['opcoes_disponiveis']) || !is_array($questao['opcoes_disponiveis'])) {
-                            $dados_validos = false;
-                            break;
-                        }
-                    }
-                    
-                    if ($dados_validos) {
-                        if (salvarDadosQuiz($dados)) {
-                            echo "Dados salvos com sucesso!";
-                        } else {
-                            http_response_code(500);
-                            echo "Erro ao salvar dados.";
-                        }
-                    } else {
-                        http_response_code(400);
-                        echo "JSON inválido: campo 'opcoes_disponiveis' deve ser um array em todas as questões.";
-                    }
-                } else {
-                    http_response_code(400);
-                    echo "JSON inválido.";
-                }
-            } catch (Exception $e) {
-                http_response_code(500);
-                echo "Erro: " . $e->getMessage();
-            }
-        } else {
+        if (empty($json_data)) {
             http_response_code(400);
-            echo "Dados vazios.";
+            echo "Erro: Dados JSON vazios.";
+            exit;
+        }
+        
+        try {
+            $dados = json_decode($json_data, true);
+                       
+            if (json_last_error() !== JSON_ERROR_NONE) {
+                http_response_code(400);
+                echo "Erro de sintaxe JSON: " . json_last_error_msg();
+                exit;
+            }
+            
+            // Valida a estrutura do quiz (mantém markdown)
+            $erros_validacao = validarEstruturaQuiz($dados);
+            
+            if (!empty($erros_validacao)) {
+                http_response_code(400);
+                echo "Erros de validação encontrados:\n" . implode("\n", $erros_validacao);
+                exit;
+            }
+            
+            // Corrige IDs sequenciais se necessário (mantém markdown)
+            list($dados, $ids_corrigidos) = corrigirIDsSequenciais($dados);
+            
+            // if ($ids_corrigidos) {
+            //     $mensagem = "IDs corrigidos para sequência numérica. ";
+            // } else {
+            //     $mensagem = "";
+            // }
+            
+            // Salvar dados ORIGINAIS (com markdown)
+            if (salvarDadosQuiz($dados)) {
+                echo ($ids_corrigidos ? "IDs corrigidos para sequência numérica. " : "") . "Dados salvos com sucesso!";
+            } else {
+                http_response_code(500);
+                echo "Erro ao salvar dados no arquivo.";
+            }
+            
+        } catch (Exception $e) {
+            http_response_code(500);
+            echo "Erro: " . $e->getMessage();
         }
     }
     exit;
@@ -700,39 +896,63 @@ function uploadJson() {
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['json_file'])) {
         $file = $_FILES['json_file'];
         
-        if ($file['error'] === UPLOAD_ERR_OK) {
-            $content = file_get_contents($file['tmp_name']);
-            $dados = json_decode($content, true);
-            
-            if (json_last_error() === JSON_ERROR_NONE) {
-                // Validar estrutura dos dados
-                $dados_validos = true;
-                foreach ($dados as $questao) {
-                    if (!isset($questao['opcoes_disponiveis']) || !is_array($questao['opcoes_disponiveis'])) {
-                        $dados_validos = false;
-                        break;
-                    }
-                }
-                
-                if ($dados_validos) {
-                    if (salvarDadosQuiz($dados)) {
-                        echo "Arquivo carregado com sucesso!";
-                    } else {
-                        http_response_code(500);
-                        echo "Erro ao salvar arquivo.";
-                    }
-                } else {
-                    http_response_code(400);
-                    echo "Arquivo JSON inválido: campo 'opcoes_disponiveis' deve ser um array.";
-                }
-            } else {
-                http_response_code(400);
-                echo "Arquivo JSON inválido.";
-            }
-        } else {
+        if ($file['error'] !== UPLOAD_ERR_OK) {
             http_response_code(400);
-            echo "Erro no upload do arquivo.";
+            echo "Erro no upload do arquivo: " . $file['error'];
+            exit;
         }
+        
+        // Verifica o tipo do arquivo
+        $file_type = $file['type'];
+        if ($file_type !== 'application/json' && !str_contains($file['name'], '.json')) {
+            http_response_code(400);
+            echo "Por favor, envie apenas arquivos JSON.";
+            exit;
+        }
+        
+        // Verifica o tamanho do arquivo (máximo 10MB)
+        if ($file['size'] > 10 * 1024 * 1024) {
+            http_response_code(400);
+            echo "Arquivo muito grande. Tamanho máximo: 10MB";
+            exit;
+        }
+        
+        $content = file_get_contents($file['tmp_name']);
+        $dados = json_decode($content, true);
+        
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            http_response_code(400);
+            echo "Arquivo JSON inválido: " . json_last_error_msg();
+            exit;
+        }
+        
+        // Valida a estrutura do quiz
+        $erros_validacao = validarEstruturaQuiz($dados);
+        
+        if (!empty($erros_validacao)) {
+            http_response_code(400);
+            echo "Erros de validação encontrados:\n" . implode("\n", $erros_validacao);
+            exit;
+        }
+        
+        // Corrige IDs sequenciais se necessário
+        list($dados, $ids_corrigidos) = corrigirIDsSequenciais($dados);
+        
+        if ($ids_corrigidos) {
+            $mensagem = "IDs corrigidos para sequência numérica. ";
+        } else {
+            $mensagem = "";
+        }
+        
+        if (salvarDadosQuiz($dados)) {
+            echo $mensagem . "Arquivo carregado e validado com sucesso!";
+        } else {
+            http_response_code(500);
+            echo "Erro ao salvar arquivo.";
+        }
+    } else {
+        http_response_code(400);
+        echo "Nenhum arquivo enviado.";
     }
     exit;
 }
@@ -810,6 +1030,30 @@ function excluirQuizAdmin() {
     } else {
         header('Location: admin.php?erro=Erro ao excluir quiz');
     }
+    exit;
+}
+
+function downloadTemplate() {
+    $template = [
+        [
+            "id" => 1,
+            "pergunta" => "Exemplo de pergunta bem formulada com pelo menos 10 caracteres?",
+            "resposta_correta" => "Opção Correta",
+            "opcoes_disponiveis" => [
+                "Opção Incorreta 1",
+                "Opção Correta",
+                "Opção Incorreta 2", 
+                "Opção Incorreta 3"
+            ],
+            "explicacao_feedback" => "Explicação detalhada sobre por que esta é a resposta correta, com pelo menos 10 caracteres.",
+            "topico" => "Direito Civil",
+            "nivel" => "Básico"
+        ]
+    ];
+    
+    header('Content-Type: application/json');
+    header('Content-Disposition: attachment; filename="template_quiz_valido.json"');
+    echo json_encode($template, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
     exit;
 }
 

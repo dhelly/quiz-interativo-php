@@ -68,12 +68,12 @@
             <div class="pergunta"><?php echo $dados['questao']['pergunta']; ?></div>
 
             <div class="opcoes-container">
-                <?php foreach ($dados['questao']['opcoes_disponiveis'] as $index => $opcao): ?>
-                    <label class="opcao-label" data-value="<?php echo $opcao; ?>">
-                        <div class="numero-opcao"><?php echo $index + 1; ?></div>
-                        <?php echo $opcao; ?>
-                    </label>
-                <?php endforeach; ?>
+            <?php foreach ($dados['questao']['opcoes_disponiveis'] as $index => $opcao): ?>
+                <label class="opcao-label" data-value="<?php echo htmlspecialchars($opcao); ?>">
+                    <div class="numero-opcao"><?php echo $index + 1; ?></div>
+                    <?php echo $opcao; ?>
+                </label>
+            <?php endforeach; ?>
             </div>
 
             <!-- Botão de avançar (inicialmente oculto) -->
@@ -89,7 +89,7 @@
                 <strong>🔧 Painel de Controle</strong>
                 <div class="admin-links">
                     <a href="admin.php">⚙️ Gerenciar Dados</a>
-                    <a href="index.php?acao=reload">🔄 Recarregar</a>
+                    <a href="javascript:void(0)" onclick="recarregarPagina()">🔄 Recarregar</a>
                     <?php if (!$dados['modo_revisao'] && $dados['total_erradas'] > 0): ?>
                         <a href="index.php?acao=revisar_erradas">📚 Revisar Erradas (<?php echo $dados['total_erradas']; ?>)</a>
                     <?php endif; ?>
@@ -248,6 +248,12 @@
                 localStorage.setItem('atalhosMostrados', 'true');
             }
         }, 1000);
+
+        function recarregarPagina() {
+            // Mantém todos os parâmetros atuais da URL
+            const urlParams = new URLSearchParams(window.location.search);
+            window.location.href = 'index.php?' + urlParams.toString();
+        }
     </script>
 </body>
 </html>

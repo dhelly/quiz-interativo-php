@@ -2,6 +2,10 @@
 define('QUIZ_DATA_FILE', 'quiz_data.json');
 define('QUIZZES_DIR', 'quizzes');
 
+if (file_exists('sanitize.php')) {
+    require_once 'sanitize.php';
+}
+
 $FALLBACK_QUIZ_JSON = '[
   {
     "id": 15,
@@ -17,33 +21,32 @@ $FALLBACK_QUIZ_JSON = '[
 function carregarDadosQuiz() {
     global $FALLBACK_QUIZ_JSON;
     
-    if (file_exists(QUIZ_DATA_FILE)) {
-        try {
-            $content = file_get_contents(QUIZ_DATA_FILE);
-            if (!empty(trim($content))) {
-                $data = json_decode($content, true);
-                if (json_last_error() === JSON_ERROR_NONE) {
-                    return $data;
-                }
-            }
-        } catch (Exception $e) {
-            error_log("Erro ao ler arquivo: " . $e->getMessage());
+    $arquivo = 'quiz_data.json';
+    
+    if (file_exists($arquivo)) {
+        $conteudo = file_get_contents($arquivo);
+        $dados = json_decode($conteudo, true);
+        
+        if (json_last_error() === JSON_ERROR_NONE && is_array($dados)) {
+            return $dados;
         }
     }
     
-    // Fallback
-    return json_decode($FALLBACK_QUIZ_JSON, true);
+    // Fallback para dados padrão
+    $dados = json_decode($FALLBACK_QUIZ_JSON, true);
+    return $dados;
 }
 
 function salvarDadosQuiz($dados) {
-    try {
-        $json = json_encode($dados, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-        file_put_contents(QUIZ_DATA_FILE, $json);
+    // Prepara dados para salvar (mantém markdown)
+    // Não converte para HTML aqui, pois queremos manter o markdown no arquivo
+    $json_data = json_encode($dados, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    
+    if (file_put_contents('quiz_data.json', $json_data) !== false) {
         return true;
-    } catch (Exception $e) {
-        error_log("Erro ao salvar arquivo: " . $e->getMessage());
-        return false;
     }
+    
+    return false;
 }
 
 // NOVAS FUNÇÕES PARA GERENCIAR MÚLTIPLOS QUIZZES
@@ -66,20 +69,16 @@ function salvarQuizComo($dados, $nome_arquivo, $disciplina = 'geral') {
     }
 }
 
-function carregarQuiz($caminho_arquivo) {
-    try {
-        if (file_exists($caminho_arquivo)) {
-            $content = file_get_contents($caminho_arquivo);
-            $data = json_decode($content, true);
-            if (json_last_error() === JSON_ERROR_NONE) {
-                return $data;
-            }
+function carregarQuiz($caminho) {
+    if (file_exists($caminho)) {
+        $conteudo = file_get_contents($caminho);
+        $dados = json_decode($conteudo, true);
+        
+        if (json_last_error() === JSON_ERROR_NONE && is_array($dados)) {
+            return $dados;
         }
-        return null;
-    } catch (Exception $e) {
-        error_log("Erro ao carregar quiz: " . $e->getMessage());
-        return null;
     }
+    return null;
 }
 
 function listarQuizzes() {

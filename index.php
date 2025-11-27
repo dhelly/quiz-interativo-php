@@ -52,6 +52,11 @@ function exibirQuiz($quiz_data, $questao_id = null, $acertos = 0, $modo_revisao 
     if (empty($quiz_data)) {
         die("Erro: Nenhuma questão encontrada. Verifique o arquivo de dados.");
     }
+
+    // Aplicar conversão markdown→HTML apenas para exibição no quiz
+    if (function_exists('prepararDadosParaQuiz')) {
+        $quiz_data = prepararDadosParaQuiz($quiz_data);
+    }
     
     // Se for modo revisão, usa apenas as questões erradas
     if ($modo_revisao) {

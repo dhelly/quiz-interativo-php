@@ -894,3 +894,77 @@ body.pagina-quiz {
     margin-bottom: 20px;
     font-size: 0.9em;
 }
+
+code {
+    background: rgba(52, 152, 219, 0.2);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+    color: #3498db;
+    border: 1px solid rgba(52, 152, 219, 0.3);
+}
+
+pre code {
+    display: block;
+    background: var(--bg-dark);
+    padding: 15px;
+    border-radius: 6px;
+    border-left: 4px solid var(--accent-color);
+    margin: 10px 0;
+    overflow-x: auto;
+    color: var(--text-light);
+    font-size: 0.9em;
+    line-height: 1.4;
+}
+
+/* Estilos específicos para a página do quiz */
+.pagina-quiz code {
+    background: rgba(243, 156, 18, 0.2);
+    color: #f39c12;
+    border-color: rgba(243, 156, 18, 0.3);
+}
+
+.pagina-quiz pre code {
+    background: var(--secondary-color);
+    border-left-color: var(--warning-color);
+}
+
+/* Estilos para código no quiz */
+.pergunta code,
+.explicacao code {
+    background: rgba(243, 156, 18, 0.2);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+    color: #f39c12;
+    border: 1px solid rgba(243, 156, 18, 0.3);
+}
+
+.pergunta pre code,
+.explicacao pre code {
+    display: block;
+    background: var(--secondary-color);
+    padding: 12px;
+    border-radius: 6px;
+    border-left: 4px solid var(--warning-color);
+    margin: 10px 0;
+    overflow-x: auto;
+    color: var(--text-light);
+    font-size: 0.9em;
+    line-height: 1.4;
+}
+
+/* Estilos para texto em negrito e itálico */
+.pergunta strong,
+.explicacao strong {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.pergunta em,
+.explicacao em {
+    color: var(--text-muted);
+    font-style: italic;
+}

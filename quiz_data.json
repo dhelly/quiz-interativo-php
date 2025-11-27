@@ -1,362 +1,62 @@
 [
     {
         "id": 1,
-        "pergunta": "A escola essencialista ou materialista define serviço público com base na natureza da atividade, considerando como tal aquelas que visam à satisfação das necessidades coletivas fundamentais. No Brasil, essa é a corrente adotada predominantemente, visto que atividades como saúde e educação são consideradas serviços públicos mesmo quando prestadas exclusivamente por particulares.",
+        "pergunta": "O comando <code>git init<\/code> cria um novo repositório vazio em um diretório já existente, e isso garante que, a partir desse momento, todos os arquivos do diretório serão automaticamente versionados sem necessidade de novos comandos.",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "A questão utiliza uma premissa verdadeira (a definição da escola essencialista) mas uma conclusão falsa sobre sua adoção no Brasil. O Brasil adota a escola formalista ou legalista[cite: 69]. [cite_start]A saúde e a educação, quando prestadas pela iniciativa privada, são consideradas atividades econômicas ou serviços privados abertos à exploração, e não serviços públicos em sentido estrito, pois não há delegação[cite: 22, 29, 52].",
-        "topico": "Conceito de Serviço Público",
-        "nivel": "Intermediário"
+        "explicacao_feedback": "<code>git init<\/code> realmente cria um repositório vazio, mas os arquivos não passam a ser automaticamente versionados; é necessário usar <code>git add<\/code> para incluí-los na área de stage. A premissa é verdadeira, mas a conclusão é falsa — típica falsa causalidade CESPE.",
+        "topico": "Git",
+        "nivel": "Básico"
     },
     {
         "id": 2,
-        "pergunta": "Segundo a doutrina formalista, adotada no Brasil, o conceito de serviço público é definido pela lei e pela Constituição, exigindo que a atividade seja prestada sob regime jurídico de direito público. Assim, a titularidade do serviço deve pertencer ao Estado, ainda que a execução seja delegada a terceiros.",
-        "resposta_correta": "Certo",
+        "pergunta": "O comando <code>git clone<\/code> cria uma cópia completa de um repositório remoto, e isso ocorre exclusivamente por meio do protocolo SSH.",
+        "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "A assertiva está correta e alinhada à escola formalista. [cite_start]Serviço público é a atividade que o ordenamento jurídico determina que seja prestada sob regime de direito público[cite: 70]. [cite_start]A titularidade permanece com o Estado, transferindo-se apenas a execução na delegação[cite: 38].",
-        "topico": "Conceito de Serviço Público",
+        "explicacao_feedback": "<code>git clone<\/code> realmente cria uma cópia completa, mas não funciona exclusivamente por SSH; pode usar HTTPS, Git, entre outros. Aqui aparece a armadilha do absoluto — 'exclusivamente'.",
+        "topico": "Git",
         "nivel": "Básico"
     },
     {
         "id": 3,
-        "pergunta": "Os serviços *uti singuli* são aqueles prestados a usuários indeterminados, não sendo possível mensurar a utilização individual, como a iluminação pública, motivo pelo qual devem ser remunerados mediante taxa.",
+        "pergunta": "<code>git status<\/code> exibe informações sobre arquivos modificados e preparados para commit, porque o Git rastreia automaticamente alterações em todos os arquivos desde o momento em que o repositório é criado.",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "Houve inversão de conceitos. [cite_start]Os serviços *uti singuli* (individuais) são mensuráveis e remunerados por taxa ou tarifa[cite: 161, 166]. [cite_start]Já os serviços prestados a usuários indeterminados são os *uti universi* (gerais), como a iluminação pública, que não podem ser remunerados por taxa[cite: 160, 166].",
-        "topico": "Classificação dos Serviços",
+        "explicacao_feedback": "<code>git status<\/code> realmente exibe arquivos modificados e staged, mas o Git não rastreia automaticamente os arquivos — é preciso adicioná-los. Há uma premissa verdadeira (função do comando) com explicação falsa (causa equivocada).",
+        "topico": "Git",
         "nivel": "Básico"
     },
     {
         "id": 4,
-        "pergunta": "A concessão de serviço público é a delegação de sua prestação, feita pelo poder concedente, mediante licitação, na modalidade concorrência ou diálogo competitivo, a pessoa jurídica ou consórcio de empresas, que demonstre capacidade para seu desempenho, por sua conta e risco e por prazo determinado.",
+        "pergunta": "O comando <code>git add<\/code> move arquivos para a área de stage, sendo sempre necessário executá-lo novamente após qualquer mudança no arquivo, mesmo que a alteração tenha ocorrido antes de um commit ainda não realizado.",
         "resposta_correta": "Certo",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "A definição é a transcrição exata dos elementos constitutivos da concessão previstos na Lei 8.987\/1995 e citados no material.",
-        "topico": "Concessão",
+        "explicacao_feedback": "Após modificar um arquivo novamente, é necessário rodar <code>git add<\/code> para atualizar o stage. O uso de 'sempre' aqui está correto, pois não há exceção: o stage não é atualizado automaticamente.",
+        "topico": "Git",
         "nivel": "Básico"
     },
     {
         "id": 5,
-        "pergunta": "Diferentemente da concessão, a permissão de serviço público possui natureza contratual de adesão e precária, podendo ser delegada tanto a pessoas jurídicas quanto a pessoas físicas, mas prescinde de licitação prévia devido ao seu caráter revogável.",
+        "pergunta": "<code>git commit<\/code> registra alterações definitivas no repositório, e isso implica necessariamente que tais alterações já foram enviadas ao repositório remoto.",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "Armadilha de restrição\/exclusão incorreta. Embora a permissão seja precária e possa ser feita a pessoa física ou jurídica, ela *exige* licitação prévia, conforme o art. 175 da CF e a Lei 8.987\/1995.",
-        "topico": "Permissão",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 6,
-        "pergunta": "A autorização de serviço público é um ato administrativo unilateral e discricionário. Contudo, no caso dos serviços de telecomunicações, a lei define a autorização como ato vinculado, se preenchidos os requisitos legais.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "Correto. A regra geral é a discricionariedade, mas o material destaca a exceção do art. 131, §1º, da Lei 9.472\/1997 (Lei Geral das Telecomunicações), que torna a autorização um ato vinculado nesse caso específico.",
-        "topico": "Autorização",
-        "nivel": "Avançado"
-    },
-    {
-        "id": 7,
-        "pergunta": "O princípio da modicidade das tarifas impõe que os serviços públicos sejam remunerados a preços acessíveis, impedindo que o prestador do serviço obtenha lucro na atividade, visto que o objetivo primordial é o interesse público.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "Falsa causalidade. O princípio da modicidade exige tarifas acessíveis, mas isso *não* impede o lucro. [cite_start]O material explica expressamente que o lucro deve decorrer da boa gestão e é lícito, não devendo advir da exploração indevida[cite: 144, 146].",
-        "topico": "Princípios",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 8,
-        "pergunta": "A interrupção do serviço público por inadimplência do usuário, considerado o interesse da coletividade, não caracteriza descontinuidade do serviço, desde que haja aviso prévio e que o corte não inicie em sextas-feiras, sábados, domingos, feriados ou vésperas de feriados.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "A questão concatena corretamente as regras da Lei 8.987\/1995 e as limitações temporais de corte (Lei 14.015\/2020) citadas no material.",
-        "topico": "Princípio da Continuidade",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 9,
-        "pergunta": "A encampação é a retomada do serviço pelo poder concedente durante o prazo da concessão por motivo de interesse público, exigindo lei autorizativa específica e pagamento prévio de indenização.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "Definição exata de encampação conforme o art. 37 da Lei 8.987\/1995 e o material. Requer os três elementos: interesse público, lei autorizativa e indenização prévia.",
-        "topico": "Extinção da Concessão",
+        "explicacao_feedback": "Commit grava apenas no repositório local; não há envio automático. A premissa é correta; a consequência é falsa — típica armadilha de falsa causalidade.",
+        "topico": "Git",
         "nivel": "Básico"
-    },
-    {
-        "id": 10,
-        "pergunta": "A caducidade é a forma de extinção da concessão decorrente da inexecução total ou parcial do contrato pela concessionária. Para sua declaração, é necessário processo administrativo assegurando ampla defesa, não sendo devida, em nenhuma hipótese, indenização à concessionária.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "A armadilha está no \"em nenhuma hipótese\". A caducidade decorre de inexecução, mas a indenização pode ser devida. A administração desconta das multas e danos causados, mas se houver saldo de bens reversíveis não amortizados, pode haver indenização.",
-        "topico": "Extinção da Concessão",
-        "nivel": "Avançado"
-    },
-    {
-        "id": 11,
-        "pergunta": "A reversão dos bens é consequência automática da extinção da concessão e implica a transferência para o poder concedente dos bens vinculados à exploração do serviço. A concessionária terá direito à indenização pelas parcelas dos investimentos vinculados a bens reversíveis, ainda não amortizados ou depreciados.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "Correto. A reversão garante a continuidade do serviço. A indenização visa evitar o enriquecimento sem causa do Estado quanto aos bens que a concessionária investiu e ainda não recuperou o capital.",
-        "topico": "Bens Reversíveis",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 12,
-        "pergunta": "A transferência de concessão ou do controle societário da concessionária sem prévia anuência do poder concedente é causa de rescisão do contrato, devendo ser pleiteada judicialmente pela Administração.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "Erro técnico na espécie de extinção. A transferência sem anuência implica a **caducidade** da concessão (ato administrativo unilateral), e não a rescisão (que é judicial e por iniciativa da concessionária contra o poder público).",
-        "topico": "Transferência de Concessão",
-        "nivel": "Avançado"
-    },
-    {
-        "id": 13,
-        "pergunta": "A intervenção na concessão é medida punitiva utilizada pelo poder concedente para sancionar irregularidades graves, tendo como consequência imediata a extinção do contrato.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "Erro na natureza do instituto. A intervenção tem a finalidade de assegurar a adequação na prestação do serviço e o fiel cumprimento das normas, não sendo necessariamente punitiva nem extintiva imediata. É temporária e, após o processo administrativo, se comprovada a irregularidade, pode levar à caducidade, mas se não comprovada, o serviço é devolvido.",
-        "topico": "Intervenção",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 14,
-        "pergunta": "A responsabilidade civil das concessionárias de serviço público é objetiva em relação aos danos causados a usuários e terceiros, não sendo a fiscalização exercida pelo órgão competente capaz de excluir ou atenuar essa responsabilidade.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "Correto. Baseia-se no art. 37, §6º da CF e no art. 25 da Lei 8.987\/1995. O material cita expressamente que a fiscalização não exclui nem atenua a responsabilidade.",
-        "topico": "Responsabilidade Civil",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 15,
-        "pergunta": "Os serviços públicos delegáveis são aqueles que podem ser prestados pelo Estado ou por particulares mediante delegação, como o transporte coletivo e a energia elétrica. Já os indelegáveis, como o poder de polícia, só podem ser exercidos diretamente pelo Estado.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "A classificação está correta conforme o material. Serviços indelegáveis (ou próprios do Estado em sentido estrito) não admitem delegação (ex: polícia, judiciário). [cite_start]Delegáveis admitem concessão\/permissão[cite: 167, 168].",
-        "topico": "Classificação",
-        "nivel": "Básico"
-    },
-    {
-        "id": 16,
-        "pergunta": "A 'rescisão' do contrato de concessão, nos termos da Lei 8.987\/1995, ocorre por iniciativa da concessionária no caso de descumprimento das normas contratuais pelo poder concedente, mediante ação judicial especialmente intentada para esse fim.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "Correto. O termo 'rescisão' na Lei de Concessões é técnico e reservado para a iniciativa do particular (concessionária) contra a Administração (inadimplência do poder concedente), exigindo via judicial. A concessionária não pode paralisar o serviço até decisão judicial transitada em julgado.",
-        "topico": "Extinção da Concessão",
-        "nivel": "Avançado"
-    },
-    {
-        "id": 17,
-        "pergunta": "A política tarifária prevê mecanismos de revisão e reajuste. O reajuste visa recompor o valor da tarifa face à inflação (índices previstos), enquanto a revisão visa restabelecer o equilíbrio econômico-financeiro do contrato diante de fatos supervenientes e imprevisíveis (álea extraordinária).",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "Distinção correta apresentada no material. Reajuste é atualização automática (inflação). Revisão altera as condições para manter o equilíbrio original afetado por eventos imprevistos ou encargos novos.",
-        "topico": "Política Tarifária",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 18,
-        "pergunta": "De acordo com a Súmula Vinculante 41 do STF, o serviço de iluminação pública não pode ser remunerado mediante taxa, devendo ser custeado por meio de impostos gerais ou contribuição específica (COSIP), reforçando sua natureza de serviço *uti universi*.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "Correto. O material cita a Súmula Vinculante 41 e classifica a iluminação como serviço geral (uti universi), insuscetível de taxa.",
-        "topico": "Jurisprudência\/Taxas",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 19,
-        "pergunta": "É legítimo o corte no fornecimento de energia elétrica por inadimplência em unidade de saúde pública, ainda que essencial à população, desde que precedido de notificação, em respeito ao princípio da isonomia e da remuneração do serviço.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "Jurisprudência do STJ citada no material indica ser *ilegítimo* o corte em unidades de saúde ou serviços indispensáveis à população, pois prevalece o interesse da proteção à vida e saúde.",
-        "topico": "Jurisprudência\/Continuidade",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 20,
-        "pergunta": "A Lei 11.079\/2004 instituiu as parcerias público-privadas (PPPs), criando as modalidades de concessão patrocinada e administrativa. A concessão comum, prevista na Lei 8.987\/1995, difere destas por ser autossustentável financeiramente via tarifas, sem contraprestação pecuniária direta do parceiro público.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "Correto. O material distingue a concessão comum (Lei 8.987\/95) das novas modalidades da Lei das PPPs (patrocinada e administrativa).",
-        "topico": "Modalidades de Concessão",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 21,
-        "pergunta": "Uma das diferenças entre a concessão e a permissão é que a primeira deve ser sempre precedida de licitação, enquanto a segunda, por ser ato precário e revogável a qualquer tempo, dispensa a realização de certame licitatório.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "Estratégia da exceção inexistente. O art. 175 da CF exige licitação para *ambas* (concessão e permissão). O caráter precário da permissão não afasta o dever de licitar.",
-        "topico": "Licitação",
-        "nivel": "Básico"
-    },
-    {
-        "id": 22,
-        "pergunta": "O serviço adequado é aquele que satisfaz, entre outras, as condições de regularidade, continuidade, eficiência, segurança, atualidade e cortesia. A atualidade compreende a modernidade das técnicas, do equipamento e das instalações e a sua conservação, bem como a melhoria e expansão do serviço.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "Transcrição literal do conceito de serviço adequado e de atualidade previsto no art. 6º da Lei 8.987\/1995 e presente no material.",
-        "topico": "Serviço Adequado",
-        "nivel": "Básico"
-    },
-    {
-        "id": 23,
-        "pergunta": "A iniciativa privada pode prestar serviços de saúde e educação por direito próprio, independentemente de delegação do Estado. Nesses casos, a atividade é considerada serviço público impróprio, sujeitando-se apenas ao poder de polícia do Estado, e não às regras de concessão.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "Correto. Serviços sociais como saúde e educação são livres à iniciativa privada (art. 199 e 209 da CF). [cite_start]Quando prestados sem delegação, são atividades privadas (serviços impróprios), reguladas pelo poder de polícia, e não serviços públicos *stricto sensu*[cite: 19, 21, 22, 31, 32].",
-        "topico": "Serviços Sociais",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 24,
-        "pergunta": "O contrato de concessão poderá prever o emprego de mecanismos privados para resolução de disputas decorrentes ou relacionadas ao contrato, inclusive a arbitragem, a ser realizada no Brasil e em língua portuguesa.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "A assertiva está correta, baseada no art. 23-A da Lei 8.987\/1995, incluído pela Lei 11.196\/2005, conforme citado no material.",
-        "topico": "Arbitragem",
-        "nivel": "Avançado"
-    },
-    {
-        "id": 25,
-        "pergunta": "A decretação de utilidade pública para fins de desapropriação é competência exclusiva do Poder Concedente. Contudo, incumbe à concessionária promover as desapropriações autorizadas, arcando com o pagamento das indenizações.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "Correto. O Poder Público decreta (ato indelegável de supremacia), mas a execução e o pagamento (promover a desapropriação) podem e costumam ser atribuídos à concessionária pelo contrato.",
-        "topico": "Desapropriação",
-        "nivel": "Avançado"
-    },
-    {
-        "id": 26,
-        "pergunta": "Em nome do princípio da transparência e da defesa do usuário, a concessionária é obrigada a oferecer ao consumidor e ao usuário, dentro do mês, no mínimo dez datas opcionais para o vencimento de seus débitos.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "Erro de detalhe numérico (estratégia comum). O art. 7º-A da lei exige o oferecimento de, no mínimo, **seis** datas para o vencimento, e não dez.",
-        "topico": "Direitos do Usuário",
-        "nivel": "Detalhe\/Memorização"
-    },
-    {
-        "id": 27,
-        "pergunta": "A anulação da concessão ocorre quando verificada ilegalidade na licitação ou no contrato, possuindo efeitos *ex nunc*, ou seja, a partir da data da decisão, preservando-se os efeitos já produzidos em respeito à segurança jurídica.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "Conceito de nulidade. A anulação, decorrente de ilegalidade, possui efeitos retroativos (*ex tunc*), desfazendo o ato desde a origem, diferentemente da rescisão ou encampação que olham para o futuro.",
-        "topico": "Extinção da Concessão",
-        "nivel": "Básico"
-    },
-    {
-        "id": 28,
-        "pergunta": "Fontes de receitas alternativas, complementares ou acessórias, bem como a proveniente de projetos associados, podem ser previstas no edital de licitação em favor da concessionária, com vistas exclusivamente ao aumento da margem de lucro da empresa privada.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "Falsa finalidade. As receitas alternativas (art. 11 da Lei) visam ao favorecimento da **modicidade das tarifas**, ou seja, subsidiar o custo para o usuário, e não apenas aumentar o lucro da empresa.",
-        "topico": "Receitas Alternativas",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 29,
-        "pergunta": "É inconstitucional lei estadual que prorrogue automaticamente permissões de serviço público de transporte sem nova licitação, pois viola o dever constitucional de licitar previsto no art. 175 da CF.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "Assertiva baseada na jurisprudência citada (ADI 7.241), que declarou inconstitucional a prorrogação automática sem licitação.",
-        "topico": "Jurisprudência\/Licitação",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 30,
-        "pergunta": "Uma concessionária de rodovias pode cobrar de uma autarquia prestadora de serviços de saneamento básico pelo uso da faixa de domínio da via pública para a instalação de tubulações, visando à preservação do equilíbrio econômico-financeiro do contrato.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "Baseado no Tema IAC 8 do STJ: é **indevida** a cobrança promovida por concessionária de rodovia em face de autarquia prestadora de serviços de saneamento pelo uso da faixa de domínio, pois o bem é público.",
-        "topico": "Jurisprudência\/Faixa de Domínio",
-        "nivel": "Avançado"
     }
 ]
