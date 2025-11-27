@@ -1,0 +1,437 @@
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #34495e;
+    --accent-color: #3498db;
+    --success-color: #27ae60;
+    --warning-color: #f39c12;
+    --error-color: #e74c3c;
+    --text-light: #ecf0f1;
+    --text-muted: #bdc3c7;
+    --bg-dark: #1a252f;
+    --bg-card: #2c3e50;
+    --border-color: #34495e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body { 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    background: var(--bg-dark);
+    color: var(--text-light); 
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.container { 
+    max-width: 1200px; 
+    margin: 20px auto;
+}
+
+.header {
+    background: var(--bg-card);
+    padding: 25px 30px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    border: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.header h1 {
+    color: var(--text-light);
+    font-size: 1.8em;
+    margin-bottom: 8px;
+}
+
+.header p {
+    color: var(--text-muted);
+    font-size: 1.1em;
+}
+
+.card {
+    background: var(--bg-card); 
+    padding: 25px; 
+    border-radius: 8px; 
+    border: 1px solid var(--border-color);
+    margin-bottom: 25px;
+}
+
+.two-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .two-columns {
+        grid-template-columns: 1fr;
+    }
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.stat-card {
+    background: var(--secondary-color);
+    padding: 20px;
+    border-radius: 6px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+}
+
+.stat-number {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+.tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--border-color);
+    flex-wrap: wrap;
+    background: var(--secondary-color);
+    border-radius: 6px 6px 0 0;
+    padding: 5px;
+}
+
+.tab {
+    padding: 12px 25px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.tab.active {
+    background: var(--accent-color);
+    color: var(--text-light);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+textarea {
+    width: 100%;
+    height: 400px;
+    background: var(--secondary-color);
+    color: var(--text-light);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 15px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    resize: vertical;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+.btn {
+    background: var(--accent-color);
+    color: var(--text-light);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95em;
+    margin: 5px 0;
+    transition: all 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--border-color);
+    font-weight: 500;
+}
+
+.btn:hover {
+    background: #2980b9;
+    transform: translateY(-1px);
+}
+
+.btn-success { background: var(--success-color); }
+.btn-warning { background: var(--warning-color); }
+.btn-error { background: var(--error-color); }
+.btn-secondary { background: var(--secondary-color); }
+
+.btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.btn-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.upload-area {
+    border: 2px dashed var(--border-color);
+    border-radius: 6px;
+    padding: 40px;
+    text-align: center;
+    margin: 20px 0;
+    transition: all 0.3s ease;
+    background: var(--secondary-color);
+}
+
+.upload-area.dragover {
+    border-color: var(--accent-color);
+    background: var(--bg-card);
+}
+
+.questoes-list {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.questao-item {
+    background: var(--secondary-color);
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 6px;
+    border-left: 4px solid var(--accent-color);
+    border: 1px solid var(--border-color);
+}
+
+.alert {
+    padding: 15px;
+    border-radius: 6px;
+    margin: 15px 0;
+    display: none;
+    border: 1px solid transparent;
+}
+
+.alert-success { 
+    background: rgba(39, 174, 96, 0.1); 
+    border-color: var(--success-color);
+    color: var(--success-color);
+}
+
+.alert-error { 
+    background: rgba(231, 76, 60, 0.1); 
+    border-color: var(--error-color);
+    color: var(--error-color);
+}
+
+.action-panel {
+    background: var(--secondary-color);
+    padding: 20px;
+    border-radius: 6px;
+    margin-top: 20px;
+    border: 1px solid var(--border-color);
+}
+
+.action-title {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: var(--accent-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 8px;
+}
+
+pre {
+    background: var(--bg-dark);
+    padding: 15px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    overflow-x: auto;
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+}
+
+.badge {
+    background: var(--accent-color);
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-right: 5px;
+    font-size: 0.75em;
+    color: var(--text-light);
+}
+
+h3 {
+    color: var(--text-light);
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+p {
+    color: var(--text-muted);
+    margin-bottom: 15px;
+}
+
+/* NOVOS ESTILOS PARA QUIZZES SALVOS */
+.quiz-card {
+    background: var(--secondary-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+}
+
+.quiz-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.quiz-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--text-light);
+    margin: 0;
+}
+
+.quiz-disciplina {
+    background: var(--accent-color);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8em;
+}
+
+.quiz-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+    color: var(--text-muted);
+}
+
+.quiz-stats {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.stat-badge {
+    background: var(--bg-dark);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8em;
+}
+
+.quiz-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn-small {
+    padding: 8px 15px;
+    font-size: 0.9em;
+    width: auto;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background: var(--bg-card);
+    margin: 10% auto;
+    padding: 25px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    border: 1px solid var(--border-color);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    background: var(--secondary-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-light);
+    font-size: 1em;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-muted);
+}
+
+.disciplina-section {
+    margin-bottom: 30px;
+}
+
+.disciplina-header {
+    font-size: 1.3em;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.grid-quizzes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+}
+
+.alert-fixed {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
+    min-width: 300px;
+}
