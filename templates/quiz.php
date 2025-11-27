@@ -194,20 +194,24 @@
             });
         });
 
-        // Configura botão de avançar
+        // Configura botão de avançar - VERSÃO CORRIGIDA
         btnAvancar.addEventListener('click', function() {
-            <?php if ($dados['proxima_id']): ?>
+            const totalQuestoes = <?php echo $dados['total_perguntas']; ?>;
+            const questaoAtual = <?php echo $dados['numero_questao']; ?>;
+            const isUltimaQuestao = questaoAtual >= totalQuestoes;
+            
+            if (!isUltimaQuestao && <?php echo $dados['proxima_id'] ? 'true' : 'false'; ?>) {
                 // Avança para próxima questão
                 const url = `index.php?id=<?php echo $dados['proxima_id']; ?>&acertos=${acertosAtuais}<?php echo $dados['modo_revisao'] ? '&modo_revisao=1' : ''; ?>`;
                 window.location.href = url;
-            <?php else: ?>
+            } else {
                 // Vai para tela de resultados
-                const url = `fim_quiz.php?acertos=${acertosAtuais}&total=<?php echo $dados['total_perguntas']; ?><?php echo $dados['modo_revisao'] ? '&modo_revisao=1' : ''; ?>`;
+                const url = `fim_quiz.php?acertos=${acertosAtuais}&total=${totalQuestoes}<?php echo $dados['modo_revisao'] ? '&modo_revisao=1' : ''; ?>`;
                 window.location.href = url;
-            <?php endif; ?>
+            }
         });
 
-        // Atalhos de teclado
+        // Atalhos de teclado - CORREÇÃO DEFINITIVA
         document.addEventListener('keydown', function(e) {
             if (questaoRespondida) {
                 // Tecla Enter para avançar

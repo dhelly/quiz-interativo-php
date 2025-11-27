@@ -53,11 +53,6 @@ function exibirQuiz($quiz_data, $questao_id = null, $acertos = 0, $modo_revisao 
         die("Erro: Nenhuma questão encontrada. Verifique o arquivo de dados.");
     }
 
-    // Aplicar conversão markdown→HTML apenas para exibição no quiz
-    if (function_exists('prepararDadosParaQuiz')) {
-        $quiz_data = prepararDadosParaQuiz($quiz_data);
-    }
-    
     // Se for modo revisão, usa apenas as questões erradas
     if ($modo_revisao) {
         $questoes_revisao = [];
@@ -99,19 +94,34 @@ function exibirQuiz($quiz_data, $questao_id = null, $acertos = 0, $modo_revisao 
             break;
         }
     }
-    
-    // Encontra próxima questão
+
+    // Encontra próxima questão - LÓGICA CORRIGIDA
     $proxima_id = null;
-    $encontrou_atual = false;
-    foreach ($quiz_data as $questao) {
+    $indice_atual = null;
+
+    // Encontra o índice atual
+    foreach ($quiz_data as $indice => $questao) {
         if ($questao['id'] == $questao_atual['id']) {
-            $encontrou_atual = true;
-            continue;
-        }
-        if ($encontrou_atual && !$proxima_id) {
-            $proxima_id = $questao['id'];
+            $indice_atual = $indice;
             break;
         }
+    }
+
+    // Se não é o último elemento, pega o próximo ID
+    if ($indice_atual !== null && isset($quiz_data[$indice_atual + 1])) {
+        $proxima_id = $quiz_data[$indice_atual + 1]['id'];
+    }
+
+    // Garante que na última questão o proxima_id seja null
+    if ($numero_sequencial >= count($quiz_data)) {
+        $proxima_id = null;
+    }
+    
+    // Aplicar conversão markdown→HTML apenas para exibição no quiz (APÓS definir todas as variáveis)
+    if (function_exists('prepararDadosParaQuiz')) {
+        $quiz_data = prepararDadosParaQuiz($quiz_data);
+        // Também precisa converter a questão atual
+        $questao_atual = prepararDadosParaQuiz([$questao_atual])[0];
     }
     
     $dados = [
