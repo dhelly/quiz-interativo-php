@@ -1,3 +1,5 @@
+/* css/style.css - ESTILOS GERAIS DO PROJETO */
+
 :root {
     --primary-color: #2c3e50;
     --secondary-color: #34495e;
@@ -27,6 +29,7 @@ body {
     min-height: 100vh;
 }
 
+/* ========== ESTILOS DO ADMIN.PHP ========== */
 .container { 
     max-width: 1200px; 
     margin: 20px auto;
@@ -434,4 +437,139 @@ p {
     right: 20px;
     z-index: 1001;
     min-width: 300px;
+}
+
+/* ========== ESTILOS DO FIM_QUIZ.PHP ========== */
+body.pagina-resultado {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container-resultado {
+    max-width: 600px;
+    background: var(--bg-card);
+    padding: 40px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.resultado {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: var(--text-light);
+}
+
+.pontuacao {
+    font-size: 3em;
+    font-weight: bold;
+    margin: 20px 0;
+    color: var(--accent-color);
+}
+
+.estatisticas {
+    background: var(--secondary-color);
+    padding: 20px;
+    border-radius: 6px;
+    margin: 20px 0;
+    border: 1px solid var(--border-color);
+}
+
+.barra-progresso {
+    height: 20px;
+    background: var(--bg-dark);
+    border-radius: 10px;
+    margin: 15px 0;
+    overflow: hidden;
+}
+
+.progresso-preenchido {
+    height: 100%;
+    background: var(--accent-color);
+    border-radius: 10px;
+    transition: width 1s ease-in-out;
+}
+
+.info-revisao {
+    background: rgba(243, 156, 18, 0.1);
+    border-left: 4px solid var(--warning-color);
+    padding: 15px;
+    border-radius: 6px;
+    margin: 15px 0;
+    text-align: left;
+}
+
+.info-sucesso {
+    background: rgba(39, 174, 96, 0.1);
+    border-left: 4px solid var(--success-color);
+    padding: 15px;
+    border-radius: 6px;
+    margin: 15px 0;
+}
+
+/* Botões específicos para página de resultado */
+.pagina-resultado .btn {
+    background: var(--accent-color);
+    color: var(--text-light);
+    border: none;
+    padding: 15px 30px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    margin: 10px;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+    font-weight: 500;
+    display: inline-block;
+    width: auto;
+    min-width: 200px;
+}
+
+.pagina-resultado .btn:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+}
+
+.pagina-resultado .btn-success {
+    background: var(--success-color);
+}
+
+.pagina-resultado .btn-success:hover {
+    background: #219653;
+}
+
+.pagina-resultado .btn-warning {
+    background: var(--warning-color);
+}
+
+.pagina-resultado .btn-warning:hover {
+    background: #e67e22;
+}
+
+.pagina-resultado .btn-error {
+    background: var(--error-color);
+}
+
+.pagina-resultado .btn-error:hover {
+    background: #c0392b;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 25px;
+    gap: 10px;
+}
+
+.estatistica-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
 }
