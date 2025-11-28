@@ -1,62 +1,522 @@
 [
     {
         "id": 1,
-        "pergunta": "O comando <code>git init<\/code> cria um novo repositório vazio em um diretório já existente, e isso garante que, a partir desse momento, todos os arquivos do diretório serão automaticamente versionados sem necessidade de novos comandos.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<code>git init<\/code> realmente cria um repositório vazio, mas os arquivos não passam a ser automaticamente versionados; é necessário usar <code>git add<\/code> para incluí-los na área de stage. A premissa é verdadeira, mas a conclusão é falsa — típica falsa causalidade CESPE.",
-        "topico": "Git",
-        "nivel": "Básico"
-    },
-    {
-        "id": 2,
-        "pergunta": "O comando <code>git clone<\/code> cria uma cópia completa de um repositório remoto, e isso ocorre exclusivamente por meio do protocolo SSH.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<code>git clone<\/code> realmente cria uma cópia completa, mas não funciona exclusivamente por SSH; pode usar HTTPS, Git, entre outros. Aqui aparece a armadilha do absoluto — 'exclusivamente'.",
-        "topico": "Git",
-        "nivel": "Básico"
-    },
-    {
-        "id": 3,
-        "pergunta": "<code>git status<\/code> exibe informações sobre arquivos modificados e preparados para commit, porque o Git rastreia automaticamente alterações em todos os arquivos desde o momento em que o repositório é criado.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<code>git status<\/code> realmente exibe arquivos modificados e staged, mas o Git não rastreia automaticamente os arquivos — é preciso adicioná-los. Há uma premissa verdadeira (função do comando) com explicação falsa (causa equivocada).",
-        "topico": "Git",
-        "nivel": "Básico"
-    },
-    {
-        "id": 4,
-        "pergunta": "O comando <code>git add<\/code> move arquivos para a área de stage, sendo sempre necessário executá-lo novamente após qualquer mudança no arquivo, mesmo que a alteração tenha ocorrido antes de um commit ainda não realizado.",
+        "pergunta": "A Análise SWOT, também conhecida em português como Matriz FOFA, consiste na análise do ambiente interno (forças e fraquezas) e do ambiente externo (oportunidades e ameaças), visando entender a 'posição atual' da organização.",
         "resposta_correta": "Certo",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "Após modificar um arquivo novamente, é necessário rodar <code>git add<\/code> para atualizar o stage. O uso de 'sempre' aqui está correto, pois não há exceção: o stage não é atualizado automaticamente.",
-        "topico": "Git",
+        "explicacao_feedback": "A Matriz SWOT\/FOFA é uma ferramenta de diagnóstico que examina os pontos fortes e fracos internos e as oportunidades e ameaças do ambiente externo para traçar a posição estratégica da organização.",
+        "topico": "Análise SWOT\/FOFA",
         "nivel": "Básico"
     },
     {
-        "id": 5,
-        "pergunta": "<code>git commit<\/code> registra alterações definitivas no repositório, e isso implica necessariamente que tais alterações já foram enviadas ao repositório remoto.",
+        "id": 2,
+        "pergunta": "As Forças e Fraquezas são elementos do ambiente externo da organização e, por serem incontroláveis, exigem que o administrador busque apenas mitigar seus impactos negativos.",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "Commit grava apenas no repositório local; não há envio automático. A premissa é correta; a consequência é falsa — típica armadilha de falsa causalidade.",
-        "topico": "Git",
+        "explicacao_feedback": "Forças e Fraquezas pertencem ao **ambiente interno** (microambiente) da organização e são elementos **controláveis** por ela.",
+        "topico": "Análise SWOT\/FOFA",
+        "nivel": "Básico"
+    },
+    {
+        "id": 3,
+        "pergunta": "A qualificação dos recursos humanos da organização e sua localização privilegiada são exemplos de **Fraquezas**, pois representam desvantagens em relação à concorrência.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "Qualificação de recursos humanos e localização privilegiada são exemplos de **Forças**, pois são pontos fortes internos que colocam a organização em uma posição favorável (vantagem competitiva).",
+        "topico": "Análise SWOT\/FOFA",
+        "nivel": "Básico"
+    },
+    {
+        "id": 4,
+        "pergunta": "A falência de um concorrente e uma alteração favorável na carga tributária configuram-se como **Oportunidades**, pois são elementos externos que influenciam positivamente a organização, embora não sejam controláveis por ela.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "Oportunidades são elementos externos (macroambiente) não controláveis que impactam a organização de forma positiva, como o crescimento do mercado ou eventos favoráveis da concorrência.",
+        "topico": "Análise SWOT\/FOFA",
+        "nivel": "Básico"
+    },
+    {
+        "id": 5,
+        "pergunta": "O cenário estratégico de **Problemas** surge do cruzamento entre Forças internas e Ameaças externas, sendo o cenário mais favorável para a adoção de uma Estratégia de Desenvolvimento.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "O cenário de **Problemas** surge do cruzamento de **Fraquezas + Ameaças** e exige a Estratégia de **Sobrevivência**. O cenário de Forças + Ameaças é o de **Vulnerabilidade**, que exige a Estratégia de **Manutenção**.",
+        "topico": "Análise SWOT\/FOFA - Cenários e Estratégias",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 6,
+        "pergunta": "No cenário de **Limitações** (Fraquezas + Oportunidades), a estratégia mais adequada é a de **Crescimento**, que pode ser alcançada, por exemplo, por meio de *joint ventures* (associação com outras empresas) para superar as fraquezas internas.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "O cenário de Limitações ocorre quando oportunidades são limitadas por fraquezas internas, e a estratégia de Crescimento (como *joint ventures*) é usada para viabilizar o aproveitamento da oportunidade.",
+        "topico": "Análise SWOT\/FOFA - Cenários e Estratégias",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 7,
+        "pergunta": "O cenário de **Vulnerabilidade** (Forças + Ameaças) exige a adoção da Estratégia de **Manutenção**, onde a organização utiliza suas forças internas, como reservas financeiras, para mitigar ou eliminar os **impactos** provocados pelas ameaças externas.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "A Estratégia de Manutenção, no cenário de Vulnerabilidade, foca em usar as Forças para defender a organização, neutralizando os impactos negativos das Ameaças (e não a Ameaça em si, que é externa).",
+        "topico": "Análise SWOT\/FOFA - Cenários e Estratégias",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 8,
+        "pergunta": "Em uma situação de **Sobrevivência** (Fraquezas + Ameaças), a organização pode adotar estratégias como desinvestimentos, redução de custos ou, como último recurso, a liquidação do negócio.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "Diante de Fraquezas e Ameaças (Cenário de Problemas), a organização busca a Sobrevivência, que pode envolver medidas drásticas como a liquidação do negócio.",
+        "topico": "Análise SWOT\/FOFA - Estratégias",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 9,
+        "pergunta": "A Estratégia de Desenvolvimento é a mais indicada quando a organização se encontra no Cenário de Alavancagem (Forças + Oportunidades), e envolve ações como desenvolvimento de mercado ou de novos produtos.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "A Estratégia de Desenvolvimento é aplicada quando as Forças internas são potencializadas para aproveitar Oportunidades externas, visando expansão do mercado ou do portfólio de produtos.",
+        "topico": "Análise SWOT\/FOFA - Estratégias",
+        "nivel": "Básico"
+    },
+    {
+        "id": 10,
+        "pergunta": "A organização jamais poderá eliminar diretamente as ameaças (elementos externos), mas deve focar em mitigar ou eliminar os resultados (os impactos) provocados por essas ameaças.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "Ameaças são elementos externos e não controláveis; por isso, a organização deve focar na mitigação de seus impactos, e não na eliminação da ameaça em si.",
+        "topico": "Análise SWOT\/FOFA - Elementos e Controle",
+        "nivel": "Básico"
+    },
+    {
+        "id": 11,
+        "pergunta": "O objetivo principal da Matriz BCG (Matriz de Crescimento e Participação) é classificar os produtos ou UENs com base no 'crescimento do mercado' e 'participação do produto nesse mercado', para auxiliar na alocação de recursos e definição de prioridades de investimento.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "A Matriz BCG é uma ferramenta de análise de portfólio que utiliza o crescimento do mercado e a participação relativa do produto para determinar onde os recursos devem ser alocados.",
+        "topico": "Matriz BCG",
+        "nivel": "Básico"
+    },
+    {
+        "id": 12,
+        "pergunta": "Produtos classificados como **'Estrela'** possuem alta participação em um mercado de elevado crescimento e, por já estarem consolidados, demandam poucos investimentos para manter sua fatia de mercado.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "Produtos 'Estrela' demandam **grandes investimentos** para manter sua alta participação no mercado em crescimento, resultando em um fluxo de caixa equilibrado ('zero a zero').",
+        "topico": "Matriz BCG",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 13,
+        "pergunta": "A categoria **'Vaca Leiteira'** é considerada o melhor momento para obtenção de lucros, pois o mercado está estabilizado (baixo crescimento) e a alta participação do produto exige poucos investimentos para ser mantida.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "A 'Vaca Leiteira' gera grande lucro (caixa) pois, apesar do baixo crescimento do mercado, sua alta participação consolidada permite manter o produto com poucos investimentos.",
+        "topico": "Matriz BCG",
+        "nivel": "Básico"
+    },
+    {
+        "id": 14,
+        "pergunta": "Produtos classificados como **'Interrogação'** (ou Em Questionamento) possuem baixa participação em um mercado de baixo crescimento e, por essa razão, devem ser abandonados pela organização.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "Produtos 'Interrogação' estão em um mercado de **alto crescimento**, mas com baixa participação. Seu futuro é incerto, e a empresa deve decidir se investe para torná-los 'Estrela' ou se os abandona.",
+        "topico": "Matriz BCG",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 15,
+        "pergunta": "O produto **'Abacaxi'** (ou Cachorro) é caracterizado por ter pequena participação em um mercado que está em baixo crescimento, representando o pior cenário possível e, via de regra, devendo ser abandonado.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "Produtos 'Abacaxi' sugam recursos, pois possuem baixa participação em um mercado de baixo crescimento, não representando boas oportunidades de investimento, e geralmente são descartados.",
+        "topico": "Matriz BCG",
+        "nivel": "Básico"
+    },
+    {
+        "id": 16,
+        "pergunta": "De acordo com a Matriz BCG, se o mercado de um produto 'Estrela' desacelerar (parar de crescer), mas ele mantiver a alta participação, o produto poderá se tornar uma 'Vaca Leiteira'.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "Um produto 'Estrela' (Alto C\/Alta P) que perde o alto crescimento do mercado, mas mantém sua alta participação, transforma-se em uma 'Vaca Leiteira' (Baixo C\/Alta P).",
+        "topico": "Matriz BCG",
+        "nivel": "Avançado"
+    },
+    {
+        "id": 17,
+        "pergunta": "O Modelo de Porter é uma técnica para estabelecer o direcionamento estratégico competitivo e entender a estrutura do mercado, identificando as forças que determinam a concorrência na indústria.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "As Cinco Forças de Porter são uma ferramenta de gestão estratégica para analisar a atratividade do setor, baseando-se no entendimento da estrutura do mercado e das interações competitivas.",
+        "topico": "Cinco Forças de Porter",
+        "nivel": "Básico"
+    },
+    {
+        "id": 18,
+        "pergunta": "As cinco forças competitivas identificadas por Michael Porter são: Ameaça de Novos Entrantes, Ameaça de Produtos Substitutos, Poder de Barganha dos Fornecedores, Poder de Barganha dos Clientes e Rivalidade entre Concorrentes.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "A lista de forças está correta, representando as cinco forças que influenciam a concorrência e a lucratividade de uma indústria.",
+        "topico": "Cinco Forças de Porter",
+        "nivel": "Básico"
+    },
+    {
+        "id": 19,
+        "pergunta": "O Poder de Barganha dos Clientes é a força competitiva central do modelo de Porter, pois o foco no cliente é o aspecto mais relevante para a estratégia de qualquer organização.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "A **Rivalidade entre Concorrentes** (Concorrência no Setor) é a força competitiva central do modelo de Porter, sendo influenciada diretamente pelas outras quatro forças.",
+        "topico": "Cinco Forças de Porter",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 20,
+        "pergunta": "O Modelo de Porter é uma ferramenta de análise interna da organização, focada principalmente em diagnosticar suas forças e fraquezas para ganhar vantagem competitiva.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "O Modelo de Porter é uma ferramenta de **análise externa**, focada na estrutura da indústria e nas interações competitivas, enquanto a Análise SWOT\/FOFA foca na análise interna e externa.",
+        "topico": "Cinco Forças de Porter",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 21,
+        "pergunta": "Qual elemento da Análise SWOT (FOFA) representa os fatores **internos e desfavoráveis** à organização, que devem ser minimizados ou eliminados?",
+        "resposta_correta": "Fraquezas (Weaknesses)",
+        "opcoes_disponiveis": [
+            "Forças (Strengths)",
+            "Oportunidades (Opportunities)",
+            "Ameaças (Threats)",
+            "Fraquezas (Weaknesses)"
+        ],
+        "explicacao_feedback": "As Fraquezas (Weaknesses) são pontos fracos internos da organização, como falta de capital ou processos ineficientes, que colocam a empresa em desvantagem.",
+        "topico": "Análise SWOT\/FOFA",
+        "nivel": "Básico"
+    },
+    {
+        "id": 22,
+        "pergunta": "A ausência de recursos tecnológicos atualizados e uma baixa qualificação do corpo funcional de uma organização são classificadas, na Matriz SWOT, como:",
+        "resposta_correta": "Fraquezas, pois são elementos internos e controláveis.",
+        "opcoes_disponiveis": [
+            "Fraquezas, pois são elementos internos e controláveis.",
+            "Ameaças, pois são fatores externos incontroláveis.",
+            "Oportunidades, que devem ser potencializadas.",
+            "Forças, que colocam a empresa em vantagem competitiva."
+        ],
+        "explicacao_feedback": "Esses são pontos fracos inerentes à organização (ambiente interno), sendo, portanto, Fraquezas. O administrador tem poder de intervenção sobre eles (controláveis).",
+        "topico": "Análise SWOT\/FOFA",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 23,
+        "pergunta": "O aumento da taxa de juros básica e a entrada de uma nova e forte empresa concorrente no mercado são classificados na Matriz FOFA como:",
+        "resposta_correta": "Ameaças, por serem fatores externos e incontroláveis.",
+        "opcoes_disponiveis": [
+            "Oportunidades, por serem fatores externos.",
+            "Ameaças, por serem fatores externos e incontroláveis.",
+            "Forças, por serem fatores internos.",
+            "Fraquezas, por serem fatores internos."
+        ],
+        "explicacao_feedback": "São elementos do ambiente externo (macroambiente) que influenciam negativamente a organização, sendo classificados como Ameaças, e o administrador não os controla.",
+        "topico": "Análise SWOT\/FOFA",
+        "nivel": "Básico"
+    },
+    {
+        "id": 24,
+        "pergunta": "Na Matriz SWOT, a Estratégia de **Crescimento** deve ser adotada no cenário que cruza Fraquezas Internas com Oportunidades Externas. Qual é o nome desse cenário?",
+        "resposta_correta": "Cenário de Limitações",
+        "opcoes_disponiveis": [
+            "Cenário de Alavancagem",
+            "Cenário de Vulnerabilidade",
+            "Cenário de Problemas",
+            "Cenário de Limitações"
+        ],
+        "explicacao_feedback": "O cruzamento de Fraquezas (W) e Oportunidades (O) resulta no cenário de Limitações (WO), onde a empresa precisa buscar meios, como a Estratégia de Crescimento, para superar as fraquezas e aproveitar as oportunidades.",
+        "topico": "Análise SWOT\/FOFA - Cenários",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 25,
+        "pergunta": "No cenário de **Vulnerabilidade** da Matriz SWOT (Forças + Ameaças), qual é o principal foco da Estratégia de **Manutenção**?",
+        "resposta_correta": "Utilizar as forças internas para mitigar os impactos provocados pelas ameaças externas.",
+        "opcoes_disponiveis": [
+            "Desenvolver novos produtos para aproveitar as ameaças.",
+            "Utilizar as forças internas para mitigar os impactos provocados pelas ameaças externas.",
+            "Eliminar as ameaças por meio de reestruturações internas.",
+            "Buscar novos mercados (oportunidades) para fugir das ameaças."
+        ],
+        "explicacao_feedback": "A Estratégia de Manutenção visa a 'defesa' da organização, utilizando suas Forças (ex: reservas financeiras) para absorver e mitigar os impactos das Ameaças.",
+        "topico": "Análise SWOT\/FOFA - Estratégias",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 26,
+        "pergunta": "Qual elemento da Análise SWOT está relacionado diretamente à busca por uma **vantagem competitiva** sustentável, representando o que a organização faz bem?",
+        "resposta_correta": "Forças",
+        "opcoes_disponiveis": [
+            "Ameaças",
+            "Oportunidades",
+            "Fraquezas",
+            "Forças"
+        ],
+        "explicacao_feedback": "As Forças são os pontos fortes internos que dão à organização uma vantagem competitiva sobre os concorrentes.",
+        "topico": "Análise SWOT\/FOFA",
+        "nivel": "Básico"
+    },
+    {
+        "id": 27,
+        "pergunta": "Em qual cenário e estratégia da Matriz SWOT a organização está no pior estado possível, levando a medidas como desinvestimentos ou liquidação?",
+        "resposta_correta": "Cenário de Problemas, com Estratégia de Sobrevivência.",
+        "opcoes_disponiveis": [
+            "Cenário de Alavancagem, com Estratégia de Desenvolvimento.",
+            "Cenário de Vulnerabilidade, com Estratégia de Manutenção.",
+            "Cenário de Problemas, com Estratégia de Sobrevivência.",
+            "Cenário de Limitações, com Estratégia de Crescimento."
+        ],
+        "explicacao_feedback": "O cenário de Problemas (Fraquezas + Ameaças) é o mais crítico, exigindo a Estratégia de Sobrevivência, focada em medidas drásticas para evitar o colapso.",
+        "topico": "Análise SWOT\/FOFA - Cenários",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 28,
+        "pergunta": "Qual categoria da Matriz BCG tipicamente opera com um **fluxo de caixa negativo** ou 'sugador de caixa', pois exige altos investimentos para aumentar sua baixa participação em um mercado de alto crescimento?",
+        "resposta_correta": "Interrogação (Question Mark)",
+        "opcoes_disponiveis": [
+            "Vaca Leiteira (Cash Cow)",
+            "Estrela (Star)",
+            "Abacaxi (Dog)",
+            "Interrogação (Question Mark)"
+        ],
+        "explicacao_feedback": "O produto 'Interrogação' está em um mercado promissor (alto crescimento), mas tem baixa participação, exigindo alto investimento para tentar se tornar um 'Estrela', o que drena caixa.",
+        "topico": "Matriz BCG",
+        "nivel": "Avançado"
+    },
+    {
+        "id": 29,
+        "pergunta": "Qual é a principal recomendação estratégica para os produtos classificados na Matriz BCG como **Abacaxi** (Dog)?",
+        "resposta_correta": "Desinvestimento, descontinuação ou colheita ('harvesting').",
+        "opcoes_disponiveis": [
+            "Manter o alto investimento para tentar aumentar a participação.",
+            "Desinvestimento, descontinuação ou colheita ('harvesting').",
+            "Focar em reduzir os custos operacionais para gerar lucro, mantendo o produto.",
+            "Utilizar o caixa gerado para financiar outros produtos."
+        ],
+        "explicacao_feedback": "O produto 'Abacaxi' (Baixo Crescimento\/Baixa Participação) deve ser descontinuado ou vendido (desinvestimento), pois consome recursos e não gera retorno.",
+        "topico": "Matriz BCG",
+        "nivel": "Básico"
+    },
+    {
+        "id": 30,
+        "pergunta": "Na Matriz BCG, um produto que gera grande volume de caixa, mas que está em um mercado com taxas de crescimento baixas, é chamado de:",
+        "resposta_correta": "Vaca Leiteira (Cash Cow)",
+        "opcoes_disponiveis": [
+            "Estrela (Star)",
+            "Interrogação (Question Mark)",
+            "Abacaxi (Dog)",
+            "Vaca Leiteira (Cash Cow)"
+        ],
+        "explicacao_feedback": "A 'Vaca Leiteira' (Baixo Crescimento\/Alta Participação) é o produto consolidado em mercado maduro, gerando caixa excedente que pode ser usado para financiar as 'Estrelas' ou 'Interrogações'.",
+        "topico": "Matriz BCG",
+        "nivel": "Básico"
+    },
+    {
+        "id": 31,
+        "pergunta": "Para qual quadrante da Matriz BCG a organização deve realocar o excesso de capital gerado pelas 'Vaca Leiteiras' (Cash Cows)?",
+        "resposta_correta": "Estrela ou Interrogação, visando crescimento futuro.",
+        "opcoes_disponiveis": [
+            "Apenas para o Abacaxi, para reverter sua situação.",
+            "Estrela ou Interrogação, visando crescimento futuro.",
+            "Apenas para a Vaca Leiteira, para aumentar a participação.",
+            "Para qualquer produto, desde que o mercado esteja em baixo crescimento."
+        ],
+        "explicacao_feedback": "O caixa gerado pela 'Vaca Leiteira' deve financiar os produtos 'Estrela' (para manter a liderança) e 'Interrogação' (para tentar convertê-lo em 'Estrela').",
+        "topico": "Matriz BCG",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 32,
+        "pergunta": "Quais são as duas dimensões (eixos) utilizadas para posicionar os produtos na Matriz BCG?",
+        "resposta_correta": "Taxa de Crescimento do Mercado e Participação Relativa de Mercado.",
+        "opcoes_disponiveis": [
+            "Faturamento Total e Lucratividade.",
+            "Forças e Fraquezas.",
+            "Taxa de Crescimento do Mercado e Participação Relativa de Mercado.",
+            "Custo e Preço de Venda."
+        ],
+        "explicacao_feedback": "A Matriz BCG é baseada na Taxa de Crescimento do Mercado (eixo Y) e na Participação Relativa de Mercado (eixo X).",
+        "topico": "Matriz BCG",
+        "nivel": "Básico"
+    },
+    {
+        "id": 33,
+        "pergunta": "Um produto **'Estrela'** é a combinação de:",
+        "resposta_correta": "Alta participação em um mercado de alto crescimento.",
+        "opcoes_disponiveis": [
+            "Alta participação em um mercado de baixo crescimento.",
+            "Baixa participação em um mercado de baixo crescimento.",
+            "Alta participação em um mercado de alto crescimento.",
+            "Baixa participação em um mercado de alto crescimento."
+        ],
+        "explicacao_feedback": "O produto 'Estrela' (Star) é líder em um mercado em expansão, exigindo grandes investimentos para manter a liderança.",
+        "topico": "Matriz BCG",
+        "nivel": "Básico"
+    },
+    {
+        "id": 34,
+        "pergunta": "Qual das Cinco Forças de Porter representa o centro do modelo, pois é influenciada diretamente pelas outras quatro forças?",
+        "resposta_correta": "Rivalidade entre Concorrentes (Concorrência no Setor)",
+        "opcoes_disponiveis": [
+            "Poder de Barganha dos Fornecedores",
+            "Ameaça de Produtos Substitutos",
+            "Rivalidade entre Concorrentes (Concorrência no Setor)",
+            "Poder de Barganha dos Clientes"
+        ],
+        "explicacao_feedback": "A Rivalidade entre Concorrentes é a força central do modelo de Porter, pois o nível de competição dentro da indústria é um reflexo das ameaças de entrada, substituição e dos poderes de barganha dos fornecedores e clientes.",
+        "topico": "Cinco Forças de Porter",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 35,
+        "pergunta": "A existência de elevadas **Economias de Escala** na produção de um setor atua como um fator que:",
+        "resposta_correta": "Reduz a Ameaça de Novos Entrantes.",
+        "opcoes_disponiveis": [
+            "Aumenta o Poder de Barganha dos Clientes.",
+            "Reduz a Rivalidade entre Concorrentes.",
+            "Aumenta a Ameaça de Produtos Substitutos.",
+            "Reduz a Ameaça de Novos Entrantes."
+        ],
+        "explicacao_feedback": "Economias de Escala são barreiras de entrada: forçam o novo entrante a operar em grande escala e enfrentar uma forte reação dos concorrentes, ou a entrar em pequena escala e aceitar uma desvantagem de custo.",
+        "topico": "Cinco Forças de Porter - Novos Entrantes",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 36,
+        "pergunta": "O **Poder de Barganha dos Fornecedores** aumenta quando:",
+        "resposta_correta": "O custo de troca de fornecedor (switching cost) é alto para a empresa.",
+        "opcoes_disponiveis": [
+            "Existem muitos fornecedores disponíveis no mercado.",
+            "Os insumos fornecidos não são críticos para o negócio da empresa.",
+            "O custo de troca de fornecedor (switching cost) é alto para a empresa.",
+            "O produto do fornecedor é padronizado (commodity)."
+        ],
+        "explicacao_feedback": "Quando o custo para mudar de fornecedor é alto (seja por questões técnicas ou contratuais), o fornecedor atual detém maior poder de barganha.",
+        "topico": "Cinco Forças de Porter - Fornecedores",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 37,
+        "pergunta": "A força **Ameaça de Produtos Substitutos** é alta quando:",
+        "resposta_correta": "Os clientes têm acesso fácil e a custo baixo a produtos de outras indústrias que satisfazem a mesma necessidade.",
+        "opcoes_disponiveis": [
+            "Há muitos concorrentes diretos no mesmo setor.",
+            "Os clientes têm acesso fácil e a custo baixo a produtos de outras indústrias que satisfazem a mesma necessidade.",
+            "O custo de troca para o cliente é proibitivo.",
+            "Os fornecedores não têm alternativas para a venda de seus produtos."
+        ],
+        "explicacao_feedback": "Produtos substitutos são de indústrias diferentes (ex: carro e trem), e sua ameaça é alta quando são atraentes, facilmente disponíveis e têm baixo custo de troca para o consumidor.",
+        "topico": "Cinco Forças de Porter - Substitutos",
+        "nivel": "Básico"
+    },
+    {
+        "id": 38,
+        "pergunta": "Qual fator contribui para o **aumento** do **Poder de Barganha dos Clientes**?",
+        "resposta_correta": "A compra de grandes volumes do produto pela clientela.",
+        "opcoes_disponiveis": [
+            "O produto ser altamente diferenciado e essencial.",
+            "A compra de grandes volumes do produto pela clientela.",
+            "A alta fidelidade da clientela à marca da empresa.",
+            "A inexistência de informações sobre o custo dos concorrentes."
+        ],
+        "explicacao_feedback": "Clientes que compram grandes volumes (principalmente concentrados) têm mais poder para exigir preços mais baixos e melhores condições de negociação.",
+        "topico": "Cinco Forças de Porter - Clientes",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 39,
+        "pergunta": "Uma alta **Rivalidade entre Concorrentes** no setor é tipicamente associada a:",
+        "resposta_correta": "Baixa atratividade e baixa lucratividade da indústria.",
+        "opcoes_disponiveis": [
+            "Alta atratividade e alta lucratividade da indústria.",
+            "Poucos concorrentes de tamanho desigual.",
+            "Baixa atratividade e baixa lucratividade da indústria.",
+            "Um mercado em rápido crescimento."
+        ],
+        "explicacao_feedback": "A alta rivalidade (guerras de preço, altos custos de marketing) geralmente reduz as margens de lucro, tornando a indústria menos atraente.",
+        "topico": "Cinco Forças de Porter - Rivalidade",
+        "nivel": "Básico"
+    },
+    {
+        "id": 40,
+        "pergunta": "O Modelo das Cinco Forças de Porter é primariamente uma ferramenta de:",
+        "resposta_correta": "Análise do Ambiente Externo (Estrutura da Indústria).",
+        "opcoes_disponiveis": [
+            "Análise do Ambiente Interno (Forças e Fraquezas).",
+            "Alocação de Portfólio de Produtos (Matriz BCG).",
+            "Definição da Missão e Visão da organização.",
+            "Análise do Ambiente Externo (Estrutura da Indústria)."
+        ],
+        "explicacao_feedback": "O Modelo de Porter foca na análise do ambiente externo competitivo (a indústria), avaliando as forças que determinam sua atratividade e lucratividade.",
+        "topico": "Cinco Forças de Porter",
         "nivel": "Básico"
     }
 ]

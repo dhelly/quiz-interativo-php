@@ -29,7 +29,7 @@ switch ($acao) {
         carregarQuizAdmin();
         break;
     case 'excluir-quiz':
-        excluirQuizAdmin();
+        // excluirQuizAdmin();
         break;
     case 'download-template':
             downloadTemplate();
@@ -72,7 +72,7 @@ function exibirPainelAdmin($quiz_data) {
         <div class="container">
             <div class="header">
                 <h1>⚙️ Painel de Administração</h1>
-                <p>Inútil App - Gerenciamento de Quiz Jurídico</p>
+                <p>Inútil.App - Gerenciamento de Quiz Interativo</p>
             </div>
 
             <!-- Alertas fixos para mensagens do PHP -->
@@ -722,6 +722,12 @@ function exibirPainelAdmin($quiz_data) {
             }
 
             function excluirQuiz(caminho) {
+                const exclusaoAtiva = false;
+
+                if (!exclusaoAtiva) {
+                    confirm('A função de exclusão está desativada no momento.');
+                    return;
+                }
                 if (confirm('Tem certeza que deseja excluir este quiz? Esta ação não pode ser desfeita.')) {
                     window.location.href = 'admin.php?acao=excluir-quiz&caminho=' + caminho;
                 }
