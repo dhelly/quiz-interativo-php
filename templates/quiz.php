@@ -77,9 +77,9 @@
             </div>
 
             <!-- Botão de avançar (inicialmente oculto) -->
-            <button class="btn-quiz btn-avancar" id="btnAvancar" style="display: none;">
+            <button class="btn-quiz proxima-pergunta-btn" id="btnAvancar" style="display: none;">
                 <?php if ($dados['proxima_id']): ?>
-                    ➡️ Avançar para Próxima Questão
+                    Próxima Questão ➡️
                 <?php else: ?>
                     🏁 <?php echo $dados['modo_revisao'] ? 'Finalizar Revisão' : 'Ver Resultado Final'; ?>
                 <?php endif; ?>

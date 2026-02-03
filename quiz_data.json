@@ -1,522 +1,362 @@
 [
     {
         "id": 1,
-        "pergunta": "A Análise SWOT, também conhecida em português como Matriz FOFA, consiste na análise do ambiente interno (forças e fraquezas) e do ambiente externo (oportunidades e ameaças), visando entender a 'posição atual' da organização.",
-        "resposta_correta": "Certo",
+        "pergunta": "As entidades paraestatais integram a Administração Indireta, pois são pessoas jurídicas de direito privado criadas por lei para executar serviços públicos de forma descentralizada.",
+        "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "A Matriz SWOT\/FOFA é uma ferramenta de diagnóstico que examina os pontos fortes e fracos internos e as oportunidades e ameaças do ambiente externo para traçar a posição estratégica da organização.",
-        "topico": "Análise SWOT\/FOFA",
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"As Entidades Paraestatais não pertencem à Administração Pública. As Entidades Paraestatais são entidades privadas da sociedade civil, sem fins lucrativos, que prestam atividades de interesse social, por iniciativa privada.\" (p. 2).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada porque as entidades paraestatais <b>não integram a Administração Pública<\/b> (direta ou indireta). Elas pertencem ao Terceiro Setor, são entidades privadas, e sua criação não se dá por lei, mas por iniciativa privada, podendo apenas ter sua criação autorizada em lei (no caso dos Serviços Sociais Autônomos). A afirmação de que executam serviços públicos também é enganosa: executam atividades de interesse público, não exclusivas do Estado.<br><br><b>Possíveis induções de erro:<\/b> Confundir 'Administração Indireta' (autarquias, fundações, empresas públicas) com 'Entidades Paraestatais' (Terceiro Setor). A frase usa 'integram' e 'criadas por lei', o que é típico da Administração Indireta, mas não se aplica às paraestatais.",
+        "topico": "Entidades Paraestatais e Terceiro Setor",
         "nivel": "Básico"
     },
     {
         "id": 2,
-        "pergunta": "As Forças e Fraquezas são elementos do ambiente externo da organização e, por serem incontroláveis, exigem que o administrador busque apenas mitigar seus impactos negativos.",
+        "pergunta": "Os Serviços Sociais Autônomos, como o SENAI e o SESI, estão sujeitos à Lei de Licitações e à obrigatoriedade de realização de concurso público para contratação de pessoal, pois gerem recursos de natureza pública.",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "Forças e Fraquezas pertencem ao **ambiente interno** (microambiente) da organização e são elementos **controláveis** por ela.",
-        "topico": "Análise SWOT\/FOFA",
-        "nivel": "Básico"
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"Os Serviços Sociais Autônomos não se submetem à Lei de Licitações. Contudo, eles não estão 'livres' para contratar... [devem adotar] regulamentos próprios...\" e \"Não estão sujeitos à observância da regra de Concurso Público para contratações de pessoal. Contudo... devem realizar processo seletivo...\" (p. 4-5).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada porque os Serviços Sociais Autônomos <b>não<\/b> estão sujeitos à Lei de Licitações nem à obrigatoriedade de concurso público. Embora gerencie recursos públicos e deva observar princípios como impessoalidade e moralidade, o regime é flexibilizado: adotam regulamentos próprios para contratações e realizam processos seletivos (não concursos públicos). A causalidade 'pois gerem recursos de natureza pública' é verdadeira, mas a consequência (sujeição à Lei de Licitações e concurso) é falsa.<br><br><b>Possíveis induções de erro:<\/b> Associar a gestão de recursos públicos automaticamente ao regime jurídico administrativo integral (licitação e concurso). A banca troca 'processo seletivo' por 'concurso público' e ignora a dispensa da Lei de Licitações.",
+        "topico": "Serviços Sociais Autônomos (Sistema S)",
+        "nivel": "Intermediário"
     },
     {
         "id": 3,
-        "pergunta": "A qualificação dos recursos humanos da organização e sua localização privilegiada são exemplos de **Fraquezas**, pois representam desvantagens em relação à concorrência.",
+        "pergunta": "A qualificação como Organização Social (OS) é um ato vinculado do Poder Público, de modo que, uma vez preenchidos todos os requisitos legais pela entidade privada, a Administração é obrigada a conceder o título.",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "Qualificação de recursos humanos e localização privilegiada são exemplos de **Forças**, pois são pontos fortes internos que colocam a organização em uma posição favorável (vantagem competitiva).",
-        "topico": "Análise SWOT\/FOFA",
-        "nivel": "Básico"
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"a qualificação é um ato discricionário do poder público ('aprovação por conveniência e oportunidade')... o Poder Público não é 'obrigado' a conceder a qualificação.\" (p. 9).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada porque a qualificação como OS é um ato <b>discricionário<\/b>, não vinculado. A Administração avalia conveniência e oportunidade, mesmo com todos os requisitos preenchidos. O termo 'vinculado' inverte a natureza jurídica do ato.<br><br><b>Possíveis induções de erro:<\/b> Trocar 'discricionário' por 'vinculado'. Candidatos podem lembrar que há requisitos objetivos (art. 2º da Lei 9.637\/98) e concluir erroneamente que o preenchimento gera direito à qualificação.",
+        "topico": "Organizações Sociais (OS) - Qualificação",
+        "nivel": "Intermediário"
     },
     {
         "id": 4,
-        "pergunta": "A falência de um concorrente e uma alteração favorável na carga tributária configuram-se como **Oportunidades**, pois são elementos externos que influenciam positivamente a organização, embora não sejam controláveis por ela.",
+        "pergunta": "O contrato de gestão celebrado entre o Poder Público e uma Organização Social deve, obrigatoriamente, observar os princípios da legalidade, impessoalidade, moralidade, publicidade e economicidade, além de estabelecer metas, prazos e critérios de avaliação de desempenho.",
         "resposta_correta": "Certo",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "Oportunidades são elementos externos (macroambiente) não controláveis que impactam a organização de forma positiva, como o crescimento do mercado ou eventos favoráveis da concorrência.",
-        "topico": "Análise SWOT\/FOFA",
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"Na elaboração do contrato de gestão, devem ser observados os princípios da legalidade, impessoalidade, moralidade, publicidade, economicidade e, também, os seguintes preceitos: I - especificação do programa de trabalho... metas... prazos... critérios objetivos de avaliação de desempenho...\" (p. 10, art. 7º da Lei 9.637\/98).<br><br><b>Análise da Assertiva:<\/b> A assertiva está correta porque reproduz exatamente o disposto no art. 7º da Lei 9.637\/98. Todos os elementos mencionados são obrigatórios no contrato de gestão.<br><br><b>Possíveis induções de erro:<\/b> A banca poderia omitir algum princípio (como 'economicidade') ou trocar por outro não previsto (ex: eficiência, que não está no art. 7º). Aqui, a redação está fiel à lei.",
+        "topico": "Organizações Sociais (OS) - Contrato de Gestão",
         "nivel": "Básico"
     },
     {
         "id": 5,
-        "pergunta": "O cenário estratégico de **Problemas** surge do cruzamento entre Forças internas e Ameaças externas, sendo o cenário mais favorável para a adoção de uma Estratégia de Desenvolvimento.",
+        "pergunta": "As Organizações Sociais, por serem pessoas jurídicas de direito privado, estão sempre dispensadas de realizar licitação quando contratarem serviços com terceiros, mesmo que utilizem recursos públicos.",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "O cenário de **Problemas** surge do cruzamento de **Fraquezas + Ameaças** e exige a Estratégia de **Sobrevivência**. O cenário de Forças + Ameaças é o de **Vulnerabilidade**, que exige a Estratégia de **Manutenção**.",
-        "topico": "Análise SWOT\/FOFA - Cenários e Estratégias",
-        "nivel": "Intermediário"
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"as organizações sociais... não se submetem, em suas contratações com terceiros, ao dever de licitar... Por receberem recursos públicos... suas contratações devem observar o disposto em regulamento próprio, fixando regras objetivas e impessoais para o dispêndio de recursos públicos.\" (p. 11, com base na ADI 1923).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada porque, embora as OS não estejam sujeitas à Lei de Licitações, <b>não estão 'sempre dispensadas'<\/b>. Quando usam recursos públicos, devem seguir regras objetivas e impessoais definidas em regulamento próprio, o que pode incluir procedimentos semelhantes a licitações. O termo 'sempre' cria uma generalização falsa.<br><br><b>Possíveis induções de erro:<\/b> Uso do termo absoluto 'sempre'. A afirmação ignora a necessidade de regulamento próprio e de observância dos princípios da administração pública no uso de recursos públicos.",
+        "topico": "Organizações Sociais (OS) - Licitações e Contratações",
+        "nivel": "Avançado"
     },
     {
         "id": 6,
-        "pergunta": "No cenário de **Limitações** (Fraquezas + Oportunidades), a estratégia mais adequada é a de **Crescimento**, que pode ser alcançada, por exemplo, por meio de *joint ventures* (associação com outras empresas) para superar as fraquezas internas.",
-        "resposta_correta": "Certo",
+        "pergunta": "Os empregados das Organizações Sociais são regidos pela Consolidação das Leis do Trabalho (CLT) e, para todos os efeitos legais, equiparam-se a servidores públicos, inclusive para fins penais e de improbidade administrativa.",
+        "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "O cenário de Limitações ocorre quando oportunidades são limitadas por fraquezas internas, e a estratégia de Crescimento (como *joint ventures*) é usada para viabilizar o aproveitamento da oportunidade.",
-        "topico": "Análise SWOT\/FOFA - Cenários e Estratégias",
-        "nivel": "Intermediário"
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"Os empresados das OS são 'empregados privados' e submetem-se às regras da CLT.\" (p. 11). Para os Serviços Sociais Autônomos: \"os empregados... estão sujeitos à legislação trabalhista e, para fins penais e de improbidade administrativa, são 'equiparados' a funcionários públicos.\" (p. 5).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada porque <b>mistura institutos<\/b>. Os empregados das OS são regidos pela CLT, mas o PDF <b>não<\/b> afirma que são equiparados a servidores públicos para todos os efeitos. A equiparação para fins penais e de improbidade é mencionada apenas para os empregados do Sistema S (Serviços Sociais Autônomos), não para OS. O termo 'para todos os efeitos legais' amplia indevidamente a equiparação.<br><br><b>Possíveis induções de erro:<\/b> Confundir o regime dos empregados do Sistema S com o das OS. A banca junta duas informações corretas isoladamente (CLT para OS; equiparação para Sistema S) para criar uma relação falsa.",
+        "topico": "Organizações Sociais (OS) e Serviços Sociais Autônomos - Regime de Pessoal",
+        "nivel": "Avançado"
     },
     {
         "id": 7,
-        "pergunta": "O cenário de **Vulnerabilidade** (Forças + Ameaças) exige a adoção da Estratégia de **Manutenção**, onde a organização utiliza suas forças internas, como reservas financeiras, para mitigar ou eliminar os **impactos** provocados pelas ameaças externas.",
-        "resposta_correta": "Certo",
+        "pergunta": "A desqualificação de uma Organização Social pode ocorrer apenas se houver descumprimento das disposições do contrato de gestão, conforme previsto na Lei nº 9.637\/1998.",
+        "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "A Estratégia de Manutenção, no cenário de Vulnerabilidade, foca em usar as Forças para defender a organização, neutralizando os impactos negativos das Ameaças (e não a Ameaça em si, que é externa).",
-        "topico": "Análise SWOT\/FOFA - Cenários e Estratégias",
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"A Lei n.° 9.190\/2017 prevê, ainda, outros 03 casos em que a Organização Social poderá ser desqualificada: a) por decisão fundamentada do órgão supervisor... b) pelo encerramento do contrato de gestão; c) pelo não atendimento... às recomendações da comissão de avaliação...\" (p. 12).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada porque a desqualificação <b>não ocorre apenas<\/b> por descumprimento do contrato de gestão. O Decreto 9.190\/2017 (que regulamenta a lei) acrescentou outras hipóteses. O termo 'apenas' restringe indevidamente as possibilidades.<br><br><b>Possíveis induções de erro:<\/b> Uso do termo restritivo 'apenas'. Candidatos que conhecem apenas a lei 9.637\/98 podem marcar 'Certo', ignorando o decreto regulamentador que ampliou as hipóteses.",
+        "topico": "Organizações Sociais (OS) - Desqualificação",
         "nivel": "Intermediário"
     },
     {
         "id": 8,
-        "pergunta": "Em uma situação de **Sobrevivência** (Fraquezas + Ameaças), a organização pode adotar estratégias como desinvestimentos, redução de custos ou, como último recurso, a liquidação do negócio.",
-        "resposta_correta": "Certo",
+        "pergunta": "O Conselho de Administração de uma Organização Social deve ser composto exclusivamente por representantes do Poder Público e da sociedade civil, não cabendo a participação de membros da própria entidade.",
+        "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "Diante de Fraquezas e Ameaças (Cenário de Problemas), a organização busca a Sobrevivência, que pode envolver medidas drásticas como a liquidação do negócio.",
-        "topico": "Análise SWOT\/FOFA - Estratégias",
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"O Conselho de Administração... deve ser composto por representantes do poder público, representantes de entidades da sociedade civil, membros eleitos dentre os membros ou os associados... membros eleitos dentre pessoas de notória capacidade... e membros indicados ou eleitos na forma estabelecida pelo estatuto.\" (p. 12).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada porque a composição do Conselho <b>não é exclusiva<\/b> de representantes do Poder Público e da sociedade civil. Inclui também membros da própria organização (associados) e pessoas de notória capacidade. O termo 'exclusivamente' é incorreto.<br><br><b>Possíveis induções de erro:<\/b> Uso do termo absoluto 'exclusivamente' e a exclusão indevida de categorias de membros previstas na lei.",
+        "topico": "Organizações Sociais (OS) - Conselho de Administração",
         "nivel": "Intermediário"
     },
     {
         "id": 9,
-        "pergunta": "A Estratégia de Desenvolvimento é a mais indicada quando a organização se encontra no Cenário de Alavancagem (Forças + Oportunidades), e envolve ações como desenvolvimento de mercado ou de novos produtos.",
-        "resposta_correta": "Certo",
+        "pergunta": "O fomento do Poder Público às Organizações Sociais pode incluir a cessão de bens públicos e a transferência de recursos orçamentários, ambas dispensadas de licitação, e a cessão especial de servidores públicos, com ônus para a organização social.",
+        "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "A Estratégia de Desenvolvimento é aplicada quando as Forças internas são potencializadas para aproveitar Oportunidades externas, visando expansão do mercado ou do portfólio de produtos.",
-        "topico": "Análise SWOT\/FOFA - Estratégias",
-        "nivel": "Básico"
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"o fomento... pode ocorrer das seguintes formas: a) cessão de bens públicos... dispensada licitação... b) transferência de recursos orçamentários... c) cessão especial de servidores públicos, <b>com ônus para o órgão de origem do servidor<\/b>.\" (p. 10).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada porque inverte o ônus da cessão de servidores. O ônus (custo) é do <b>órgão de origem<\/b>, não da organização social. As demais partes (cessão de bens e recursos sem licitação) estão corretas.<br><br><b>Possíveis induções de erro:<\/b> Inversão sutil de um qualificador: 'com ônus para a organização social' em vez de 'com ônus para o órgão de origem'. Candidatos apressados podem não notar a troca.",
+        "topico": "Organizações Sociais (OS) - Fomento",
+        "nivel": "Intermediário"
     },
     {
         "id": 10,
-        "pergunta": "A organização jamais poderá eliminar diretamente as ameaças (elementos externos), mas deve focar em mitigar ou eliminar os resultados (os impactos) provocados por essas ameaças.",
-        "resposta_correta": "Certo",
+        "pergunta": "O controle exercido pelo Tribunal de Contas da União sobre os Serviços Sociais Autônomos, como o SENAC e o SESC, é um controle de legalidade estrito, abrangendo todos os atos administrativos, devido ao fato de serem entidades da Administração Indireta.",
+        "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "Ameaças são elementos externos e não controláveis; por isso, a organização deve focar na mitigação de seus impactos, e não na eliminação da ameaça em si.",
-        "topico": "Análise SWOT\/FOFA - Elementos e Controle",
-        "nivel": "Básico"
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"Os Serviços Sociais Autônomos... estão sujeitos ao controle e fiscalização do Estado (supervisão ministerial \/ controle finalístico)... devem, inclusive, prestar contas ao Tribunal de Contas da União (TCU).\" (p. 4). Eles <b>não integram<\/b> a Administração Pública (p. 5).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada por dois motivos principais: 1) Os Serviços Sociais Autônomos <b>não são<\/b> entidades da Administração Indireta (são do Terceiro Setor). 2) O controle do TCU sobre eles é <b>finalístico<\/b> (voltado aos resultados e uso de recursos públicos), não um 'controle de legalidade estrito' sobre 'todos os atos administrativos'. A causalidade ('devido ao fato de serem...') é falsa.<br><br><b>Possíveis induções de erro:<\/b> Criar uma falsa causalidade entre 'prestação de contas ao TCU' e 'controle de legalidade estrito sobre todos os atos', além de erroneamente enquadrá-los na Administração Indireta.",
+        "topico": "Serviços Sociais Autônomos - Controle pelo TCU",
+        "nivel": "Avançado"
     },
     {
         "id": 11,
-        "pergunta": "O objetivo principal da Matriz BCG (Matriz de Crescimento e Participação) é classificar os produtos ou UENs com base no 'crescimento do mercado' e 'participação do produto nesse mercado', para auxiliar na alocação de recursos e definição de prioridades de investimento.",
-        "resposta_correta": "Certo",
+        "pergunta": "A publicização, no contexto da Administração Gerencial, refere-se à transferência de atividades exclusivas do Estado para o setor privado com fins lucrativos, visando à redução de custos.",
+        "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "A Matriz BCG é uma ferramenta de análise de portfólio que utiliza o crescimento do mercado e a participação relativa do produto para determinar onde os recursos devem ser alocados.",
-        "topico": "Matriz BCG",
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"surge a ideia da publicização, que tem por objetivo a flexibilização baseada na transferência de atividades <b>não exclusivas<\/b> do Estado (devolution), para organizações públicas <b>não-estatais (terceiro setor)<\/b>\" (p. 1).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada porque a publicização transfere atividades <b>não exclusivas<\/b> (não exclusivas) do Estado para o <b>Terceiro Setor (sem fins lucrativos)<\/b>, não para o setor privado com fins lucrativos (que seria o Segundo Setor). A assertiva erra em dois qualificadores-chave: 'exclusivas' e 'com fins lucrativos'.<br><br><b>Possíveis induções de erro:<\/b> Trocar 'não exclusivas' por 'exclusivas' e 'terceiro setor (sem fins lucrativos)' por 'setor privado com fins lucrativos'. Confundir os setores da economia.",
+        "topico": "Publicização e Administração Gerencial",
         "nivel": "Básico"
     },
     {
         "id": 12,
-        "pergunta": "Produtos classificados como **'Estrela'** possuem alta participação em um mercado de elevado crescimento e, por já estarem consolidados, demandam poucos investimentos para manter sua fatia de mercado.",
+        "pergunta": "As Organizações da Sociedade Civil de Interesse Público (OSCIPs) surgiram para substituir totalmente o modelo das Organizações Sociais (OS), em razão da discricionariedade excessiva e da falta de controles rígidos nas OS.",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "Produtos 'Estrela' demandam **grandes investimentos** para manter sua alta participação no mercado em crescimento, resultando em um fluxo de caixa equilibrado ('zero a zero').",
-        "topico": "Matriz BCG",
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"o modelo das Organizações Sociais (OS) começou a ser bastante criticado, em decorrência da 'discricionariedade' na escolha... abriu espaço para outro tipo de organização: as Organizações da Sociedade Civil de Interesse Público (OSCIP)\" (p. 14). O texto não diz que as OSCIPs substituíram <b>totalmente<\/b> as OS, mas que 'abriu espaço' para outro modelo.<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada porque usa o termo absoluto 'totalmente'. Ambos os modelos (OS e OSCIP) coexistem. A causalidade (surgiram por causa da discricionariedade) tem base, mas a consequência ('substituir totalmente') é falsa.<br><br><b>Possíveis induções de erro:<\/b> Uso do termo 'totalmente'. A banca toma uma crítica ao modelo OS e extrapola para uma substituição completa, o que não é afirmado.",
+        "topico": "Organizações Sociais (OS) e OSCIPs",
         "nivel": "Intermediário"
     },
     {
         "id": 13,
-        "pergunta": "A categoria **'Vaca Leiteira'** é considerada o melhor momento para obtenção de lucros, pois o mercado está estabilizado (baixo crescimento) e a alta participação do produto exige poucos investimentos para ser mantida.",
-        "resposta_correta": "Certo",
+        "pergunta": "Para que uma entidade privada sem fins lucrativos seja qualificada como Organização Social, é necessário que seu objeto social esteja voltado exclusivamente para a área da saúde, nos termos da Lei nº 9.637\/1998.",
+        "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "A 'Vaca Leiteira' gera grande lucro (caixa) pois, apesar do baixo crescimento do mercado, sua alta participação consolidada permite manter o produto com poucos investimentos.",
-        "topico": "Matriz BCG",
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"pessoas jurídicas de direito privado, sem fins lucrativos, cujas atividades sejam dirigidas ao <b>ensino, à pesquisa científica, ao desenvolvimento tecnológico, à proteção e preservação do meio ambiente, à cultura e à saúde<\/b>\" (p. 6, art. 1º da Lei 9.637\/98).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada porque o objeto não é <b>exclusivamente<\/b> saúde. A lei prevê seis áreas de atuação possíveis (ensino, pesquisa, desenvolvimento tecnológico, meio ambiente, cultura e saúde). O termo 'exclusivamente' restringe indevidamente.<br><br><b>Possíveis induções de erro:<\/b> Uso do termo 'exclusivamente' e a citação de apenas uma das seis áreas previstas na lei.",
+        "topico": "Organizações Sociais (OS) - Requisitos",
         "nivel": "Básico"
     },
     {
         "id": 14,
-        "pergunta": "Produtos classificados como **'Interrogação'** (ou Em Questionamento) possuem baixa participação em um mercado de baixo crescimento e, por essa razão, devem ser abandonados pela organização.",
+        "pergunta": "O Programa Nacional de Publicização (PNP), criado pela Lei nº 9.637\/1998, tem como diretriz o controle social das ações de forma transparente, a ênfase no atendimento do cidadão-cliente e a ênfase nos resultados qualitativos e quantitativos.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"Programa Nacional de Publicização - PNP, com o objetivo de estabelecer diretrizes... observadas as seguintes diretrizes: I - ênfase no atendimento do cidadão-cliente; II - ênfase nos resultados, qualitativos e quantitativos...; III - controle social das ações de forma transparente.\" (p. 7, art. 20 da Lei 9.637\/98).<br><br><b>Análise da Assertiva:<\/b> A assertiva está correta porque reproduz fielmente as três diretrizes originais do PNP conforme a lei. Posteriormente, o Decreto 9.190\/2017 acrescentou uma quarta diretriz, mas não invalida as três originais.<br><br><b>Possíveis induções de erro:<\/b> A banca poderia incluir a diretriz acrescentada pelo decreto ('alinhamento aos princípios...') e perguntar se 'são as diretrizes', o que tornaria a assertiva incompleta (e, portanto, errada). Aqui, listou apenas as da lei, corretamente.",
+        "topico": "Programa Nacional de Publicização (PNP)",
+        "nivel": "Básico"
+    },
+    {
+        "id": 15,
+        "pergunta": "Os Serviços Sociais Autônomos são financiados por contribuições parafiscais, que são recursos de natureza pública, razão pela qual seus empregados são considerados servidores públicos e estão sujeitos ao regime estatutário.",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "Produtos 'Interrogação' estão em um mercado de **alto crescimento**, mas com baixa participação. Seu futuro é incerto, e a empresa deve decidir se investe para torná-los 'Estrela' ou se os abandona.",
-        "topico": "Matriz BCG",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 15,
-        "pergunta": "O produto **'Abacaxi'** (ou Cachorro) é caracterizado por ter pequena participação em um mercado que está em baixo crescimento, representando o pior cenário possível e, via de regra, devendo ser abandonado.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "Produtos 'Abacaxi' sugam recursos, pois possuem baixa participação em um mercado de baixo crescimento, não representando boas oportunidades de investimento, e geralmente são descartados.",
-        "topico": "Matriz BCG",
-        "nivel": "Básico"
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"Os Serviços Sociais Autônomos são financiados e mantidos através de recursos oriundos de contribuições sociais de natureza tributária... Essas contribuições são conhecidas como contribuições parafiscais.\" (p. 4). \"os empregados das Entidades do Sistema S estão sujeitos à legislação trabalhista (CLT) e, para fins penais e de improbidade administrativa, são 'equiparados' a funcionários públicos.\" (p. 5).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada porque a premissa (financiamento por contribuições parafiscais) é verdadeira, mas a consequência é falsa: os empregados <b>não são servidores públicos<\/b> (regime estatutário); são celetistas (CLT). A equiparação ocorre apenas para fins penais e de improbidade, não para o regime jurídico geral. A causalidade ('razão pela qual') estabelece uma relação falsa.<br><br><b>Possíveis induções de erro:<\/b> Falsa causalidade. A gestão de recursos públicos não transforma automaticamente vínculos privados em estatutários. Confundir 'equiparação para fins penais' com 'são servidores públicos'.",
+        "topico": "Serviços Sociais Autônomos - Financiamento e Regime de Pessoal",
+        "nivel": "Avançado"
     },
     {
         "id": 16,
-        "pergunta": "De acordo com a Matriz BCG, se o mercado de um produto 'Estrela' desacelerar (parar de crescer), mas ele mantiver a alta participação, o produto poderá se tornar uma 'Vaca Leiteira'.",
-        "resposta_correta": "Certo",
+        "pergunta": "A qualificação como Organização Social confere à entidade privada a declaração de entidade de interesse social e utilidade pública, o que acarreta, automaticamente, a aplicação integral do regime jurídico de direito público a todos os seus atos.",
+        "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "Um produto 'Estrela' (Alto C\/Alta P) que perde o alto crescimento do mercado, mas mantém sua alta participação, transforma-se em uma 'Vaca Leiteira' (Baixo C\/Alta P).",
-        "topico": "Matriz BCG",
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"as entidades qualificadas como Organizações Sociais são declaradas como entidades de interesse social e utilidade pública, para todos os efeitos legais.\" (p. 8). No entanto, \"as organizações sociais... não fazem parte do conceito constitucional de Administração Pública... por receberem recursos públicos... seu regime jurídico tem de ser minimamente informado pela incidência do núcleo essencial dos princípios da Administração Pública\" (p. 11).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada. A declaração de interesse social e utilidade pública é correta. No entanto, a consequência ('aplicação integral do regime jurídico de direito público a todos os seus atos') é falsa. O regime é híbrido: prevalece o direito privado, com incidência dos princípios da administração pública apenas no núcleo essencial, especialmente no uso de recursos públicos. 'Automaticamente' e 'integral' são termos que exageram a aplicação do regime público.<br><br><b>Possíveis induções de erro:<\/b> Uso dos termos absolutos 'automaticamente' e 'integral'. A banca tenta fazer crer que a declaração de utilidade pública equipara a entidade totalmente à Administração Pública, o que não é verdade.",
+        "topico": "Organizações Sociais (OS) - Efeitos da Qualificação",
         "nivel": "Avançado"
     },
     {
         "id": 17,
-        "pergunta": "O Modelo de Porter é uma técnica para estabelecer o direcionamento estratégico competitivo e entender a estrutura do mercado, identificando as forças que determinam a concorrência na indústria.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "As Cinco Forças de Porter são uma ferramenta de gestão estratégica para analisar a atratividade do setor, baseando-se no entendimento da estrutura do mercado e das interações competitivas.",
-        "topico": "Cinco Forças de Porter",
-        "nivel": "Básico"
-    },
-    {
-        "id": 18,
-        "pergunta": "As cinco forças competitivas identificadas por Michael Porter são: Ameaça de Novos Entrantes, Ameaça de Produtos Substitutos, Poder de Barganha dos Fornecedores, Poder de Barganha dos Clientes e Rivalidade entre Concorrentes.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "A lista de forças está correta, representando as cinco forças que influenciam a concorrência e a lucratividade de uma indústria.",
-        "topico": "Cinco Forças de Porter",
-        "nivel": "Básico"
-    },
-    {
-        "id": 19,
-        "pergunta": "O Poder de Barganha dos Clientes é a força competitiva central do modelo de Porter, pois o foco no cliente é o aspecto mais relevante para a estratégia de qualquer organização.",
+        "pergunta": "O Tribunal de Contas da União exerce sobre as Organizações Sociais um controle prévio e concomitante sobre a execução do contrato de gestão, semelhante ao que ocorre com os órgãos da Administração Direta.",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "A **Rivalidade entre Concorrentes** (Concorrência no Setor) é a força competitiva central do modelo de Porter, sendo influenciada diretamente pelas outras quatro forças.",
-        "topico": "Cinco Forças de Porter",
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"o controle exercido sobre as Organizações Sociais é um controle de resultados.\" (p. 12). \"Caso os responsáveis pela fiscalização... tomem conhecimento de qualquer irregularidade... deverão dar ciência... ao Tribunal de Contas da União\" (p. 12). O controle principal é da autoridade supervisora (controle de resultados). O TCU atua de forma <b>subsidiária<\/b> e, em geral, a posteriori, quando notificado de irregularidades.<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada. O controle do TCU sobre as OS não é 'prévio e concomitante' como na Administração Direta. É um controle <b>posterior<\/b> e, em grande medida, indireto (via análise de prestação de contas e notificação de irregularidades). A comparação ('semelhante ao que ocorre...') é falsa.<br><br><b>Possíveis induções de erro:<\/b> Generalizar o controle externo do TCU, aplicando o mesmo modelo de controle sobre a administração direta às OS. O texto é claro: é um 'controle de resultados', não um controle prévio de atos.",
+        "topico": "Organizações Sociais (OS) - Controle pelo TCU",
+        "nivel": "Avançado"
+    },
+    {
+        "id": 18,
+        "pergunta": "A extinção de uma Organização Social qualificada implica, obrigatoriamente, que todo o seu patrimônio líquido seja incorporado ao patrimônio da União, não podendo ser transferido para outra organização social.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"em caso de extinção ou desqualificação, [o patrimônio deve ser incorporado] ao patrimônio de outra organização social qualificada no âmbito da União, da mesma área de atuação, ou ao patrimônio da União, dos Estados, do Distrito Federal ou dos Municípios\" (p. 8-9, requisito I, i da Lei).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada porque não é obrigatória a incorporação <b>somente<\/b> à União. A lei prevê duas destinações preferenciais: 1) outra OS da mesma área; 2) entes federativos (União, Estados, DF, Municípios). O termo 'obrigatoriamente... à União' e 'não podendo ser transferido para outra OS' inverte e restringe as opções legais.<br><br><b>Possíveis induções de erro:<\/b> Uso de 'obrigatoriamente' e 'não podendo', criando uma regra absoluta onde a lei oferece alternativas. Inversão da ordem de preferência (a OS outra é a primeira opção).",
+        "topico": "Organizações Sociais (OS) - Extinção e Destinação do Patrimônio",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 19,
+        "pergunta": "A criação de Serviços Sociais Autônomos, como o SENAR e o SEBRAE, depende de lei específica que institua diretamente a pessoa jurídica, atribuindo-lhe personalidade jurídica de direito público.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"Os Serviços Sociais Autônomos são pessoas jurídicas de direito privado... que têm sua criação autorizada em lei (ou seja, elas não são 'criadas diretamente' por lei; a aquisição de sua personalidade jurídica ocorre quando a Entidade Privada Instituidora inscreve os respectivos atos constitutivos no registro civil das pessoas jurídica).\" (p. 3).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada em dois pontos: 1) A lei <b>autoriza<\/b> a criação, mas não <b>institui diretamente<\/b> a pessoa jurídica. 2) A personalidade jurídica é de <b>direito privado<\/b>, não de direito público. A assertiva troca 'autoriza' por 'institui diretamente' e 'direito privado' por 'direito público'.<br><br><b>Possíveis induções de erro:<\/b> Alteração de qualificadores normativos fundamentais: 'autorizada em lei' vs. 'instituída diretamente por lei'; 'direito privado' vs. 'direito público'. Candidatos que associam 'Serviço' no nome a entidade pública podem errar.",
+        "topico": "Serviços Sociais Autônomos - Criação e Natureza Jurídica",
         "nivel": "Intermediário"
     },
     {
         "id": 20,
-        "pergunta": "O Modelo de Porter é uma ferramenta de análise interna da organização, focada principalmente em diagnosticar suas forças e fraquezas para ganhar vantagem competitiva.",
+        "pergunta": "O Plano Diretor da Reforma do Aparelho do Estado (PDRAE) idealizou a publicização como a transferência de serviços exclusivos do Estado para o setor privado com fins lucrativos, a fim de aumentar a eficiência.",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "O Modelo de Porter é uma ferramenta de **análise externa**, focada na estrutura da indústria e nas interações competitivas, enquanto a Análise SWOT\/FOFA foca na análise interna e externa.",
-        "topico": "Cinco Forças de Porter",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 21,
-        "pergunta": "Qual elemento da Análise SWOT (FOFA) representa os fatores **internos e desfavoráveis** à organização, que devem ser minimizados ou eliminados?",
-        "resposta_correta": "Fraquezas (Weaknesses)",
-        "opcoes_disponiveis": [
-            "Forças (Strengths)",
-            "Oportunidades (Opportunities)",
-            "Ameaças (Threats)",
-            "Fraquezas (Weaknesses)"
-        ],
-        "explicacao_feedback": "As Fraquezas (Weaknesses) são pontos fracos internos da organização, como falta de capital ou processos ineficientes, que colocam a empresa em desvantagem.",
-        "topico": "Análise SWOT\/FOFA",
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"O Plano Diretor de Reforma do Aparelho do Estado (PDRAE) tinha por objetivo transferir os serviços <b>não exclusivos<\/b> de estado para o setor 'não estatal'... a ideia era que no setor de 'Serviços não exclusivos de Estado' deve ocorrer a publicização (transferência... para o setor público não-estatal – organizações do terceiro setor).\" (p. 6).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada porque o PDRAE previa a transferência para o setor <b>não estatal (Terceiro Setor, sem fins lucrativos)<\/b>, não para o setor privado com fins lucrativos (Segundo Setor). Além disso, os serviços são <b>não exclusivos<\/b>, não exclusivos. A assertiva inverte ambos os conceitos-chave.<br><br><b>Possíveis induções de erro:<\/b> Trocar 'não exclusivos' por 'exclusivos' e 'não estatal (terceiro setor)' por 'setor privado com fins lucrativos'. É uma confusão comum entre os setores da economia e o conceito de exclusividade estatal.",
+        "topico": "PDRAE e Publicização",
         "nivel": "Básico"
     },
     {
-        "id": 22,
-        "pergunta": "A ausência de recursos tecnológicos atualizados e uma baixa qualificação do corpo funcional de uma organização são classificadas, na Matriz SWOT, como:",
-        "resposta_correta": "Fraquezas, pois são elementos internos e controláveis.",
+        "id": 21,
+        "pergunta": "Na execução do contrato de gestão, a Organização Social está isenta de prestar contas ao Tribunal de Contas da União, uma vez que o controle é exercido exclusivamente pelo órgão supervisor da área correspondente.",
+        "resposta_correta": "Errado",
         "opcoes_disponiveis": [
-            "Fraquezas, pois são elementos internos e controláveis.",
-            "Ameaças, pois são fatores externos incontroláveis.",
-            "Oportunidades, que devem ser potencializadas.",
-            "Forças, que colocam a empresa em vantagem competitiva."
+            "Certo",
+            "Errado"
         ],
-        "explicacao_feedback": "Esses são pontos fracos inerentes à organização (ambiente interno), sendo, portanto, Fraquezas. O administrador tem poder de intervenção sobre eles (controláveis).",
-        "topico": "Análise SWOT\/FOFA",
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"Caso os responsáveis pela fiscalização da execução do contrato de gestão tomem conhecimento de qualquer irregularidade ou ilegalidade na utilização de recursos ou bens de origem pública por parte da Organização Social, deverão dar ciência dessa irregularidade\/ilegalidade ao Tribunal de Contas da União, sob pena de responsabilidade solidária.\" (p. 12).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada. A OS não está 'isenta' de prestar contas ao TCU. Embora o controle direto seja do órgão supervisor, este tem o dever de comunicar irregularidades ao TCU, que pode, então, exercer seu controle. O TCU pode também analisar as contas que recebe. O termo 'exclusivamente' é falso, pois o TCU tem competência correlata.<br><br><b>Possíveis induções de erro:<\/b> Uso dos termos 'isenta' e 'exclusivamente'. A assertiva tenta eliminar o papel do TCU no controle de recursos públicos, o que não corresponde à realidade nem ao texto, que impõe o dever de comunicação ao tribunal.",
+        "topico": "Organizações Sociais (OS) - Prestação de Contas e Controle",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 22,
+        "pergunta": "A Administração Pública, ao firmar contrato de gestão com Organização Social, está obrigada a realizar licitação prévia, salvo quando houver apenas uma entidade habilitada na área.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"o Poder Público não precisa realizar licitação para firmar contrato de gestão com a Organização Social. Entretanto, quando existirem diversas entidades com condições de firmar a parceria com o Poder Público, é necessário que a Administração Pública promova um processo de seleção impessoal.\" (p. 10).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada porque afirma que há obrigatoriedade de licitação ('está obrigada a realizar licitação prévia'), o que é falso. A lei dispensa licitação. O que pode ser necessário, na hipótese de múltiplas entidades, é um 'processo de seleção impessoal', que não é necessariamente uma licitação nos moldes da Lei 8.666\/93. A exceção ('salvo quando...') também não está corretamente formulada.<br><br><b>Possíveis induções de erro:<\/b> Substituir 'não precisa realizar licitação' por 'está obrigada a realizar licitação'. Confundir 'processo de seleção impessoal' com 'licitação'.",
+        "topico": "Organizações Sociais (OS) - Contratação pela Administração",
         "nivel": "Intermediário"
     },
     {
         "id": 23,
-        "pergunta": "O aumento da taxa de juros básica e a entrada de uma nova e forte empresa concorrente no mercado são classificados na Matriz FOFA como:",
-        "resposta_correta": "Ameaças, por serem fatores externos e incontroláveis.",
+        "pergunta": "As Organizações Sociais podem atuar nas áreas de educação, saúde, cultura, meio ambiente, ciência e tecnologia, e assistência social, desde que qualificadas nos termos da lei.",
+        "resposta_correta": "Errado",
         "opcoes_disponiveis": [
-            "Oportunidades, por serem fatores externos.",
-            "Ameaças, por serem fatores externos e incontroláveis.",
-            "Forças, por serem fatores internos.",
-            "Fraquezas, por serem fatores internos."
+            "Certo",
+            "Errado"
         ],
-        "explicacao_feedback": "São elementos do ambiente externo (macroambiente) que influenciam negativamente a organização, sendo classificados como Ameaças, e o administrador não os controla.",
-        "topico": "Análise SWOT\/FOFA",
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"pessoas jurídicas de direito privado, sem fins lucrativos, cujas atividades sejam dirigidas ao ensino, à pesquisa científica, ao desenvolvimento tecnológico, à proteção e preservação do meio ambiente, à cultura e à saúde\" (p. 6). A lista <b>não inclui<\/b> 'assistência social'.<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada porque inclui 'assistência social' entre as áreas de atuação das OS. A Lei 9.637\/98 lista seis áreas específicas, e assistência social não é uma delas. A inclusão desse item, mesmo com 'desde que qualificadas', torna a assertiva falsa.<br><br><b>Possíveis induções de erro:<\/b> Inclusão indevida de um item (assistência social) em uma lista que, de outra forma, é correta. Candidatos podem associar assistência social ao Terceiro Setor de forma genérica e não lembrar da enumeração taxativa da lei para OS.",
+        "topico": "Organizações Sociais (OS) - Áreas de Atuação",
         "nivel": "Básico"
     },
     {
         "id": 24,
-        "pergunta": "Na Matriz SWOT, a Estratégia de **Crescimento** deve ser adotada no cenário que cruza Fraquezas Internas com Oportunidades Externas. Qual é o nome desse cenário?",
-        "resposta_correta": "Cenário de Limitações",
+        "pergunta": "A comissão de avaliação que analisa os resultados do contrato de gestão de uma Organização Social é composta exclusivamente por servidores públicos do órgão supervisor.",
+        "resposta_correta": "Errado",
         "opcoes_disponiveis": [
-            "Cenário de Alavancagem",
-            "Cenário de Vulnerabilidade",
-            "Cenário de Problemas",
-            "Cenário de Limitações"
+            "Certo",
+            "Errado"
         ],
-        "explicacao_feedback": "O cruzamento de Fraquezas (W) e Oportunidades (O) resulta no cenário de Limitações (WO), onde a empresa precisa buscar meios, como a Estratégia de Crescimento, para superar as fraquezas e aproveitar as oportunidades.",
-        "topico": "Análise SWOT\/FOFA - Cenários",
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"Os resultados atingidos com a execução do contrato de gestão devem ser analisados, periodicamente, por comissão de avaliação, indicada pela autoridade supervisora da área correspondente, <b>composta por especialistas de notória capacidade e adequada qualificação<\/b>.\" (p. 12).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada. A comissão é composta por 'especialistas', o que pode incluir, mas não se restringe a, servidores públicos. O termo 'exclusivamente por servidores públicos' restringe incorretamente a composição.<br><br><b>Possíveis induções de erro:<\/b> Uso do termo 'exclusivamente'. A banca tenta vincular a comissão ao órgão supervisor de forma absoluta, ignorando que especialistas externos podem participar.",
+        "topico": "Organizações Sociais (OS) - Comissão de Avaliação",
         "nivel": "Intermediário"
     },
     {
         "id": 25,
-        "pergunta": "No cenário de **Vulnerabilidade** da Matriz SWOT (Forças + Ameaças), qual é o principal foco da Estratégia de **Manutenção**?",
-        "resposta_correta": "Utilizar as forças internas para mitigar os impactos provocados pelas ameaças externas.",
+        "pergunta": "As entidades paraestatais, por serem integrantes do Terceiro Setor, têm por finalidade precípua o lucro, que é posteriormente reinvestido em suas atividades sociais.",
+        "resposta_correta": "Errado",
         "opcoes_disponiveis": [
-            "Desenvolver novos produtos para aproveitar as ameaças.",
-            "Utilizar as forças internas para mitigar os impactos provocados pelas ameaças externas.",
-            "Eliminar as ameaças por meio de reestruturações internas.",
-            "Buscar novos mercados (oportunidades) para fugir das ameaças."
+            "Certo",
+            "Errado"
         ],
-        "explicacao_feedback": "A Estratégia de Manutenção visa a 'defesa' da organização, utilizando suas Forças (ex: reservas financeiras) para absorver e mitigar os impactos das Ameaças.",
-        "topico": "Análise SWOT\/FOFA - Estratégias",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 26,
-        "pergunta": "Qual elemento da Análise SWOT está relacionado diretamente à busca por uma **vantagem competitiva** sustentável, representando o que a organização faz bem?",
-        "resposta_correta": "Forças",
-        "opcoes_disponiveis": [
-            "Ameaças",
-            "Oportunidades",
-            "Fraquezas",
-            "Forças"
-        ],
-        "explicacao_feedback": "As Forças são os pontos fortes internos que dão à organização uma vantagem competitiva sobre os concorrentes.",
-        "topico": "Análise SWOT\/FOFA",
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"Entidades Paraestatais são pessoas jurídicas de direito privado, <b>sem fins lucrativos<\/b>\" (p. 2).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada porque as entidades paraestatais são <b>sem fins lucrativos<\/b>. A expressão 'finalidade precípua o lucro' é a antítese de sua definição. Mesmo que reinvestissem o lucro (o que não ocorre, pois não buscam lucro), a finalidade não é lucrativa.<br><br><b>Possíveis induções de erro:<\/b> Inversão total do conceito fundamental: 'sem fins lucrativos' vs. 'finalidade precípua o lucro'. Pode confundir com empresas privadas do Segundo Setor que têm responsabilidade social.",
+        "topico": "Entidades Paraestatais - Finalidade",
         "nivel": "Básico"
     },
     {
-        "id": 27,
-        "pergunta": "Em qual cenário e estratégia da Matriz SWOT a organização está no pior estado possível, levando a medidas como desinvestimentos ou liquidação?",
-        "resposta_correta": "Cenário de Problemas, com Estratégia de Sobrevivência.",
+        "id": 26,
+        "pergunta": "A perda da qualificação de Organização Social (desqualificação) importa a reversão dos bens públicos cedidos e dos recursos transferidos, além de sujeitar os dirigentes a responsabilização por eventuais danos, sem prejuízo de outras sanções.",
+        "resposta_correta": "Certo",
         "opcoes_disponiveis": [
-            "Cenário de Alavancagem, com Estratégia de Desenvolvimento.",
-            "Cenário de Vulnerabilidade, com Estratégia de Manutenção.",
-            "Cenário de Problemas, com Estratégia de Sobrevivência.",
-            "Cenário de Limitações, com Estratégia de Crescimento."
+            "Certo",
+            "Errado"
         ],
-        "explicacao_feedback": "O cenário de Problemas (Fraquezas + Ameaças) é o mais crítico, exigindo a Estratégia de Sobrevivência, focada em medidas drásticas para evitar o colapso.",
-        "topico": "Análise SWOT\/FOFA - Cenários",
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"A desqualificação importará reversão dos bens permitidos e dos valores entregues à utilização da organização social, sem prejuízo de outras sanções cabíveis... respondendo os dirigentes da organização social, individual e solidariamente, pelos danos ou prejuízos decorrentes de sua ação ou omissão.\" (p. 13).<br><br><b>Análise da Assertiva:<\/b> A assertiva está correta, pois resume fielmente as consequências da desqualificação previstas na lei: reversão de bens\/recursos e responsabilização dos dirigentes, além de outras sanções.<br><br><b>Possíveis induções de erro:<\/b> A banca poderia omitir 'sem prejuízo de outras sanções' ou trocar 'solidariamente' por 'subsidiariamente', por exemplo. Aqui, a redação é fiel.",
+        "topico": "Organizações Sociais (OS) - Desqualificação",
         "nivel": "Intermediário"
     },
     {
-        "id": 28,
-        "pergunta": "Qual categoria da Matriz BCG tipicamente opera com um **fluxo de caixa negativo** ou 'sugador de caixa', pois exige altos investimentos para aumentar sua baixa participação em um mercado de alto crescimento?",
-        "resposta_correta": "Interrogação (Question Mark)",
+        "id": 27,
+        "pergunta": "O Terceiro Setor é composto unicamente pelas Entidades Paraestatais, uma vez que o primeiro setor é o Estado e o segundo é o mercado.",
+        "resposta_correta": "Errado",
         "opcoes_disponiveis": [
-            "Vaca Leiteira (Cash Cow)",
-            "Estrela (Star)",
-            "Abacaxi (Dog)",
-            "Interrogação (Question Mark)"
+            "Certo",
+            "Errado"
         ],
-        "explicacao_feedback": "O produto 'Interrogação' está em um mercado promissor (alto crescimento), mas tem baixa participação, exigindo alto investimento para tentar se tornar um 'Estrela', o que drena caixa.",
-        "topico": "Matriz BCG",
-        "nivel": "Avançado"
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"O primeiro setor é o próprio Estado. O segundo setor é composto pelo mercado. O terceiro setor, por fim, é formado pelas e Entidades Paraestatais.\" (p. 3). Embora o texto afirme isso, a doutrina e a realidade são mais amplas: o Terceiro Setor inclui diversas formas de organizações sem fins lucrativos, não apenas as 'Entidades Paraestatais' no sentido técnico-jurídico usado no PDF (Serviços Sociais Autônomos, OS, OSCIPs, etc.). A assertiva usa 'unicamente', o que é uma restrição excessiva.<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada porque, embora o PDF simplifique dizendo que o Terceiro Setor é formado pelas Entidades Paraestatais, o termo 'unicamente' é problemático. Na prática, o conceito de Terceiro Setor é mais abrangente. Além disso, a própria lista do PDF (p. 3) inclui tipos variados (OS, OSCIP, etc.) sob o guarda-chuva 'Entidades Paraestatais', mas a afirmação absoluta 'unicamente' pode ser considerada redutiva mesmo dentro do contexto do material.<br><br><b>Possíveis induções de erro:<\/b> Uso do termo absoluto 'unicamente'. Candidatos que decoram a frase do PDF podem marcar 'Certo', mas a banca pode estar testando a percepção de que a definição setorial é mais conceitual e menos um catálogo fechado.",
+        "topico": "Terceiro Setor",
+        "nivel": "Básico"
+    },
+    {
+        "id": 28,
+        "pergunta": "A seleção de pessoal pelas Organizações Sociais deve ser feita mediante concurso público, em observância ao princípio da igualdade, conforme entendimento sumulado do Supremo Tribunal Federal.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"as OS não se submetem ao dever de realizar concursos públicos para contratações de pessoal. Contudo, conforme entendimento do STF, as OS devem realizar a seleção de pessoal mediante processo seletivo objetivo e impessoal\" (p. 11).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada. O STF <b>não<\/b> exige concurso público para OS, mas sim um 'processo seletivo objetivo e impessoal'. A assertiva troca 'processo seletivo' por 'concurso público', que é um tipo específico e mais rigoroso de seleção, típico da Administração Pública direta.<br><br><b>Possíveis induções de erro:<\/b> Substituição do termo legal\/normativo 'processo seletivo' por 'concurso público'. Inserir 'conforme entendimento sumulado do STF' dá um ar de veracidade, mas o entendimento é outro.",
+        "topico": "Organizações Sociais (OS) - Seleção de Pessoal",
+        "nivel": "Intermediário"
     },
     {
         "id": 29,
-        "pergunta": "Qual é a principal recomendação estratégica para os produtos classificados na Matriz BCG como **Abacaxi** (Dog)?",
-        "resposta_correta": "Desinvestimento, descontinuação ou colheita ('harvesting').",
+        "pergunta": "A crise fiscal do Estado e a expansão de suas funções econômicas e sociais foram fatores preponderantes para o surgimento da Administração Pública Gerencial e do modelo de publicização no Brasil.",
+        "resposta_correta": "Certo",
         "opcoes_disponiveis": [
-            "Manter o alto investimento para tentar aumentar a participação.",
-            "Desinvestimento, descontinuação ou colheita ('harvesting').",
-            "Focar em reduzir os custos operacionais para gerar lucro, mantendo o produto.",
-            "Utilizar o caixa gerado para financiar outros produtos."
+            "Certo",
+            "Errado"
         ],
-        "explicacao_feedback": "O produto 'Abacaxi' (Baixo Crescimento\/Baixa Participação) deve ser descontinuado ou vendido (desinvestimento), pois consome recursos e não gera retorno.",
-        "topico": "Matriz BCG",
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"em meio à crise do Estado de Bem-Estar Social, e à crise fiscal dos Estados... em um período marcado pelo desenvolvimento tecnológico, globalização e expansão das funções econômicas e sociais do Estado, surge um novo modelo de administração pública: a Administração Gerencial.\" (p. 1). \"Nesse contexto da Administração Pública Gerencial, ocorreram diversas mudanças com o objetivo de superar a crise fiscal... surge a ideia da publicização\" (p. 1).<br><br><b>Análise da Assertiva:<\/b> A assertiva está correta. Ela sintetiza a relação de causalidade apresentada no PDF: a crise fiscal e a expansão das funções estatais criaram o ambiente para o surgimento da Administração Gerencial e, dentro dela, da publicização como instrumento.<br><br><b>Possíveis induções de erro:<\/b> A banca poderia isolar apenas um fator (ex.: apenas a crise fiscal) ou inverter a causalidade (a publicização causou a crise). Aqui, a relação está fiel ao contexto histórico descrito.",
+        "topico": "Contexto Histórico da Administração Gerencial",
         "nivel": "Básico"
     },
     {
         "id": 30,
-        "pergunta": "Na Matriz BCG, um produto que gera grande volume de caixa, mas que está em um mercado com taxas de crescimento baixas, é chamado de:",
-        "resposta_correta": "Vaca Leiteira (Cash Cow)",
+        "pergunta": "Uma entidade qualificada como Organização Social tem sua autonomia e flexibilidade aumentadas em comparação com sua condição anterior de entidade privada sem fins lucrativos, pois passa a receber fomento público e a ter maior liberdade gerencial.",
+        "resposta_correta": "Errado",
         "opcoes_disponiveis": [
-            "Estrela (Star)",
-            "Interrogação (Question Mark)",
-            "Abacaxi (Dog)",
-            "Vaca Leiteira (Cash Cow)"
+            "Certo",
+            "Errado"
         ],
-        "explicacao_feedback": "A 'Vaca Leiteira' (Baixo Crescimento\/Alta Participação) é o produto consolidado em mercado maduro, gerando caixa excedente que pode ser usado para financiar as 'Estrelas' ou 'Interrogações'.",
-        "topico": "Matriz BCG",
-        "nivel": "Básico"
-    },
-    {
-        "id": 31,
-        "pergunta": "Para qual quadrante da Matriz BCG a organização deve realocar o excesso de capital gerado pelas 'Vaca Leiteiras' (Cash Cows)?",
-        "resposta_correta": "Estrela ou Interrogação, visando crescimento futuro.",
-        "opcoes_disponiveis": [
-            "Apenas para o Abacaxi, para reverter sua situação.",
-            "Estrela ou Interrogação, visando crescimento futuro.",
-            "Apenas para a Vaca Leiteira, para aumentar a participação.",
-            "Para qualquer produto, desde que o mercado esteja em baixo crescimento."
-        ],
-        "explicacao_feedback": "O caixa gerado pela 'Vaca Leiteira' deve financiar os produtos 'Estrela' (para manter a liderança) e 'Interrogação' (para tentar convertê-lo em 'Estrela').",
-        "topico": "Matriz BCG",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 32,
-        "pergunta": "Quais são as duas dimensões (eixos) utilizadas para posicionar os produtos na Matriz BCG?",
-        "resposta_correta": "Taxa de Crescimento do Mercado e Participação Relativa de Mercado.",
-        "opcoes_disponiveis": [
-            "Faturamento Total e Lucratividade.",
-            "Forças e Fraquezas.",
-            "Taxa de Crescimento do Mercado e Participação Relativa de Mercado.",
-            "Custo e Preço de Venda."
-        ],
-        "explicacao_feedback": "A Matriz BCG é baseada na Taxa de Crescimento do Mercado (eixo Y) e na Participação Relativa de Mercado (eixo X).",
-        "topico": "Matriz BCG",
-        "nivel": "Básico"
-    },
-    {
-        "id": 33,
-        "pergunta": "Um produto **'Estrela'** é a combinação de:",
-        "resposta_correta": "Alta participação em um mercado de alto crescimento.",
-        "opcoes_disponiveis": [
-            "Alta participação em um mercado de baixo crescimento.",
-            "Baixa participação em um mercado de baixo crescimento.",
-            "Alta participação em um mercado de alto crescimento.",
-            "Baixa participação em um mercado de alto crescimento."
-        ],
-        "explicacao_feedback": "O produto 'Estrela' (Star) é líder em um mercado em expansão, exigindo grandes investimentos para manter a liderança.",
-        "topico": "Matriz BCG",
-        "nivel": "Básico"
-    },
-    {
-        "id": 34,
-        "pergunta": "Qual das Cinco Forças de Porter representa o centro do modelo, pois é influenciada diretamente pelas outras quatro forças?",
-        "resposta_correta": "Rivalidade entre Concorrentes (Concorrência no Setor)",
-        "opcoes_disponiveis": [
-            "Poder de Barganha dos Fornecedores",
-            "Ameaça de Produtos Substitutos",
-            "Rivalidade entre Concorrentes (Concorrência no Setor)",
-            "Poder de Barganha dos Clientes"
-        ],
-        "explicacao_feedback": "A Rivalidade entre Concorrentes é a força central do modelo de Porter, pois o nível de competição dentro da indústria é um reflexo das ameaças de entrada, substituição e dos poderes de barganha dos fornecedores e clientes.",
-        "topico": "Cinco Forças de Porter",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 35,
-        "pergunta": "A existência de elevadas **Economias de Escala** na produção de um setor atua como um fator que:",
-        "resposta_correta": "Reduz a Ameaça de Novos Entrantes.",
-        "opcoes_disponiveis": [
-            "Aumenta o Poder de Barganha dos Clientes.",
-            "Reduz a Rivalidade entre Concorrentes.",
-            "Aumenta a Ameaça de Produtos Substitutos.",
-            "Reduz a Ameaça de Novos Entrantes."
-        ],
-        "explicacao_feedback": "Economias de Escala são barreiras de entrada: forçam o novo entrante a operar em grande escala e enfrentar uma forte reação dos concorrentes, ou a entrar em pequena escala e aceitar uma desvantagem de custo.",
-        "topico": "Cinco Forças de Porter - Novos Entrantes",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 36,
-        "pergunta": "O **Poder de Barganha dos Fornecedores** aumenta quando:",
-        "resposta_correta": "O custo de troca de fornecedor (switching cost) é alto para a empresa.",
-        "opcoes_disponiveis": [
-            "Existem muitos fornecedores disponíveis no mercado.",
-            "Os insumos fornecidos não são críticos para o negócio da empresa.",
-            "O custo de troca de fornecedor (switching cost) é alto para a empresa.",
-            "O produto do fornecedor é padronizado (commodity)."
-        ],
-        "explicacao_feedback": "Quando o custo para mudar de fornecedor é alto (seja por questões técnicas ou contratuais), o fornecedor atual detém maior poder de barganha.",
-        "topico": "Cinco Forças de Porter - Fornecedores",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 37,
-        "pergunta": "A força **Ameaça de Produtos Substitutos** é alta quando:",
-        "resposta_correta": "Os clientes têm acesso fácil e a custo baixo a produtos de outras indústrias que satisfazem a mesma necessidade.",
-        "opcoes_disponiveis": [
-            "Há muitos concorrentes diretos no mesmo setor.",
-            "Os clientes têm acesso fácil e a custo baixo a produtos de outras indústrias que satisfazem a mesma necessidade.",
-            "O custo de troca para o cliente é proibitivo.",
-            "Os fornecedores não têm alternativas para a venda de seus produtos."
-        ],
-        "explicacao_feedback": "Produtos substitutos são de indústrias diferentes (ex: carro e trem), e sua ameaça é alta quando são atraentes, facilmente disponíveis e têm baixo custo de troca para o consumidor.",
-        "topico": "Cinco Forças de Porter - Substitutos",
-        "nivel": "Básico"
-    },
-    {
-        "id": 38,
-        "pergunta": "Qual fator contribui para o **aumento** do **Poder de Barganha dos Clientes**?",
-        "resposta_correta": "A compra de grandes volumes do produto pela clientela.",
-        "opcoes_disponiveis": [
-            "O produto ser altamente diferenciado e essencial.",
-            "A compra de grandes volumes do produto pela clientela.",
-            "A alta fidelidade da clientela à marca da empresa.",
-            "A inexistência de informações sobre o custo dos concorrentes."
-        ],
-        "explicacao_feedback": "Clientes que compram grandes volumes (principalmente concentrados) têm mais poder para exigir preços mais baixos e melhores condições de negociação.",
-        "topico": "Cinco Forças de Porter - Clientes",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 39,
-        "pergunta": "Uma alta **Rivalidade entre Concorrentes** no setor é tipicamente associada a:",
-        "resposta_correta": "Baixa atratividade e baixa lucratividade da indústria.",
-        "opcoes_disponiveis": [
-            "Alta atratividade e alta lucratividade da indústria.",
-            "Poucos concorrentes de tamanho desigual.",
-            "Baixa atratividade e baixa lucratividade da indústria.",
-            "Um mercado em rápido crescimento."
-        ],
-        "explicacao_feedback": "A alta rivalidade (guerras de preço, altos custos de marketing) geralmente reduz as margens de lucro, tornando a indústria menos atraente.",
-        "topico": "Cinco Forças de Porter - Rivalidade",
-        "nivel": "Básico"
-    },
-    {
-        "id": 40,
-        "pergunta": "O Modelo das Cinco Forças de Porter é primariamente uma ferramenta de:",
-        "resposta_correta": "Análise do Ambiente Externo (Estrutura da Indústria).",
-        "opcoes_disponiveis": [
-            "Análise do Ambiente Interno (Forças e Fraquezas).",
-            "Alocação de Portfólio de Produtos (Matriz BCG).",
-            "Definição da Missão e Visão da organização.",
-            "Análise do Ambiente Externo (Estrutura da Indústria)."
-        ],
-        "explicacao_feedback": "O Modelo de Porter foca na análise do ambiente externo competitivo (a indústria), avaliando as forças que determinam sua atratividade e lucratividade.",
-        "topico": "Cinco Forças de Porter",
-        "nivel": "Básico"
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"quando a Entidade Privada sem fins lucrativos se qualifica como Organização Social, ela 'perde' um pouco da flexibilidade, uma vez que passa a ter de seguir algumas regras mais 'rígidas' (tais como regulamentos para compras, prestação de contas, etc.)... ainda assim a OS continua sendo mais 'flexível' do que as Entidades da Administração Pública.\" (p. 14).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada porque a qualificação como OS <b>reduz<\/b> a autonomia e flexibilidade em comparação com a condição de entidade privada sem fins lucrativos comum, devido às regras do contrato de gestão, prestação de contas, etc. A assertiva diz que a autonomia é 'aumentada', o que é o oposto do que o PDF afirma. É verdade que ela é mais flexível que a Administração Pública, mas menos que antes da qualificação.<br><br><b>Possíveis induções de erro:<\/b> Inversão do efeito da qualificação. A banca explora a ideia intuitiva de que 'parceria com o Estado traz mais recursos e liberdade', quando na verdade impõe mais controles. Confundir a comparação (OS vs. Entidade Pública) com a outra (OS vs. Entidade Privada não qualificada).",
+        "topico": "Organizações Sociais (OS) - Autonomia e Flexibilidade",
+        "nivel": "Avançado"
     }
 ]

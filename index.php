@@ -15,6 +15,24 @@ if (isset($_GET['carregar_quiz'])) {
 }
 
 $acao = $_GET['acao'] ?? 'quiz';
+
+// Gerenciamento de Usuário (Sessão)
+if (!isset($_SESSION['username']) && $acao != 'login') {
+    $acao = 'welcome';
+}
+
+if ($acao == 'login' && isset($_POST['username'])) {
+    $_SESSION['username'] = $_POST['username'];
+    header('Location: index.php');
+    exit;
+}
+
+if ($acao == 'logout') {
+    session_destroy();
+    header('Location: index.php');
+    exit;
+}
+
 $questao_id = $_GET['id'] ?? null;
 $acertos = $_GET['acertos'] ?? 0;
 $modo_revisao = $_GET['modo_revisao'] ?? false;
@@ -28,6 +46,9 @@ if (!isset($_SESSION['questoes_erradas'])) {
 $quiz_data = carregarDadosQuiz();
 
 switch ($acao) {
+    case 'welcome':
+        include 'templates/welcome.php';
+        break;
     case 'quiz':
         exibirQuiz($quiz_data, $questao_id, $acertos, $modo_revisao);
         break;
@@ -47,6 +68,7 @@ switch ($acao) {
         exibirQuiz($quiz_data);
         break;
 }
+
 
 function exibirQuiz($quiz_data, $questao_id = null, $acertos = 0, $modo_revisao = false) {
     if (empty($quiz_data)) {

@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once 'carregar_dados.php';
 
 $acertos_total = $_GET['acertos'] ?? 0;
 $total_perguntas = $_GET['total'] ?? 0;
@@ -15,8 +16,15 @@ $dados = [
     'questoes_erradas' => $questoes_erradas,
     'total_erradas' => $total_erradas,
     'modo_revisao' => $modo_revisao,
-    'sem_erradas' => $sem_erradas
+    'sem_erradas' => $sem_erradas,
+    'username' => $_SESSION['username'] ?? 'Anônimo'
 ];
+
+// Salva no banco de dados se não for modo revisão
+if (!$modo_revisao && isset($_SESSION['username'])) {
+    salvarScore($_SESSION['username'], 1, $acertos_total, $total_perguntas);
+}
+
 
 include 'templates/fim_quiz.php';
 ?>

@@ -95,14 +95,7 @@ function validarEstruturaQuiz($dados) {
             }
         }
         
-        // Valida comprimento mínimo dos textos
-        if (isset($questao['pergunta']) && strlen(trim($questao['pergunta'])) < 10) {
-            $erros[] = "Questão {$numero_questao}: O campo 'pergunta' deve ter pelo menos 10 caracteres";
-        }
-        
-        if (isset($questao['explicacao_feedback']) && strlen(trim($questao['explicacao_feedback'])) < 10) {
-            $erros[] = "Questão {$numero_questao}: O campo 'explicacao_feedback' deve ter pelo menos 10 caracteres";
-        }
+        // Valida comprimento mínimo dos textos (Removido para permitir flexibilidade)
     }
     
     // Verifica IDs duplicados
