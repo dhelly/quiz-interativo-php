@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once 'session_config.php';
 require_once 'carregar_dados.php';
 
 $action = $_GET['action'] ?? '';
