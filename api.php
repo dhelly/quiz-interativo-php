@@ -12,6 +12,15 @@ if (!$user_id) {
     exit;
 }
 
+// Validação CSRF para ações que alteram dados
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $csrf_token = $_POST['csrf_token'] ?? $_SERVER['HTTP_X_CSRF_TOKEN'] ?? '';
+    if (!validarTokenCSRF($csrf_token)) {
+        echo json_encode(['success' => false, 'message' => 'Erro CSRF: Requisição inválida.']);
+        exit;
+    }
+}
+
 switch ($action) {
     case 'get_comments':
         $question_id = $_GET['question_id'] ?? 0;

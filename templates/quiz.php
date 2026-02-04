@@ -20,7 +20,7 @@
                         🎓 Quiz
                     <?php endif; ?>
                 </h1>
-                <p style="font-size: 0.85rem; color: var(--text-muted);">Logado como <strong><?php echo $_SESSION['username']; ?></strong></p>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">Logado como <strong><?php echo h($_SESSION['username']); ?></strong></p>
             </div>
             <div style="display: flex; gap: 8px;">
                 <a href="index.php?acao=home" class="btn btn-secondary btn-small">🏠 Início</a>
@@ -34,18 +34,18 @@
         <div class="content-quiz">
             <?php if ($dados['modo_revisao']): ?>
                 <div class="info-revisao-quiz">
-                    <strong>📖 Modo Revisão:</strong> Você está revisando <?php echo $dados['total_erradas']; ?> questão(ões) que errou anteriormente.
+                    <strong>📖 Modo Revisão:</strong> Você está revisando <?php echo h($dados['total_erradas']); ?> questão(ões) que errou anteriormente.
                     <a href="index.php?acao=limpar_revisao" style="color: var(--warning-color); margin-left: 10px;">🔄 Limpar Histórico</a>
                 </div>
             <?php endif; ?>
             
             <div class="progresso-quiz">
                 <div class="progresso-info">
-                    <span>Questão <?php echo $dados['numero_questao']; ?> de <?php echo $dados['total_perguntas']; ?></span>
+                    <span>Questão <?php echo h($dados['numero_questao']); ?> de <?php echo h($dados['total_perguntas']); ?></span>
                     <span>
-                        Acertos: <span class="contador-acertos"><?php echo $dados['acertos_total']; ?></span>
+                        Acertos: <span class="contador-acertos"><?php echo h($dados['acertos_total']); ?></span>
                         <?php if (!$dados['modo_revisao']): ?>
-                            / Erradas: <span class="contador-erradas"><?php echo $dados['total_erradas']; ?></span>
+                            / Erradas: <span class="contador-erradas"><?php echo h($dados['total_erradas']); ?></span>
                         <?php endif; ?>
                     </span>
                 </div>
@@ -102,13 +102,13 @@
             <div class="questao-header">
                 <div class="questao-info">
                     <span class="badge-quiz">ID: <?php echo $dados['questao']['id']; ?></span>
-                    <span class="badge-quiz topico"><?php echo $dados['questao']['topico']; ?></span>
-                    <span class="badge-quiz nivel"><?php echo $dados['questao']['nivel']; ?></span>
+                    <span class="badge-quiz topico"><?php echo h($dados['questao']['topico']); ?></span>
+                    <span class="badge-quiz nivel"><?php echo h($dados['questao']['nivel']); ?></span>
                     <?php if (in_array($dados['questao']['id'], $_SESSION['questoes_erradas'])): ?>
                         <span class="badge-quiz errada">❌ Errada Anteriormente</span>
                     <?php endif; ?>
                 </div>
-                <div class="questao-numero">#<?php echo $dados['numero_questao']; ?></div>
+                <div class="questao-numero">#<?php echo h($dados['numero_questao']); ?></div>
             </div>
 
             <div class="pergunta"><?php echo $dados['questao']['pergunta']; ?></div>
@@ -117,7 +117,7 @@
             <?php foreach ($dados['questao']['opcoes_disponiveis'] as $index => $opcao): ?>
                 <label class="opcao-label" data-value="<?php echo htmlspecialchars($opcao); ?>">
                     <div class="numero-opcao"><?php echo $index + 1; ?></div>
-                    <?php echo $opcao; ?>
+                    <?php echo h($opcao); ?>
                 </label>
             <?php endforeach; ?>
             </div>
@@ -151,8 +151,9 @@
         // Variáveis globais
         const respostaCorreta = "<?php echo $dados['resposta_correta']; ?>";
         const explicacao = `<?php echo $dados['explicacao']; ?>`;
-        const questaoId = <?php echo $dados['questao']['id']; ?>;
-        let acertosAtuais = <?php echo $dados['acertos_total']; ?>;
+        const questaoId = <?php echo h($dados['questao']['id']); ?>;
+        const csrfToken = "<?php echo gerarTokenCSRF(); ?>";
+        let acertosAtuais = <?php echo h($dados['acertos_total']); ?>;
         let questaoRespondida = false;
         const modoRevisao = <?php echo $dados['modo_revisao'] ? 'true' : 'false'; ?>;
 
@@ -196,7 +197,7 @@
                             headers: {
                                 'Content-Type': 'application/x-www-form-urlencoded',
                             },
-                            body: `questao_id=${questaoId}&action=remove`
+                            body: `questao_id=${questaoId}&action=remove&csrf_token=${csrfToken}`
                         });
                     }
                 } else {
@@ -206,7 +207,7 @@
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded',
                         },
-                        body: `questao_id=${questaoId}&action=add`
+                        body: `questao_id=${questaoId}&action=add&csrf_token=${csrfToken}`
                     });
                 }
                 
@@ -322,6 +323,7 @@
             formData.append('question_id', questaoId);
             formData.append('comment', comment);
             formData.append('is_flagged', is_flagged);
+            formData.append('csrf_token', csrfToken);
 
             fetch('salvar_interacao.php', {
                 method: 'POST',
@@ -422,6 +424,7 @@
 
             const formData = new FormData();
             formData.append('comment_id', commentId);
+            formData.append('csrf_token', csrfToken);
 
             fetch('api.php?action=vote_comment', {
                 method: 'POST',

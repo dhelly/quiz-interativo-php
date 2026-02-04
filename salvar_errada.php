@@ -1,7 +1,11 @@
-<?php
-session_start();
+require_once 'carregar_dados.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $csrf_token = $_POST['csrf_token'] ?? $_SERVER['HTTP_X_CSRF_TOKEN'] ?? '';
+    if (!validarTokenCSRF($csrf_token)) {
+        http_response_code(403);
+        die('Erro CSRF: Requisição inválida.');
+    }
     $questao_id = intval($_POST['questao_id']);
     $action = $_POST['action'] ?? 'add';
     

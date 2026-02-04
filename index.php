@@ -1,9 +1,26 @@
 <?php
+// Configuração de Sessão Segura
+ini_set('session.cookie_httponly', 1);
+ini_set('session.cookie_samesite', 'Lax');
+ini_set('session.use_only_cookies', 1);
+if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
+    ini_set('session.cookie_secure', 1);
+}
+
 session_start();
 require_once 'carregar_dados.php';
+require_once 'sanitize.php';
 
 $quizzes_disponiveis = listarQuizzes();
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $csrf_token = $_POST['csrf_token'] ?? '';
+    if (!validarTokenCSRF($csrf_token)) {
+        die('Erro CSRF: Requisição inválida.');
+    }
+}
+
+// Lógicas de Ação
 if (isset($_GET['carregar_quiz'])) {
     $caminho_quiz = $_GET['carregar_quiz'];
     $_SESSION['current_quiz_id'] = $caminho_quiz; // Salva o quiz selecionado na sessão

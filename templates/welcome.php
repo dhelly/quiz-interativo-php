@@ -17,11 +17,12 @@
 
             <?php if (isset($erro_login)): ?>
                 <div class="alert alert-error" style="display: block; margin-bottom: 20px;">
-                    ❌ <?php echo htmlspecialchars($erro_login); ?>
+                    ❌ <?php echo h($erro_login); ?>
                 </div>
             <?php endif; ?>
 
             <form action="index.php?acao=login" method="POST" class="welcome-form">
+                <input type="hidden" name="csrf_token" value="<?php echo gerarTokenCSRF(); ?>">
                 <div class="form-group">
                     <label for="username">Apelido (Username)</label>
                     <input type="text" id="username" name="username" required placeholder="Seu apelido..." minlength="3">

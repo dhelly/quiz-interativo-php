@@ -62,4 +62,11 @@ function prepararDadosParaEditor($dados) {
     
     return $dados;
 }
+
+/**
+ * Atalho para htmlspecialchars para evitar ataques XSS
+ */
+function h($texto) {
+    return htmlspecialchars((string)$texto, ENT_QUOTES, 'UTF-8');
+}
 ?>

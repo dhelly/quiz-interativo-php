@@ -1,4 +1,12 @@
 <?php
+// Configuração de Sessão Segura
+ini_set('session.cookie_httponly', 1);
+ini_set('session.cookie_samesite', 'Lax');
+ini_set('session.use_only_cookies', 1);
+if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
+    ini_set('session.cookie_secure', 1);
+}
+
 session_start();
 require_once 'carregar_dados.php';
 require_once 'validar_quiz.php';
@@ -10,6 +18,14 @@ if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
 }
 
 $acao = $_GET['acao'] ?? 'panel';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $csrf_token = $_POST['csrf_token'] ?? $_SERVER['HTTP_X_CSRF_TOKEN'] ?? '';
+    if (!validarTokenCSRF($csrf_token)) {
+        die('Erro CSRF: Requisição inválida.');
+    }
+}
+
 $quiz_data = carregarDadosQuiz();
 
 switch ($acao) {
@@ -91,13 +107,13 @@ function exibirPainelAdmin($quiz_data) {
             <!-- Alertas fixos para mensagens do PHP -->
             <?php if (isset($_GET['success'])): ?>
                 <div class="alert alert-success alert-fixed" style="display: block;">
-                    <?php echo htmlspecialchars($_GET['success']); ?>
+                    <?php echo h($_GET['success']); ?>
                 </div>
             <?php endif; ?>
             
             <?php if (isset($_GET['erro'])): ?>
                 <div class="alert alert-error alert-fixed" style="display: block;">
-                    <?php echo htmlspecialchars($_GET['erro']); ?>
+                    <?php echo h($_GET['erro']); ?>
                 </div>
             <?php endif; ?>
 
@@ -136,7 +152,7 @@ function exibirPainelAdmin($quiz_data) {
                     
                     <div class="two-columns">
                         <div class="column">
-                            <textarea id="jsonEditor" placeholder="Cole seu JSON aqui..."><?php echo htmlspecialchars($dados['json_atual']); ?></textarea>
+                            <textarea id="jsonEditor" placeholder="Cole seu JSON aqui..."><?php echo h($dados['json_atual']); ?></textarea>
                         </div>
                         <div class="column">
                             <div class="action-panel">
@@ -145,6 +161,7 @@ function exibirPainelAdmin($quiz_data) {
                                     <button class="btn btn-success" onclick="saveJson()">
                                         💾 Salvar JSON
                                     </button>
+                                    <input type="hidden" id="admin_csrf_token" value="<?php echo gerarTokenCSRF(); ?>">
                                     <button class="btn" onclick="loadCurrentJson()">
                                         🔄 Carregar JSON Atual
                                     </button>
@@ -199,6 +216,7 @@ function exibirPainelAdmin($quiz_data) {
                             <button type="button" class="btn btn-success" onclick="uploadFile()" style="margin-top: 15px;">
                                 ⬆️ Fazer Upload
                             </button>
+                            <input type="hidden" name="csrf_token" value="<?php echo gerarTokenCSRF(); ?>">
                         </div>
                         
                         <div class="column">
@@ -384,6 +402,7 @@ function exibirPainelAdmin($quiz_data) {
             <div class="modal-content">
                 <h3>💾 Salvar Quiz</h3>
                 <form id="formSalvarComo">
+                    <input type="hidden" name="csrf_token" value="<?php echo gerarTokenCSRF(); ?>">
                     <div class="form-group">
                         <label for="nome_quiz">Nome do Quiz:</label>
                         <input type="text" id="nome_quiz" name="nome_quiz" required 
@@ -573,7 +592,7 @@ function exibirPainelAdmin($quiz_data) {
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded',
                         },
-                        body: 'json_data=' + encodeURIComponent(jsonData)
+                        body: 'json_data=' + encodeURIComponent(jsonData) + '&csrf_token=' + encodeURIComponent(document.getElementById('admin_csrf_token').value)
                     });
                     
                     const result = await response.text();
@@ -664,6 +683,7 @@ function exibirPainelAdmin($quiz_data) {
 
                 const formData = new FormData();
                 formData.append('json_file', currentFile);
+                formData.append('csrf_token', document.getElementById('admin_csrf_token').value);
 
                 try {
                     const response = await fetch('admin.php?acao=upload-json', {

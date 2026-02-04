@@ -10,7 +10,7 @@
     <div class="container-quiz" style="max-width: 900px;"> <!-- Ligeiramente maior para a grade -->
         <div class="header-home" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid var(--border);">
             <div>
-                <h1>Olá, <?php echo htmlspecialchars($dados['username']); ?>! 👋</h1>
+                <h1>Olá, <?php echo h($dados['username']); ?>! 👋</h1>
                 <p>Escolha um desafio para começar:</p>
             </div>
             <div style="display: flex; gap: 10px;">
@@ -29,14 +29,14 @@
         <?php foreach ($quizzes_por_disciplina as $disciplina => $quizzes): ?>
             <div class="disciplina-container" style="margin-bottom: 40px;">
                 <h2 style="font-size: 1.1rem; color: var(--primary); margin-bottom: 15px; display: flex; align-items: center; gap: 8px; text-transform: uppercase; letter-spacing: 0.5px;">
-                    📂 <?php echo htmlspecialchars(ucfirst($disciplina)); ?>
+                    📂 <?php echo h(ucfirst($disciplina)); ?>
                 </h2>
                 
                 <div class="grid-quizzes">
                     <?php foreach ($quizzes as $quiz): ?>
                         <div class="quiz-card">
                             <div class="quiz-header" style="margin-bottom: 8px;">
-                                <h3 class="quiz-title"><?php echo htmlspecialchars($quiz['nome']); ?></h3>
+                                <h3 class="quiz-title"><?php echo h($quiz['nome']); ?></h3>
                             </div>
                             
                             <div class="quiz-info" style="margin-bottom: 12px; flex-grow: 1;">
