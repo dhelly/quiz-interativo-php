@@ -230,6 +230,49 @@ function obterInteracoes() {
     }
 }
 
+function obterComentariosPublicos($question_id) {
+    try {
+        $pdo = get_db_connection();
+        $stmt = $pdo->prepare("
+            SELECT i.*, u.username, 
+                   (SELECT COUNT(*) FROM comment_votes WHERE interaction_id = i.id) as total_votes
+            FROM question_interactions i
+            JOIN users u ON i.user_id = u.id
+            WHERE i.question_id = ? AND i.comment IS NOT NULL AND i.comment != ''
+            ORDER BY total_votes DESC, i.created_at DESC
+        ");
+        $stmt->execute([$question_id]);
+        return $stmt->fetchAll();
+    } catch (Exception $e) {
+        error_log("Erro ao obter comentários públicos: " . $e->getMessage());
+        return [];
+    }
+}
+
+function votarNoComentario($user_id, $interaction_id) {
+    try {
+        $pdo = get_db_connection();
+        // Verifica se já votou
+        $stmt = $pdo->prepare("SELECT id FROM comment_votes WHERE user_id = ? AND interaction_id = ?");
+        $stmt->execute([$user_id, $interaction_id]);
+        if ($stmt->fetch()) {
+            return ['success' => false, 'message' => 'Você já votou neste comentário.'];
+        }
+
+        $stmt = $pdo->prepare("INSERT INTO comment_votes (user_id, interaction_id) VALUES (?, ?)");
+        if ($stmt->execute([$user_id, $interaction_id])) {
+            // Retorna o novo total de votos
+            $stmt = $pdo->prepare("SELECT COUNT(*) FROM comment_votes WHERE interaction_id = ?");
+            $stmt->execute([$interaction_id]);
+            $count = $stmt->fetchColumn();
+            return ['success' => true, 'votes' => $count];
+        }
+        return ['success' => false, 'message' => 'Erro ao registrar voto.'];
+    } catch (Exception $e) {
+        return ['success' => false, 'message' => 'Erro no servidor: ' . $e->getMessage()];
+    }
+}
+
 function obterRanking($quiz_id = 1, $limit = 10) {
     try {
         $pdo = get_db_connection();

@@ -70,6 +70,26 @@
                     </div>
                     <div id="interacaoAviso" style="font-size: 0.75rem; margin-top: 5px; display: none;"></div>
                 </div>
+
+                <!-- Nova Área da Comunidade -->
+                <div class="comunidade-wrapper">
+                    <div class="comunidade-header">
+                        <div class="comunidade-title">
+                            🤝 Notas da Comunidade
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span style="font-size: 0.8rem; color: var(--text-muted);">Ver notas de outros</span>
+                            <label class="switch">
+                                <input type="checkbox" id="toggleComunidade" onchange="toggleComunidade()">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div id="listaComentarios" class="comentarios-lista" style="display: none;">
+                        <div class="empty-comments">Carregando comentários...</div>
+                    </div>
+                </div>
             </div>
 
             <div class="questao-header">
@@ -321,6 +341,106 @@
                 btn.textContent = 'Enviar Feedback';
             });
         }
+
+        function toggleComunidade() {
+            const toggle = document.getElementById('toggleComunidade');
+            const lista = document.getElementById('listaComentarios');
+            
+            if (toggle.checked) {
+                lista.style.display = 'flex';
+                carregarComentarios();
+                localStorage.setItem('showCommunityComments', 'true');
+            } else {
+                lista.style.display = 'none';
+                localStorage.setItem('showCommunityComments', 'false');
+            }
+        }
+
+        function carregarComentarios() {
+            const lista = document.getElementById('listaComentarios');
+            
+            fetch(`api.php?action=get_comments&question_id=${questaoId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        renderizarComentarios(data.comments);
+                    } else {
+                        lista.innerHTML = `<div class="empty-comments">❌ Erro ao carregar: ${data.message}</div>`;
+                    }
+                })
+                .catch(error => {
+                    lista.innerHTML = '<div class="empty-comments">❌ Erro de conexão ao buscar notas.</div>';
+                });
+        }
+
+        function renderizarComentarios(comments) {
+            const lista = document.getElementById('listaComentarios');
+            if (comments.length === 0) {
+                lista.innerHTML = '<div class="empty-comments">Nenhuma nota compartilhada para esta questão ainda.</div>';
+                return;
+            }
+
+            lista.innerHTML = '';
+            comments.forEach(c => {
+                const item = document.createElement('div');
+                item.className = 'comentario-item';
+                
+                const dataFormatada = new Date(c.created_at).toLocaleDateString('pt-BR', {
+                    day: '2-digit', month: '2-digit', year: '2-digit', hour: '2-digit', minute: '2-digit'
+                });
+
+                item.innerHTML = `
+                    <div class="comentario-votos">
+                        <button class="btn-vote" onclick="votarComentario(${c.id}, this)" title="Útil!">
+                            ▲
+                        </button>
+                        <span class="votos-count">${c.total_votes}</span>
+                    </div>
+                    <div class="comentario-corpo">
+                        <div class="comentario-meta">
+                            <span class="comentario-user">@${c.username}</span>
+                            <span>${dataFormatada}</span>
+                        </div>
+                        <div class="comentario-texto">${c.comment}</div>
+                    </div>
+                `;
+                lista.appendChild(item);
+            });
+        }
+
+        function votarComentario(commentId, btn) {
+            if (btn.classList.contains('voted')) return;
+
+            const formData = new FormData();
+            formData.append('comment_id', commentId);
+
+            fetch('api.php?action=vote_comment', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    btn.classList.add('voted');
+                    const countSpan = btn.nextElementSibling;
+                    countSpan.textContent = data.votes;
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Erro ao votar:', error);
+            });
+        }
+
+        // Recuperar preferência do usuário
+        document.addEventListener('DOMContentLoaded', () => {
+            const pref = localStorage.getItem('showCommunityComments');
+            if (pref === 'true') {
+                document.getElementById('toggleComunidade').checked = true;
+                toggleComunidade();
+            }
+        });
     </script>
 </body>
 </html>

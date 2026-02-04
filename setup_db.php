@@ -20,6 +20,7 @@ try {
     
     // Resetar banco de dados (Cuidado: Remove todos os dados)
     $pdo->exec("SET FOREIGN_KEY_CHECKS = 0");
+    $pdo->exec("DROP TABLE IF EXISTS comment_votes");
     $pdo->exec("DROP TABLE IF EXISTS question_interactions");
     $pdo->exec("DROP TABLE IF EXISTS scores");
     $pdo->exec("DROP TABLE IF EXISTS options");
@@ -100,6 +101,18 @@ try {
         FOREIGN KEY (question_id) REFERENCES questions(id) ON DELETE CASCADE
     ) ENGINE=InnoDB");
     echo "✅ Tabela 'question_interactions' pronta.\n";
+
+    // Tabela de Votos em Comentários
+    $pdo->exec("CREATE TABLE IF NOT EXISTS comment_votes (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        interaction_id INT NOT NULL,
+        user_id INT NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        UNIQUE KEY user_interaction_vote (user_id, interaction_id),
+        FOREIGN KEY (interaction_id) REFERENCES question_interactions(id) ON DELETE CASCADE,
+        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    ) ENGINE=InnoDB");
+    echo "✅ Tabela 'comment_votes' pronta.\n";
     
     // Inserir usuários iniciais
     $adminPassword = password_hash('admin123', PASSWORD_DEFAULT);
