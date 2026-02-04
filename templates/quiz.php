@@ -51,6 +51,25 @@
             <div class="feedback" id="feedback">
                 <div id="feedbackMensagem"></div>
                 <div class="explicacao" id="feedbackExplicacao"></div>
+                
+                <!-- Nova Área de Interação -->
+                <div class="interacao-container" style="margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--border);">
+                    <div style="font-size: 0.9rem; font-weight: 600; margin-bottom: 10px; color: var(--text-main);">
+                        💬 Dúvida ou erro nessa questão?
+                    </div>
+                    <textarea id="comentarioQuestao" placeholder="Deixe um comentário ou reporte um erro..." 
+                              style="width: 100%; height: 60px; padding: 10px; border-radius: 6px; border: 1px solid var(--border); font-size: 0.85rem;"></textarea>
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+                        <label style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; cursor: pointer; color: var(--danger);">
+                            <input type="checkbox" id="sinalizarErro"> 🚩 Sinalizar Erro
+                        </label>
+                        <button class="btn btn-small" onclick="enviarInteracao()" id="btnEnviarInteracao">
+                            Enviar Feedback
+                        </button>
+                    </div>
+                    <div id="interacaoAviso" style="font-size: 0.75rem; margin-top: 5px; display: none;"></div>
+                </div>
             </div>
 
             <div class="questao-header">
@@ -257,6 +276,50 @@
             // Mantém todos os parâmetros atuais da URL
             const urlParams = new URLSearchParams(window.location.search);
             window.location.href = 'index.php?' + urlParams.toString();
+        }
+
+        function enviarInteracao() {
+            const comment = document.getElementById('comentarioQuestao').value;
+            const is_flagged = document.getElementById('sinalizarErro').checked ? 1 : 0;
+            const aviso = document.getElementById('interacaoAviso');
+            const btn = document.getElementById('btnEnviarInteracao');
+
+            if (!comment && !is_flagged) return;
+
+            btn.disabled = true;
+            btn.textContent = 'Enviando...';
+
+            const formData = new FormData();
+            formData.append('question_id', questaoId);
+            formData.append('comment', comment);
+            formData.append('is_flagged', is_flagged);
+
+            fetch('salvar_interacao.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    aviso.style.display = 'block';
+                    aviso.style.color = 'var(--success)';
+                    aviso.textContent = '✅ Feedback enviado com sucesso!';
+                    btn.textContent = 'Enviado';
+                } else {
+                    aviso.style.display = 'block';
+                    aviso.style.color = 'var(--danger)';
+                    aviso.textContent = '❌ Erro: ' + data.message;
+                    btn.disabled = false;
+                    btn.textContent = 'Enviar Feedback';
+                }
+            })
+            .catch(error => {
+                aviso.style.display = 'block';
+                aviso.style.color = 'var(--danger)';
+                aviso.textContent = '❌ Erro de conexão.';
+                btn.disabled = false;
+                btn.textContent = 'Enviar Feedback';
+            });
         }
     </script>
 </body>

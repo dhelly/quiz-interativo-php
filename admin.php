@@ -3,6 +3,12 @@ session_start();
 require_once 'carregar_dados.php';
 require_once 'validar_quiz.php';
 
+// Acesso restrito a administradores
+if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
+    header('Location: index.php');
+    exit;
+}
+
 $acao = $_GET['acao'] ?? 'panel';
 $quiz_data = carregarDadosQuiz();
 
@@ -61,7 +67,8 @@ function exibirPainelAdmin($quiz_data) {
         'questoes' => $quiz_data,
         'json_atual' => json_encode($quiz_data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE),
         'quizzes_salvos' => $quizzes_salvos,
-        'disciplinas' => $disciplinas
+        'disciplinas' => $disciplinas,
+        'interacoes' => obterInteracoes()
     ];
     
     // Template HTML
@@ -112,9 +119,10 @@ function exibirPainelAdmin($quiz_data) {
             <div class="card">
                 <div class="tabs">
                     <div class="tab active" onclick="showTab('editor')">📝 Editor JSON</div>
-                    <div class="tab" onclick="showTab('upload')">📁 Upload Arquivo</div>
-                    <div class="tab" onclick="showTab('quizzes')">📚 Quizzes Salvos</div>
-                    <div class="tab" onclick="showTab('questoes')">📊 Questões Atuais</div>
+                    <div class="tab" onclick="showTab('upload')">📁 Upload</div>
+                    <div class="tab" onclick="showTab('quizzes')">📚 Quizzes</div>
+                    <div class="tab" onclick="showTab('questoes')">📊 Questões</div>
+                    <div class="tab" onclick="showTab('moderacao')">👮 Moderação</div>
                 </div>
 
                 <!-- Alertas dinâmicos para JavaScript -->

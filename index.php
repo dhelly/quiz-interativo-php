@@ -17,14 +17,42 @@ if (isset($_GET['carregar_quiz'])) {
 $acao = $_GET['acao'] ?? 'quiz';
 
 // Gerenciamento de Usuário (Sessão)
-if (!isset($_SESSION['username']) && $acao != 'login') {
+if ((!isset($_SESSION['username']) || !isset($_SESSION['user_id'])) && $acao != 'login') {
     $acao = 'welcome';
 }
 
-if ($acao == 'login' && isset($_POST['username'])) {
-    $_SESSION['username'] = $_POST['username'];
-    header('Location: index.php');
-    exit;
+if ($acao == 'login' && isset($_POST['username']) && isset($_POST['password'])) {
+    $username = trim($_POST['username']);
+    $password = $_POST['password'];
+    
+    // Tenta autenticar
+    $user = autenticarUsuario($username, $password);
+    
+    if ($user) {
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['username'] = $user['username'];
+        $_SESSION['is_admin'] = (bool)$user['is_admin'];
+        header('Location: index.php');
+        exit;
+    } else {
+        // Se não conseguiu autenticar, tenta registrar (se não for admin o username desejado)
+        if ($username !== 'admin') {
+            $registro = registrarUsuario($username, $password);
+            if ($registro['success']) {
+                $_SESSION['user_id'] = $registro['id'];
+                $_SESSION['username'] = $username;
+                $_SESSION['is_admin'] = false;
+                header('Location: index.php');
+                exit;
+            } else {
+                $erro_login = $registro['message'];
+                $acao = 'welcome';
+            }
+        } else {
+            $erro_login = "Senha incorreta para o administrador.";
+            $acao = 'welcome';
+        }
+    }
 }
 
 if ($acao == 'logout') {
@@ -72,7 +100,15 @@ switch ($acao) {
 
 function exibirQuiz($quiz_data, $questao_id = null, $acertos = 0, $modo_revisao = false) {
     if (empty($quiz_data)) {
-        die("Erro: Nenhuma questão encontrada. Verifique o arquivo de dados.");
+        if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true) {
+            header('Location: admin.php?erro=sem_questoes');
+            exit;
+        }
+        die("<div style='font-family: sans-serif; padding: 20px; text-align: center;'>
+                <h2>🚧 Quiz em Manutenção</h2>
+                <p>Nenhuma questão foi encontrada no banco de dados. Por favor, tente novamente mais tarde.</p>
+                <a href='index.php?acao=logout'>Voltar ao Início</a>
+             </div>");
     }
 
     // Se for modo revisão, usa apenas as questões erradas

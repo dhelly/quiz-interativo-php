@@ -21,8 +21,9 @@ $dados = [
 ];
 
 // Salva no banco de dados se não for modo revisão
-if (!$modo_revisao && isset($_SESSION['username'])) {
-    salvarScore($_SESSION['username'], 1, $acertos_total, $total_perguntas);
+if (!$modo_revisao && isset($_SESSION['user_id'])) {
+    $quiz_id = $_GET['quiz_id'] ?? 1;
+    salvarScore($_SESSION['user_id'], $quiz_id, $acertos_total, $total_perguntas);
 }
 
 

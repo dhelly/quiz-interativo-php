@@ -138,26 +138,95 @@ function salvarDadosQuiz($dados) {
     }
 }
 
-// Funções para Ranking
-function salvarScore($username, $quiz_id, $score, $total) {
+// Funções de Autenticação
+function autenticarUsuario($username, $password) {
     try {
         $pdo = get_db_connection();
-        
-        // Garante que o usuário existe
-        $stmt = $pdo->prepare("INSERT IGNORE INTO users (username) VALUES (?)");
-        $stmt->execute([$username]);
-        
-        $stmt = $pdo->prepare("SELECT id FROM users WHERE username = ?");
+        $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ?");
         $stmt->execute([$username]);
         $user = $stmt->fetch();
         
+        if ($user && password_verify($password, $user['password'])) {
+            return $user; // Retorna dados do usuário (incluindo is_admin)
+        }
+        return false;
+    } catch (Exception $e) {
+        error_log("Erro na autenticação: " . $e->getMessage());
+        return false;
+    }
+}
+
+function registrarUsuario($username, $password) {
+    try {
+        $pdo = get_db_connection();
+        // Verifica se já existe
+        $stmt = $pdo->prepare("SELECT id FROM users WHERE username = ?");
+        $stmt->execute([$username]);
+        if ($stmt->fetch()) {
+            return ['success' => false, 'message' => 'Este apelido já está sendo usado.'];
+        }
+        
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+        $stmt = $pdo->prepare("INSERT INTO users (username, password, is_admin) VALUES (?, ?, ?)");
+        $stmt->execute([$username, $hash, 0]);
+        
+        return ['success' => true, 'id' => $pdo->lastInsertId()];
+    } catch (Exception $e) {
+        return ['success' => false, 'message' => 'Erro ao criar conta.'];
+    }
+}
+
+// Funções para Ranking
+function salvarScore($user_id, $quiz_id, $score, $total) {
+    try {
+        $pdo = get_db_connection();
         $percentage = ($score / $total) * 100;
         
         $stmt = $pdo->prepare("INSERT INTO scores (user_id, quiz_id, score, total, percentage) VALUES (?, ?, ?, ?, ?)");
-        return $stmt->execute([$user['id'], $quiz_id, $score, $total, $percentage]);
+        return $stmt->execute([$user_id, $quiz_id, $score, $total, $percentage]);
     } catch (Exception $e) {
         error_log("Erro ao salvar score: " . $e->getMessage());
         return false;
+    }
+}
+
+// Interações de Questões
+function salvarInteracaoQuestao($user_id, $question_id, $comment, $is_flagged) {
+    try {
+        $pdo = get_db_connection();
+        
+        // Verifica se já existe uma interação desse usuário para essa questão
+        $stmt = $pdo->prepare("SELECT id FROM question_interactions WHERE user_id = ? AND question_id = ?");
+        $stmt->execute([$user_id, $question_id]);
+        $interaction = $stmt->fetch();
+        
+        if ($interaction) {
+            $stmt = $pdo->prepare("UPDATE question_interactions SET comment = ?, is_flagged = ? WHERE id = ?");
+            return $stmt->execute([$comment, $is_flagged ? 1 : 0, $interaction['id']]);
+        } else {
+            $stmt = $pdo->prepare("INSERT INTO question_interactions (user_id, question_id, comment, is_flagged) VALUES (?, ?, ?, ?)");
+            return $stmt->execute([$user_id, $question_id, $comment, $is_flagged ? 1 : 0]);
+        }
+    } catch (Exception $e) {
+        error_log("Erro ao salvar interação: " . $e->getMessage());
+        return false;
+    }
+}
+
+function obterInteracoes() {
+    try {
+        $pdo = get_db_connection();
+        $stmt = $pdo->query("
+            SELECT i.*, u.username, q.pergunta, q.topico 
+            FROM question_interactions i
+            JOIN users u ON i.user_id = u.id
+            JOIN questions q ON i.question_id = q.id
+            ORDER BY i.is_flagged DESC, i.created_at DESC
+        ");
+        return $stmt->fetchAll();
+    } catch (Exception $e) {
+        error_log("Erro ao obter interações: " . $e->getMessage());
+        return [];
     }
 }
 

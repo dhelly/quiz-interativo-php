@@ -18,10 +18,23 @@ try {
     // Conecta ao banco de dados recém-criado
     $pdo->exec("USE " . DB_NAME);
     
+    // Resetar banco de dados (Cuidado: Remove todos os dados)
+    $pdo->exec("SET FOREIGN_KEY_CHECKS = 0");
+    $pdo->exec("DROP TABLE IF EXISTS question_interactions");
+    $pdo->exec("DROP TABLE IF EXISTS scores");
+    $pdo->exec("DROP TABLE IF EXISTS options");
+    $pdo->exec("DROP TABLE IF EXISTS questions");
+    $pdo->exec("DROP TABLE IF EXISTS quizzes");
+    $pdo->exec("DROP TABLE IF EXISTS users");
+    $pdo->exec("SET FOREIGN_KEY_CHECKS = 1");
+    echo "♻️ Banco de dados zerado para nova configuração.\n";
+
     // Tabela de Usuários
     $pdo->exec("CREATE TABLE IF NOT EXISTS users (
         id INT AUTO_INCREMENT PRIMARY KEY,
         username VARCHAR(50) NOT NULL UNIQUE,
+        password VARCHAR(255) NOT NULL,
+        is_admin BOOLEAN DEFAULT FALSE,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     ) ENGINE=InnoDB");
     echo "✅ Tabela 'users' pronta.\n";
@@ -74,14 +87,29 @@ try {
         FOREIGN KEY (quiz_id) REFERENCES quizzes(id) ON DELETE CASCADE
     ) ENGINE=InnoDB");
     echo "✅ Tabela 'scores' pronta.\n";
+
+    // Tabela de Interações (Sinalizações e Comentários)
+    $pdo->exec("CREATE TABLE IF NOT EXISTS question_interactions (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        user_id INT NOT NULL,
+        question_id INT NOT NULL,
+        comment TEXT,
+        is_flagged BOOLEAN DEFAULT FALSE,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+        FOREIGN KEY (question_id) REFERENCES questions(id) ON DELETE CASCADE
+    ) ENGINE=InnoDB");
+    echo "✅ Tabela 'question_interactions' pronta.\n";
     
-    // Inserir quiz padrão se não existir
-    $stmt = $pdo->prepare("SELECT id FROM quizzes WHERE name = 'Quiz Inicial'");
-    $stmt->execute();
-    if (!$stmt->fetch()) {
-        $pdo->exec("INSERT INTO quizzes (name, discipline) VALUES ('Quiz Inicial', 'geral')");
-        echo "✅ Quiz Inicial inserido.\n";
-    }
+    // Inserir usuários iniciais
+    $adminPassword = password_hash('admin123', PASSWORD_DEFAULT);
+    $pdo->prepare("INSERT INTO users (username, password, is_admin) VALUES (?, ?, ?)")
+        ->execute(['admin', $adminPassword, 1]);
+    echo "✅ Usuário administrador criado (admin / admin123).\n";
+
+    // Inserir quiz padrão
+    $pdo->exec("INSERT INTO quizzes (name, discipline) VALUES ('Quiz Inicial', 'geral')");
+    echo "✅ Quiz Inicial inserido.\n";
 
     echo "\n🚀 Configuração concluída com sucesso!";
 

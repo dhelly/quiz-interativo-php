@@ -4,6 +4,15 @@ require_once 'carregar_dados.php';
 
 $quiz_id = $_GET['quiz_id'] ?? 1;
 $ranking = obterRanking($quiz_id);
+$quizzes = listarQuizzes();
+$quiz_atual = null;
+foreach ($quizzes as $q) {
+    if ($q['id'] == $quiz_id) {
+        $quiz_atual = $q;
+        break;
+    }
+}
+$nome_quiz = $quiz_atual ? $quiz_atual['name'] : 'Quiz';
 
 ?>
 <!DOCTYPE html>
@@ -11,14 +20,24 @@ $ranking = obterRanking($quiz_id);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ranking - Quiz Interativo</title>
+    <title>Ranking - <?php echo htmlspecialchars($nome_quiz); ?></title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="pagina-ranking">
     <div class="container-quiz">
         <div class="header-quiz">
             <h1>🏆 Ranking de Líderes</h1>
-            <p>Os melhores desempenhos no Quiz</p>
+            <p>Simulado: <strong><?php echo htmlspecialchars($nome_quiz); ?></strong></p>
+            
+            <form action="ranking.php" method="GET" style="margin-top: 15px;">
+                <select name="quiz_id" onchange="this.form.submit()" class="btn btn-secondary" style="background: white; color: var(--text-main); border: 1px solid var(--border); padding: 5px 15px;">
+                    <?php foreach ($quizzes as $q): ?>
+                        <option value="<?php echo $q['id']; ?>" <?php echo $q['id'] == $quiz_id ? 'selected' : ''; ?>>
+                            <?php echo htmlspecialchars($q['name']); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </form>
         </div>
 
         <div class="card ranking-card">
