@@ -12,9 +12,20 @@ if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
 $acao = $_GET['acao'] ?? 'panel';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Tenta pegar o token do POST, do Header ou do input JSON
     $csrf_token = $_POST['csrf_token'] ?? $_SERVER['HTTP_X_CSRF_TOKEN'] ?? '';
+    
+    // Se ainda estiver vazio e for um request JSON, tenta ler do body
+    if (empty($csrf_token)) {
+        $input = json_decode(file_get_contents('php://input'), true);
+        $csrf_token = $input['csrf_token'] ?? '';
+    }
+
     if (!validarTokenCSRF($csrf_token)) {
-        die('Erro CSRF: Requisição inválida.');
+        header('Content-Type: application/json');
+        http_response_code(403);
+        echo json_encode(['success' => false, 'message' => 'Erro CSRF: Requisição inválida ou token expirado.']);
+        exit;
     }
 }
 
@@ -652,6 +663,7 @@ function exibirPainelAdmin($quiz_data) {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded',
+                            'X-CSRF-Token': document.getElementById('admin_csrf_token').value
                         },
                         body: 'json_data=' + encodeURIComponent(jsonData) + '&csrf_token=' + encodeURIComponent(document.getElementById('admin_csrf_token').value)
                     });
@@ -798,7 +810,8 @@ function exibirPainelAdmin($quiz_data) {
                 
                 const dados = {
                     nome_quiz: formData.get('nome_quiz'),
-                    disciplina: disciplina
+                    disciplina: disciplina,
+                    csrf_token: formData.get('csrf_token') // Inclui no corpo do JSON
                 };
                 
                 try {
@@ -806,6 +819,7 @@ function exibirPainelAdmin($quiz_data) {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
+                            'X-CSRF-Token': formData.get('csrf_token') // Também no header para garantia
                         },
                         body: JSON.stringify(dados)
                     });

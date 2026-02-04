@@ -1,122 +1,92 @@
 [
-    {
-        "id": 1,
-        "pergunta": "A Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709\/2018) dispõe sobre o tratamento de dados pessoais, inclusive nos meios digitais, por pessoa natural ou por pessoa jurídica de direito público ou privado, com o objetivo de proteger os direitos fundamentais de liberdade e de privacidade e o livre desenvolvimento da personalidade. <b>Entretanto, seus fundamentos, como o respeito à privacidade e a dignidade, aplicam-se igualmente para proteger o livre desenvolvimento da personalidade de pessoas jurídicas.<\/b>",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"Art. 1º Esta Lei dispõe sobre o tratamento de dados pessoais, inclusive nos meios digitais, por pessoa natural ou por pessoa jurídica de direito público ou privado, com o objetivo de proteger os direitos fundamentais de liberdade e de privacidade e o livre desenvolvimento da personalidade da pessoa natural.\" (Página 3). \"Art. 2º ... VII - os direitos humanos, o livre desenvolvimento da personalidade, a dignidade e o exercício da cidadania pelas pessoas naturais.\" (Página 8).<br><br><b>Análise da Assertiva:<\/b> A primeira parte da assertiva (antes de 'Entretanto') está correta, conforme artigo 1º. No entanto, a segunda parte (após 'Entretanto') está errada. O fundamento do \"livre desenvolvimento da personalidade\" e, por extensão lógica, a dignidade, aplicam-se exclusivamente às <b>pessoas naturais<\/b>, conforme a redação expressa do inciso VII do art. 2º. A LGPD tem como foco central a proteção dos titulares, que são pessoas naturais. A inclusão de pessoas jurídicas no artigo 1º refere-se a quem realiza o tratamento (controlador\/operador), não a quem é titular dos direitos protegidos.<br><br><b>Possíveis induções de erro:<\/b> A pegadinha está na <b>inversão e modificação de qualificadores legais<\/b>. O examinador aproveita que a lei se aplica a pessoas jurídicas (como agentes de tratamento) para, de forma sorrateira, estender a elas os direitos fundamentais destinados apenas a pessoas naturais. O candidato deve separar claramente os conceitos de 'quem trata os dados' (pode ser pessoa jurídica) e 'quem é o titular dos direitos' (sempre pessoa natural).",
-        "topico": "Aplicação Pessoal e Objetivos da LGPD (Art. 1º e 2º)",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 2,
-        "pergunta": "Os dados cadastrais, como CPF, título de eleitor e estado civil, são considerados dados pessoais sensíveis pela LGPD, <b>uma vez que servem para identificar de forma inequívoca o cidadão perante a administração pública e, portanto, exigem proteção reforçada.<\/b>",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"II - dado pessoal sensível: dado pessoal sobre origem racial ou étnica, convicção religiosa, opinião política, filiação a sindicato ou a organização de caráter religioso, filosófico ou político, dado referente à saúde ou à vida sexual, dado genético ou biométrico, quando vinculado a uma pessoa natural;\" (Página 4). \"Por fim, na área da administração pública, existe ainda uma subdivisão conhecida como dados cadastrais. Esses são os dados que servem para identificar cidadãos ou entidades: atributos biográficos como sexo, estado civil, nacionalidade, e também números como CPF, CNPJ e título de eleitor.\" (Página 7).<br><br><b>Análise da Assertiva:<\/b> A premissa inicial (\"Os dados cadastrais... são considerados dados pessoais sensíveis\") está <b>errada<\/b>. Dados cadastrais são dados pessoais comuns. O conceito de dado sensível está taxativamente definido no art. 5º, II, e não inclui dados meramente identificadores como CPF ou estado civil. A justificativa apresentada (\"servem para identificar... e exigem proteção reforçada\") até possui um núcleo de verdade (dados pessoais merecem proteção), mas não é a razão legal para classificar um dado como sensível. A classificação como sensível decorre do potencial de discriminação e da natureza íntima da informação, conforme a lista legal.<br><br><b>Possíveis induções de erro:<\/b> A questão utiliza uma <b>falsa causalidade ('Certo + Certo = Errado')<\/b>. O candidato pode achar que ambos os trechos são verdadeiros: dados cadastrais identificam e dados sensíveis têm proteção reforçada. No entanto, a relação causal estabelecida (\"uma vez que\") é falsa, pois a identificação do cidadão não é o critério legal para definir dado sensível. Além disso, há uma <b>ampliação indevida<\/b> do conceito estrito de dado sensível.",
-        "topico": "Conceitos: Dado Pessoal, Sensível e Cadastral (Art. 5º)",
-        "nivel": "Básico"
-    },
-    {
-        "id": 3,
-        "pergunta": "O princípio da necessidade, previsto no art. 6º da LGPD, determina que o tratamento de dados pessoais deve ser limitado ao mínimo necessário para a realização de suas finalidades. <b>Portanto, uma empresa está proibida de coletar qualquer dado que não seja estritamente indispensável para a execução imediata do contrato, vedado o armazenamento para eventual uso futuro em outras finalidades legítimas.<\/b>",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"III - necessidade: limitação do tratamento ao mínimo necessário para a realização de suas finalidades, com abrangência dos dados pertinentes, proporcionais e não excessivos em relação às finalidades do tratamento de dados;\" (Página 14). \"I - finalidade: realização do tratamento para propósitos legítimos, específicos, explícitos e informados ao titular, <b>sem possibilidade de tratamento posterior de forma incompatível com essas finalidades;<\/b>\" (Página 14).<br><br><b>Análise da Assertiva:<\/b> A primeira frase, que descreve o princípio da necessidade, está correta. A segunda frase (após 'Portanto') está <b>errada<\/b> por dois motivos: 1) A LGPD não veda o tratamento para outras finalidades legítimas futuras; ela veda o tratamento para finalidades <b>incompatíveis<\/b> com a original (princípio da finalidade). Se houver uma nova finalidade legítima, específica, e desde que amparada por uma base legal e observados os direitos do titular (inclusive novo consentimento, se for o caso), o tratamento posterior pode ser possível. 2) O princípio da necessidade não se confunde com uma proibição absoluta de coletar dados para planejamento futuro legítimo, desde que a finalidade seja informada e a coleta seja proporcional.<br><br><b>Possíveis induções de erro:<\/b> O examinador emprega uma <b>armadilha do absoluto<\/b> (\"proibida de coletar <b>qualquer<\/b> dado\", \"vedado o armazenamento para <b>eventual<\/b> uso futuro\") e faz uma <b>interpretação restritiva e extrema<\/b> do princípio da necessidade, ignorando a interação com o princípio da finalidade. O candidato deve perceber que a lei busca um equilíbrio, não um absolutismo que impeça operações comerciais ou de gestão razoáveis.",
-        "topico": "Princípios do Tratamento (Art. 6º)",
-        "nivel": "Avançado"
-    },
-    {
-        "id": 4,
-        "pergunta": "A LGPD aplica-se ao tratamento de dados realizado por uma empresa de tecnologia com sede nos Estados Unidos, <b>somente se<\/b> essa empresa possuir uma filial ou representante legalmente estabelecido no território brasileiro.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"Art. 3º ... desde que: I - a operação de tratamento seja realizada no território nacional; II - a atividade de tratamento tenha por objetivo a oferta ou o fornecimento de bens ou serviços ou o tratamento de dados de indivíduos localizados no território nacional; ou III - os dados pessoais objeto do tratamento tenham sido coletados no território nacional.\" (Página 10).<br><br><b>Análise da Assertiva:<\/b> A assertiva está <b>errada<\/b> porque a LGPD tem aplicação extraterritorial e não está condicionada à existência de estabelecimento físico no Brasil. Conforme o art. 3º, a lei se aplica se a empresa, mesmo sediada no exterior, oferecer bens ou serviços a indivíduos no Brasil (inciso II) ou coletar dados no território nacional (inciso III). A presença de uma filial não é requisito.<br><br><b>Possíveis induções de erro:<\/b> Trata-se de uma clássica <b>armadilha de restrição indevida<\/b> através do termo \"<b>somente se<\/b>\". O examinador cria uma condição que não existe na lei, limitando indevidamente o alcance da aplicação extraterritorial da LGPD, que é justamente um de seus aspectos mais importantes e modernos, inspirado no GDPR.",
-        "topico": "Âmbito de Aplicação da LGPD (Art. 3º)",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 5,
-        "pergunta": "O tratamento de dados pessoais para fins exclusivamente acadêmicos por uma universidade pública <b>está completamente isento<\/b> das disposições da Lei Geral de Proteção de Dados Pessoais.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"Art. 4º Esta Lei não se aplica ao tratamento de dados pessoais: ... II - realizado para fins exclusivamente: ... b) acadêmicos;\" (Página 12).<br><br><b>Análise da Assertiva:<\/b> A assertiva está <b>correta<\/b>. O artigo 4º, II, \"b\", da LGPD estabelece expressamente que a lei não se aplica ao tratamento realizado para fins exclusivamente acadêmicos. A expressão \"completamente isento\" reflete com precisão o disposto no dispositivo legal, que é uma exceção ao âmbito de aplicação da lei.<br><br><b>Possíveis induções de erro:<\/b> O candidato pode desconfiar do termo absoluto \"<b>completamente isento<\/b>\", pensando que talvez alguns princípios gerais ainda se apliquem. No entanto, para as hipóteses do art. 4º, a LGPD realmente <b>não se aplica<\/b>. O cuidado aqui é verificar se o fim é de fato \"exclusivamente\" acadêmico. Se a universidade misturar finalidades (ex.: pesquisa acadêmica com posterior comercialização de perfis), a exceção pode não mais vigorar. A assertiva, porém, descreve a hipótese típica de forma correta.",
-        "topico": "Hipóteses de Não Aplicação da LGPD (Art. 4º)",
-        "nivel": "Básico"
-    },
-    {
-        "id": 6,
-        "pergunta": "O encarregado (DPO) é obrigatoriamente indicado pelo controlador e pelo operador em conjunto, <b>sendo pessoalmente responsável, de forma solidária, pelas infrações à LGPD praticadas pelo controlador.<\/b>",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"VIII - encarregado: pessoa indicada pelo controlador e operador para atuar como canal de comunicação entre o controlador, os titulares dos dados e a Autoridade Nacional de Proteção de Dados (ANPD);\" (Página 4).<br><br><b>Análise da Assertiva:<\/b> A primeira parte da assertiva está <b>correta<\/b>: o encarregado é indicado pelo controlador e operador (embora na prática a indicação seja geralmente feita apenas pelo controlador). A segunda parte (após 'sendo') está <b>errada<\/b>. A LGPD não estabelece a responsabilidade solidária do encarregado pelas infrações do controlador. O encarregado é um canal de comunicação e um agente facilitador da conformidade. A responsabilidade pelo tratamento e pelas eventualidades legais é primordialmente do controlador (e, em certa medida, do operador), conforme a lógica dos \"agentes de tratamento\". Imputar responsabilidade solidária ao DPO seria uma distorção de sua função.<br><br><b>Possíveis induções de erro:<\/b> A questão utiliza uma <b>falsa causalidade<\/b> e uma <b>inversão\/modificação de qualificadores normativos<\/b>. O examinador aproveita uma premissa verdadeira (a indicação) para ligá-la a uma conclusão gravosa e inexistente na lei (responsabilidade solidária). O candidato deve dissociar a função de assessoria\/comunicação do encarregado da responsabilidade legal pelo tratamento, que é dos agentes (controlador e operador).",
-        "topico": "Conceitos: Agentes de Tratamento e Encarregado (Art. 5º)",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 7,
-        "pergunta": "O legítimo interesse do controlador constitui base legal válida para o tratamento de dados pessoais, <b>inclusive de dados sensíveis, independentemente de análise de proporcionalidade, desde que declarado em sua política de privacidade.<\/b>",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"IX - quando necessário para atender aos interesses legítimos do controlador ou de terceiro, exceto no caso de prevalecerem direitos e liberdades fundamentais do titular que exijam a proteção dos dados pessoais;\" (Página 18). \"O inciso IX trata da base do legítimo interesse... Sempre é necessária avaliação prévia e proporcionalidade.\" (Página 20).<br><br><b>Análise da Assertiva:<\/b> A assertiva está <b>errada<\/b> em múltiplos aspectos. 1) O legítimo interesse é uma base legal, mas seu uso para <b>dados sensíveis<\/b> é extremamente limitado e raro, pois a LGPD exige condições mais estritas para dados sensíveis (geralmente consentimento ou outras hipóteses específicas). 2) A análise de proporcionalidade e o balanço entre o interesse do controlador e os direitos do titular são <b>essenciais<\/b> e obrigatórios, conforme explicado no comentário do PDF. 3) A mera declaração em política de privacidade não substitui a necessidade de atender aos requisitos legais e ao teste de ponderação.<br><br><b>Possíveis induções de erro:<\/b> O examinador combina várias <b>inversões e omissões de qualificadores legais<\/b>. Primeiro, omite a ressalva crucial \"exceto no caso de prevalecerem direitos e liberdades fundamentais do titular\". Segundo, insere a expressão \"independentemente de análise de proporcionalidade\", o que é frontalmente contrário à doutrina e à prática da LGPD\/GDPR. Terceiro, sugere que a formalidade da política de privacidade é suficiente, o que é uma simplificação enganosa.",
-        "topico": "Bases Legais para o Tratamento - Legítimo Interesse (Art. 7º, IX)",
-        "nivel": "Avançado"
-    },
-    {
-        "id": 8,
-        "pergunta": "O titular dos dados tem direito a obter do controlador, a qualquer momento, a confirmação da existência de tratamento e o acesso integral aos seus dados. <b>Esse direito, conhecido como princípio do livre acesso, pode ser exercido de forma gratuita, salvo se o controlador demonstrar que as solicitações são manifestamente infundadas, excessivas ou repetitivas, hipótese em que poderá cobrar custos.<\/b>",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"IV - livre acesso: garantia, aos titulares, de consulta facilitada e gratuita sobre a forma e a duração do tratamento, bem como sobre a integralidade de seus dados pessoais;\" (Página 14). Esta frase exata sobre a cobrança de custos não está no trecho fornecido; é uma previsão comum em regulamentos de proteção de dados (como o GDPR) e está implicitamente associada ao conceito de \"facilitada e gratuita\", que não significa obrigatoriedade de atender a pedidos abusivos sem contrapartida. A lógica de não onerar o titular por pedidos legítimos, mas permitir cobrança para pedidos abusivos, é um entendimento consolidado.<br><br><b>Análise da Assertiva:<\/b> A assertiva está <b>correta<\/b>. A primeira parte descreve com precisão o direito de acesso, decorrente do princípio do livre acesso (Art. 6º, IV e Art. 18, I e II). A segunda parte estabelece uma condição razoável e comum em sistemas de proteção de dados: a gratuidade é a regra, mas pode ser excepcionada em casos de abuso por parte do titular, para não impor um ônus injusto ao controlador. Isso está em harmonia com o espírito da lei de ser \"facilitada e gratuita\", sem ser incondicionalmente onerosa.<br><br><b>Possíveis induções de erro:<\/b> O candidato pode considerar a assertiva errada por não encontrar a exata redação sobre cobrança de custos no PDF fornecido. No entanto, a banca CEBRASPE frequentemente testa a compreensão sistêmica e lógica do instituto, não apenas a transcrição literal. A pegadinha seria acreditar que a gratuidade é absoluta e incondicional, o que poderia levar a abusos e não é razoável. A assertiva introduz uma nuance prática e juridicamente aceitável.",
-        "topico": "Princípios e Direitos do Titular - Livre Acesso (Art. 6º, IV)",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 9,
-        "pergunta": "A coleta de dados pessoais sensíveis, como informações de saúde, para fins de tutela da saúde em procedimento realizado por hospital, <b>dispensa a necessidade de consentimento específico do titular,<\/b> nos termos da LGPD.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"Art. 7º ... VIII - para a tutela da saúde, exclusivamente, em procedimento realizado por profissionais de saúde, serviços de saúde ou autoridade sanitária;\" (Página 18). \"O inciso VIII prevê hipótese específica para tutela da saúde... Essa restrição impede que empresas privadas sem função sanitária utilizem dados sensíveis de saúde para fins comerciais.\" (Página 20).<br><br><b>Análise da Assertiva:<\/b> A assertiva está <b>correta<\/b>. O inciso VIII do art. 7º é uma base legal autônoma para o tratamento de dados (inclusive sensíveis, como os de saúde) para a finalidade específica de tutela da saúde. Como é uma base legal distinta do consentimento (inciso I), ela realmente dispensa a obtenção de consentimento para esse fim específico. Naturalmente, outros princípios (finalidade, necessidade, segurança) e deveres de informação (transparência) permanecem aplicáveis.<br><br><b>Possíveis induções de erro:<\/b> O ponto sensível é a menção a \"dados sensíveis\" e \"dispensa de consentimento\". O candidato, sabendo que dados sensíveis merecem proteção reforçada, pode automaticamente associá-los à obrigatoriedade de consentimento. No entanto, a LGPD prevê várias outras bases legais para tratamento de dados sensíveis, e a \"tutela da saúde\" é uma delas. A questão testa o conhecimento das múltiplas bases legais além do consentimento.",
-        "topico": "Bases Legais para o Tratamento - Tutela da Saúde (Art. 7º, VIII)",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 10,
-        "pergunta": "O compartilhamento de dados pessoais entre órgãos públicos para a execução de políticas públicas <b>sempre exigirá<\/b> o consentimento específico do titular dos dados, mesmo que haja previsão legal para tal compartilhamento.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"Art. 7º ... III - pela administração pública, para o tratamento e uso compartilhado de dados necessários à execução de políticas públicas previstas em leis e regulamentos ou respaldadas em contratos, convênios ou instrumentos congêneres...\" (Página 18).<br><br><b>Análise da Assertiva:<\/b> A assertiva está <b>errada<\/b>. O inciso III do art. 7º estabelece expressamente uma base legal para o tratamento (incluindo uso compartilhado) pela administração pública, condicionada à existência de previsão em lei, regulamento, contrato, etc. Portanto, quando houver essa previsão legal, o consentimento <b>não é exigido<\/b>. A base legal é o cumprimento de uma obrigação\/competência legal do ente público. A expressão \"<b>sempre exigirá<\/b>\" torna a assertiva falsa.<br><br><b>Possíveis induções de erro:<\/b> É uma clássica <b>armadilha do absoluto<\/b> (\"sempre\") e uma <b>inversão de qualificador legal<\/b>. O candidato pode pensar, de forma intuitiva, que qualquer compartilhamento requer consentimento. No entanto, a LGPD, seguindo a tradição do direito administrativo, reconhece que a execução de políticas públicas muitas vezes depende do fluxo de informações entre órgãos, e isso pode (e deve) ser feito com base na lei, não no consentimento individual, para eficácia da administração.",
-        "topico": "Bases Legais para o Tratamento - Administração Pública (Art. 7º, III)",
-        "nivel": "Básico"
-    }
+  {
+    "id": 1,
+    "pergunta": "No que concerne ao regime disciplinar da Lei n.º 8.112/1990, a penalidade de demissão por insubordinação grave em serviço implica, automaticamente, a indisponibilidade do ex-servidor para nova investidura em cargo público federal pelo prazo de 5 anos.",
+    "resposta_correta": "Errado",
+    "opcoes_disponiveis": ["Certo", "Errado"],
+    "explicacao_feedback": "<b>Transcrição do PDF:</b> ‘A demissão ou a destituição de cargo em comissão, por infringência do art. 117, incisos IX e XI, incompatibiliza o ex-servidor para nova investidura em cargo público federal, pelo prazo de 5 (cinco) anos.’ (Art. 137, caput).<br><br><b>Análise da Assertiva:</b> A assertiva está incorreta porque a insubordinação grave em serviço (Art. 132, VI) é causa de demissão, mas não integra o rol taxativo do Art. 137, caput, que estabelece o prazo de impedimento de 5 anos. As condutas que geram esse impedimento são especificamente: valer-se do cargo para lograr proveito pessoal (IX) e atuar como procurador/intermediário perante repartições públicas (XI).<br><b>Possíveis induções de erro:</b> O examinador tenta confundir a gravidade da infração (que de fato gera demissão) com os efeitos secundários da pena. O candidato tende a acreditar que qualquer demissão gera o 'gancho' de 5 anos, o que é falso. <br><b>Comparação:</b> Enquanto o Art. 132 elenca as causas de demissão (incluindo insubordinação), o Art. 137 seleciona apenas algumas delas para aplicar a restrição temporal de retorno.",
+    "topico": "Regime Disciplinar - Lei 8.112/90",
+    "nivel": "Avançado"
+  },
+  {
+    "id": 2,
+    "pergunta": "A aplicação da penalidade de demissão por crime contra a administração pública impede, de forma permanente, o retorno do ex-servidor ao serviço público federal, independentemente do prazo de 5 anos previsto para outras infrações.",
+    "resposta_correta": "Certo",
+    "opcoes_disponiveis": ["Certo", "Errado"],
+    "explicacao_feedback": "<b>Transcrição do PDF:</b> ‘Não poderá retornar ao serviço público federal o servidor que for demitido ou destituído do cargo em comissão por infringência do art. 132, incisos I, IV, VIII, X e XI.’ (Art. 137, Parágrafo único).<br><br><b>Análise da Assertiva:</b> A assertiva está correta. Crimes contra a administração pública (Art. 132, I) estão listados no parágrafo único do Art. 137, que estabelece o impedimento definitivo (proibição de retorno). Este efeito é distinto e mais gravoso do que o impedimento de 5 anos previsto no caput do mesmo artigo.<br><b>Possíveis induções de erro:</b> O candidato pode acreditar que todos os efeitos da demissão se exaurem em 5 anos, negligenciando a existência das vedações permanentes para crimes, improbidade e corrupção.<br><b>Comparação:</b> A norma distingue infrações 'éticas/administrativas' (5 anos) de infrações 'graves contra o patrimônio e moralidade' (impedimento permanente).",
+    "topico": "Regime Disciplinar - Lei 8.112/90",
+    "nivel": "Intermediário"
+  },
+  {
+    "id": 3,
+    "pergunta": "De acordo com a Lei n.º 8.112/1990, a destituição de cargo em comissão por improbidade administrativa impede o retorno do ex-servidor ao serviço público federal, sem previsão legal de reabilitação temporal para este efeito específico.",
+    "resposta_correta": "Certo",
+    "opcoes_disponiveis": ["Certo", "Errado"],
+    "explicacao_feedback": "<b>Transcrição do PDF:</b> ‘Não poderá retornar ao serviço público federal o servidor que for demitido ou destituído do cargo em comissão por infringência do art. 132, incisos I, IV, VIII, X e XI.’ (Art. 137, Parágrafo único).<br><br><b>Análise da Assertiva:</b> Correta. A improbidade administrativa (inciso IV) consta no rol que veda o retorno de forma definitiva. Embora o caput fale em 5 anos para certos casos, o parágrafo único é taxativo quanto à proibição de retorno para casos de improbidade.<br><b>Possíveis induções de erro:</b> Confundir as sanções da Lei 8.429/92 (LIA), que preveem suspensão de direitos políticos por prazos determinados, com a sanção administrativa da 8.112/90, que é mais severa quanto ao vínculo federal.<br><b>Comparação:</b> A redação da norma utiliza 'não poderá retornar', o que denota um óbice permanente na esfera administrativa federal.",
+    "topico": "Lei 8.112/90 e LIA",
+    "nivel": "Avançado"
+  },
+  {
+    "id": 4,
+    "pergunta": "O servidor federal demitido por abandono de cargo fica impedido de investir-se em novo cargo público federal pelo prazo de 5 anos, em razão da natureza grave da infração.",
+    "resposta_correta": "Errado",
+    "opcoes_disponiveis": ["Certo", "Errado"],
+    "explicacao_feedback": "<b>Transcrição do PDF:</b> ‘A demissão ou a destituição de cargo em comissão, por infringência do art. 117, incisos IX e XI, incompatibiliza o ex-servidor para nova investidura em cargo público federal, pelo prazo de 5 (cinco) anos.’ (Art. 137, caput).<br><br><b>Análise da Assertiva:</b> Errada. O abandono de cargo (Art. 132, II) não consta no Art. 137 (caput ou parágrafo único). Assim, o servidor demitido por abandono não sofre a sanção acessória de impedimento de nova investidura. Ele pode ser empossado em novo cargo federal imediatamente, desde que aprovado em novo concurso.<br><b>Possíveis induções de erro:</b> Supor que infrações que causam a perda do cargo (demissão) possuem o mesmo efeito de interdição de direitos. O CEBRASPE foca na literalidade dos incisos do Art. 137.<br><b>Comparação:</b> A norma vincula o impedimento de 5 anos apenas aos incisos IX e XI do Art. 117. Abandono de cargo não está nessa lista.",
+    "topico": "Regime Disciplinar - Lei 8.112/90",
+    "nivel": "Intermediário"
+  },
+  {
+    "id": 5,
+    "pergunta": "Configura hipótese de incompatibilização para nova investidura em cargo público federal pelo prazo de cinco anos a demissão fundamentada na aplicação irregular de dinheiros públicos.",
+    "resposta_correta": "Errado",
+    "opcoes_disponiveis": ["Certo", "Errado"],
+    "explicacao_feedback": "<b>Transcrição do PDF:</b> ‘Não poderá retornar ao serviço público federal o servidor que for demitido ou destituído do cargo em comissão por infringência do art. 132, incisos I, IV, VIII, X e XI.’ (Art. 137, Parágrafo único).<br><br><b>Análise da Assertiva:</b> A assertiva está errada porque a aplicação irregular de dinheiros públicos (Art. 132, VIII) gera impedimento permanente de retorno (proibição total), e não apenas por 5 anos. <br><b>Possíveis induções de erro:</b> Trocar o 'impedimento permanente' pelo 'impedimento de 5 anos'. Para o auditor do TCU, a distinção entre erro formal e má-fé (corrupção/aplicação irregular) é crucial, e a lei pune a última com o banimento.<br><b>Comparação:</b> O erro está na gradação da pena acessória. A lei é mais rigorosa com o dinheiro público do que com o valimento do cargo (que gera apenas 5 anos).",
+    "topico": "Regime Disciplinar - Lei 8.112/90",
+    "nivel": "Avançado"
+  },
+  {
+    "id": 6,
+    "pergunta": "A penalidade de destituição de cargo em comissão por valer-se do cargo para lograr proveito pessoal acarreta a incompatibilidade para nova investidura em cargo público federal por 5 anos.",
+    "resposta_correta": "Certo",
+    "opcoes_disponiveis": ["Certo", "Errado"],
+    "explicacao_feedback": "<b>Transcrição do PDF:</b> ‘A demissão ou a destituição de cargo em comissão, por infringência do art. 117, incisos IX e XI, incompatibiliza o ex-servidor para nova investidura em cargo público federal, pelo prazo de 5 (cinco) anos.’ (Art. 137, caput).<br><br><b>Análise da Assertiva:</b> Correta. O inciso IX do Art. 117 proíbe o servidor de valer-se do cargo para lograr proveito pessoal ou de outrem. Quando isso ocorre, a sanção de demissão/destituição traz consigo o efeito de 5 anos de impedimento.<br><b>Possíveis induções de erro:</b> O candidato pode achar que destituição de cargo em comissão tem efeitos mais brandos que a demissão. A lei as equipara quanto aos efeitos de incompatibilidade.<br><b>Comparação:</b> A questão segue a literalidade combinada do Art. 137 com o Art. 117, IX.",
+    "topico": "Regime Disciplinar - Lei 8.112/90",
+    "nivel": "Intermediário"
+  },
+  {
+    "id": 7,
+    "pergunta": "A proibição de retornar ao serviço público federal em decorrência de demissão por corrupção passiva é uma sanção que, nos termos da Lei n.º 8.112/1990, não admite prazo de reabilitação para nova investidura.",
+    "resposta_correta": "Certo",
+    "opcoes_disponiveis": ["Certo", "Errado"],
+    "explicacao_feedback": "<b>Transcrição do PDF:</b> ‘Não poderá retornar ao serviço público federal o servidor que for demitido ou destituído do cargo em comissão por infringência do art. 132, incisos I, IV, VIII, X e XI.’ (Art. 137, Parágrafo único).<br><br><b>Análise da Assertiva:</b> Correta. A corrupção (Art. 132, XI) é uma das infrações que geram o impedimento definitivo no âmbito federal. Não há na Lei 8.112/90 previsão de retorno após decurso de prazo para quem foi demitido por esse motivo.<br><b>Possíveis induções de erro:</b> Pensar na reabilitação penal ou civil e projetá-la no direito administrativo estatutário. No regime da 8.112, a vedação é absoluta.<br><b>Comparação:</b> O texto é literal: 'Não poderá retornar', sem condicionantes temporais.",
+    "topico": "Regime Disciplinar - Lei 8.112/90",
+    "nivel": "Avançado"
+  },
+  {
+    "id": 8,
+    "pergunta": "Considere que um servidor tenha sido demitido por atuar como intermediário junto a repartições públicas para tratar de interesses de seu cônjuge. Nessa situação, o prazo de incompatibilidade para nova investidura em cargo federal será de 2 anos.",
+    "resposta_correta": "Errado",
+    "opcoes_disponiveis": ["Certo", "Errado"],
+    "explicacao_feedback": "<b>Transcrição do PDF:</b> ‘...incompatibiliza o ex-servidor para nova investidura em cargo público federal, pelo prazo de 5 (cinco) anos.’ (Art. 137, caput).<br><br><b>Análise da Assertiva:</b> Errada. O prazo correto estabelecido pela Lei 8.112/90 para a infração do Art. 117, inciso XI (advocacia administrativa/intermediação), é de 5 anos, e não de 2 anos.<br><b>Possíveis induções de erro:</b> Confundir com prazos de prescrição (que para suspensão é de 2 anos) ou prazos de outras leis administrativas.<br><b>Comparação:</b> A norma fixa um prazo único de 5 anos para as hipóteses de incompatibilidade do caput.",
+    "topico": "Regime Disciplinar - Lei 8.112/90",
+    "nivel": "Intermediário"
+  },
+  {
+    "id": 9,
+    "pergunta": "Conforme a jurisprudência e a literalidade da Lei n.º 8.112/1990, a demissão por lesão aos cofres públicos acarreta o impedimento de retorno ao serviço público federal, independentemente de haver ressarcimento ao erário.",
+    "resposta_correta": "Certo",
+    "opcoes_disponiveis": ["Certo", "Errado"],
+    "explicacao_feedback": "<b>Transcrição do PDF:</b> ‘Não poderá retornar ao serviço público federal o servidor que for demitido ou destituído do cargo em comissão por infringência do art. 132, incisos I, IV, VIII, X e XI.’ (Art. 137, Parágrafo único).<br><br><b>Análise da Assertiva:</b> Correta. A lesão aos cofres públicos (Art. 132, X) gera o impedimento permanente. O ressarcimento é obrigação civil e condição para certas reabilitações em outros âmbitos, mas na 8.112/90, a sanção de proibição de retorno é efeito direto da demissão pela natureza da infração.<br><b>Possíveis induções de erro:</b> Achar que o pagamento do prejuízo 'apaga' o efeito administrativo da demissão.<br><b>Comparação:</b> A lei não condiciona a vedação de retorno à ausência de ressarcimento.",
+    "topico": "Regime Disciplinar - Lei 8.112/90",
+    "nivel": "Avançado"
+  },
+  {
+    "id": 10,
+    "pergunta": "A penalidade de demissão aplicada em razão de ofensa física, em serviço, a servidor ou a particular, gera para o ex-servidor a incompatibilidade de 5 anos para nova investidura em cargo federal.",
+    "resposta_correta": "Errado",
+    "opcoes_disponiveis": ["Certo", "Errado"],
+    "explicacao_feedback": "<b>Transcrição do PDF:</b> ‘A demissão ou a destituição de cargo em comissão, por infringência do art. 117, incisos IX e XI, incompatibiliza... pelo prazo de 5 (cinco) anos.’ (Art. 137, caput).<br><br><b>Análise da Assertiva:</b> Errada. A ofensa física (Art. 132, VII) é causa de demissão, mas não está listada no Art. 137 (caput ou parágrafo único). Portanto, não gera o impedimento de 5 anos nem a proibição permanente de retorno.<br><b>Possíveis induções de erro:</b> Crer que condutas violentas são tratadas com o mesmo rigor acessório que as condutas de corrupção ou valimento do cargo. <br><b>Comparação:</b> O legislador priorizou punir com o impedimento de retorno condutas ligadas à probidade e à moralidade administrativa estrita (dinheiro e influência).",
+    "topico": "Regime Disciplinar - Lei 8.112/90",
+    "nivel": "Avançado"
+  }
 ]
