@@ -11,18 +11,25 @@
 <body class="pagina-quiz">
     <div class="container-quiz">
         
-        <div class="header-quiz">
-            <h1>
-                <?php if ($dados['modo_revisao']): ?>
-                    📚 Revisão de Questões Erradas
-                <?php else: ?>
-                    🎓 Quiz Interativo - Inútil.App
-                <?php endif; ?>
-            </h1>
-            <?php if ($dados['modo_revisao']): ?>
-                <div class="modo-revisao">MODO REVISÃO</div>
-            <?php endif; ?>
+        <div class="header-quiz" style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="text-align: left;">
+                <h1 style="margin-bottom: 5px; text-align: left;">
+                    <?php if ($dados['modo_revisao']): ?>
+                        📚 Revisão
+                    <?php else: ?>
+                        🎓 Quiz
+                    <?php endif; ?>
+                </h1>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">Logado como <strong><?php echo $_SESSION['username']; ?></strong></p>
+            </div>
+            <div style="display: flex; gap: 8px;">
+                <a href="index.php?acao=home" class="btn btn-secondary btn-small">🏠 Início</a>
+                <a href="index.php?acao=logout" class="btn btn-secondary btn-small">🚪 Sair</a>
+            </div>
         </div>
+        <?php if ($dados['modo_revisao']): ?>
+            <div class="modo-revisao" style="margin-top: 10px;">MODO REVISÃO</div>
+        <?php endif; ?>
 
         <div class="content-quiz">
             <?php if ($dados['modo_revisao']): ?>
@@ -124,6 +131,7 @@
                 <?php endif; ?>
             </button>
 
+            <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']): ?>
             <div class="admin-panel">
                 <strong>🔧 Painel de Controle</strong>
                 <div class="admin-links">
@@ -134,6 +142,7 @@
                     <?php endif; ?>
                 </div>
             </div>
+            <?php endif; ?>
         </div>
 
     </div>

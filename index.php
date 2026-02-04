@@ -6,12 +6,9 @@ $quizzes_disponiveis = listarQuizzes();
 
 if (isset($_GET['carregar_quiz'])) {
     $caminho_quiz = $_GET['carregar_quiz'];
-    $quiz_data = carregarQuiz($caminho_quiz);
-    if ($quiz_data) {
-        salvarDadosQuiz($quiz_data);
-        header('Location: index.php');
-        exit;
-    }
+    $_SESSION['current_quiz_id'] = $caminho_quiz; // Salva o quiz selecionado na sessão
+    header('Location: index.php?acao=quiz');
+    exit;
 }
 
 $acao = $_GET['acao'] ?? 'quiz';
@@ -61,6 +58,11 @@ if ($acao == 'logout') {
     exit;
 }
 
+// Se estiver logado e não tiver quiz selecionado, vai para home
+if (isset($_SESSION['user_id']) && !isset($_SESSION['current_quiz_id']) && $acao == 'quiz') {
+    $acao = 'home';
+}
+
 $questao_id = $_GET['id'] ?? null;
 $acertos = $_GET['acertos'] ?? 0;
 $modo_revisao = $_GET['modo_revisao'] ?? false;
@@ -70,12 +72,19 @@ if (!isset($_SESSION['questoes_erradas'])) {
     $_SESSION['questoes_erradas'] = [];
 }
 
-// Carrega os dados do quiz
-$quiz_data = carregarDadosQuiz();
+// Carrega os dados do quiz (ou quiz padrão se nenhum selecionado)
+$quiz_id = $_SESSION['current_quiz_id'] ?? 1;
+$quiz_data = carregarQuiz($quiz_id);
+if (empty($quiz_data)) {
+    $quiz_data = carregarDadosQuiz(); // Fallback
+}
 
 switch ($acao) {
     case 'welcome':
         include 'templates/welcome.php';
+        break;
+    case 'home':
+        exibirHome($quizzes_disponiveis);
         break;
     case 'quiz':
         exibirQuiz($quiz_data, $questao_id, $acertos, $modo_revisao);
@@ -93,8 +102,20 @@ switch ($acao) {
         limparRevisao();
         break;
     default:
-        exibirQuiz($quiz_data);
+        if (isset($_SESSION['user_id'])) {
+            exibirHome($quizzes_disponiveis);
+        } else {
+            include 'templates/welcome.php';
+        }
         break;
+}
+
+function exibirHome($quizzes) {
+    $dados = [
+        'quizzes' => $quizzes,
+        'username' => $_SESSION['username']
+    ];
+    include 'templates/home.php';
 }
 
 

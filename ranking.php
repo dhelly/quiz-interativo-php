@@ -25,7 +25,10 @@ $nome_quiz = $quiz_atual ? $quiz_atual['name'] : 'Quiz';
 </head>
 <body class="pagina-ranking">
     <div class="container-quiz">
-        <div class="header-quiz">
+        <div class="header-quiz" style="position: relative;">
+            <div style="position: absolute; left: 0; top: 0;">
+                <a href="index.php?acao=home" class="btn btn-secondary btn-small">🏠 Início</a>
+            </div>
             <h1>🏆 Ranking de Líderes</h1>
             <p>Simulado: <strong><?php echo htmlspecialchars($nome_quiz); ?></strong></p>
             
@@ -58,7 +61,8 @@ $nome_quiz = $quiz_atual ? $quiz_atual['name'] : 'Quiz';
                     </thead>
                     <tbody>
                         <?php foreach ($ranking as $index => $row): ?>
-                            <tr class="ranking-row <?php echo $index < 3 ? 'top-' . ($index + 1) : ''; ?>">
+                            <?php $is_current_user = (isset($_SESSION['username']) && $_SESSION['username'] === $row['username']); ?>
+                            <tr class="ranking-row <?php echo $index < 3 ? 'top-' . ($index + 1) : ''; ?> <?php echo $is_current_user ? 'current-user-row' : ''; ?>" <?php echo $is_current_user ? 'style="background: #eef2ff; border-left: 4px solid var(--primary);"' : ''; ?>>
                                 <td><?php echo $index + 1; ?>º</td>
                                 <td><strong><?php echo htmlspecialchars($row['username']); ?></strong></td>
                                 <td><?php echo $row['score']; ?>/<?php echo $row['total']; ?></td>
@@ -76,8 +80,11 @@ $nome_quiz = $quiz_atual ? $quiz_atual['name'] : 'Quiz';
             <?php endif; ?>
 
             <div class="action-buttons" style="margin-top: 40px; display: flex; gap: 15px; justify-content: center;">
-                <a href="index.php" class="btn btn-primary">🎮 Jogar Agora</a>
-                <a href="admin.php" class="btn btn-secondary">⚙️ Painel Admin</a>
+                <a href="index.php?carregar_quiz=<?php echo $quiz_id; ?>" class="btn btn-primary">🎮 Jogar Este Quiz</a>
+                <a href="index.php?acao=home" class="btn btn-secondary">🏠 Selecionar Outro</a>
+                <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']): ?>
+                    <a href="admin.php" class="btn btn-warning">⚙️ Admin</a>
+                <?php endif; ?>
             </div>
         </div>
     </div>

@@ -1,362 +1,122 @@
 [
     {
         "id": 1,
-        "pergunta": "As entidades paraestatais integram a Administração Indireta, pois são pessoas jurídicas de direito privado criadas por lei para executar serviços públicos de forma descentralizada.",
+        "pergunta": "A Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709\/2018) dispõe sobre o tratamento de dados pessoais, inclusive nos meios digitais, por pessoa natural ou por pessoa jurídica de direito público ou privado, com o objetivo de proteger os direitos fundamentais de liberdade e de privacidade e o livre desenvolvimento da personalidade. <b>Entretanto, seus fundamentos, como o respeito à privacidade e a dignidade, aplicam-se igualmente para proteger o livre desenvolvimento da personalidade de pessoas jurídicas.<\/b>",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"As Entidades Paraestatais não pertencem à Administração Pública. As Entidades Paraestatais são entidades privadas da sociedade civil, sem fins lucrativos, que prestam atividades de interesse social, por iniciativa privada.\" (p. 2).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada porque as entidades paraestatais <b>não integram a Administração Pública<\/b> (direta ou indireta). Elas pertencem ao Terceiro Setor, são entidades privadas, e sua criação não se dá por lei, mas por iniciativa privada, podendo apenas ter sua criação autorizada em lei (no caso dos Serviços Sociais Autônomos). A afirmação de que executam serviços públicos também é enganosa: executam atividades de interesse público, não exclusivas do Estado.<br><br><b>Possíveis induções de erro:<\/b> Confundir 'Administração Indireta' (autarquias, fundações, empresas públicas) com 'Entidades Paraestatais' (Terceiro Setor). A frase usa 'integram' e 'criadas por lei', o que é típico da Administração Indireta, mas não se aplica às paraestatais.",
-        "topico": "Entidades Paraestatais e Terceiro Setor",
-        "nivel": "Básico"
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"Art. 1º Esta Lei dispõe sobre o tratamento de dados pessoais, inclusive nos meios digitais, por pessoa natural ou por pessoa jurídica de direito público ou privado, com o objetivo de proteger os direitos fundamentais de liberdade e de privacidade e o livre desenvolvimento da personalidade da pessoa natural.\" (Página 3). \"Art. 2º ... VII - os direitos humanos, o livre desenvolvimento da personalidade, a dignidade e o exercício da cidadania pelas pessoas naturais.\" (Página 8).<br><br><b>Análise da Assertiva:<\/b> A primeira parte da assertiva (antes de 'Entretanto') está correta, conforme artigo 1º. No entanto, a segunda parte (após 'Entretanto') está errada. O fundamento do \"livre desenvolvimento da personalidade\" e, por extensão lógica, a dignidade, aplicam-se exclusivamente às <b>pessoas naturais<\/b>, conforme a redação expressa do inciso VII do art. 2º. A LGPD tem como foco central a proteção dos titulares, que são pessoas naturais. A inclusão de pessoas jurídicas no artigo 1º refere-se a quem realiza o tratamento (controlador\/operador), não a quem é titular dos direitos protegidos.<br><br><b>Possíveis induções de erro:<\/b> A pegadinha está na <b>inversão e modificação de qualificadores legais<\/b>. O examinador aproveita que a lei se aplica a pessoas jurídicas (como agentes de tratamento) para, de forma sorrateira, estender a elas os direitos fundamentais destinados apenas a pessoas naturais. O candidato deve separar claramente os conceitos de 'quem trata os dados' (pode ser pessoa jurídica) e 'quem é o titular dos direitos' (sempre pessoa natural).",
+        "topico": "Aplicação Pessoal e Objetivos da LGPD (Art. 1º e 2º)",
+        "nivel": "Intermediário"
     },
     {
         "id": 2,
-        "pergunta": "Os Serviços Sociais Autônomos, como o SENAI e o SESI, estão sujeitos à Lei de Licitações e à obrigatoriedade de realização de concurso público para contratação de pessoal, pois gerem recursos de natureza pública.",
+        "pergunta": "Os dados cadastrais, como CPF, título de eleitor e estado civil, são considerados dados pessoais sensíveis pela LGPD, <b>uma vez que servem para identificar de forma inequívoca o cidadão perante a administração pública e, portanto, exigem proteção reforçada.<\/b>",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"Os Serviços Sociais Autônomos não se submetem à Lei de Licitações. Contudo, eles não estão 'livres' para contratar... [devem adotar] regulamentos próprios...\" e \"Não estão sujeitos à observância da regra de Concurso Público para contratações de pessoal. Contudo... devem realizar processo seletivo...\" (p. 4-5).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada porque os Serviços Sociais Autônomos <b>não<\/b> estão sujeitos à Lei de Licitações nem à obrigatoriedade de concurso público. Embora gerencie recursos públicos e deva observar princípios como impessoalidade e moralidade, o regime é flexibilizado: adotam regulamentos próprios para contratações e realizam processos seletivos (não concursos públicos). A causalidade 'pois gerem recursos de natureza pública' é verdadeira, mas a consequência (sujeição à Lei de Licitações e concurso) é falsa.<br><br><b>Possíveis induções de erro:<\/b> Associar a gestão de recursos públicos automaticamente ao regime jurídico administrativo integral (licitação e concurso). A banca troca 'processo seletivo' por 'concurso público' e ignora a dispensa da Lei de Licitações.",
-        "topico": "Serviços Sociais Autônomos (Sistema S)",
-        "nivel": "Intermediário"
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"II - dado pessoal sensível: dado pessoal sobre origem racial ou étnica, convicção religiosa, opinião política, filiação a sindicato ou a organização de caráter religioso, filosófico ou político, dado referente à saúde ou à vida sexual, dado genético ou biométrico, quando vinculado a uma pessoa natural;\" (Página 4). \"Por fim, na área da administração pública, existe ainda uma subdivisão conhecida como dados cadastrais. Esses são os dados que servem para identificar cidadãos ou entidades: atributos biográficos como sexo, estado civil, nacionalidade, e também números como CPF, CNPJ e título de eleitor.\" (Página 7).<br><br><b>Análise da Assertiva:<\/b> A premissa inicial (\"Os dados cadastrais... são considerados dados pessoais sensíveis\") está <b>errada<\/b>. Dados cadastrais são dados pessoais comuns. O conceito de dado sensível está taxativamente definido no art. 5º, II, e não inclui dados meramente identificadores como CPF ou estado civil. A justificativa apresentada (\"servem para identificar... e exigem proteção reforçada\") até possui um núcleo de verdade (dados pessoais merecem proteção), mas não é a razão legal para classificar um dado como sensível. A classificação como sensível decorre do potencial de discriminação e da natureza íntima da informação, conforme a lista legal.<br><br><b>Possíveis induções de erro:<\/b> A questão utiliza uma <b>falsa causalidade ('Certo + Certo = Errado')<\/b>. O candidato pode achar que ambos os trechos são verdadeiros: dados cadastrais identificam e dados sensíveis têm proteção reforçada. No entanto, a relação causal estabelecida (\"uma vez que\") é falsa, pois a identificação do cidadão não é o critério legal para definir dado sensível. Além disso, há uma <b>ampliação indevida<\/b> do conceito estrito de dado sensível.",
+        "topico": "Conceitos: Dado Pessoal, Sensível e Cadastral (Art. 5º)",
+        "nivel": "Básico"
     },
     {
         "id": 3,
-        "pergunta": "A qualificação como Organização Social (OS) é um ato vinculado do Poder Público, de modo que, uma vez preenchidos todos os requisitos legais pela entidade privada, a Administração é obrigada a conceder o título.",
+        "pergunta": "O princípio da necessidade, previsto no art. 6º da LGPD, determina que o tratamento de dados pessoais deve ser limitado ao mínimo necessário para a realização de suas finalidades. <b>Portanto, uma empresa está proibida de coletar qualquer dado que não seja estritamente indispensável para a execução imediata do contrato, vedado o armazenamento para eventual uso futuro em outras finalidades legítimas.<\/b>",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"a qualificação é um ato discricionário do poder público ('aprovação por conveniência e oportunidade')... o Poder Público não é 'obrigado' a conceder a qualificação.\" (p. 9).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada porque a qualificação como OS é um ato <b>discricionário<\/b>, não vinculado. A Administração avalia conveniência e oportunidade, mesmo com todos os requisitos preenchidos. O termo 'vinculado' inverte a natureza jurídica do ato.<br><br><b>Possíveis induções de erro:<\/b> Trocar 'discricionário' por 'vinculado'. Candidatos podem lembrar que há requisitos objetivos (art. 2º da Lei 9.637\/98) e concluir erroneamente que o preenchimento gera direito à qualificação.",
-        "topico": "Organizações Sociais (OS) - Qualificação",
-        "nivel": "Intermediário"
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"III - necessidade: limitação do tratamento ao mínimo necessário para a realização de suas finalidades, com abrangência dos dados pertinentes, proporcionais e não excessivos em relação às finalidades do tratamento de dados;\" (Página 14). \"I - finalidade: realização do tratamento para propósitos legítimos, específicos, explícitos e informados ao titular, <b>sem possibilidade de tratamento posterior de forma incompatível com essas finalidades;<\/b>\" (Página 14).<br><br><b>Análise da Assertiva:<\/b> A primeira frase, que descreve o princípio da necessidade, está correta. A segunda frase (após 'Portanto') está <b>errada<\/b> por dois motivos: 1) A LGPD não veda o tratamento para outras finalidades legítimas futuras; ela veda o tratamento para finalidades <b>incompatíveis<\/b> com a original (princípio da finalidade). Se houver uma nova finalidade legítima, específica, e desde que amparada por uma base legal e observados os direitos do titular (inclusive novo consentimento, se for o caso), o tratamento posterior pode ser possível. 2) O princípio da necessidade não se confunde com uma proibição absoluta de coletar dados para planejamento futuro legítimo, desde que a finalidade seja informada e a coleta seja proporcional.<br><br><b>Possíveis induções de erro:<\/b> O examinador emprega uma <b>armadilha do absoluto<\/b> (\"proibida de coletar <b>qualquer<\/b> dado\", \"vedado o armazenamento para <b>eventual<\/b> uso futuro\") e faz uma <b>interpretação restritiva e extrema<\/b> do princípio da necessidade, ignorando a interação com o princípio da finalidade. O candidato deve perceber que a lei busca um equilíbrio, não um absolutismo que impeça operações comerciais ou de gestão razoáveis.",
+        "topico": "Princípios do Tratamento (Art. 6º)",
+        "nivel": "Avançado"
     },
     {
         "id": 4,
-        "pergunta": "O contrato de gestão celebrado entre o Poder Público e uma Organização Social deve, obrigatoriamente, observar os princípios da legalidade, impessoalidade, moralidade, publicidade e economicidade, além de estabelecer metas, prazos e critérios de avaliação de desempenho.",
+        "pergunta": "A LGPD aplica-se ao tratamento de dados realizado por uma empresa de tecnologia com sede nos Estados Unidos, <b>somente se<\/b> essa empresa possuir uma filial ou representante legalmente estabelecido no território brasileiro.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"Art. 3º ... desde que: I - a operação de tratamento seja realizada no território nacional; II - a atividade de tratamento tenha por objetivo a oferta ou o fornecimento de bens ou serviços ou o tratamento de dados de indivíduos localizados no território nacional; ou III - os dados pessoais objeto do tratamento tenham sido coletados no território nacional.\" (Página 10).<br><br><b>Análise da Assertiva:<\/b> A assertiva está <b>errada<\/b> porque a LGPD tem aplicação extraterritorial e não está condicionada à existência de estabelecimento físico no Brasil. Conforme o art. 3º, a lei se aplica se a empresa, mesmo sediada no exterior, oferecer bens ou serviços a indivíduos no Brasil (inciso II) ou coletar dados no território nacional (inciso III). A presença de uma filial não é requisito.<br><br><b>Possíveis induções de erro:<\/b> Trata-se de uma clássica <b>armadilha de restrição indevida<\/b> através do termo \"<b>somente se<\/b>\". O examinador cria uma condição que não existe na lei, limitando indevidamente o alcance da aplicação extraterritorial da LGPD, que é justamente um de seus aspectos mais importantes e modernos, inspirado no GDPR.",
+        "topico": "Âmbito de Aplicação da LGPD (Art. 3º)",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 5,
+        "pergunta": "O tratamento de dados pessoais para fins exclusivamente acadêmicos por uma universidade pública <b>está completamente isento<\/b> das disposições da Lei Geral de Proteção de Dados Pessoais.",
         "resposta_correta": "Certo",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"Na elaboração do contrato de gestão, devem ser observados os princípios da legalidade, impessoalidade, moralidade, publicidade, economicidade e, também, os seguintes preceitos: I - especificação do programa de trabalho... metas... prazos... critérios objetivos de avaliação de desempenho...\" (p. 10, art. 7º da Lei 9.637\/98).<br><br><b>Análise da Assertiva:<\/b> A assertiva está correta porque reproduz exatamente o disposto no art. 7º da Lei 9.637\/98. Todos os elementos mencionados são obrigatórios no contrato de gestão.<br><br><b>Possíveis induções de erro:<\/b> A banca poderia omitir algum princípio (como 'economicidade') ou trocar por outro não previsto (ex: eficiência, que não está no art. 7º). Aqui, a redação está fiel à lei.",
-        "topico": "Organizações Sociais (OS) - Contrato de Gestão",
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"Art. 4º Esta Lei não se aplica ao tratamento de dados pessoais: ... II - realizado para fins exclusivamente: ... b) acadêmicos;\" (Página 12).<br><br><b>Análise da Assertiva:<\/b> A assertiva está <b>correta<\/b>. O artigo 4º, II, \"b\", da LGPD estabelece expressamente que a lei não se aplica ao tratamento realizado para fins exclusivamente acadêmicos. A expressão \"completamente isento\" reflete com precisão o disposto no dispositivo legal, que é uma exceção ao âmbito de aplicação da lei.<br><br><b>Possíveis induções de erro:<\/b> O candidato pode desconfiar do termo absoluto \"<b>completamente isento<\/b>\", pensando que talvez alguns princípios gerais ainda se apliquem. No entanto, para as hipóteses do art. 4º, a LGPD realmente <b>não se aplica<\/b>. O cuidado aqui é verificar se o fim é de fato \"exclusivamente\" acadêmico. Se a universidade misturar finalidades (ex.: pesquisa acadêmica com posterior comercialização de perfis), a exceção pode não mais vigorar. A assertiva, porém, descreve a hipótese típica de forma correta.",
+        "topico": "Hipóteses de Não Aplicação da LGPD (Art. 4º)",
         "nivel": "Básico"
     },
     {
-        "id": 5,
-        "pergunta": "As Organizações Sociais, por serem pessoas jurídicas de direito privado, estão sempre dispensadas de realizar licitação quando contratarem serviços com terceiros, mesmo que utilizem recursos públicos.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"as organizações sociais... não se submetem, em suas contratações com terceiros, ao dever de licitar... Por receberem recursos públicos... suas contratações devem observar o disposto em regulamento próprio, fixando regras objetivas e impessoais para o dispêndio de recursos públicos.\" (p. 11, com base na ADI 1923).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada porque, embora as OS não estejam sujeitas à Lei de Licitações, <b>não estão 'sempre dispensadas'<\/b>. Quando usam recursos públicos, devem seguir regras objetivas e impessoais definidas em regulamento próprio, o que pode incluir procedimentos semelhantes a licitações. O termo 'sempre' cria uma generalização falsa.<br><br><b>Possíveis induções de erro:<\/b> Uso do termo absoluto 'sempre'. A afirmação ignora a necessidade de regulamento próprio e de observância dos princípios da administração pública no uso de recursos públicos.",
-        "topico": "Organizações Sociais (OS) - Licitações e Contratações",
-        "nivel": "Avançado"
-    },
-    {
         "id": 6,
-        "pergunta": "Os empregados das Organizações Sociais são regidos pela Consolidação das Leis do Trabalho (CLT) e, para todos os efeitos legais, equiparam-se a servidores públicos, inclusive para fins penais e de improbidade administrativa.",
+        "pergunta": "O encarregado (DPO) é obrigatoriamente indicado pelo controlador e pelo operador em conjunto, <b>sendo pessoalmente responsável, de forma solidária, pelas infrações à LGPD praticadas pelo controlador.<\/b>",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"Os empresados das OS são 'empregados privados' e submetem-se às regras da CLT.\" (p. 11). Para os Serviços Sociais Autônomos: \"os empregados... estão sujeitos à legislação trabalhista e, para fins penais e de improbidade administrativa, são 'equiparados' a funcionários públicos.\" (p. 5).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada porque <b>mistura institutos<\/b>. Os empregados das OS são regidos pela CLT, mas o PDF <b>não<\/b> afirma que são equiparados a servidores públicos para todos os efeitos. A equiparação para fins penais e de improbidade é mencionada apenas para os empregados do Sistema S (Serviços Sociais Autônomos), não para OS. O termo 'para todos os efeitos legais' amplia indevidamente a equiparação.<br><br><b>Possíveis induções de erro:<\/b> Confundir o regime dos empregados do Sistema S com o das OS. A banca junta duas informações corretas isoladamente (CLT para OS; equiparação para Sistema S) para criar uma relação falsa.",
-        "topico": "Organizações Sociais (OS) e Serviços Sociais Autônomos - Regime de Pessoal",
-        "nivel": "Avançado"
-    },
-    {
-        "id": 7,
-        "pergunta": "A desqualificação de uma Organização Social pode ocorrer apenas se houver descumprimento das disposições do contrato de gestão, conforme previsto na Lei nº 9.637\/1998.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"A Lei n.° 9.190\/2017 prevê, ainda, outros 03 casos em que a Organização Social poderá ser desqualificada: a) por decisão fundamentada do órgão supervisor... b) pelo encerramento do contrato de gestão; c) pelo não atendimento... às recomendações da comissão de avaliação...\" (p. 12).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada porque a desqualificação <b>não ocorre apenas<\/b> por descumprimento do contrato de gestão. O Decreto 9.190\/2017 (que regulamenta a lei) acrescentou outras hipóteses. O termo 'apenas' restringe indevidamente as possibilidades.<br><br><b>Possíveis induções de erro:<\/b> Uso do termo restritivo 'apenas'. Candidatos que conhecem apenas a lei 9.637\/98 podem marcar 'Certo', ignorando o decreto regulamentador que ampliou as hipóteses.",
-        "topico": "Organizações Sociais (OS) - Desqualificação",
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"VIII - encarregado: pessoa indicada pelo controlador e operador para atuar como canal de comunicação entre o controlador, os titulares dos dados e a Autoridade Nacional de Proteção de Dados (ANPD);\" (Página 4).<br><br><b>Análise da Assertiva:<\/b> A primeira parte da assertiva está <b>correta<\/b>: o encarregado é indicado pelo controlador e operador (embora na prática a indicação seja geralmente feita apenas pelo controlador). A segunda parte (após 'sendo') está <b>errada<\/b>. A LGPD não estabelece a responsabilidade solidária do encarregado pelas infrações do controlador. O encarregado é um canal de comunicação e um agente facilitador da conformidade. A responsabilidade pelo tratamento e pelas eventualidades legais é primordialmente do controlador (e, em certa medida, do operador), conforme a lógica dos \"agentes de tratamento\". Imputar responsabilidade solidária ao DPO seria uma distorção de sua função.<br><br><b>Possíveis induções de erro:<\/b> A questão utiliza uma <b>falsa causalidade<\/b> e uma <b>inversão\/modificação de qualificadores normativos<\/b>. O examinador aproveita uma premissa verdadeira (a indicação) para ligá-la a uma conclusão gravosa e inexistente na lei (responsabilidade solidária). O candidato deve dissociar a função de assessoria\/comunicação do encarregado da responsabilidade legal pelo tratamento, que é dos agentes (controlador e operador).",
+        "topico": "Conceitos: Agentes de Tratamento e Encarregado (Art. 5º)",
         "nivel": "Intermediário"
     },
     {
-        "id": 8,
-        "pergunta": "O Conselho de Administração de uma Organização Social deve ser composto exclusivamente por representantes do Poder Público e da sociedade civil, não cabendo a participação de membros da própria entidade.",
+        "id": 7,
+        "pergunta": "O legítimo interesse do controlador constitui base legal válida para o tratamento de dados pessoais, <b>inclusive de dados sensíveis, independentemente de análise de proporcionalidade, desde que declarado em sua política de privacidade.<\/b>",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"O Conselho de Administração... deve ser composto por representantes do poder público, representantes de entidades da sociedade civil, membros eleitos dentre os membros ou os associados... membros eleitos dentre pessoas de notória capacidade... e membros indicados ou eleitos na forma estabelecida pelo estatuto.\" (p. 12).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada porque a composição do Conselho <b>não é exclusiva<\/b> de representantes do Poder Público e da sociedade civil. Inclui também membros da própria organização (associados) e pessoas de notória capacidade. O termo 'exclusivamente' é incorreto.<br><br><b>Possíveis induções de erro:<\/b> Uso do termo absoluto 'exclusivamente' e a exclusão indevida de categorias de membros previstas na lei.",
-        "topico": "Organizações Sociais (OS) - Conselho de Administração",
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"IX - quando necessário para atender aos interesses legítimos do controlador ou de terceiro, exceto no caso de prevalecerem direitos e liberdades fundamentais do titular que exijam a proteção dos dados pessoais;\" (Página 18). \"O inciso IX trata da base do legítimo interesse... Sempre é necessária avaliação prévia e proporcionalidade.\" (Página 20).<br><br><b>Análise da Assertiva:<\/b> A assertiva está <b>errada<\/b> em múltiplos aspectos. 1) O legítimo interesse é uma base legal, mas seu uso para <b>dados sensíveis<\/b> é extremamente limitado e raro, pois a LGPD exige condições mais estritas para dados sensíveis (geralmente consentimento ou outras hipóteses específicas). 2) A análise de proporcionalidade e o balanço entre o interesse do controlador e os direitos do titular são <b>essenciais<\/b> e obrigatórios, conforme explicado no comentário do PDF. 3) A mera declaração em política de privacidade não substitui a necessidade de atender aos requisitos legais e ao teste de ponderação.<br><br><b>Possíveis induções de erro:<\/b> O examinador combina várias <b>inversões e omissões de qualificadores legais<\/b>. Primeiro, omite a ressalva crucial \"exceto no caso de prevalecerem direitos e liberdades fundamentais do titular\". Segundo, insere a expressão \"independentemente de análise de proporcionalidade\", o que é frontalmente contrário à doutrina e à prática da LGPD\/GDPR. Terceiro, sugere que a formalidade da política de privacidade é suficiente, o que é uma simplificação enganosa.",
+        "topico": "Bases Legais para o Tratamento - Legítimo Interesse (Art. 7º, IX)",
+        "nivel": "Avançado"
+    },
+    {
+        "id": 8,
+        "pergunta": "O titular dos dados tem direito a obter do controlador, a qualquer momento, a confirmação da existência de tratamento e o acesso integral aos seus dados. <b>Esse direito, conhecido como princípio do livre acesso, pode ser exercido de forma gratuita, salvo se o controlador demonstrar que as solicitações são manifestamente infundadas, excessivas ou repetitivas, hipótese em que poderá cobrar custos.<\/b>",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"IV - livre acesso: garantia, aos titulares, de consulta facilitada e gratuita sobre a forma e a duração do tratamento, bem como sobre a integralidade de seus dados pessoais;\" (Página 14). Esta frase exata sobre a cobrança de custos não está no trecho fornecido; é uma previsão comum em regulamentos de proteção de dados (como o GDPR) e está implicitamente associada ao conceito de \"facilitada e gratuita\", que não significa obrigatoriedade de atender a pedidos abusivos sem contrapartida. A lógica de não onerar o titular por pedidos legítimos, mas permitir cobrança para pedidos abusivos, é um entendimento consolidado.<br><br><b>Análise da Assertiva:<\/b> A assertiva está <b>correta<\/b>. A primeira parte descreve com precisão o direito de acesso, decorrente do princípio do livre acesso (Art. 6º, IV e Art. 18, I e II). A segunda parte estabelece uma condição razoável e comum em sistemas de proteção de dados: a gratuidade é a regra, mas pode ser excepcionada em casos de abuso por parte do titular, para não impor um ônus injusto ao controlador. Isso está em harmonia com o espírito da lei de ser \"facilitada e gratuita\", sem ser incondicionalmente onerosa.<br><br><b>Possíveis induções de erro:<\/b> O candidato pode considerar a assertiva errada por não encontrar a exata redação sobre cobrança de custos no PDF fornecido. No entanto, a banca CEBRASPE frequentemente testa a compreensão sistêmica e lógica do instituto, não apenas a transcrição literal. A pegadinha seria acreditar que a gratuidade é absoluta e incondicional, o que poderia levar a abusos e não é razoável. A assertiva introduz uma nuance prática e juridicamente aceitável.",
+        "topico": "Princípios e Direitos do Titular - Livre Acesso (Art. 6º, IV)",
         "nivel": "Intermediário"
     },
     {
         "id": 9,
-        "pergunta": "O fomento do Poder Público às Organizações Sociais pode incluir a cessão de bens públicos e a transferência de recursos orçamentários, ambas dispensadas de licitação, e a cessão especial de servidores públicos, com ônus para a organização social.",
-        "resposta_correta": "Errado",
+        "pergunta": "A coleta de dados pessoais sensíveis, como informações de saúde, para fins de tutela da saúde em procedimento realizado por hospital, <b>dispensa a necessidade de consentimento específico do titular,<\/b> nos termos da LGPD.",
+        "resposta_correta": "Certo",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"o fomento... pode ocorrer das seguintes formas: a) cessão de bens públicos... dispensada licitação... b) transferência de recursos orçamentários... c) cessão especial de servidores públicos, <b>com ônus para o órgão de origem do servidor<\/b>.\" (p. 10).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada porque inverte o ônus da cessão de servidores. O ônus (custo) é do <b>órgão de origem<\/b>, não da organização social. As demais partes (cessão de bens e recursos sem licitação) estão corretas.<br><br><b>Possíveis induções de erro:<\/b> Inversão sutil de um qualificador: 'com ônus para a organização social' em vez de 'com ônus para o órgão de origem'. Candidatos apressados podem não notar a troca.",
-        "topico": "Organizações Sociais (OS) - Fomento",
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"Art. 7º ... VIII - para a tutela da saúde, exclusivamente, em procedimento realizado por profissionais de saúde, serviços de saúde ou autoridade sanitária;\" (Página 18). \"O inciso VIII prevê hipótese específica para tutela da saúde... Essa restrição impede que empresas privadas sem função sanitária utilizem dados sensíveis de saúde para fins comerciais.\" (Página 20).<br><br><b>Análise da Assertiva:<\/b> A assertiva está <b>correta<\/b>. O inciso VIII do art. 7º é uma base legal autônoma para o tratamento de dados (inclusive sensíveis, como os de saúde) para a finalidade específica de tutela da saúde. Como é uma base legal distinta do consentimento (inciso I), ela realmente dispensa a obtenção de consentimento para esse fim específico. Naturalmente, outros princípios (finalidade, necessidade, segurança) e deveres de informação (transparência) permanecem aplicáveis.<br><br><b>Possíveis induções de erro:<\/b> O ponto sensível é a menção a \"dados sensíveis\" e \"dispensa de consentimento\". O candidato, sabendo que dados sensíveis merecem proteção reforçada, pode automaticamente associá-los à obrigatoriedade de consentimento. No entanto, a LGPD prevê várias outras bases legais para tratamento de dados sensíveis, e a \"tutela da saúde\" é uma delas. A questão testa o conhecimento das múltiplas bases legais além do consentimento.",
+        "topico": "Bases Legais para o Tratamento - Tutela da Saúde (Art. 7º, VIII)",
         "nivel": "Intermediário"
     },
     {
         "id": 10,
-        "pergunta": "O controle exercido pelo Tribunal de Contas da União sobre os Serviços Sociais Autônomos, como o SENAC e o SESC, é um controle de legalidade estrito, abrangendo todos os atos administrativos, devido ao fato de serem entidades da Administração Indireta.",
+        "pergunta": "O compartilhamento de dados pessoais entre órgãos públicos para a execução de políticas públicas <b>sempre exigirá<\/b> o consentimento específico do titular dos dados, mesmo que haja previsão legal para tal compartilhamento.",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"Os Serviços Sociais Autônomos... estão sujeitos ao controle e fiscalização do Estado (supervisão ministerial \/ controle finalístico)... devem, inclusive, prestar contas ao Tribunal de Contas da União (TCU).\" (p. 4). Eles <b>não integram<\/b> a Administração Pública (p. 5).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada por dois motivos principais: 1) Os Serviços Sociais Autônomos <b>não são<\/b> entidades da Administração Indireta (são do Terceiro Setor). 2) O controle do TCU sobre eles é <b>finalístico<\/b> (voltado aos resultados e uso de recursos públicos), não um 'controle de legalidade estrito' sobre 'todos os atos administrativos'. A causalidade ('devido ao fato de serem...') é falsa.<br><br><b>Possíveis induções de erro:<\/b> Criar uma falsa causalidade entre 'prestação de contas ao TCU' e 'controle de legalidade estrito sobre todos os atos', além de erroneamente enquadrá-los na Administração Indireta.",
-        "topico": "Serviços Sociais Autônomos - Controle pelo TCU",
-        "nivel": "Avançado"
-    },
-    {
-        "id": 11,
-        "pergunta": "A publicização, no contexto da Administração Gerencial, refere-se à transferência de atividades exclusivas do Estado para o setor privado com fins lucrativos, visando à redução de custos.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"surge a ideia da publicização, que tem por objetivo a flexibilização baseada na transferência de atividades <b>não exclusivas<\/b> do Estado (devolution), para organizações públicas <b>não-estatais (terceiro setor)<\/b>\" (p. 1).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada porque a publicização transfere atividades <b>não exclusivas<\/b> (não exclusivas) do Estado para o <b>Terceiro Setor (sem fins lucrativos)<\/b>, não para o setor privado com fins lucrativos (que seria o Segundo Setor). A assertiva erra em dois qualificadores-chave: 'exclusivas' e 'com fins lucrativos'.<br><br><b>Possíveis induções de erro:<\/b> Trocar 'não exclusivas' por 'exclusivas' e 'terceiro setor (sem fins lucrativos)' por 'setor privado com fins lucrativos'. Confundir os setores da economia.",
-        "topico": "Publicização e Administração Gerencial",
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"Art. 7º ... III - pela administração pública, para o tratamento e uso compartilhado de dados necessários à execução de políticas públicas previstas em leis e regulamentos ou respaldadas em contratos, convênios ou instrumentos congêneres...\" (Página 18).<br><br><b>Análise da Assertiva:<\/b> A assertiva está <b>errada<\/b>. O inciso III do art. 7º estabelece expressamente uma base legal para o tratamento (incluindo uso compartilhado) pela administração pública, condicionada à existência de previsão em lei, regulamento, contrato, etc. Portanto, quando houver essa previsão legal, o consentimento <b>não é exigido<\/b>. A base legal é o cumprimento de uma obrigação\/competência legal do ente público. A expressão \"<b>sempre exigirá<\/b>\" torna a assertiva falsa.<br><br><b>Possíveis induções de erro:<\/b> É uma clássica <b>armadilha do absoluto<\/b> (\"sempre\") e uma <b>inversão de qualificador legal<\/b>. O candidato pode pensar, de forma intuitiva, que qualquer compartilhamento requer consentimento. No entanto, a LGPD, seguindo a tradição do direito administrativo, reconhece que a execução de políticas públicas muitas vezes depende do fluxo de informações entre órgãos, e isso pode (e deve) ser feito com base na lei, não no consentimento individual, para eficácia da administração.",
+        "topico": "Bases Legais para o Tratamento - Administração Pública (Art. 7º, III)",
         "nivel": "Básico"
-    },
-    {
-        "id": 12,
-        "pergunta": "As Organizações da Sociedade Civil de Interesse Público (OSCIPs) surgiram para substituir totalmente o modelo das Organizações Sociais (OS), em razão da discricionariedade excessiva e da falta de controles rígidos nas OS.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"o modelo das Organizações Sociais (OS) começou a ser bastante criticado, em decorrência da 'discricionariedade' na escolha... abriu espaço para outro tipo de organização: as Organizações da Sociedade Civil de Interesse Público (OSCIP)\" (p. 14). O texto não diz que as OSCIPs substituíram <b>totalmente<\/b> as OS, mas que 'abriu espaço' para outro modelo.<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada porque usa o termo absoluto 'totalmente'. Ambos os modelos (OS e OSCIP) coexistem. A causalidade (surgiram por causa da discricionariedade) tem base, mas a consequência ('substituir totalmente') é falsa.<br><br><b>Possíveis induções de erro:<\/b> Uso do termo 'totalmente'. A banca toma uma crítica ao modelo OS e extrapola para uma substituição completa, o que não é afirmado.",
-        "topico": "Organizações Sociais (OS) e OSCIPs",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 13,
-        "pergunta": "Para que uma entidade privada sem fins lucrativos seja qualificada como Organização Social, é necessário que seu objeto social esteja voltado exclusivamente para a área da saúde, nos termos da Lei nº 9.637\/1998.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"pessoas jurídicas de direito privado, sem fins lucrativos, cujas atividades sejam dirigidas ao <b>ensino, à pesquisa científica, ao desenvolvimento tecnológico, à proteção e preservação do meio ambiente, à cultura e à saúde<\/b>\" (p. 6, art. 1º da Lei 9.637\/98).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada porque o objeto não é <b>exclusivamente<\/b> saúde. A lei prevê seis áreas de atuação possíveis (ensino, pesquisa, desenvolvimento tecnológico, meio ambiente, cultura e saúde). O termo 'exclusivamente' restringe indevidamente.<br><br><b>Possíveis induções de erro:<\/b> Uso do termo 'exclusivamente' e a citação de apenas uma das seis áreas previstas na lei.",
-        "topico": "Organizações Sociais (OS) - Requisitos",
-        "nivel": "Básico"
-    },
-    {
-        "id": 14,
-        "pergunta": "O Programa Nacional de Publicização (PNP), criado pela Lei nº 9.637\/1998, tem como diretriz o controle social das ações de forma transparente, a ênfase no atendimento do cidadão-cliente e a ênfase nos resultados qualitativos e quantitativos.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"Programa Nacional de Publicização - PNP, com o objetivo de estabelecer diretrizes... observadas as seguintes diretrizes: I - ênfase no atendimento do cidadão-cliente; II - ênfase nos resultados, qualitativos e quantitativos...; III - controle social das ações de forma transparente.\" (p. 7, art. 20 da Lei 9.637\/98).<br><br><b>Análise da Assertiva:<\/b> A assertiva está correta porque reproduz fielmente as três diretrizes originais do PNP conforme a lei. Posteriormente, o Decreto 9.190\/2017 acrescentou uma quarta diretriz, mas não invalida as três originais.<br><br><b>Possíveis induções de erro:<\/b> A banca poderia incluir a diretriz acrescentada pelo decreto ('alinhamento aos princípios...') e perguntar se 'são as diretrizes', o que tornaria a assertiva incompleta (e, portanto, errada). Aqui, listou apenas as da lei, corretamente.",
-        "topico": "Programa Nacional de Publicização (PNP)",
-        "nivel": "Básico"
-    },
-    {
-        "id": 15,
-        "pergunta": "Os Serviços Sociais Autônomos são financiados por contribuições parafiscais, que são recursos de natureza pública, razão pela qual seus empregados são considerados servidores públicos e estão sujeitos ao regime estatutário.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"Os Serviços Sociais Autônomos são financiados e mantidos através de recursos oriundos de contribuições sociais de natureza tributária... Essas contribuições são conhecidas como contribuições parafiscais.\" (p. 4). \"os empregados das Entidades do Sistema S estão sujeitos à legislação trabalhista (CLT) e, para fins penais e de improbidade administrativa, são 'equiparados' a funcionários públicos.\" (p. 5).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada porque a premissa (financiamento por contribuições parafiscais) é verdadeira, mas a consequência é falsa: os empregados <b>não são servidores públicos<\/b> (regime estatutário); são celetistas (CLT). A equiparação ocorre apenas para fins penais e de improbidade, não para o regime jurídico geral. A causalidade ('razão pela qual') estabelece uma relação falsa.<br><br><b>Possíveis induções de erro:<\/b> Falsa causalidade. A gestão de recursos públicos não transforma automaticamente vínculos privados em estatutários. Confundir 'equiparação para fins penais' com 'são servidores públicos'.",
-        "topico": "Serviços Sociais Autônomos - Financiamento e Regime de Pessoal",
-        "nivel": "Avançado"
-    },
-    {
-        "id": 16,
-        "pergunta": "A qualificação como Organização Social confere à entidade privada a declaração de entidade de interesse social e utilidade pública, o que acarreta, automaticamente, a aplicação integral do regime jurídico de direito público a todos os seus atos.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"as entidades qualificadas como Organizações Sociais são declaradas como entidades de interesse social e utilidade pública, para todos os efeitos legais.\" (p. 8). No entanto, \"as organizações sociais... não fazem parte do conceito constitucional de Administração Pública... por receberem recursos públicos... seu regime jurídico tem de ser minimamente informado pela incidência do núcleo essencial dos princípios da Administração Pública\" (p. 11).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada. A declaração de interesse social e utilidade pública é correta. No entanto, a consequência ('aplicação integral do regime jurídico de direito público a todos os seus atos') é falsa. O regime é híbrido: prevalece o direito privado, com incidência dos princípios da administração pública apenas no núcleo essencial, especialmente no uso de recursos públicos. 'Automaticamente' e 'integral' são termos que exageram a aplicação do regime público.<br><br><b>Possíveis induções de erro:<\/b> Uso dos termos absolutos 'automaticamente' e 'integral'. A banca tenta fazer crer que a declaração de utilidade pública equipara a entidade totalmente à Administração Pública, o que não é verdade.",
-        "topico": "Organizações Sociais (OS) - Efeitos da Qualificação",
-        "nivel": "Avançado"
-    },
-    {
-        "id": 17,
-        "pergunta": "O Tribunal de Contas da União exerce sobre as Organizações Sociais um controle prévio e concomitante sobre a execução do contrato de gestão, semelhante ao que ocorre com os órgãos da Administração Direta.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"o controle exercido sobre as Organizações Sociais é um controle de resultados.\" (p. 12). \"Caso os responsáveis pela fiscalização... tomem conhecimento de qualquer irregularidade... deverão dar ciência... ao Tribunal de Contas da União\" (p. 12). O controle principal é da autoridade supervisora (controle de resultados). O TCU atua de forma <b>subsidiária<\/b> e, em geral, a posteriori, quando notificado de irregularidades.<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada. O controle do TCU sobre as OS não é 'prévio e concomitante' como na Administração Direta. É um controle <b>posterior<\/b> e, em grande medida, indireto (via análise de prestação de contas e notificação de irregularidades). A comparação ('semelhante ao que ocorre...') é falsa.<br><br><b>Possíveis induções de erro:<\/b> Generalizar o controle externo do TCU, aplicando o mesmo modelo de controle sobre a administração direta às OS. O texto é claro: é um 'controle de resultados', não um controle prévio de atos.",
-        "topico": "Organizações Sociais (OS) - Controle pelo TCU",
-        "nivel": "Avançado"
-    },
-    {
-        "id": 18,
-        "pergunta": "A extinção de uma Organização Social qualificada implica, obrigatoriamente, que todo o seu patrimônio líquido seja incorporado ao patrimônio da União, não podendo ser transferido para outra organização social.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"em caso de extinção ou desqualificação, [o patrimônio deve ser incorporado] ao patrimônio de outra organização social qualificada no âmbito da União, da mesma área de atuação, ou ao patrimônio da União, dos Estados, do Distrito Federal ou dos Municípios\" (p. 8-9, requisito I, i da Lei).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada porque não é obrigatória a incorporação <b>somente<\/b> à União. A lei prevê duas destinações preferenciais: 1) outra OS da mesma área; 2) entes federativos (União, Estados, DF, Municípios). O termo 'obrigatoriamente... à União' e 'não podendo ser transferido para outra OS' inverte e restringe as opções legais.<br><br><b>Possíveis induções de erro:<\/b> Uso de 'obrigatoriamente' e 'não podendo', criando uma regra absoluta onde a lei oferece alternativas. Inversão da ordem de preferência (a OS outra é a primeira opção).",
-        "topico": "Organizações Sociais (OS) - Extinção e Destinação do Patrimônio",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 19,
-        "pergunta": "A criação de Serviços Sociais Autônomos, como o SENAR e o SEBRAE, depende de lei específica que institua diretamente a pessoa jurídica, atribuindo-lhe personalidade jurídica de direito público.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"Os Serviços Sociais Autônomos são pessoas jurídicas de direito privado... que têm sua criação autorizada em lei (ou seja, elas não são 'criadas diretamente' por lei; a aquisição de sua personalidade jurídica ocorre quando a Entidade Privada Instituidora inscreve os respectivos atos constitutivos no registro civil das pessoas jurídica).\" (p. 3).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada em dois pontos: 1) A lei <b>autoriza<\/b> a criação, mas não <b>institui diretamente<\/b> a pessoa jurídica. 2) A personalidade jurídica é de <b>direito privado<\/b>, não de direito público. A assertiva troca 'autoriza' por 'institui diretamente' e 'direito privado' por 'direito público'.<br><br><b>Possíveis induções de erro:<\/b> Alteração de qualificadores normativos fundamentais: 'autorizada em lei' vs. 'instituída diretamente por lei'; 'direito privado' vs. 'direito público'. Candidatos que associam 'Serviço' no nome a entidade pública podem errar.",
-        "topico": "Serviços Sociais Autônomos - Criação e Natureza Jurídica",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 20,
-        "pergunta": "O Plano Diretor da Reforma do Aparelho do Estado (PDRAE) idealizou a publicização como a transferência de serviços exclusivos do Estado para o setor privado com fins lucrativos, a fim de aumentar a eficiência.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"O Plano Diretor de Reforma do Aparelho do Estado (PDRAE) tinha por objetivo transferir os serviços <b>não exclusivos<\/b> de estado para o setor 'não estatal'... a ideia era que no setor de 'Serviços não exclusivos de Estado' deve ocorrer a publicização (transferência... para o setor público não-estatal – organizações do terceiro setor).\" (p. 6).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada porque o PDRAE previa a transferência para o setor <b>não estatal (Terceiro Setor, sem fins lucrativos)<\/b>, não para o setor privado com fins lucrativos (Segundo Setor). Além disso, os serviços são <b>não exclusivos<\/b>, não exclusivos. A assertiva inverte ambos os conceitos-chave.<br><br><b>Possíveis induções de erro:<\/b> Trocar 'não exclusivos' por 'exclusivos' e 'não estatal (terceiro setor)' por 'setor privado com fins lucrativos'. É uma confusão comum entre os setores da economia e o conceito de exclusividade estatal.",
-        "topico": "PDRAE e Publicização",
-        "nivel": "Básico"
-    },
-    {
-        "id": 21,
-        "pergunta": "Na execução do contrato de gestão, a Organização Social está isenta de prestar contas ao Tribunal de Contas da União, uma vez que o controle é exercido exclusivamente pelo órgão supervisor da área correspondente.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"Caso os responsáveis pela fiscalização da execução do contrato de gestão tomem conhecimento de qualquer irregularidade ou ilegalidade na utilização de recursos ou bens de origem pública por parte da Organização Social, deverão dar ciência dessa irregularidade\/ilegalidade ao Tribunal de Contas da União, sob pena de responsabilidade solidária.\" (p. 12).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada. A OS não está 'isenta' de prestar contas ao TCU. Embora o controle direto seja do órgão supervisor, este tem o dever de comunicar irregularidades ao TCU, que pode, então, exercer seu controle. O TCU pode também analisar as contas que recebe. O termo 'exclusivamente' é falso, pois o TCU tem competência correlata.<br><br><b>Possíveis induções de erro:<\/b> Uso dos termos 'isenta' e 'exclusivamente'. A assertiva tenta eliminar o papel do TCU no controle de recursos públicos, o que não corresponde à realidade nem ao texto, que impõe o dever de comunicação ao tribunal.",
-        "topico": "Organizações Sociais (OS) - Prestação de Contas e Controle",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 22,
-        "pergunta": "A Administração Pública, ao firmar contrato de gestão com Organização Social, está obrigada a realizar licitação prévia, salvo quando houver apenas uma entidade habilitada na área.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"o Poder Público não precisa realizar licitação para firmar contrato de gestão com a Organização Social. Entretanto, quando existirem diversas entidades com condições de firmar a parceria com o Poder Público, é necessário que a Administração Pública promova um processo de seleção impessoal.\" (p. 10).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada porque afirma que há obrigatoriedade de licitação ('está obrigada a realizar licitação prévia'), o que é falso. A lei dispensa licitação. O que pode ser necessário, na hipótese de múltiplas entidades, é um 'processo de seleção impessoal', que não é necessariamente uma licitação nos moldes da Lei 8.666\/93. A exceção ('salvo quando...') também não está corretamente formulada.<br><br><b>Possíveis induções de erro:<\/b> Substituir 'não precisa realizar licitação' por 'está obrigada a realizar licitação'. Confundir 'processo de seleção impessoal' com 'licitação'.",
-        "topico": "Organizações Sociais (OS) - Contratação pela Administração",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 23,
-        "pergunta": "As Organizações Sociais podem atuar nas áreas de educação, saúde, cultura, meio ambiente, ciência e tecnologia, e assistência social, desde que qualificadas nos termos da lei.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"pessoas jurídicas de direito privado, sem fins lucrativos, cujas atividades sejam dirigidas ao ensino, à pesquisa científica, ao desenvolvimento tecnológico, à proteção e preservação do meio ambiente, à cultura e à saúde\" (p. 6). A lista <b>não inclui<\/b> 'assistência social'.<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada porque inclui 'assistência social' entre as áreas de atuação das OS. A Lei 9.637\/98 lista seis áreas específicas, e assistência social não é uma delas. A inclusão desse item, mesmo com 'desde que qualificadas', torna a assertiva falsa.<br><br><b>Possíveis induções de erro:<\/b> Inclusão indevida de um item (assistência social) em uma lista que, de outra forma, é correta. Candidatos podem associar assistência social ao Terceiro Setor de forma genérica e não lembrar da enumeração taxativa da lei para OS.",
-        "topico": "Organizações Sociais (OS) - Áreas de Atuação",
-        "nivel": "Básico"
-    },
-    {
-        "id": 24,
-        "pergunta": "A comissão de avaliação que analisa os resultados do contrato de gestão de uma Organização Social é composta exclusivamente por servidores públicos do órgão supervisor.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"Os resultados atingidos com a execução do contrato de gestão devem ser analisados, periodicamente, por comissão de avaliação, indicada pela autoridade supervisora da área correspondente, <b>composta por especialistas de notória capacidade e adequada qualificação<\/b>.\" (p. 12).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada. A comissão é composta por 'especialistas', o que pode incluir, mas não se restringe a, servidores públicos. O termo 'exclusivamente por servidores públicos' restringe incorretamente a composição.<br><br><b>Possíveis induções de erro:<\/b> Uso do termo 'exclusivamente'. A banca tenta vincular a comissão ao órgão supervisor de forma absoluta, ignorando que especialistas externos podem participar.",
-        "topico": "Organizações Sociais (OS) - Comissão de Avaliação",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 25,
-        "pergunta": "As entidades paraestatais, por serem integrantes do Terceiro Setor, têm por finalidade precípua o lucro, que é posteriormente reinvestido em suas atividades sociais.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"Entidades Paraestatais são pessoas jurídicas de direito privado, <b>sem fins lucrativos<\/b>\" (p. 2).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada porque as entidades paraestatais são <b>sem fins lucrativos<\/b>. A expressão 'finalidade precípua o lucro' é a antítese de sua definição. Mesmo que reinvestissem o lucro (o que não ocorre, pois não buscam lucro), a finalidade não é lucrativa.<br><br><b>Possíveis induções de erro:<\/b> Inversão total do conceito fundamental: 'sem fins lucrativos' vs. 'finalidade precípua o lucro'. Pode confundir com empresas privadas do Segundo Setor que têm responsabilidade social.",
-        "topico": "Entidades Paraestatais - Finalidade",
-        "nivel": "Básico"
-    },
-    {
-        "id": 26,
-        "pergunta": "A perda da qualificação de Organização Social (desqualificação) importa a reversão dos bens públicos cedidos e dos recursos transferidos, além de sujeitar os dirigentes a responsabilização por eventuais danos, sem prejuízo de outras sanções.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"A desqualificação importará reversão dos bens permitidos e dos valores entregues à utilização da organização social, sem prejuízo de outras sanções cabíveis... respondendo os dirigentes da organização social, individual e solidariamente, pelos danos ou prejuízos decorrentes de sua ação ou omissão.\" (p. 13).<br><br><b>Análise da Assertiva:<\/b> A assertiva está correta, pois resume fielmente as consequências da desqualificação previstas na lei: reversão de bens\/recursos e responsabilização dos dirigentes, além de outras sanções.<br><br><b>Possíveis induções de erro:<\/b> A banca poderia omitir 'sem prejuízo de outras sanções' ou trocar 'solidariamente' por 'subsidiariamente', por exemplo. Aqui, a redação é fiel.",
-        "topico": "Organizações Sociais (OS) - Desqualificação",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 27,
-        "pergunta": "O Terceiro Setor é composto unicamente pelas Entidades Paraestatais, uma vez que o primeiro setor é o Estado e o segundo é o mercado.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"O primeiro setor é o próprio Estado. O segundo setor é composto pelo mercado. O terceiro setor, por fim, é formado pelas e Entidades Paraestatais.\" (p. 3). Embora o texto afirme isso, a doutrina e a realidade são mais amplas: o Terceiro Setor inclui diversas formas de organizações sem fins lucrativos, não apenas as 'Entidades Paraestatais' no sentido técnico-jurídico usado no PDF (Serviços Sociais Autônomos, OS, OSCIPs, etc.). A assertiva usa 'unicamente', o que é uma restrição excessiva.<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada porque, embora o PDF simplifique dizendo que o Terceiro Setor é formado pelas Entidades Paraestatais, o termo 'unicamente' é problemático. Na prática, o conceito de Terceiro Setor é mais abrangente. Além disso, a própria lista do PDF (p. 3) inclui tipos variados (OS, OSCIP, etc.) sob o guarda-chuva 'Entidades Paraestatais', mas a afirmação absoluta 'unicamente' pode ser considerada redutiva mesmo dentro do contexto do material.<br><br><b>Possíveis induções de erro:<\/b> Uso do termo absoluto 'unicamente'. Candidatos que decoram a frase do PDF podem marcar 'Certo', mas a banca pode estar testando a percepção de que a definição setorial é mais conceitual e menos um catálogo fechado.",
-        "topico": "Terceiro Setor",
-        "nivel": "Básico"
-    },
-    {
-        "id": 28,
-        "pergunta": "A seleção de pessoal pelas Organizações Sociais deve ser feita mediante concurso público, em observância ao princípio da igualdade, conforme entendimento sumulado do Supremo Tribunal Federal.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"as OS não se submetem ao dever de realizar concursos públicos para contratações de pessoal. Contudo, conforme entendimento do STF, as OS devem realizar a seleção de pessoal mediante processo seletivo objetivo e impessoal\" (p. 11).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada. O STF <b>não<\/b> exige concurso público para OS, mas sim um 'processo seletivo objetivo e impessoal'. A assertiva troca 'processo seletivo' por 'concurso público', que é um tipo específico e mais rigoroso de seleção, típico da Administração Pública direta.<br><br><b>Possíveis induções de erro:<\/b> Substituição do termo legal\/normativo 'processo seletivo' por 'concurso público'. Inserir 'conforme entendimento sumulado do STF' dá um ar de veracidade, mas o entendimento é outro.",
-        "topico": "Organizações Sociais (OS) - Seleção de Pessoal",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 29,
-        "pergunta": "A crise fiscal do Estado e a expansão de suas funções econômicas e sociais foram fatores preponderantes para o surgimento da Administração Pública Gerencial e do modelo de publicização no Brasil.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"em meio à crise do Estado de Bem-Estar Social, e à crise fiscal dos Estados... em um período marcado pelo desenvolvimento tecnológico, globalização e expansão das funções econômicas e sociais do Estado, surge um novo modelo de administração pública: a Administração Gerencial.\" (p. 1). \"Nesse contexto da Administração Pública Gerencial, ocorreram diversas mudanças com o objetivo de superar a crise fiscal... surge a ideia da publicização\" (p. 1).<br><br><b>Análise da Assertiva:<\/b> A assertiva está correta. Ela sintetiza a relação de causalidade apresentada no PDF: a crise fiscal e a expansão das funções estatais criaram o ambiente para o surgimento da Administração Gerencial e, dentro dela, da publicização como instrumento.<br><br><b>Possíveis induções de erro:<\/b> A banca poderia isolar apenas um fator (ex.: apenas a crise fiscal) ou inverter a causalidade (a publicização causou a crise). Aqui, a relação está fiel ao contexto histórico descrito.",
-        "topico": "Contexto Histórico da Administração Gerencial",
-        "nivel": "Básico"
-    },
-    {
-        "id": 30,
-        "pergunta": "Uma entidade qualificada como Organização Social tem sua autonomia e flexibilidade aumentadas em comparação com sua condição anterior de entidade privada sem fins lucrativos, pois passa a receber fomento público e a ter maior liberdade gerencial.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> \"quando a Entidade Privada sem fins lucrativos se qualifica como Organização Social, ela 'perde' um pouco da flexibilidade, uma vez que passa a ter de seguir algumas regras mais 'rígidas' (tais como regulamentos para compras, prestação de contas, etc.)... ainda assim a OS continua sendo mais 'flexível' do que as Entidades da Administração Pública.\" (p. 14).<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada porque a qualificação como OS <b>reduz<\/b> a autonomia e flexibilidade em comparação com a condição de entidade privada sem fins lucrativos comum, devido às regras do contrato de gestão, prestação de contas, etc. A assertiva diz que a autonomia é 'aumentada', o que é o oposto do que o PDF afirma. É verdade que ela é mais flexível que a Administração Pública, mas menos que antes da qualificação.<br><br><b>Possíveis induções de erro:<\/b> Inversão do efeito da qualificação. A banca explora a ideia intuitiva de que 'parceria com o Estado traz mais recursos e liberdade', quando na verdade impõe mais controles. Confundir a comparação (OS vs. Entidade Pública) com a outra (OS vs. Entidade Privada não qualificada).",
-        "topico": "Organizações Sociais (OS) - Autonomia e Flexibilidade",
-        "nivel": "Avançado"
     }
 ]
