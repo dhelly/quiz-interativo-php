@@ -11,18 +11,25 @@
 <body class="pagina-quiz">
     <div class="container-quiz">
         
-        <div class="header-quiz">
-            <h1>
-                <?php if ($dados['modo_revisao']): ?>
-                    📚 Revisão de Questões Erradas
-                <?php else: ?>
-                    🎓 Quiz Interativo - Inútil.App
-                <?php endif; ?>
-            </h1>
-            <?php if ($dados['modo_revisao']): ?>
-                <div class="modo-revisao">MODO REVISÃO</div>
-            <?php endif; ?>
+        <div class="header-quiz" style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="text-align: left;">
+                <h1 style="margin-bottom: 5px; text-align: left;">
+                    <?php if ($dados['modo_revisao']): ?>
+                        📚 Revisão
+                    <?php else: ?>
+                        🎓 Quiz
+                    <?php endif; ?>
+                </h1>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">Logado como <strong><?php echo $_SESSION['username']; ?></strong></p>
+            </div>
+            <div style="display: flex; gap: 8px;">
+                <a href="index.php?acao=home" class="btn btn-secondary btn-small">🏠 Início</a>
+                <a href="index.php?acao=logout" class="btn btn-secondary btn-small">🚪 Sair</a>
+            </div>
         </div>
+        <?php if ($dados['modo_revisao']): ?>
+            <div class="modo-revisao" style="margin-top: 10px;">MODO REVISÃO</div>
+        <?php endif; ?>
 
         <div class="content-quiz">
             <?php if ($dados['modo_revisao']): ?>
@@ -51,6 +58,45 @@
             <div class="feedback" id="feedback">
                 <div id="feedbackMensagem"></div>
                 <div class="explicacao" id="feedbackExplicacao"></div>
+                
+                <!-- Nova Área de Interação -->
+                <div class="interacao-container" style="margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--border);">
+                    <div style="font-size: 0.9rem; font-weight: 600; margin-bottom: 10px; color: var(--text-main);">
+                        💬 Dúvida ou erro nessa questão?
+                    </div>
+                    <textarea id="comentarioQuestao" placeholder="Deixe um comentário ou reporte um erro..." 
+                              style="width: 100%; height: 60px; padding: 10px; border-radius: 6px; border: 1px solid var(--border); font-size: 0.85rem;"></textarea>
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+                        <label style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; cursor: pointer; color: var(--danger);">
+                            <input type="checkbox" id="sinalizarErro"> 🚩 Sinalizar Erro
+                        </label>
+                        <button class="btn btn-small" onclick="enviarInteracao()" id="btnEnviarInteracao">
+                            Enviar Feedback
+                        </button>
+                    </div>
+                    <div id="interacaoAviso" style="font-size: 0.75rem; margin-top: 5px; display: none;"></div>
+                </div>
+
+                <!-- Nova Área da Comunidade -->
+                <div class="comunidade-wrapper">
+                    <div class="comunidade-header">
+                        <div class="comunidade-title">
+                            🤝 Notas da Comunidade
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span style="font-size: 0.8rem; color: var(--text-muted);">Ver notas de outros</span>
+                            <label class="switch">
+                                <input type="checkbox" id="toggleComunidade" onchange="toggleComunidade()">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div id="listaComentarios" class="comentarios-lista" style="display: none;">
+                        <div class="empty-comments">Carregando comentários...</div>
+                    </div>
+                </div>
             </div>
 
             <div class="questao-header">
@@ -77,14 +123,15 @@
             </div>
 
             <!-- Botão de avançar (inicialmente oculto) -->
-            <button class="btn-quiz btn-avancar" id="btnAvancar" style="display: none;">
+            <button class="btn-quiz proxima-pergunta-btn" id="btnAvancar" style="display: none;">
                 <?php if ($dados['proxima_id']): ?>
-                    ➡️ Avançar para Próxima Questão
+                    Próxima Questão ➡️
                 <?php else: ?>
                     🏁 <?php echo $dados['modo_revisao'] ? 'Finalizar Revisão' : 'Ver Resultado Final'; ?>
                 <?php endif; ?>
             </button>
 
+            <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']): ?>
             <div class="admin-panel">
                 <strong>🔧 Painel de Controle</strong>
                 <div class="admin-links">
@@ -95,6 +142,7 @@
                     <?php endif; ?>
                 </div>
             </div>
+            <?php endif; ?>
         </div>
 
     </div>
@@ -258,6 +306,150 @@
             const urlParams = new URLSearchParams(window.location.search);
             window.location.href = 'index.php?' + urlParams.toString();
         }
+
+        function enviarInteracao() {
+            const comment = document.getElementById('comentarioQuestao').value;
+            const is_flagged = document.getElementById('sinalizarErro').checked ? 1 : 0;
+            const aviso = document.getElementById('interacaoAviso');
+            const btn = document.getElementById('btnEnviarInteracao');
+
+            if (!comment && !is_flagged) return;
+
+            btn.disabled = true;
+            btn.textContent = 'Enviando...';
+
+            const formData = new FormData();
+            formData.append('question_id', questaoId);
+            formData.append('comment', comment);
+            formData.append('is_flagged', is_flagged);
+
+            fetch('salvar_interacao.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    aviso.style.display = 'block';
+                    aviso.style.color = 'var(--success)';
+                    aviso.textContent = '✅ Feedback enviado com sucesso!';
+                    btn.textContent = 'Enviado';
+                } else {
+                    aviso.style.display = 'block';
+                    aviso.style.color = 'var(--danger)';
+                    aviso.textContent = '❌ Erro: ' + data.message;
+                    btn.disabled = false;
+                    btn.textContent = 'Enviar Feedback';
+                }
+            })
+            .catch(error => {
+                aviso.style.display = 'block';
+                aviso.style.color = 'var(--danger)';
+                aviso.textContent = '❌ Erro de conexão.';
+                btn.disabled = false;
+                btn.textContent = 'Enviar Feedback';
+            });
+        }
+
+        function toggleComunidade() {
+            const toggle = document.getElementById('toggleComunidade');
+            const lista = document.getElementById('listaComentarios');
+            
+            if (toggle.checked) {
+                lista.style.display = 'flex';
+                carregarComentarios();
+                localStorage.setItem('showCommunityComments', 'true');
+            } else {
+                lista.style.display = 'none';
+                localStorage.setItem('showCommunityComments', 'false');
+            }
+        }
+
+        function carregarComentarios() {
+            const lista = document.getElementById('listaComentarios');
+            
+            fetch(`api.php?action=get_comments&question_id=${questaoId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        renderizarComentarios(data.comments);
+                    } else {
+                        lista.innerHTML = `<div class="empty-comments">❌ Erro ao carregar: ${data.message}</div>`;
+                    }
+                })
+                .catch(error => {
+                    lista.innerHTML = '<div class="empty-comments">❌ Erro de conexão ao buscar notas.</div>';
+                });
+        }
+
+        function renderizarComentarios(comments) {
+            const lista = document.getElementById('listaComentarios');
+            if (comments.length === 0) {
+                lista.innerHTML = '<div class="empty-comments">Nenhuma nota compartilhada para esta questão ainda.</div>';
+                return;
+            }
+
+            lista.innerHTML = '';
+            comments.forEach(c => {
+                const item = document.createElement('div');
+                item.className = 'comentario-item';
+                
+                const dataFormatada = new Date(c.created_at).toLocaleDateString('pt-BR', {
+                    day: '2-digit', month: '2-digit', year: '2-digit', hour: '2-digit', minute: '2-digit'
+                });
+
+                item.innerHTML = `
+                    <div class="comentario-votos">
+                        <button class="btn-vote" onclick="votarComentario(${c.id}, this)" title="Útil!">
+                            ▲
+                        </button>
+                        <span class="votos-count">${c.total_votes}</span>
+                    </div>
+                    <div class="comentario-corpo">
+                        <div class="comentario-meta">
+                            <span class="comentario-user">@${c.username}</span>
+                            <span>${dataFormatada}</span>
+                        </div>
+                        <div class="comentario-texto">${c.comment}</div>
+                    </div>
+                `;
+                lista.appendChild(item);
+            });
+        }
+
+        function votarComentario(commentId, btn) {
+            if (btn.classList.contains('voted')) return;
+
+            const formData = new FormData();
+            formData.append('comment_id', commentId);
+
+            fetch('api.php?action=vote_comment', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    btn.classList.add('voted');
+                    const countSpan = btn.nextElementSibling;
+                    countSpan.textContent = data.votes;
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Erro ao votar:', error);
+            });
+        }
+
+        // Recuperar preferência do usuário
+        document.addEventListener('DOMContentLoaded', () => {
+            const pref = localStorage.getItem('showCommunityComments');
+            if (pref === 'true') {
+                document.getElementById('toggleComunidade').checked = true;
+                toggleComunidade();
+            }
+        });
     </script>
 </body>
 </html>

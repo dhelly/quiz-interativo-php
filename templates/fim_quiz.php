@@ -84,7 +84,7 @@
             <?php endif; ?>
             
             <?php if ($dados['total_erradas'] > 0): ?>
-                <button class="btn btn-error" onclick="location.href='index.php?acao=limpar_revisao'">
+                <button id="btnLimparHistorico" class="btn btn-error" onclick="if(confirm('Tem certeza que deseja limpar seu histórico de questões erradas?')) location.href='index.php?acao=limpar_revisao'">
                     🗑️ Limpar Histórico
                 </button>
             <?php endif; ?>

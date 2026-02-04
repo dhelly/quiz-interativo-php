@@ -6,15 +6,63 @@ $quizzes_disponiveis = listarQuizzes();
 
 if (isset($_GET['carregar_quiz'])) {
     $caminho_quiz = $_GET['carregar_quiz'];
-    $quiz_data = carregarQuiz($caminho_quiz);
-    if ($quiz_data) {
-        salvarDadosQuiz($quiz_data);
-        header('Location: index.php');
-        exit;
-    }
+    $_SESSION['current_quiz_id'] = $caminho_quiz; // Salva o quiz selecionado na sessão
+    header('Location: index.php?acao=quiz');
+    exit;
 }
 
 $acao = $_GET['acao'] ?? 'quiz';
+
+// Gerenciamento de Usuário (Sessão)
+if ((!isset($_SESSION['username']) || !isset($_SESSION['user_id'])) && $acao != 'login') {
+    $acao = 'welcome';
+}
+
+if ($acao == 'login' && isset($_POST['username']) && isset($_POST['password'])) {
+    $username = trim($_POST['username']);
+    $password = $_POST['password'];
+    
+    // Tenta autenticar
+    $user = autenticarUsuario($username, $password);
+    
+    if ($user) {
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['username'] = $user['username'];
+        $_SESSION['is_admin'] = (bool)$user['is_admin'];
+        header('Location: index.php');
+        exit;
+    } else {
+        // Se não conseguiu autenticar, tenta registrar (se não for admin o username desejado)
+        if ($username !== 'admin') {
+            $registro = registrarUsuario($username, $password);
+            if ($registro['success']) {
+                $_SESSION['user_id'] = $registro['id'];
+                $_SESSION['username'] = $username;
+                $_SESSION['is_admin'] = false;
+                header('Location: index.php');
+                exit;
+            } else {
+                $erro_login = $registro['message'];
+                $acao = 'welcome';
+            }
+        } else {
+            $erro_login = "Senha incorreta para o administrador.";
+            $acao = 'welcome';
+        }
+    }
+}
+
+if ($acao == 'logout') {
+    session_destroy();
+    header('Location: index.php');
+    exit;
+}
+
+// Se estiver logado e não tiver quiz selecionado, vai para home
+if (isset($_SESSION['user_id']) && !isset($_SESSION['current_quiz_id']) && $acao == 'quiz') {
+    $acao = 'home';
+}
+
 $questao_id = $_GET['id'] ?? null;
 $acertos = $_GET['acertos'] ?? 0;
 $modo_revisao = $_GET['modo_revisao'] ?? false;
@@ -24,10 +72,20 @@ if (!isset($_SESSION['questoes_erradas'])) {
     $_SESSION['questoes_erradas'] = [];
 }
 
-// Carrega os dados do quiz
-$quiz_data = carregarDadosQuiz();
+// Carrega os dados do quiz (ou quiz padrão se nenhum selecionado)
+$quiz_id = $_SESSION['current_quiz_id'] ?? 1;
+$quiz_data = carregarQuiz($quiz_id);
+if (empty($quiz_data)) {
+    $quiz_data = carregarDadosQuiz(); // Fallback
+}
 
 switch ($acao) {
+    case 'welcome':
+        include 'templates/welcome.php';
+        break;
+    case 'home':
+        exibirHome($quizzes_disponiveis);
+        break;
     case 'quiz':
         exibirQuiz($quiz_data, $questao_id, $acertos, $modo_revisao);
         break;
@@ -44,13 +102,34 @@ switch ($acao) {
         limparRevisao();
         break;
     default:
-        exibirQuiz($quiz_data);
+        if (isset($_SESSION['user_id'])) {
+            exibirHome($quizzes_disponiveis);
+        } else {
+            include 'templates/welcome.php';
+        }
         break;
 }
 
+function exibirHome($quizzes) {
+    $dados = [
+        'quizzes' => $quizzes,
+        'username' => $_SESSION['username']
+    ];
+    include 'templates/home.php';
+}
+
+
 function exibirQuiz($quiz_data, $questao_id = null, $acertos = 0, $modo_revisao = false) {
     if (empty($quiz_data)) {
-        die("Erro: Nenhuma questão encontrada. Verifique o arquivo de dados.");
+        if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true) {
+            header('Location: admin.php?erro=sem_questoes');
+            exit;
+        }
+        die("<div style='font-family: sans-serif; padding: 20px; text-align: center;'>
+                <h2>🚧 Quiz em Manutenção</h2>
+                <p>Nenhuma questão foi encontrada no banco de dados. Por favor, tente novamente mais tarde.</p>
+                <a href='index.php?acao=logout'>Voltar ao Início</a>
+             </div>");
     }
 
     // Se for modo revisão, usa apenas as questões erradas

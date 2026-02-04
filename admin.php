@@ -3,6 +3,12 @@ session_start();
 require_once 'carregar_dados.php';
 require_once 'validar_quiz.php';
 
+// Acesso restrito a administradores
+if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
+    header('Location: index.php');
+    exit;
+}
+
 $acao = $_GET['acao'] ?? 'panel';
 $quiz_data = carregarDadosQuiz();
 
@@ -19,6 +25,9 @@ switch ($acao) {
     case 'download-json':
         downloadJson($quiz_data);
         break;
+    case 'download-jsonl':
+        downloadJsonL($quiz_data);
+        break;
     case 'reset-padrao':
         resetParaPadrao();
         break;
@@ -29,13 +38,16 @@ switch ($acao) {
         carregarQuizAdmin();
         break;
     case 'excluir-quiz':
-        // excluirQuizAdmin();
+        excluirQuizAdmin();
         break;
     case 'download-template':
             downloadTemplate();
             break;
     case 'download-quiz':
         downloadQuiz();
+        break;
+    case 'toggle-visibility':
+        toggleVisibilityAdmin();
         break;
     default:
         exibirPainelAdmin($quiz_data);
@@ -55,7 +67,8 @@ function exibirPainelAdmin($quiz_data) {
         'questoes' => $quiz_data,
         'json_atual' => json_encode($quiz_data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE),
         'quizzes_salvos' => $quizzes_salvos,
-        'disciplinas' => $disciplinas
+        'disciplinas' => $disciplinas,
+        'interacoes' => obterInteracoes()
     ];
     
     // Template HTML
@@ -106,14 +119,15 @@ function exibirPainelAdmin($quiz_data) {
             <div class="card">
                 <div class="tabs">
                     <div class="tab active" onclick="showTab('editor')">📝 Editor JSON</div>
-                    <div class="tab" onclick="showTab('upload')">📁 Upload Arquivo</div>
-                    <div class="tab" onclick="showTab('quizzes')">📚 Quizzes Salvos</div>
-                    <div class="tab" onclick="showTab('questoes')">📊 Questões Atuais</div>
+                    <div class="tab" onclick="showTab('upload')">📁 Upload</div>
+                    <div class="tab" onclick="showTab('quizzes')">📚 Quizzes</div>
+                    <div class="tab" onclick="showTab('questoes')">📊 Questões</div>
+                    <div class="tab" onclick="showTab('moderacao')">👮 Moderação</div>
                 </div>
 
                 <!-- Alertas dinâmicos para JavaScript -->
-                <div id="alertSuccess" class="alert alert-success"></div>
-                <div id="alertError" class="alert alert-error"></div>
+                <div id="alertSuccess" class="alert alert-success" style="display: none;"></div>
+                <div id="alertError" class="alert alert-error" style="display: none;"></div>
 
                 <!-- Tab 1: Editor JSON -->
                 <div id="editor" class="tab-content active">
@@ -143,15 +157,20 @@ function exibirPainelAdmin($quiz_data) {
                                 <div class="btn-group">
                                     <div class="btn-row">
                                         <button class="btn btn-secondary" onclick="downloadCurrentJson()">
-                                            📥 Download
+                                            📥 Download JSON
                                         </button>
+                                        <button class="btn btn-secondary" onclick="downloadCurrentJsonL()">
+                                            📥 Download JSONL
+                                        </button>
+                                    </div>
+                                    <div class="btn-row" style="margin-top: 5px;">
                                         <button class="btn btn-error" onclick="resetToDefault()">
                                             🔄 Restaurar
                                         </button>
+                                        <a href="index.php" class="btn">
+                                            🎮 Voltar ao Quiz
+                                        </a>
                                     </div>
-                                    <a href="index.php" class="btn">
-                                        🎮 Voltar ao Quiz
-                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -185,21 +204,26 @@ function exibirPainelAdmin($quiz_data) {
                         <div class="column">
                             <div class="action-panel">
                                 <div class="action-title">💡 Informações</div>
-                                <p><strong>Formato esperado:</strong></p>
-                                <pre>
+                                <p><strong>Formatos esperados:</strong></p>
+                                <p><strong>1. JSON (Array):</strong></p>
+                                <pre style="font-size: 0.8em; max-height: 150px; overflow: auto;">
 [
   {
     "id": 1,
-    "pergunta": "Texto da pergunta...",
-    "resposta_correta": "Opção Correta",
-    "opcoes_disponiveis": ["Opção A", "Opção B"],
-    "explicacao_feedback": "Explicação detalhada...",
-    "topico": "Direito",
-    "nivel": "Básico"
+    "pergunta": "Texto...",
+    "resposta_correta": "Opção...",
+    "opcoes_disponiveis": ["A", "B"],
+    "explicacao_feedback": "...",
+    "topico": "...",
+    "nivel": "..."
   }
 ]</pre>
+                                <p><strong>2. JSONL (JSON Lines):</strong></p>
+                                <pre style="font-size: 0.8em; max-height: 150px; overflow: auto;">
+{"id": 1, "pergunta": "...", "resposta_correta": "...", ...}
+{"id": 2, "pergunta": "...", "resposta_correta": "...", ...}</pre>
                                 <div class="btn-group" style="margin-top: 15px;">
-                                    <a href="admin.php?acao=download-json" class="btn btn-secondary" target="_blank">
+                                    <a href="admin.php?acao=download-template" class="btn btn-secondary" target="_blank">
                                         📥 Baixar Modelo
                                     </a>
                                 </div>
@@ -306,14 +330,23 @@ function exibirPainelAdmin($quiz_data) {
                                         </span>
                                         Resposta: <?php echo $questao['resposta_correta']; ?>
                                     </div>
-                                    <div style="font-size: 0.75em; color: #7f8c8d; margin-top: 5px;">
-                                        Opções: <?php 
-                                        if (isset($questao['opcoes_disponiveis']) && is_array($questao['opcoes_disponiveis'])) {
-                                            echo implode(', ', $questao['opcoes_disponiveis']);
-                                        } else {
-                                            echo 'N/A ou formato inválido';
-                                        }
-                                        ?>
+                                    <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 10px;">
+                                        <div class="admin-opcoes-wrapper">
+                                            <?php 
+                                            if (isset($questao['opcoes_disponiveis']) && is_array($questao['opcoes_disponiveis'])) {
+                                                foreach ($questao['opcoes_disponiveis'] as $opcao) {
+                                                    $is_correta = ($opcao === $questao['resposta_correta']);
+                                                    echo '<span class="admin-opcao-badge' . ($is_correta ? ' correta' : '') . '">' . htmlspecialchars($opcao) . '</span>';
+                                                }
+                                            } else {
+                                                echo '<span class="admin-opcao-badge">N/A</span>';
+                                            }
+                                            ?>
+                                        </div>
+                                        <button class="btn btn-small <?php echo $questao['is_visible'] ? 'btn-secondary' : 'btn-success'; ?>" 
+                                                onclick="toggleVisibility(<?php echo $questao['id']; ?>, <?php echo $questao['is_visible'] ? 0 : 1; ?>)">
+                                            <?php echo $questao['is_visible'] ? '👁️ Ocultar' : '👁️‍🗨️ Mostrar'; ?>
+                                        </button>
                                     </div>
                                 </div>
                                 <?php endforeach; ?>
@@ -406,8 +439,16 @@ function exibirPainelAdmin($quiz_data) {
                 document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
                 document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
                 
-                event.currentTarget.classList.add('active');
+                if (event) {
+                    event.currentTarget.classList.add('active');
+                }
                 document.getElementById(tabName).classList.add('active');
+            }
+
+            function toggleVisibility(id, visible) {
+                if (confirm('Deseja ' + (visible ? 'mostrar' : 'ocultar') + ' esta questão?')) {
+                    window.location.href = 'admin.php?acao=toggle-visibility&id=' + id + '&visible=' + visible;
+                }
             }
 
             // Alertas
@@ -557,28 +598,19 @@ function exibirPainelAdmin($quiz_data) {
                 }
             }
 
-            function formatJson() {
-                try {
-                    const jsonData = JSON.parse(document.getElementById('jsonEditor').value);
-                    
-                    // Apenas formata o JSON, não converte markdown
-                    document.getElementById('jsonEditor').value = JSON.stringify(jsonData, null, 2);
-                    showAlert('JSON formatado com sucesso!', 'success');
-                } catch (error) {
-                    showAlert('Erro ao formatar JSON: ' + error.message, 'error');
-                }
-            }
-
             function resetToDefault() {
                 if (!confirm('Tem certeza que deseja restaurar os dados padrão? Isso sobrescreverá o arquivo atual.')) {
                     return;
                 }
-
                 window.location.href = 'admin.php?acao=reset-padrao';
             }
 
             function downloadCurrentJson() {
                 window.open('admin.php?acao=download-json', '_blank');
+            }
+
+            function downloadCurrentJsonL() {
+                window.open('admin.php?acao=download-jsonl', '_blank');
             }
 
             // ========== UPLOAD DE ARQUIVOS ==========
@@ -614,8 +646,8 @@ function exibirPainelAdmin($quiz_data) {
             }
 
             function handleFileSelect(file) {
-                if (!file.name.endsWith('.json')) {
-                    showAlert('Por favor, selecione apenas arquivos JSON.', 'error');
+                if (!file.name.endsWith('.json') && !file.name.endsWith('.jsonl')) {
+                    showAlert('Por favor, selecione apenas arquivos JSON ou JSONL.', 'error');
                     return;
                 }
 
@@ -782,13 +814,12 @@ function exibirPainelAdmin($quiz_data) {
                             }
                         }
                         
-                        // Tipo dos campos
                         if (typeof questao.id !== 'number') {
                             throw new Error(`Questão ${numeroQuestao}: ID deve ser um número`);
                         }
                         
-                        if (typeof questao.pergunta !== 'string' || questao.pergunta.trim().length < 10) {
-                            throw new Error(`Questão ${numeroQuestao}: Pergunta deve ter pelo menos 10 caracteres`);
+                        if (typeof questao.pergunta !== 'string' || questao.pergunta.trim().length === 0) {
+                            throw new Error(`Questão ${numeroQuestao}: Pergunta não pode ser vazia`);
                         }
                         
                         if (!Array.isArray(questao.opcoes_disponiveis) || questao.opcoes_disponiveis.length < 2) {
@@ -811,15 +842,12 @@ function exibirPainelAdmin($quiz_data) {
             // Função para formatar JSON e converter markdown para HTML
             function formatJson() {
                 try {
-                    const jsonData = JSON.parse(document.getElementById('jsonEditor').value);
-                    
-                    // Aplica sanitização no lado do cliente (opcional, para preview)
-                    const dadosSanitizados = sanitizarMarkdownJson(jsonData);
-                    
-                    document.getElementById('jsonEditor').value = JSON.stringify(dadosSanitizados, null, 2);
-                    showAlert('JSON formatado e markdown convertido com sucesso!', 'success');
+                    const jsonEditor = document.getElementById('jsonEditor');
+                    const jsonData = JSON.parse(jsonEditor.value);
+                    jsonEditor.value = JSON.stringify(jsonData, null, 2);
+                    showAlert('JSON formatado com sucesso!', 'success');
                 } catch (error) {
-                    showAlert('Erro ao formatar JSON: ' + error, 'error');
+                    showAlert('Erro ao formatar JSON: ' + error.message, 'error');
                 }
             }
 
@@ -910,9 +938,12 @@ function uploadJson() {
         
         // Verifica o tipo do arquivo
         $file_type = $file['type'];
-        if ($file_type !== 'application/json' && !str_contains($file['name'], '.json')) {
+        $is_json = $file_type === 'application/json' || str_ends_with($file['name'], '.json');
+        $is_jsonl = str_ends_with($file['name'], '.jsonl');
+        
+        if (!$is_json && !$is_jsonl) {
             http_response_code(400);
-            echo "Por favor, envie apenas arquivos JSON.";
+            echo "Por favor, envie apenas arquivos JSON ou JSONL.";
             exit;
         }
         
@@ -924,11 +955,16 @@ function uploadJson() {
         }
         
         $content = file_get_contents($file['tmp_name']);
-        $dados = json_decode($content, true);
         
-        if (json_last_error() !== JSON_ERROR_NONE) {
+        if ($is_jsonl) {
+            $dados = decodeJsonL($content);
+        } else {
+            $dados = json_decode($content, true);
+        }
+        
+        if ($dados === null || !is_array($dados)) {
             http_response_code(400);
-            echo "Arquivo JSON inválido: " . json_last_error_msg();
+            echo "Arquivo inválido ou erro na leitura.";
             exit;
         }
         
@@ -967,6 +1003,13 @@ function downloadJson($quiz_data) {
     header('Content-Type: application/json');
     header('Content-Disposition: attachment; filename="quiz_data.json"');
     echo json_encode($quiz_data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    exit;
+}
+
+function downloadJsonL($quiz_data) {
+    header('Content-Type: application/x-jsonlines');
+    header('Content-Disposition: attachment; filename="quiz_data.jsonl"');
+    echo encodeJsonL($quiz_data);
     exit;
 }
 
@@ -1024,17 +1067,17 @@ function carregarQuizAdmin() {
 }
 
 function excluirQuizAdmin() {
-    $caminho = $_GET['caminho'] ?? '';
+    $id = $_GET['id'] ?? '';
     
-    if (empty($caminho)) {
-        header('Location: admin.php?erro=Caminho não especificado');
+    if (empty($id)) {
+        header('Location: admin.php?erro=ID do quiz não especificado');
         exit;
     }
     
-    if (excluirQuiz($caminho)) {
+    if (excluirQuiz($id)) {
         header('Location: admin.php?success=Quiz excluído com sucesso');
     } else {
-        header('Location: admin.php?erro=Erro ao excluir quiz');
+        header('Location: admin.php?erro=Erro ao excluir quiz. O quiz inicial não pode ser excluído.');
     }
     exit;
 }
@@ -1077,6 +1120,19 @@ function downloadQuiz() {
     header('Content-Length: ' . filesize($caminho));
     
     readfile($caminho);
+    exit;
+}
+
+function toggleVisibilityAdmin() {
+    $id = $_GET['id'] ?? 0;
+    $visible = $_GET['visible'] ?? 1;
+    
+    if ($id > 0) {
+        toggleVisibilidadeQuestao($id, $visible);
+        header('Location: admin.php?success=Visibilidade atualizada!&acao=questoes');
+    } else {
+        header('Location: admin.php?erro=ID inválido');
+    }
     exit;
 }
 ?>
