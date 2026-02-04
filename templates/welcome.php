@@ -11,7 +11,7 @@
         <div class="welcome-card">
             <div class="welcome-header">
                 <span class="emoji-hero">⚡</span>
-                <h1>Quiz Interativo</h1>
+                <h1>Quiz Interativo - Inutil.app</h1>
                 <p>Teste seu conhecimento e conquiste o topo do ranking!</p>
             </div>
 
