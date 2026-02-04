@@ -437,6 +437,12 @@ h1 {
     font-weight: 600;
 }
 
+/* Moderation Styles */
+.questao-item.flagged {
+    border-left: 4px solid var(--danger) !important;
+    background: #fff1f2 !important;
+}
+
 /* ========== ADMIN PANEL STYLES ========== */
 .stats {
     display: grid;

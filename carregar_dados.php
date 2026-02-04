@@ -301,6 +301,28 @@ function toggleVisibilidadeQuestao($question_id, $visible) {
     }
 }
 
+function excluirInteracao($id) {
+    try {
+        $pdo = get_db_connection();
+        $stmt = $pdo->prepare("DELETE FROM question_interactions WHERE id = ?");
+        return $stmt->execute([$id]);
+    } catch (Exception $e) {
+        error_log("Erro ao excluir interação: " . $e->getMessage());
+        return false;
+    }
+}
+
+function resolverFlag($id) {
+    try {
+        $pdo = get_db_connection();
+        $stmt = $pdo->prepare("UPDATE question_interactions SET is_flagged = 0 WHERE id = ?");
+        return $stmt->execute([$id]);
+    } catch (Exception $e) {
+        error_log("Erro ao resolver flag: " . $e->getMessage());
+        return false;
+    }
+}
+
 // Funções de Gerenciamento de Quizzes (Mantidas para compatibilidade)
 function listarQuizzes() {
     try {

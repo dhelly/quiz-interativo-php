@@ -57,6 +57,12 @@ switch ($acao) {
     case 'toggle-visibility':
         toggleVisibilityAdmin();
         break;
+    case 'resolver-flag':
+        resolverFlagAdmin();
+        break;
+    case 'excluir-interacao':
+        excluirInteracaoAdmin();
+        break;
     default:
         exibirPainelAdmin($quiz_data);
         break;
@@ -386,6 +392,56 @@ function exibirPainelAdmin($quiz_data) {
                         </div>
                     </div>
                 </div>
+
+                <!-- Tab 5: Moderação -->
+                <div id="moderacao" class="tab-content">
+                    <h3>👮 Moderação de Interações</h3>
+                    <p>Gerencie sinalizações e comentários dos usuários.</p>
+
+                    <?php if (empty($dados['interacoes'])): ?>
+                        <div class="empty-state">
+                            <h4>📭 Nenhuma interação registrada</h4>
+                            <p>As sinalizações e comentários dos usuários aparecerão aqui.</p>
+                        </div>
+                    <?php else: ?>
+                        <div class="questoes-list">
+                            <?php foreach ($dados['interacoes'] as $interacao): ?>
+                                <div class="questao-item <?php echo $interacao['is_flagged'] ? 'flagged' : ''; ?>">
+                                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                                        <strong>
+                                            <?php echo $interacao['is_flagged'] ? '🚩' : '💬'; ?> 
+                                            Questão #<?php echo $interacao['question_id']; ?> - 
+                                            <?php echo htmlspecialchars($interacao['topico']); ?>
+                                        </strong>
+                                        <span style="font-size: 0.8rem; color: var(--text-muted);">
+                                            <?php echo date('d/m/Y H:i', strtotime($interacao['created_at'])); ?>
+                                        </span>
+                                    </div>
+                                    
+                                    <p style="margin: 10px 0; font-style: italic; color: var(--text-muted); font-size: 0.9em;">
+                                        "<?php echo htmlspecialchars($interacao['pergunta']); ?>"
+                                    </p>
+
+                                    <div style="background: white; padding: 10px; border-radius: 6px; border: 1px solid var(--border); margin: 10px 0;">
+                                        <strong><?php echo htmlspecialchars($interacao['username']); ?>:</strong>
+                                        <p style="margin-top: 5px;"><?php echo nl2br(htmlspecialchars($interacao['comment'])); ?></p>
+                                    </div>
+
+                                    <div style="display: flex; gap: 10px; margin-top: 15px;">
+                                        <?php if ($interacao['is_flagged']): ?>
+                                            <button class="btn btn-small btn-success" onclick="resolverFlag(<?php echo $interacao['id']; ?>)">
+                                                ✅ Resolver Flag
+                                            </button>
+                                        <?php endif; ?>
+                                        <button class="btn btn-small btn-error" onclick="excluirInteracao(<?php echo $interacao['id']; ?>)">
+                                            🗑️ Excluir Comentário
+                                        </button>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
 
@@ -474,6 +530,19 @@ function exibirPainelAdmin($quiz_data) {
                 setTimeout(() => {
                     alertDiv.style.display = 'none';
                 }, 5000);
+            }
+
+            // ========== MODERAÇÃO ==========
+            function resolverFlag(id) {
+                if (confirm('Marcar esta sinalização como resolvida?')) {
+                    window.location.href = 'admin.php?acao=resolver-flag&id=' + id;
+                }
+            }
+
+            function excluirInteracao(id) {
+                if (confirm('Tem certeza que deseja excluir esta interação? Esta ação não pode ser desfeita.')) {
+                    window.location.href = 'admin.php?acao=excluir-interacao&id=' + id;
+                }
             }
 
             // ========== EDITOR JSON ==========
@@ -787,6 +856,29 @@ function exibirPainelAdmin($quiz_data) {
                         alert.style.display = 'none';
                     });
                 }, 5000);
+
+                // Ativar tab correta se vier na URL
+                const urlParams = new URLSearchParams(window.location.search);
+                const acao = urlParams.get('acao');
+                const tabsMapeadas = {
+                    'panel': 'editor',
+                    'upload': 'upload',
+                    'quizzes': 'quizzes',
+                    'questoes': 'questoes',
+                    'moderacao': 'moderacao'
+                };
+                if (acao && tabsMapeadas[acao]) {
+                    showTab(acao === 'panel' ? 'editor' : tabsMapeadas[acao]);
+                    // A função showTab não marca o botão da tab se não for chamada por clique
+                    document.querySelectorAll('.tab').forEach(t => {
+                        const tabIdValue = t.getAttribute('onclick').match(/'([^']+)'/)[1];
+                        if (tabIdValue === tabsMapeadas[acao]) {
+                            t.classList.add('active');
+                        } else {
+                            t.classList.remove('active');
+                        }
+                    });
+                }
             });
 
             // Fechar modal ao clicar fora
@@ -1144,6 +1236,30 @@ function toggleVisibilityAdmin() {
         header('Location: admin.php?success=Visibilidade atualizada!&acao=questoes');
     } else {
         header('Location: admin.php?erro=ID inválido');
+    }
+    exit;
+}
+
+function resolverFlagAdmin() {
+    $id = $_GET['id'] ?? 0;
+    if ($id > 0) {
+        if (resolverFlag($id)) {
+            header('Location: admin.php?success=Flag resolvida!&acao=moderacao');
+        } else {
+            header('Location: admin.php?erro=Erro ao resolver flag');
+        }
+    }
+    exit;
+}
+
+function excluirInteracaoAdmin() {
+    $id = $_GET['id'] ?? 0;
+    if ($id > 0) {
+        if (excluirInteracao($id)) {
+            header('Location: admin.php?success=Interação excluída!&acao=moderacao');
+        } else {
+            header('Location: admin.php?erro=Erro ao excluir interação');
+        }
     }
     exit;
 }
