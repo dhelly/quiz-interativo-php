@@ -1,6 +1,7 @@
 <?php
 require_once 'session_config.php';
 require_once 'carregar_dados.php';
+require_once 'sanitize.php';
 require_once 'validar_quiz.php';
 
 // Acesso restrito a administradores

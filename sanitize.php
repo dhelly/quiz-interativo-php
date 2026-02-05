@@ -21,6 +21,9 @@ function markdownParaHtml($texto) {
     // Converter itálico
     $texto = preg_replace('/\*([^*]+)\*/', '<em>$1</em>', $texto);
     
+    // Corrigir tags escapadas que podem vir do JSON (ex: <\/b>)
+    $texto = str_replace(['<\\/', '<\\'], ['</', '<'], $texto);
+    
     return $texto;
 }
 
@@ -68,5 +71,25 @@ function prepararDadosParaEditor($dados) {
  */
 function h($texto) {
     return htmlspecialchars((string)$texto, ENT_QUOTES, 'UTF-8');
+}
+
+function sanitizarDadosQuiz($dados) {
+    return prepararDadosParaQuiz($dados);
+}
+
+function prepararDadosParaQuiz($dados) {
+    foreach ($dados as &$questao) {
+        $questao['pergunta'] = markdownParaHtml($questao['pergunta']);
+        $questao['explicacao_feedback'] = markdownParaHtml($questao['explicacao_feedback']);
+        $questao['resposta_correta'] = markdownParaHtml($questao['resposta_correta']);
+        
+        if (isset($questao['opcoes_disponiveis']) && is_array($questao['opcoes_disponiveis'])) {
+            foreach ($questao['opcoes_disponiveis'] as &$opcao) {
+                $opcao = markdownParaHtml($opcao);
+            }
+        }
+    }
+    
+    return $dados;
 }
 ?>
