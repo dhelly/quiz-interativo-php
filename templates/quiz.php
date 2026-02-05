@@ -24,6 +24,9 @@
                 <p style="font-size: 0.85rem; color: var(--text-muted);">Logado como <strong><?php echo h($_SESSION['username']); ?></strong></p>
             </div>
             <div style="display: flex; gap: 8px;">
+                <button onclick="salvarProgressoManual()" class="btn btn-primary btn-small" id="btnSalvarState">
+                    💾 Salvar Estado
+                </button>
                 <a href="index.php?acao=home" class="btn btn-secondary btn-small">🏠 Início</a>
                 <a href="index.php?acao=logout" class="btn btn-secondary btn-small">🚪 Sair</a>
             </div>
@@ -116,10 +119,10 @@
 
             <div class="opcoes-container">
             <?php foreach ($dados['questao']['opcoes_disponiveis'] as $index => $opcao): ?>
-                <label class="opcao-label" data-value="<?php echo htmlspecialchars($opcao); ?>">
+                <div class="opcao-label" data-value="<?php echo h($opcao); ?>">
                     <div class="numero-opcao"><?php echo $index + 1; ?></div>
-                    <?php echo h($opcao); ?>
-                </label>
+                    <?php echo $opcao; // Opção já convertida para HTML ?>
+                </div>
             <?php endforeach; ?>
             </div>
 
@@ -150,11 +153,11 @@
 
     <script>
         // Variáveis globais
-        const respostaCorreta = "<?php echo $dados['resposta_correta']; ?>";
-        const explicacao = `<?php echo $dados['explicacao']; ?>`;
-        const questaoId = <?php echo h($dados['questao']['id']); ?>;
+        const respostaCorreta = <?php echo json_encode($dados['resposta_correta']); ?>;
+        const explicacao = <?php echo json_encode($dados['explicacao'] ?? ''); ?>;
+        const questaoId = <?php echo json_encode($dados['questao']['id']); ?>;
         const csrfToken = "<?php echo gerarTokenCSRF(); ?>";
-        let acertosAtuais = <?php echo h($dados['acertos_total']); ?>;
+        let acertosAtuais = <?php echo intval($dados['acertos_total'] ?? 0); ?>;
         let questaoRespondida = false;
         const modoRevisao = <?php echo $dados['modo_revisao'] ? 'true' : 'false'; ?>;
 
@@ -446,14 +449,56 @@
             });
         }
 
-        // Recuperar preferência do usuário
-        document.addEventListener('DOMContentLoaded', () => {
-            const pref = localStorage.getItem('showCommunityComments');
-            if (pref === 'true') {
-                document.getElementById('toggleComunidade').checked = true;
-                toggleComunidade();
-            }
-        });
+        // Recupera preferência da comunidade
+        const pref = localStorage.getItem('showCommunityComments');
+        if (pref === 'true') {
+            document.getElementById('toggleComunidade').checked = true;
+            toggleComunidade();
+        }
+
+        function salvarProgressoManual() {
+            const btn = document.getElementById('btnSalvarState');
+            const originalText = btn.innerHTML;
+            
+            btn.disabled = true;
+            btn.innerHTML = '💾 Salvando...';
+            
+            const formData = new FormData();
+            formData.append('quiz_id', "<?php echo $dados['questao']['quiz_id'] ?? 1; ?>");
+            formData.append('question_id', questaoId);
+            formData.append('acertos', acertosAtuais);
+            formData.append('erradas', JSON.stringify(<?php echo json_encode($_SESSION['questoes_erradas'] ?? []); ?>)); // Usa da sessão PHP pois JS não rastreia totalmente
+            formData.append('csrf_token', csrfToken);
+            
+            fetch('api.php?action=save_progress', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    btn.innerHTML = '✅ Salvo!';
+                    btn.classList.remove('btn-primary');
+                    btn.classList.add('btn-success');
+                    
+                    setTimeout(() => {
+                        btn.innerHTML = originalText;
+                        btn.disabled = false;
+                        btn.classList.remove('btn-success');
+                        btn.classList.add('btn-primary');
+                    }, 2000);
+                } else {
+                    alert('Erro ao salvar: ' + data.message);
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                }
+            })
+            .catch(error => {
+                alert('Erro de conexão.');
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            });
+        }
     </script>
 </body>
 </html>

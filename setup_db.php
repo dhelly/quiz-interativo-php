@@ -102,6 +102,18 @@ try {
     ) ENGINE=InnoDB");
     echo "✅ Tabela 'question_interactions' pronta.\n";
 
+    // Tabela de Progresso do Usuário
+    $pdo->exec("CREATE TABLE IF NOT EXISTS user_progress (
+        user_id INT PRIMARY KEY,
+        quiz_id INT NOT NULL DEFAULT 1,
+        current_question_id INT NOT NULL,
+        acertos INT DEFAULT 0,
+        questoes_erradas TEXT,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
+    echo "✅ Tabela 'user_progress' pronta.\n";
+
     // Tabela de Votos em Comentários
     $pdo->exec("CREATE TABLE IF NOT EXISTS comment_votes (
         id INT AUTO_INCREMENT PRIMARY KEY,

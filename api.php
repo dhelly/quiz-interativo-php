@@ -42,6 +42,24 @@ switch ($action) {
         }
         break;
 
+    case 'save_progress':
+        $quiz_id = $_POST['quiz_id'] ?? 0;
+        $question_id = $_POST['question_id'] ?? 0;
+        $acertos = $_POST['acertos'] ?? 0;
+        $erradas = json_decode($_POST['erradas'] ?? '[]', true);
+        
+        if ($quiz_id && $question_id) {
+            $result = salvarProgresso($user_id, $quiz_id, $question_id, $acertos, $erradas);
+            if ($result) {
+               echo json_encode(['success' => true, 'message' => 'Progresso salvo com sucesso!']); 
+            } else {
+               echo json_encode(['success' => false, 'message' => 'Erro ao salvar no banco.']);
+            }
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Dados incompletos.']);
+        }
+        break;
+
     default:
         echo json_encode(['success' => false, 'message' => 'Ação inválida.']);
         break;

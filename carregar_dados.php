@@ -2,6 +2,29 @@
 require_once 'db_config.php';
 
 // Funções de Persistência de Progresso
+
+// Auto-migração para garantir que a tabela existe
+function verificarTabelaProgresso() {
+    try {
+        $pdo = get_db_connection();
+        $pdo->exec("CREATE TABLE IF NOT EXISTS user_progress (
+            user_id INT PRIMARY KEY,
+            quiz_id INT NOT NULL DEFAULT 1,
+            current_question_id INT NOT NULL,
+            acertos INT DEFAULT 0,
+            questoes_erradas TEXT,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+            FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
+    } catch (Exception $e) {
+        // Silently fail or log, but attempting to continue
+        error_log("Erro na auto-migração: " . $e->getMessage());
+    }
+}
+
+// Executa verificação ao carregar este arquivo
+verificarTabelaProgresso();
+
 function salvarProgresso($user_id, $quiz_id, $question_id, $acertos, $erradas) {
     try {
         $pdo = get_db_connection();
