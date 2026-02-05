@@ -25,6 +25,9 @@ $dados = [
 if (!$modo_revisao && isset($_SESSION['user_id'])) {
     $quiz_id = $_GET['quiz_id'] ?? $_SESSION['current_quiz_id'] ?? 1;
     salvarScore($_SESSION['user_id'], $quiz_id, $acertos_total, $total_perguntas);
+    
+    // Limpa o progresso salvo ao finalizar
+    limparProgresso($_SESSION['user_id']);
 }
 
 

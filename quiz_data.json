@@ -1,18 +1,674 @@
 [
     {
         "id": 1,
-        "quiz_id": 1,
-        "external_id": 21,
-        "pergunta": "No Linux, o arquivo <b>\/etc\/fstab<\/b> é lido apenas durante o processo de boot do sistema; portanto, qualquer alteração realizada nele não surtirá efeito para montagens manuais via comando <b>mount<\/b>.",
-        "resposta_correta": "Errado",
-        "explicacao_feedback": "<b>essa frase exata não está no material; o que existe é…:<\/b> '\/etc\/fstab: Informações sobre sistemas de arquivos montáveis.'<br><br><b>Análise da Assertiva:<\/b> O fstab é consultado pelo comando `mount` (ex: `mount \/ponto\/montagem`) para buscar os parâmetros quando o dispositivo não é explicitado. Além disso, o comando `mount -a` relê o arquivo sem necessidade de reboot.<br><b>Possíveis induções de erro:<\/b> Crer que arquivos de configuração estática só servem para a inicialização.",
-        "topico": "Arquivos de Configuração",
-        "nivel": "Avançado",
-        "is_visible": 1,
-        "created_at": "2026-02-05 09:51:22",
+        "pergunta": "A instrução join do SQL permite a apresentação de informações de diversas tabelas em um ou mais conjuntos de resultados.",
+        "resposta_correta": "Certo",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
-        ]
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> SQL Joins<br>A cláusula JOIN é usada para combinar linhas de duas ou mais tabelas, baseada em uma coluna relacionada entre elas.<br><br><b>Análise da Assertiva:<\/b> A afirmação está correta. O propósito fundamental do JOIN (seja INNER, OUTER, LEFT, RIGHT) é justamente permitir a consulta relacional, cruzando dados de múltiplas tabelas para formar um único conjunto de resultados (result set) coeso.",
+        "topico": "SQL - DML (Joins)",
+        "nivel": "Básico"
+    },
+    {
+        "id": 2,
+        "pergunta": "Utilizar comandos SQL diretamente concatenados com dados fornecidos pelo usuário é uma prática eficaz para proteger a aplicação contra ataques do tipo injeção de código, que podem comprometer o banco de dados, disponibilizado pela Internet.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> SQL Injection Prevention<br>A concatenação direta de strings é o vetor primário para ataques de SQL Injection.<br><br><b>Análise da Assertiva:<\/b> A assertiva está errada. A concatenação direta é uma prática <b>vulnerável<\/b> e perigosa. A prática eficaz para proteção é o uso de <i>Prepared Statements<\/i> (declarações preparadas) ou <i>Bind Variables<\/i>, que separam o código SQL dos dados fornecidos.",
+        "topico": "Segurança da Informação",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 3,
+        "pergunta": "O comando SELECT nome, idade FROM CLIENTE; pertence à DML, pois consulta os dados armazenados no banco para eventual tomada de decisão.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> Categorias SQL<br>DML (Data Manipulation Language) inclui comandos que manipulam dados: SELECT, INSERT, UPDATE, DELETE.<br><br><b>Análise da Assertiva:<\/b> Embora academicamente o SELECT seja classificado por alguns autores como DQL (Data Query Language), a grande maioria das documentações oficiais (como Oracle e SQL Server) e bancas examinadoras consideram o SELECT como parte da DML, pois a 'leitura' é uma forma de manipulação do conjunto de dados para visualização. A justificativa de 'tomada de decisão' é apenas contextual e correta.",
+        "topico": "Conceitos de Banco de Dados",
+        "nivel": "Básico"
+    },
+    {
+        "id": 4,
+        "pergunta": "Uma instância de um banco de dados SQL compreende a organização lógica dos dados com seus atributos e seus domínios correspondentes.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> Esquema vs Instância<br>O Esquema (Schema) é a descrição lógica do banco (metadados, tabelas, atributos). A Instância é o conjunto de dados armazenados no banco em um determinado momento.<br><br><b>Análise da Assertiva:<\/b> A questão inverte os conceitos. A organização lógica é o <b>Esquema<\/b>. A Instância refere-se ao estado dos dados (conteúdo) em um dado instante de tempo.",
+        "topico": "Arquitetura de Banco de Dados",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 5,
+        "pergunta": "Em SQL, a instrução mais simples para selecionar registros de uma tabela é composta pelas cláusulas SELECT e WHERE.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> Sintaxe SELECT<br>A sintaxe mínima padrão ANSI para ler uma tabela requer SELECT e FROM.<br><br><b>Análise da Assertiva:<\/b> A cláusula WHERE é <b>opcional<\/b> (usada para filtragem). A cláusula <b>FROM<\/b> é obrigatória para indicar a origem dos dados (na maioria dos SGBDs). Portanto, a instrução mais simples é composta por SELECT e FROM (ex: <code>SELECT * FROM tabela<\/code>).",
+        "topico": "SQL - DML",
+        "nivel": "Básico"
+    },
+    {
+        "id": 6,
+        "pergunta": "A execução do comando SELECT * FROM PESSOA LIMIT 5, 10 apresentará 10 registros da tabela PESSOA, a partir do 6.º registro dessa tabela.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> Cláusula LIMIT (MySQL\/PostgreSQL)<br>Sintaxe: <code>LIMIT offset, row_count<\/code>.<br><br><b>Análise da Assertiva:<\/b> No padrão utilizado (comum no MySQL), o primeiro número (5) é o <i>offset<\/i> (quantos registros pular) e o segundo (10) é a quantidade a retornar. Pular 5 significa que começamos a ler o 6º registro. A consulta retornará 10 linhas. A assertiva está correta.",
+        "topico": "SQL - DML",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 7,
+        "pergunta": "O comando SQL a seguir é empregado para implementar uma restrição de integridade de chave primária na tabela PSICOLOGO: ALTER TABLE psicologo ADD PK CONSTRAINT psicologo.cod_crp PRIMARY KEY (cod_crp); A instrução SQL a seguir retorna somente os psicólogos que possuem certificado de conclusão de curso: SELECT nome FROM psicologo p WHERE EXISTS ( SELECT * FROM certificado c WHERE c.id inscricao = p.id_psicologo );",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> DDL e EXISTS<br>ALTER TABLE adiciona restrições. EXISTS verifica a existência de linhas em uma subquery.<br><br><b>Análise da Assertiva:<\/b> A primeira parte adiciona corretamente uma PK (embora a sintaxe `ADD PK` possa variar, `ADD CONSTRAINT ... PRIMARY KEY` é o padrão, o conceito está certo). A segunda parte usa `WHERE EXISTS` correlacionado, que é a forma correta de filtrar registros da tabela pai (psicólogo) que possuem correspondência na tabela filho (certificado).",
+        "topico": "SQL - DDL e DML",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 8,
+        "pergunta": "Para se selecionarem os nomes dos psicólogos e os nomes dos cursos que eles concluíram, cuja data do certificado seja superior a ‘2023‑01‑01’, deve‑se executar a instrução SQL a seguir. SELECT nome_curso, nome FROM curso c JOIN inscricao i ON c.id_curso = i.id_curso JOIN psicologo p ON i.id_psicologo = p.id_psicologo WHERE data_certificado > ‘2023‑01‑01’;",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> Joins Múltiplos<br>É possível encadear JOINs para navegar através de tabelas associativas.<br><br><b>Análise da Assertiva:<\/b> A lógica está perfeita. Une-se 'curso' com 'inscricao' e depois 'inscricao' com 'psicologo' (assumindo que 'inscricao' é a tabela associativa ou que contém os dados do certificado). O filtro WHERE restringe a data corretamente.",
+        "topico": "SQL - DML (Joins)",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 9,
+        "pergunta": "Em uma trigger, em vez da execução de uma ação para cada linha afetada, pode-se executar uma única ação para o comando SQL inteiro que causou a inserção, a exclusão ou a atualização; para tanto, utiliza-se a cláusula for each table.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> Triggers Scope<br>Triggers podem ser <i>Row-Level<\/i> (FOR EACH ROW) ou <i>Statement-Level<\/i>.<br><br><b>Análise da Assertiva:<\/b> A funcionalidade descrita existe (Statement Level Trigger), mas a sintaxe mencionada <code>for each table<\/code> <b>não existe<\/b>. O padrão para disparar uma vez por comando é omitir o <code>FOR EACH ROW<\/code> ou usar a terminologia <code>FOR EACH STATEMENT<\/code> (dependendo do SGBD).",
+        "topico": "Banco de Dados Avançado (Triggers)",
+        "nivel": "Avançado"
+    },
+    {
+        "id": 10,
+        "pergunta": "O UTL_HTTP do Oracle Database é um pacote utilizado em PL\/SQL e SQL para inclusão de dados de arquivos no padrão UTL ou HTML advindos de páginas com o protocolo HTTP da Internet.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> Oracle UTL_HTTP<br>O pacote UTL_HTTP faz chamadas HTTP (Hypertext Transfer Protocol) a partir do PL\/SQL e SQL.<br><br><b>Análise da Assertiva:<\/b> Correto. Este pacote permite que o banco de dados atue como um cliente web, acessando dados na internet ou intranet via HTTP\/HTTPS para integração de dados.",
+        "topico": "Oracle PL\/SQL",
+        "nivel": "Avançado"
+    },
+    {
+        "id": 11,
+        "pergunta": "A divisão de tabelas maiores em partições menores é geralmente indicada no contexto do gerenciamento de espaço de armazenamento dos bancos de dados, porém evitá-la constitui medida técnica significativa para aprimorar a otimização de consultas SQL em dados localizados de grandes tabelas.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> Partitioning<br>O particionamento melhora a performance, disponibilidade e gerenciamento de grandes tabelas.<br><br><b>Análise da Assertiva:<\/b> A assertiva erra ao dizer que <i>evitar<\/i> o particionamento aprimora a otimização. Pelo contrário, o particionamento permite o <i>Partition Pruning<\/i> (poda de partição), onde o banco lê apenas as partições relevantes para a consulta, melhorando drasticamente a performance em grandes volumes de dados.",
+        "topico": "Otimização e Tuning",
+        "nivel": "Avançado"
+    },
+    {
+        "id": 12,
+        "pergunta": "Em uma consulta SQL, a cláusula FROM corresponde à seleção do predicado que envolve atributos da relação determinada pela cláusula SELECT.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> Ordem de Execução SQL<br>FROM define a origem (tabelas). WHERE define o predicado (filtro).<br><br><b>Análise da Assertiva:<\/b> A cláusula <b>FROM<\/b> indica as tabelas\/relações de onde os dados virão (o produto cartesiano inicial). A cláusula responsável pelo predicado (condições de filtro) é a <b>WHERE<\/b>.",
+        "topico": "Teoria Relacional e SQL",
+        "nivel": "Básico"
+    },
+    {
+        "id": 13,
+        "pergunta": "Os bancos de dados na nuvem podem seguir modelos de dados SQL e NoSQL; as suas principais desvantagens em relação ao banco de dados local são a privacidade e a segurança.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> Cloud Computing Risks<br>Embora provedores de nuvem sejam seguros, a perda de controle físico e a dependência de terceiros levantam questões de privacidade e segurança.<br><br><b>Análise da Assertiva:<\/b> Correto. No contexto de provas e literatura clássica, a principal preocupação\/desvantagem citada na migração para Cloud (vs On-Premise) é a gestão da privacidade, soberania dos dados e segurança em ambiente compartilhado\/público.",
+        "topico": "Cloud Computing & DB",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 14,
+        "pergunta": "Em um banco de dados NoSQL, o requisito de consistência para sistemas distribuídos é obtido quando todos os nós contêm os mesmos dados.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> Teorema CAP - Consistência<br>Consistência significa que cada leitura recebe a escrita mais recente ou um erro.<br><br><b>Análise da Assertiva:<\/b> Correto. No contexto de sistemas distribuídos e Teorema CAP, <i>Consistência<\/i> implica que, após uma escrita ser confirmada, todos os nós subsequentes acessados retornarão o mesmo valor atualizado (visão uniforme dos dados).",
+        "topico": "NoSQL e Sistemas Distribuídos",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 15,
+        "pergunta": "Os índices de árvore B alteram a forma como os dados são armazenados em um banco de dados, pois esses índices classificam as linhas de acordo com a coluna em que o índice aparece.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> Clustered vs Non-Clustered Indexes<br>Índices Clustered alteram a ordem física. Índices B-Tree (Non-Clustered) criam uma estrutura separada.<br><br><b>Análise da Assertiva:<\/b> A assertiva descreve um Índice <i>Clustered<\/i> (Agrupado). Um índice B-Tree padrão (não agrupado) cria uma estrutura de árvore auxiliar apontando para os dados, mas <b>não altera<\/b> a ordem física de armazenamento da tabela (que permanece um Heap).",
+        "topico": "Estrutura de Dados e Índices",
+        "nivel": "Avançado"
+    },
+    {
+        "id": 16,
+        "pergunta": "Considerando o comando 'create table aux_estado as select * from fec_estado', é correto afirmar que a tabela aux_estado tem como chave primária a coluna ibge, herdada da tabela original.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> CREATE TABLE AS SELECT (CTAS)<br>Cria uma nova tabela e insere o resultado do SELECT.<br><br><b>Análise da Assertiva:<\/b> O comando CTAS copia os nomes das colunas e os tipos de dados, bem como os dados em si. No entanto, ele <b>não copia<\/b> restrições de integridade como Primary Keys, Foreign Keys ou Índices (exceto NOT NULL em alguns bancos). A tabela <code>aux_estado<\/code> será criada sem chave primária.",
+        "topico": "SQL - DDL",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 17,
+        "pergunta": "Ao ser executado, o comando SQL a seguir mostrará o CPF e o nome de todas as pessoas que cometeram pelo menos um crime do tipo hediondo: select P.CPF, P.NOME from POLITEC.PESSOA P where P;CPF exists (select C.CPF from POLITEC.CRIME C where C.CPF=P.CPF and C.TIPO = ‘HEDIONDO’);",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> Sintaxe EXISTS<br>A cláusula EXISTS espera uma subconsulta, não uma comparação com coluna.<br><br><b>Análise da Assertiva:<\/b> A sintaxe <code>WHERE P;CPF exists<\/code> ou <code>WHERE P.CPF exists<\/code> está incorreta. A forma correta seria <code>WHERE EXISTS (SELECT ...)<\/code>. Além disso, o ponto e vírgula no meio da cláusula WHERE indica erro de sintaxe grave.",
+        "topico": "SQL - Sintaxe",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 18,
+        "pergunta": "Considerando-se uma tabela nomeada empregados que contém, entre outras colunas, uma identificada como nome, o comando SQL que retorna o nome de todos os empregados que tenham o nome luiz ou luis é o seguinte: SELECT nome FROM empregados WHERE nome like '%lui_%'",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> Operador LIKE<br>O curinga '%' substitui 0 ou mais caracteres. O curinga '_' substitui exatamente 1 caractere.<br><br><b>Análise da Assertiva:<\/b> O padrão <code>'%lui_%'<\/code> procura qualquer string que contenha 'lui' seguido obrigatoriamente de pelo menos mais um caractere. Tanto 'Luis' (s) quanto 'Luiz' (z) atendem a essa condição (lui + 1 char).",
+        "topico": "SQL - DML",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 19,
+        "pergunta": "O uso de seletividade e estimativa de custos na otimização de consultas SQL consiste na modificação da representação interna de uma consulta em uma árvore de consulta com o objetivo de melhorar o seu desempenho.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> Query Optimization<br>O otimizador gera planos de execução baseados em custo, transformando a consulta lógica em árvores de operações físicas.<br><br><b>Análise da Assertiva:<\/b> Correto. O otimizador analisa estatísticas (seletividade) para estimar custos e reescreve a representação interna (árvore de álgebra relacional) para encontrar o caminho mais eficiente de execução.",
+        "topico": "Otimização de Consultas",
+        "nivel": "Avançado"
+    },
+    {
+        "id": 20,
+        "pergunta": "O comando CREATE TABLE pode ser usado para realizar o backup de uma única tabela, copiando seus dados e suas definições (chaves primárias, estrangeiras, índices, entre outros); por exemplo, o comando 'CREATE TABLE radcom_bkp AS SELECT * FROM radcom' cria o backup da tabela radcom.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> CTAS Limitations<br>O comando CREATE TABLE AS SELECT não copia metadados de restrições (constraints) e índices.<br><br><b>Análise da Assertiva:<\/b> Como explicado na questão 16, o comando copia os dados e a estrutura básica das colunas, mas perde as definições de chaves (PK, FK) e índices. Portanto, não é um backup completo de definições.",
+        "topico": "SQL - DDL",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 21,
+        "pergunta": "O comando SQL a seguir tem a sintaxe correta para obter o código dos cursos e o valor médio do salário dos professores, mas mostrando apenas aqueles cursos cuja média do salário dos seus professores é inferior a 5.000 reais: Select c.cod_curso, avg (salario) from contrato c, professor p where c.cpf_professor = p.cpf_professor and avg (salario) < 5000;",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> WHERE vs HAVING<br>Funções de agregação (SUM, AVG, COUNT) não podem ser usadas na cláusula WHERE.<br><br><b>Análise da Assertiva:<\/b> O erro está em <code>and avg(salario) < 5000<\/code> dentro do WHERE. Filtros baseados em resultados de agregação devem ser colocados na cláusula <b>HAVING<\/b>, após o GROUP BY (que também está faltando na query).",
+        "topico": "SQL - Agregação",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 22,
+        "pergunta": "Sistemas NOSQL com fundamento em documentos possuem um modelo de dados simples embasado no acesso rápido pela palavra; os resultados estão relacionados à informação e podem ser encontrados percorrendo-se os textos usando-se expressões regulares.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> Document Stores vs Search Engines<br>Bancos orientados a documentos (ex: MongoDB) armazenam dados semi-estruturados (JSON\/XML).<br><br><b>Análise da Assertiva:<\/b> A descrição dada refere-se mais a <i>Search Engines<\/i> (como Elasticsearch ou Solr) ou sistemas de Recuperação de Informação (Information Retrieval) baseados em índices invertidos. Bancos orientados a documentos estruturam dados em pares chave-valor complexos (documentos), não sendo definidos primariamente por 'acesso rápido pela palavra via regex'.",
+        "topico": "NoSQL",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 23,
+        "pergunta": "Suponha-se que se deseje remover os privilégios do usuário “suporte” no banco de dados dbEmpresa. Nesse caso, para se remover todas as permissões do usuário, é suficiente executar os comandos seguintes. SELECT DATABASE dbEmpresa; REVOKE ALL PRIVILEGES ON dbEmpresa.* from ‘suporte’@’localhost’;",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> REVOKE Syntax<br>O comando REVOKE remove permissões concedidas anteriormente.<br><br><b>Análise da Assertiva:<\/b> A sintaxe apresentada (típica de MySQL\/MariaDB) está correta para revogar todos os privilégios em um banco específico para um usuário específico.",
+        "topico": "Segurança e DCL",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 24,
+        "pergunta": "Um arquivo CSV (character-separated values) típico é composto de um registro header, um ou mais registros de detalhe e um registro trailer, e cada um desses registros possui um campo de tamanho fixo.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> Formatos de Arquivo<br>CSV utiliza delimitadores (vírgulas, ponto e vírgula) para separar valores.<br><br><b>Análise da Assertiva:<\/b> A definição de 'campo de tamanho fixo' refere-se a arquivos do tipo <i>Fixed Width<\/i> (Largura Fixa). O CSV é, por definição, delimitado por caracteres, onde o tamanho dos campos varia.",
+        "topico": "Integração de Dados",
+        "nivel": "Básico"
+    },
+    {
+        "id": 25,
+        "pergunta": "O comando SQL EXTRACT é utilizado para extrair dados de uma tabela.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> Função EXTRACT<br>A função <code>EXTRACT(part FROM date)<\/code> retorna uma parte de uma data\/hora (ano, mês, dia).<br><br><b>Análise da Assertiva:<\/b> O comando para 'extrair dados de uma tabela' é o <b>SELECT<\/b>. O EXTRACT é uma função escalar de manipulação de datas.",
+        "topico": "SQL - Funções",
+        "nivel": "Básico"
+    },
+    {
+        "id": 26,
+        "pergunta": "A cláusula WHERE não pode ser usada para restringir grupos.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> WHERE vs HAVING<br>WHERE filtra linhas antes do agrupamento. HAVING filtra grupos após o agrupamento.<br><br><b>Análise da Assertiva:<\/b> Correto. Para restringir grupos (baseado em resultados de agregações como COUNT, SUM), deve-se usar o HAVING. O WHERE atua nas tuplas individuais.",
+        "topico": "SQL - Agregação",
+        "nivel": "Básico"
+    },
+    {
+        "id": 27,
+        "pergunta": "O responsável pela administração do banco de dados é o usuário MASTER, que pode utilizar comandos SQL para realizar tarefas relacionadas com a manutenção dos esquemas do banco de dados.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> Usuários Administrativos<br>Os superusuários padrão variam: 'sa' (SQL Server), 'sys\/system' (Oracle), 'postgres' (PostgreSQL), 'root' (MySQL).<br><br><b>Análise da Assertiva:<\/b> Não existe um usuário padrão universal chamado 'MASTER'. Embora exista o banco de dados 'master' no SQL Server, o nome do usuário administrador não é esse por definição padrão da linguagem SQL.",
+        "topico": "Administração de Banco de Dados",
+        "nivel": "Básico"
+    },
+    {
+        "id": 28,
+        "pergunta": "Ao ser executado, o comando INSERT INTO CERTIDAO VALUES (10, 874637, '12\/08\/2019', '14:34', '06\/08\/2019'); permitirá inserir um registro na tabela CERTIDAO.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> INSERT Posicional<br>É possível omitir a lista de colunas se os valores fornecidos corresponderem exatamente à ordem e quantidade de colunas da tabela.<br><br><b>Análise da Assertiva:<\/b> Assumindo que a tabela CERTIDAO possui 5 colunas compatíveis com os tipos fornecidos (Int, Int, Data\/String, Hora\/String, Data\/String), o comando é sintaticamente válido.",
+        "topico": "SQL - DML",
+        "nivel": "Básico"
+    },
+    {
+        "id": 29,
+        "pergunta": "O código 'CREATE VIEW VwTeste WITH SCHEMABINDING AS SELECT campo1 FROM tabela WHERE campo1 > 17;' apresenta uma visão materializada, especificamente devido ao argumento SCHEMABINDING.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> Indexed Views \/ Materialized Views<br>SCHEMABINDING impede alterações nas tabelas base que quebrariam a view, mas não persiste os dados por si só.<br><br><b>Análise da Assertiva:<\/b> No SQL Server, <code>WITH SCHEMABINDING<\/code> é um pré-requisito para criar um índice na view (o que a tornaria materializada), mas a opção sozinha <b>não materializa<\/b> a view. Ela continua sendo virtual até que um índice clusterizado único seja criado sobre ela.",
+        "topico": "Views e Otimização",
+        "nivel": "Avançado"
+    },
+    {
+        "id": 30,
+        "pergunta": "Em SQL, o comando create role acesso_ensino as grant insert, update on ensino_superior, quando executado, cria o papel acesso_ensino, contendo os privilégios de inserir e atualizar na tabela ensino_superior.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> CREATE ROLE<br>A criação de roles e a concessão de privilégios são comandos distintos.<br><br><b>Análise da Assertiva:<\/b> A sintaxe correta envolve dois passos: 1. <code>CREATE ROLE acesso_ensino;<\/code> 2. <code>GRANT INSERT, UPDATE ON ensino_superior TO acesso_ensino;<\/code>. A tentativa de fazer ambos em uma linha com 'AS GRANT' é inválida.",
+        "topico": "Segurança e DCL",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 31,
+        "pergunta": "O comando UPDATE empregados SET id_departamento = 80, id_gerente = 145 WHERE id_departamento = 50 AND funcao = 'VENDEDOR'; atualiza os dados dos empregados conforme descrito.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> UPDATE Syntax<br><code>UPDATE tabela SET col1=val1, col2=val2 WHERE condicao;<\/code><br><br><b>Análise da Assertiva:<\/b> A sintaxe está perfeitamente correta, utilizando vírgula para separar as atribuições e AND para compor o filtro.",
+        "topico": "SQL - DML",
+        "nivel": "Básico"
+    },
+    {
+        "id": 32,
+        "pergunta": "Assumindo que cada cantor vendeu apenas uma unidade de cada CD de sua autoria, o comando SELECT CANTOR.NOME_CANTOR, SUM(CD.VALOR_CD) FROM CANTOR, CD WHERE CD.CODIGO_CANTOR = CANTOR.CODIGO_CANTOR apresentará o ganho total de cada um deles.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> GROUP BY Requirement<br>Ao usar funções de agregação (SUM) com colunas não agregadas (NOME_CANTOR), é obrigatório usar a cláusula GROUP BY.<br><br><b>Análise da Assertiva:<\/b> A consulta falhará (ou retornará resultados inconsistentes dependendo do modo do SQL) pois falta a cláusula <code>GROUP BY CANTOR.NOME_CANTOR<\/code> ao final do comando.",
+        "topico": "SQL - Agregação",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 33,
+        "pergunta": "O resultado da consulta 'SELECT depto FROM emp UNION SELECT depto FROM depto;', que utiliza o operador UNION, não elimina os registros duplicados entre as tabelas.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> UNION vs UNION ALL<br>UNION combina resultados e remove duplicatas. UNION ALL combina e mantém duplicatas.<br><br><b>Análise da Assertiva:<\/b> O operador <b>UNION<\/b> (padrão) executa um <i>distinct<\/i> implícito, eliminando duplicatas. Para mantê-las, deve-se usar UNION ALL.",
+        "topico": "SQL - Operadores de Conjunto",
+        "nivel": "Básico"
+    },
+    {
+        "id": 34,
+        "pergunta": "Em versões recentes da linguagem SQL, o comando delete permite a exclusão de valores em atributos específicos, mantendo-se inalterados os valores dos outros atributos que compõem a tupla.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> DELETE vs UPDATE<br>DELETE remove tuplas (linhas) inteiras. UPDATE modifica valores de atributos (colunas).<br><br><b>Análise da Assertiva:<\/b> Para 'excluir' um valor de um atributo específico (tornando-o NULL, por exemplo), usa-se o comando <b>UPDATE<\/b>. O comando DELETE apaga a linha inteira da tabela.",
+        "topico": "SQL - DML",
+        "nivel": "Básico"
+    },
+    {
+        "id": 35,
+        "pergunta": "Em uma consulta SQL que contém as cláusulas WHERE e HAVING, a cláusula WHERE é aplicada às linhas no conjunto de resultados.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> Ordem de Processamento<br>1. FROM 2. WHERE 3. GROUP BY 4. HAVING 5. SELECT.<br><br><b>Análise da Assertiva:<\/b> A cláusula WHERE é aplicada às linhas de origem (antes do agrupamento), <b>não<\/b> ao conjunto de resultados final. Quem filtra o 'resultado' (grupos formados) é o HAVING. O termo 'conjunto de resultados' geralmente implica o output final ou pós-agregado.",
+        "topico": "SQL - Teoria",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 36,
+        "pergunta": "A sentença SQL apresentada (SELECT ... INNER JOIN ... ON ...) produzirá como resultado a lista de todos os funcionários... e o nome do departamento.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> Inner Join<br>Retorna linhas quando há correspondência em ambas as tabelas.<br><br><b>Análise da Assertiva:<\/b> A sintaxe do INNER JOIN está correta e a lógica descrita ('para aqueles em que seja verdadeira a condição') reflete exatamente o comportamento do INNER JOIN.",
+        "topico": "SQL - DML (Joins)",
+        "nivel": "Básico"
+    },
+    {
+        "id": 37,
+        "pergunta": "A inserção de um registro na tabela Universidade pode ser realizada corretamente por meio do comando: INSERT INTO Universidade VALUES (00.038.174\/0001-43, ‘Universidade de Brasília’, ‘Graduação e Pós-Graduação’);",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> Literais de String<br>Strings e caracteres especiais devem estar entre aspas simples.<br><br><b>Análise da Assertiva:<\/b> O valor do CNPJ (00.038...) contém pontos, barra e traço. Sem aspas simples (ex: '00.038...'), o SQL interpretará isso como operações matemáticas de subtração e divisão entre números, resultando em erro de tipo ou valor incorreto.",
+        "topico": "SQL - Sintaxe",
+        "nivel": "Básico"
+    },
+    {
+        "id": 38,
+        "pergunta": "O código CREATE VIEW BIOLOGO_VW AS SELECT... criará uma view materializada.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> Views<br>CREATE VIEW cria uma tabela virtual (consulta salva). CREATE MATERIALIZED VIEW cria uma tabela física (snapshot).<br><br><b>Análise da Assertiva:<\/b> O comando <code>CREATE VIEW<\/code> padrão cria apenas uma definição lógica. Para criar uma view materializada, a sintaxe explícita é <code>CREATE MATERIALIZED VIEW<\/code> (Oracle\/Postgres) ou criação de índice clusterizado (SQL Server).",
+        "topico": "SQL - DDL",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 39,
+        "pergunta": "A query 'SELECT count(*) as Total de Email FROM unidade_escolar WHERE email in ‘gmail’;' mostra a quantidade de unidades que possuem endereços gmail.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> Operador IN vs LIKE<br>IN verifica igualdade exata em uma lista. LIKE verifica padrões.<br><br><b>Análise da Assertiva:<\/b> O comando <code>email IN 'gmail'<\/code> procura por registros onde o email seja exatamente a string 'gmail'. Para achar emails <i>do provedor<\/i> gmail, o correto seria <code>email LIKE '%@gmail.com%'<\/code> ou similar.",
+        "topico": "SQL - DML",
+        "nivel": "Básico"
+    },
+    {
+        "id": 40,
+        "pergunta": "Considere os comandos SQL (CTE Recursiva somando 3 enquanto < 13). É correto afirmar que o resultado é 0, 3, 6, 9, 12.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> Recursive CTE<br>Uma CTE recursiva executa a âncora e depois a parte recursiva até que a condição seja falsa.<br><br><b>Análise da Assertiva:<\/b><br>1. Inicia com 0.<br>2. 0+3=3 (3<13) -> OK.<br>3. 3+3=6 (6<13) -> OK.<br>4. 6+3=9 (9<13) -> OK.<br>5. 9+3=12 (12<13) -> OK.<br>6. 12+3=15 (15 não é < 13) -> Para.<br>Resultado: 0, 3, 6, 9, 12.",
+        "topico": "SQL Avançado (CTE)",
+        "nivel": "Avançado"
+    },
+    {
+        "id": 41,
+        "pergunta": "A instrução, em SQL, grant update (nota) on aluno_disciplina to pedro, miguel; apresenta erro de sintaxe",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> GRANT Column Privileges<br>É possível conceder permissão de UPDATE apenas em colunas específicas.<br><br><b>Análise da Assertiva:<\/b> A sintaxe é válida (padrão SQL ANSI e Oracle). É permitido especificar a coluna <code>(nota)<\/code> e listar múltiplos usuários separados por vírgula. Portanto, afirmar que apresenta erro está incorreto.",
+        "topico": "Segurança e DCL",
+        "nivel": "Avançado"
+    },
+    {
+        "id": 42,
+        "pergunta": "O cálculo da volumetria é realizado sob o modelo de dados conceitual e permite estimar o espaço em disco que se precisará para armazenamento dos dados.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> Modelagem Física<br>A volumetria lida com bytes, tamanho de tipos de dados e overhead de armazenamento.<br><br><b>Análise da Assertiva:<\/b> O cálculo de volumetria (espaço em disco) é uma atividade típica do <b>Modelo Físico<\/b>, pois depende de saber os tipos de dados exatos do SGBD (INT vs BIGINT, VARCHAR, etc.), índices e fator de preenchimento. O modelo conceitual é muito abstrato para esse cálculo preciso.",
+        "topico": "Projeto de Banco de Dados",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 43,
+        "pergunta": "Um dos qualificadores para o OUTER JOIN previstos na sintaxe SQL ANSI é o FULL OUTER JOIN, em que são incluídas todas as linhas que satisfaçam a expressão tanto da primeira, quanto da segunda tabela",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> Full Outer Join<br>Retorna registros quando há match na tabela esquerda OU na direita. Se não houver, preenche com NULL.<br><br><b>Análise da Assertiva:<\/b> Correto. O FULL OUTER JOIN combina os resultados do LEFT e RIGHT JOIN, trazendo todas as linhas de ambas as tabelas, correlacionando onde possível e mantendo os dados órfãos de ambos os lados.",
+        "topico": "SQL - DML (Joins)",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 44,
+        "pergunta": "O comando SQL a seguir mostra... empregados... (SELECT ... FROM Empregado E, Treinamento T WHERE ... E.cod_empregado = T.cod_empregado;)",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> Implicit Join (ANSI-89)<br>Listar tabelas no FROM e igualar chaves no WHERE realiza um INNER JOIN.<br><br><b>Análise da Assertiva:<\/b> A consulta utiliza a sintaxe de junção implícita corretamente, filtrando por salário e prazo, e ligando as tabelas pelas chaves primária\/estrangeira.",
+        "topico": "SQL - DML",
+        "nivel": "Básico"
+    },
+    {
+        "id": 45,
+        "pergunta": "Considerando que o campo Id na tabela Pessoa esteja corretamente configurado como chave primária simples, para se criar uma chave estrangeira entre as tabelas Pessoa e EnderecoPessoa, deve-se executar o comando a seguir. ALTER TABLE EnderecoPessoa ADD CONSTRAINT fk_Endereco_Pessoa FOREIGN KEY (P_id) REFERENCES Pessoa (Id)",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> Adicionando FK<br>Sintaxe: <code>ALTER TABLE filha ADD CONSTRAINT nome FK (col_filha) REFERENCES pai (col_pai)<\/code>.<br><br><b>Análise da Assertiva:<\/b> A sintaxe apresentada está correta e segue o padrão ANSI para criação de Chaves Estrangeiras (Foreign Keys).",
+        "topico": "SQL - DDL",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 46,
+        "pergunta": "Para criar uma chave primária composta na Tabela Pessoa, deve-se executar o seguinte comando: ALTER TABLE Pessoa ADD CONSTRAINT pk_PessoaID PRIMARY KEY (Id, Matricula)",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> Composite Primary Key<br>Chaves compostas são definidas listando múltiplas colunas dentro dos parênteses da constraint PRIMARY KEY.<br><br><b>Análise da Assertiva:<\/b> Correto. A sintaxe <code>PRIMARY KEY (col1, col2)<\/code> define que a combinação de Id e Matricula será o identificador único da tabela.",
+        "topico": "SQL - DDL",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 47,
+        "pergunta": "Considerando-se a inexistência de concorrência... é correto afirmar que a execução do comando SQL mostrado abaixo terá como resultado uma quantidade de registros igual à soma dos registros das duas tabelas: SELECT ID FROM A UNION SELECT ID FROM B",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> UNION Behavior<br>UNION remove duplicatas. UNION ALL mantém duplicatas.<br><br><b>Análise da Assertiva:<\/b> Se houver IDs idênticos na tabela A e na tabela B (interseção), o operador <b>UNION<\/b> os unificará em um único registro. Portanto, a quantidade será menor que a soma, a menos que os conjuntos sejam totalmente disjuntos. Para garantir a soma exata, seria necessário usar <b>UNION ALL<\/b>.",
+        "topico": "SQL - Operadores de Conjunto",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 48,
+        "pergunta": "A DDL (data definition language) é responsável pela especificação da instância do banco de dados e também pode ser usada para especificar propriedades adicionais dos dados, como restrições de consistência.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> DDL vs DML<br>DDL define o Esquema (estrutura). DML manipula a Instância (dados).<br><br><b>Análise da Assertiva:<\/b> A DDL especifica o <b>Esquema<\/b> (Schema), não a instância. A instância é o conjunto de dados inseridos via DML.",
+        "topico": "Conceitos de Banco de Dados",
+        "nivel": "Básico"
+    },
+    {
+        "id": 49,
+        "pergunta": "Em um único objeto de dados, um package no Oracle 11g pode agregar subprogramas, constantes, comandos DML, funções e procedures. O exemplo abaixo descreve corretamente a sintaxe para criar o package PkgTeste... (Uso de WITH FUNCTION dentro do BODY)",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> PL\/SQL Package Syntax<br>No Package Body, declara-se <code>FUNCTION nome ...<\/code> e <code>PROCEDURE nome ...<\/code> diretamente.<br><br><b>Análise da Assertiva:<\/b> A sintaxe apresentada usa <code>WITH FUNCTION<\/code> e <code>WITH PROCEDURE<\/code> e <code>WITH SELECT<\/code> dentro do corpo do pacote. Isso está incorreto. A sintaxe correta é definir as funções e procedures diretamente (ex: <code>FUNCTION FuncaoTeste... IS BEGIN... END;<\/code>).",
+        "topico": "Oracle PL\/SQL",
+        "nivel": "Avançado"
+    },
+    {
+        "id": 50,
+        "pergunta": "Os triggers otimizam o desempenho de sentenças SQL",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> Trigger Performance Overhead<br>Triggers adicionam processamento extra síncrono a cada transação DML.<br><br><b>Análise da Assertiva:<\/b> Triggers são conhecidos por <b>degradar<\/b> o desempenho de inserções, atualizações e exclusões, pois executam lógica adicional oculta a cada comando. Eles são usados para consistência e regras de negócio, não para otimização.",
+        "topico": "Banco de Dados Avançado",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 51,
+        "pergunta": "Os tipos objetos (objects types) em PL\/SQL são um mecanismo em que se pode atribuir um nome a um comando SELECT e manipular a informação contida no comando SQL. Os objetos declarados em um bloco externo podem ser explícitos ou implícitos.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> Cursors vs Object Types<br>Atribuir nome a um SELECT refere-se a <b>Cursores<\/b> ou <b>Views<\/b>. Object Types são estruturas de dados (UDTs).<br><br><b>Análise da Assertiva:<\/b> A definição dada ('atribuir um nome a um comando SELECT') refere-se a <b>Cursores<\/b> (explícitos) ou <b>Views<\/b>. Tipos de Objeto (Object Types) são usados para programação orientada a objetos dentro do banco (tipos compostos com atributos e métodos).",
+        "topico": "Oracle PL\/SQL",
+        "nivel": "Avançado"
+    },
+    {
+        "id": 52,
+        "pergunta": "A expressão de consulta mostrada abaixo permite visualizar o nome da sede, com a área da sala e sua descrição: select nome, area, descricao from salas, sede where sede.local=salas.local",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> Join Implícito<br>Junção de tabelas via igualdade no WHERE.<br><br><b>Análise da Assertiva:<\/b> A consulta faz um join implícito entre as tabelas <code>salas<\/code> e <code>sede<\/code> usando a coluna comum <code>local<\/code>. O resultado trará as colunas solicitadas onde houver correspondência.",
+        "topico": "SQL - DML",
+        "nivel": "Básico"
+    },
+    {
+        "id": 53,
+        "pergunta": "O comando EXTRACT na linguagem SQL é utilizado para extrair dados de uma tabela.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> Função EXTRACT<br>Extrai partes de uma data (Dia, Mês, Ano).<br><br><b>Análise da Assertiva:<\/b> Repetição do conceito da questão 25. O comando para buscar dados na tabela é o SELECT. EXTRACT é função de data.",
+        "topico": "SQL - Funções",
+        "nivel": "Básico"
+    },
+    {
+        "id": 54,
+        "pergunta": "O comando abaixo permite adicionar a tabela disciplinas a uma chave estrangeira com o nome fk_curso, do campo id_curso que pertence à tabela cursos: alter table disciplinas alter column fk_curso references cursos (id_curso);",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> DDL Syntax<br>Sintaxe correta: <code>ADD CONSTRAINT<\/code>.<br><br><b>Análise da Assertiva:<\/b> A sintaxe <code>ALTER COLUMN ... REFERENCES<\/code> geralmente não é válida em <code>ALTER TABLE<\/code> para adicionar constraints nomeadas (varia entre SGBDs, mas o padrão ANSI é <code>ADD CONSTRAINT<\/code>). Além disso, o comando parece tentar alterar uma coluna existente para virar FK de forma inline incorreta.",
+        "topico": "SQL - DDL",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 55,
+        "pergunta": "Suponha que exista determinada tabela alunos... O comando abaixo é apropriado para listar todos os alunos que tenham idade superior a 34 anos e obter o resultado de forma ordenada por aluno: select * from alunos where idade > 34 group by nome_aluno having count(*) > 34",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> GROUP BY Logic<br>SELECT * com GROUP BY é inválido se houver colunas não agregadas. A lógica da questão é confusa.<br><br><b>Análise da Assertiva:<\/b> 1. <code>SELECT *<\/code> com <code>GROUP BY nome<\/code> é inválido na maioria dos bancos (quais colunas exibir para os outros campos?). 2. O objetivo é 'listar alunos > 34 anos', mas o comando adiciona <code>HAVING count(*) > 34<\/code>, que filtraria apenas nomes que aparecem mais de 34 vezes na tabela. O comando não atende ao enunciado e tem erros de lógica\/sintaxe.",
+        "topico": "SQL - DML",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 56,
+        "pergunta": "Suponha que tenha sido identificado que uma tabela... não apresentava nenhum índice... o comando abaixo permite a criação desse índice com o nome idx_id_curso: CREATE INDEX IN disciplinas ON idx_id_curso (id_disciplina)",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição da documentação:<\/b> CREATE INDEX<br>Sintaxe: <code>CREATE INDEX nome_indice ON nome_tabela (coluna);<\/code><br><br><b>Análise da Assertiva:<\/b> A sintaxe apresentada inverteu os elementos e usou a preposição errada. O correto seria: <code>CREATE INDEX idx_id_curso ON disciplinas (id_disciplina)<\/code>. O uso de 'IN' e a ordem dos nomes está incorreta.",
+        "topico": "SQL - DDL",
+        "nivel": "Básico"
     }
 ]

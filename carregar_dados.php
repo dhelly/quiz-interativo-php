@@ -1,6 +1,55 @@
 <?php
 require_once 'db_config.php';
 
+// Funções de Persistência de Progresso
+function salvarProgresso($user_id, $quiz_id, $question_id, $acertos, $erradas) {
+    try {
+        $pdo = get_db_connection();
+        $erradas_json = json_encode($erradas);
+        
+        $sql = "INSERT INTO user_progress (user_id, quiz_id, current_question_id, acertos, questoes_erradas) 
+                VALUES (?, ?, ?, ?, ?)
+                ON DUPLICATE KEY UPDATE 
+                quiz_id = VALUES(quiz_id), 
+                current_question_id = VALUES(current_question_id), 
+                acertos = VALUES(acertos), 
+                questoes_erradas = VALUES(questoes_erradas)";
+                
+        $stmt = $pdo->prepare($sql);
+        return $stmt->execute([$user_id, $quiz_id, $question_id, $acertos, $erradas_json]);
+    } catch (Exception $e) {
+        error_log("Erro ao salvar progresso: " . $e->getMessage());
+        return false;
+    }
+}
+
+function obterProgresso($user_id) {
+    try {
+        $pdo = get_db_connection();
+        $stmt = $pdo->prepare("SELECT * FROM user_progress WHERE user_id = ?");
+        $stmt->execute([$user_id]);
+        $progresso = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        if ($progresso) {
+            $progresso['questoes_erradas'] = json_decode($progresso['questoes_erradas'], true) ?? [];
+        }
+        
+        return $progresso;
+    } catch (Exception $e) {
+        return false;
+    }
+}
+
+function limparProgresso($user_id) {
+    try {
+        $pdo = get_db_connection();
+        $stmt = $pdo->prepare("DELETE FROM user_progress WHERE user_id = ?");
+        return $stmt->execute([$user_id]);
+    } catch (Exception $e) {
+        return false;
+    }
+}
+
 $FALLBACK_QUIZ_JSON = '[
   {
     "id": 1,

@@ -38,6 +38,13 @@ if ($acao == 'login' && isset($_POST['username']) && isset($_POST['password'])) 
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['username'] = $user['username'];
         $_SESSION['is_admin'] = (bool)$user['is_admin'];
+        
+        // Verifica se há progresso salvo
+        $progresso = obterProgresso($user['id']);
+        if ($progresso) {
+            $_SESSION['progress_alert'] = "Bem-vindo de volta! Retomamos seu quiz de onde parou.";
+        }
+        
         header('Location: index.php');
         exit;
     } else {
@@ -96,6 +103,29 @@ switch ($acao) {
         exibirHome($quizzes_disponiveis);
         break;
     case 'quiz':
+        // Recuperar progresso se não houver quiz ativo na sessão, mas existir no banco
+        if (isset($_SESSION['user_id']) && !isset($_GET['id']) && !isset($_GET['carregar_quiz'])) {
+            $progresso = obterProgresso($_SESSION['user_id']);
+            if ($progresso) {
+                // Restaura estado
+                $_SESSION['current_quiz_id'] = $progresso['quiz_id'];
+                $_SESSION['questoes_erradas'] = $progresso['questoes_erradas'];
+                $quiz_data = carregarQuiz($progresso['quiz_id']);
+                
+                // Redireciona para a questão salva
+                if ((int)$questao_id !== (int)$progresso['current_question_id']) {
+                   // Apenas se não estivermos já tentando carregar uma específica
+                   $questao_id = $progresso['current_question_id'];
+                   $acertos = $progresso['acertos'];
+                }
+            }
+        }
+        
+        // Salva o progresso atual no banco a cada carregamento de questão
+        if (isset($_SESSION['user_id']) && $questao_id && !$modo_revisao) {
+            salvarProgresso($_SESSION['user_id'], $quiz_id, $questao_id, $acertos, $_SESSION['questoes_erradas']);
+        }
+
         exibirQuiz($quiz_data, $questao_id, $acertos, $modo_revisao);
         break;
     case 'admin':
