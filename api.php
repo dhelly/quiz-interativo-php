@@ -1,10 +1,14 @@
 <?php
+ob_start();
 require_once 'session_config.php';
 require_once 'carregar_dados.php';
+require_once 'sanitize.php';
 
 $action = $_GET['action'] ?? '';
 $user_id = $_SESSION['user_id'] ?? null;
 
+// Limpa qualquer output anterior (como warnings ou erros de includes)
+ob_clean();
 header('Content-Type: application/json');
 
 if (!$user_id) {
@@ -26,6 +30,16 @@ switch ($action) {
         $question_id = $_GET['question_id'] ?? 0;
         if ($question_id) {
             $comments = obterComentariosPublicos($question_id);
+            // Processa markdown para cada comentário
+            foreach ($comments as &$comment) {
+                // Primeiro sanitiza HTML para segurança (já feito no htmlspecialchars do sanitize.php se usarmos ele, 
+                // mas markdownParaHtml não faz htmlspecialchars completo, então fazemos antes se o DB tiver raw)
+                // O DB tem raw text.
+                // Mas markdownParaHtml espera texto raw.
+                // Vamos usar a abordagem: htmlspecials -> markdownParaHtml
+                $safe_text = htmlspecialchars($comment['comment'], ENT_QUOTES, 'UTF-8');
+                $comment['comment'] = markdownParaHtml($safe_text);
+            }
             echo json_encode(['success' => true, 'comments' => $comments]);
         } else {
             echo json_encode(['success' => false, 'message' => 'ID da questão não fornecido.']);

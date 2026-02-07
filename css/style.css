@@ -1020,3 +1020,39 @@ input:checked+.slider:before {
         box-shadow: none;
     }
 }
+/* Markdown Content Styles */
+.comentario-texto code {
+    background-color: #f1f5f9;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+    color: #ef4444; /* Reddish for code */
+}
+
+.comentario-texto pre {
+    background-color: #1e293b;
+    color: #f8fafc;
+    padding: 12px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 8px 0;
+    font-size: 0.9em;
+}
+
+.comentario-texto pre code {
+    background-color: transparent;
+    color: inherit;
+    padding: 0;
+    font-size: 1em;
+}
+
+.comentario-texto strong {
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.comentario-texto em {
+    font-style: italic;
+    color: var(--text-main);
+}
