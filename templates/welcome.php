@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bem-vindo - Quiz Interativo</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="pagina-welcome">
@@ -11,17 +12,18 @@
         <div class="welcome-card">
             <div class="welcome-header">
                 <span class="emoji-hero">⚡</span>
-                <h1>Quiz Interativo</h1>
+                <h1>Quiz Interativo - Inutil.app</h1>
                 <p>Teste seu conhecimento e conquiste o topo do ranking!</p>
             </div>
 
             <?php if (isset($erro_login)): ?>
                 <div class="alert alert-error" style="display: block; margin-bottom: 20px;">
-                    ❌ <?php echo htmlspecialchars($erro_login); ?>
+                    ❌ <?php echo h($erro_login); ?>
                 </div>
             <?php endif; ?>
 
             <form action="index.php?acao=login" method="POST" class="welcome-form">
+                <input type="hidden" name="csrf_token" value="<?php echo gerarTokenCSRF(); ?>">
                 <div class="form-group">
                     <label for="username">Apelido (Username)</label>
                     <input type="text" id="username" name="username" required placeholder="Seu apelido..." minlength="3">

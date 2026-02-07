@@ -3,11 +3,13 @@
  * Configurações de Conexão com o Banco de Dados MySQL
  */
 
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'quiz_db');
-define('DB_USER', 'quiz_user');
-define('DB_PASS', 'quiz_password');
-define('DB_CHARSET', 'utf8mb4');
+require_once 'env_loader.php';
+
+define('DB_HOST', $_ENV['DB_HOST'] ?? 'localhost');
+define('DB_NAME', $_ENV['DB_NAME'] ?? 'quiz_db');
+define('DB_USER', $_ENV['DB_USER'] ?? 'quiz_user');
+define('DB_PASS', $_ENV['DB_PASS'] ?? 'quiz_password');
+define('DB_CHARSET', $_ENV['DB_CHARSET'] ?? 'utf8mb4');
 
 function get_db_connection() {
     try {

@@ -1,0 +1,11 @@
+# Deny access to sensitive files
+<FilesMatch "^\.env|quiz_data\.json|.*\.db$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Prevent directory listing
+Options -Indexes
+
+# Custom error pages (optional)
+# ErrorDocument 403 /error_403.html

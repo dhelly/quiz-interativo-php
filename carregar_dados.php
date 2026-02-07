@@ -1,6 +1,78 @@
 <?php
 require_once 'db_config.php';
 
+// Funções de Persistência de Progresso
+
+// Auto-migração para garantir que a tabela existe
+function verificarTabelaProgresso() {
+    try {
+        $pdo = get_db_connection();
+        $pdo->exec("CREATE TABLE IF NOT EXISTS user_progress (
+            user_id INT PRIMARY KEY,
+            quiz_id INT NOT NULL DEFAULT 1,
+            current_question_id INT NOT NULL,
+            acertos INT DEFAULT 0,
+            questoes_erradas TEXT,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+            FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
+    } catch (Exception $e) {
+        // Silently fail or log, but attempting to continue
+        error_log("Erro na auto-migração: " . $e->getMessage());
+    }
+}
+
+// Executa verificação ao carregar este arquivo
+verificarTabelaProgresso();
+
+function salvarProgresso($user_id, $quiz_id, $question_id, $acertos, $erradas) {
+    try {
+        $pdo = get_db_connection();
+        $erradas_json = json_encode($erradas);
+        
+        $sql = "INSERT INTO user_progress (user_id, quiz_id, current_question_id, acertos, questoes_erradas) 
+                VALUES (?, ?, ?, ?, ?)
+                ON DUPLICATE KEY UPDATE 
+                quiz_id = VALUES(quiz_id), 
+                current_question_id = VALUES(current_question_id), 
+                acertos = VALUES(acertos), 
+                questoes_erradas = VALUES(questoes_erradas)";
+                
+        $stmt = $pdo->prepare($sql);
+        return $stmt->execute([$user_id, $quiz_id, $question_id, $acertos, $erradas_json]);
+    } catch (Exception $e) {
+        error_log("Erro ao salvar progresso: " . $e->getMessage());
+        return false;
+    }
+}
+
+function obterProgresso($user_id) {
+    try {
+        $pdo = get_db_connection();
+        $stmt = $pdo->prepare("SELECT * FROM user_progress WHERE user_id = ?");
+        $stmt->execute([$user_id]);
+        $progresso = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        if ($progresso) {
+            $progresso['questoes_erradas'] = json_decode($progresso['questoes_erradas'], true) ?? [];
+        }
+        
+        return $progresso;
+    } catch (Exception $e) {
+        return false;
+    }
+}
+
+function limparProgresso($user_id) {
+    try {
+        $pdo = get_db_connection();
+        $stmt = $pdo->prepare("DELETE FROM user_progress WHERE user_id = ?");
+        return $stmt->execute([$user_id]);
+    } catch (Exception $e) {
+        return false;
+    }
+}
+
 $FALLBACK_QUIZ_JSON = '[
   {
     "id": 1,
@@ -301,6 +373,28 @@ function toggleVisibilidadeQuestao($question_id, $visible) {
     }
 }
 
+function excluirInteracao($id) {
+    try {
+        $pdo = get_db_connection();
+        $stmt = $pdo->prepare("DELETE FROM question_interactions WHERE id = ?");
+        return $stmt->execute([$id]);
+    } catch (Exception $e) {
+        error_log("Erro ao excluir interação: " . $e->getMessage());
+        return false;
+    }
+}
+
+function resolverFlag($id) {
+    try {
+        $pdo = get_db_connection();
+        $stmt = $pdo->prepare("UPDATE question_interactions SET is_flagged = 0 WHERE id = ?");
+        return $stmt->execute([$id]);
+    } catch (Exception $e) {
+        error_log("Erro ao resolver flag: " . $e->getMessage());
+        return false;
+    }
+}
+
 // Funções de Gerenciamento de Quizzes (Mantidas para compatibilidade)
 function listarQuizzes() {
     try {
@@ -431,4 +525,24 @@ function excluirQuiz($id) {
     }
 }
 
+// Proteção CSRF
+function gerarTokenCSRF() {
+    if (empty($_SESSION['csrf_token'])) {
+        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+    }
+    return $_SESSION['csrf_token'];
+}
+
+function validarTokenCSRF($token) {
+    if (!isset($_SESSION['csrf_token']) || empty($token)) {
+        return false;
+    }
+    return hash_equals($_SESSION['csrf_token'], $token);
+}
+
+function h_json_response($success, $message, $data = []) {
+    header('Content-Type: application/json');
+    echo json_encode(array_merge(['success' => $success, 'message' => $message], $data));
+    exit;
+}
 ?>

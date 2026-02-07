@@ -1,6 +1,7 @@
 <?php
-session_start();
+require_once 'session_config.php';
 require_once 'carregar_dados.php';
+require_once 'sanitize.php';
 require_once 'validar_quiz.php';
 
 // Acesso restrito a administradores
@@ -10,6 +11,25 @@ if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
 }
 
 $acao = $_GET['acao'] ?? 'panel';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Tenta pegar o token do POST, do Header ou do input JSON
+    $csrf_token = $_POST['csrf_token'] ?? $_SERVER['HTTP_X_CSRF_TOKEN'] ?? '';
+    
+    // Se ainda estiver vazio e for um request JSON, tenta ler do body
+    if (empty($csrf_token)) {
+        $input = json_decode(file_get_contents('php://input'), true);
+        $csrf_token = $input['csrf_token'] ?? '';
+    }
+
+    if (!validarTokenCSRF($csrf_token)) {
+        header('Content-Type: application/json');
+        http_response_code(403);
+        echo json_encode(['success' => false, 'message' => 'Erro CSRF: Requisição inválida ou token expirado.']);
+        exit;
+    }
+}
+
 $quiz_data = carregarDadosQuiz();
 
 switch ($acao) {
@@ -49,6 +69,12 @@ switch ($acao) {
     case 'toggle-visibility':
         toggleVisibilityAdmin();
         break;
+    case 'resolver-flag':
+        resolverFlagAdmin();
+        break;
+    case 'excluir-interacao':
+        excluirInteracaoAdmin();
+        break;
     default:
         exibirPainelAdmin($quiz_data);
         break;
@@ -79,6 +105,7 @@ function exibirPainelAdmin($quiz_data) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Painel Admin - Inútil App</title>
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
@@ -91,13 +118,13 @@ function exibirPainelAdmin($quiz_data) {
             <!-- Alertas fixos para mensagens do PHP -->
             <?php if (isset($_GET['success'])): ?>
                 <div class="alert alert-success alert-fixed" style="display: block;">
-                    <?php echo htmlspecialchars($_GET['success']); ?>
+                    <?php echo h($_GET['success']); ?>
                 </div>
             <?php endif; ?>
             
             <?php if (isset($_GET['erro'])): ?>
                 <div class="alert alert-error alert-fixed" style="display: block;">
-                    <?php echo htmlspecialchars($_GET['erro']); ?>
+                    <?php echo h($_GET['erro']); ?>
                 </div>
             <?php endif; ?>
 
@@ -136,7 +163,7 @@ function exibirPainelAdmin($quiz_data) {
                     
                     <div class="two-columns">
                         <div class="column">
-                            <textarea id="jsonEditor" placeholder="Cole seu JSON aqui..."><?php echo htmlspecialchars($dados['json_atual']); ?></textarea>
+                            <textarea id="jsonEditor" placeholder="Cole seu JSON aqui..."><?php echo h($dados['json_atual']); ?></textarea>
                         </div>
                         <div class="column">
                             <div class="action-panel">
@@ -145,6 +172,7 @@ function exibirPainelAdmin($quiz_data) {
                                     <button class="btn btn-success" onclick="saveJson()">
                                         💾 Salvar JSON
                                     </button>
+                                    <input type="hidden" id="admin_csrf_token" value="<?php echo gerarTokenCSRF(); ?>">
                                     <button class="btn" onclick="loadCurrentJson()">
                                         🔄 Carregar JSON Atual
                                     </button>
@@ -199,6 +227,7 @@ function exibirPainelAdmin($quiz_data) {
                             <button type="button" class="btn btn-success" onclick="uploadFile()" style="margin-top: 15px;">
                                 ⬆️ Fazer Upload
                             </button>
+                            <input type="hidden" name="csrf_token" value="<?php echo gerarTokenCSRF(); ?>">
                         </div>
                         
                         <div class="column">
@@ -376,6 +405,56 @@ function exibirPainelAdmin($quiz_data) {
                         </div>
                     </div>
                 </div>
+
+                <!-- Tab 5: Moderação -->
+                <div id="moderacao" class="tab-content">
+                    <h3>👮 Moderação de Interações</h3>
+                    <p>Gerencie sinalizações e comentários dos usuários.</p>
+
+                    <?php if (empty($dados['interacoes'])): ?>
+                        <div class="empty-state">
+                            <h4>📭 Nenhuma interação registrada</h4>
+                            <p>As sinalizações e comentários dos usuários aparecerão aqui.</p>
+                        </div>
+                    <?php else: ?>
+                        <div class="questoes-list">
+                            <?php foreach ($dados['interacoes'] as $interacao): ?>
+                                <div class="questao-item <?php echo $interacao['is_flagged'] ? 'flagged' : ''; ?>">
+                                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                                        <strong>
+                                            <?php echo $interacao['is_flagged'] ? '🚩' : '💬'; ?> 
+                                            Questão #<?php echo $interacao['question_id']; ?> - 
+                                            <?php echo htmlspecialchars($interacao['topico']); ?>
+                                        </strong>
+                                        <span style="font-size: 0.8rem; color: var(--text-muted);">
+                                            <?php echo date('d/m/Y H:i', strtotime($interacao['created_at'])); ?>
+                                        </span>
+                                    </div>
+                                    
+                                    <p style="margin: 10px 0; font-style: italic; color: var(--text-muted); font-size: 0.9em;">
+                                        "<?php echo htmlspecialchars($interacao['pergunta']); ?>"
+                                    </p>
+
+                                    <div style="background: white; padding: 10px; border-radius: 6px; border: 1px solid var(--border); margin: 10px 0;">
+                                        <strong><?php echo htmlspecialchars($interacao['username']); ?>:</strong>
+                                        <p style="margin-top: 5px;"><?php echo nl2br(htmlspecialchars($interacao['comment'])); ?></p>
+                                    </div>
+
+                                    <div style="display: flex; gap: 10px; margin-top: 15px;">
+                                        <?php if ($interacao['is_flagged']): ?>
+                                            <button class="btn btn-small btn-success" onclick="resolverFlag(<?php echo $interacao['id']; ?>)">
+                                                ✅ Resolver Flag
+                                            </button>
+                                        <?php endif; ?>
+                                        <button class="btn btn-small btn-error" onclick="excluirInteracao(<?php echo $interacao['id']; ?>)">
+                                            🗑️ Excluir Comentário
+                                        </button>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
 
@@ -384,6 +463,7 @@ function exibirPainelAdmin($quiz_data) {
             <div class="modal-content">
                 <h3>💾 Salvar Quiz</h3>
                 <form id="formSalvarComo">
+                    <input type="hidden" name="csrf_token" value="<?php echo gerarTokenCSRF(); ?>">
                     <div class="form-group">
                         <label for="nome_quiz">Nome do Quiz:</label>
                         <input type="text" id="nome_quiz" name="nome_quiz" required 
@@ -463,6 +543,19 @@ function exibirPainelAdmin($quiz_data) {
                 setTimeout(() => {
                     alertDiv.style.display = 'none';
                 }, 5000);
+            }
+
+            // ========== MODERAÇÃO ==========
+            function resolverFlag(id) {
+                if (confirm('Marcar esta sinalização como resolvida?')) {
+                    window.location.href = 'admin.php?acao=resolver-flag&id=' + id;
+                }
+            }
+
+            function excluirInteracao(id) {
+                if (confirm('Tem certeza que deseja excluir esta interação? Esta ação não pode ser desfeita.')) {
+                    window.location.href = 'admin.php?acao=excluir-interacao&id=' + id;
+                }
             }
 
             // ========== EDITOR JSON ==========
@@ -572,8 +665,9 @@ function exibirPainelAdmin($quiz_data) {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded',
+                            'X-CSRF-Token': document.getElementById('admin_csrf_token').value
                         },
-                        body: 'json_data=' + encodeURIComponent(jsonData)
+                        body: 'json_data=' + encodeURIComponent(jsonData) + '&csrf_token=' + encodeURIComponent(document.getElementById('admin_csrf_token').value)
                     });
                     
                     const result = await response.text();
@@ -664,6 +758,7 @@ function exibirPainelAdmin($quiz_data) {
 
                 const formData = new FormData();
                 formData.append('json_file', currentFile);
+                formData.append('csrf_token', document.getElementById('admin_csrf_token').value);
 
                 try {
                     const response = await fetch('admin.php?acao=upload-json', {
@@ -717,7 +812,8 @@ function exibirPainelAdmin($quiz_data) {
                 
                 const dados = {
                     nome_quiz: formData.get('nome_quiz'),
-                    disciplina: disciplina
+                    disciplina: disciplina,
+                    csrf_token: formData.get('csrf_token') // Inclui no corpo do JSON
                 };
                 
                 try {
@@ -725,6 +821,7 @@ function exibirPainelAdmin($quiz_data) {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
+                            'X-CSRF-Token': formData.get('csrf_token') // Também no header para garantia
                         },
                         body: JSON.stringify(dados)
                     });
@@ -775,6 +872,29 @@ function exibirPainelAdmin($quiz_data) {
                         alert.style.display = 'none';
                     });
                 }, 5000);
+
+                // Ativar tab correta se vier na URL
+                const urlParams = new URLSearchParams(window.location.search);
+                const acao = urlParams.get('acao');
+                const tabsMapeadas = {
+                    'panel': 'editor',
+                    'upload': 'upload',
+                    'quizzes': 'quizzes',
+                    'questoes': 'questoes',
+                    'moderacao': 'moderacao'
+                };
+                if (acao && tabsMapeadas[acao]) {
+                    showTab(acao === 'panel' ? 'editor' : tabsMapeadas[acao]);
+                    // A função showTab não marca o botão da tab se não for chamada por clique
+                    document.querySelectorAll('.tab').forEach(t => {
+                        const tabIdValue = t.getAttribute('onclick').match(/'([^']+)'/)[1];
+                        if (tabIdValue === tabsMapeadas[acao]) {
+                            t.classList.add('active');
+                        } else {
+                            t.classList.remove('active');
+                        }
+                    });
+                }
             });
 
             // Fechar modal ao clicar fora
@@ -1132,6 +1252,30 @@ function toggleVisibilityAdmin() {
         header('Location: admin.php?success=Visibilidade atualizada!&acao=questoes');
     } else {
         header('Location: admin.php?erro=ID inválido');
+    }
+    exit;
+}
+
+function resolverFlagAdmin() {
+    $id = $_GET['id'] ?? 0;
+    if ($id > 0) {
+        if (resolverFlag($id)) {
+            header('Location: admin.php?success=Flag resolvida!&acao=moderacao');
+        } else {
+            header('Location: admin.php?erro=Erro ao resolver flag');
+        }
+    }
+    exit;
+}
+
+function excluirInteracaoAdmin() {
+    $id = $_GET['id'] ?? 0;
+    if ($id > 0) {
+        if (excluirInteracao($id)) {
+            header('Location: admin.php?success=Interação excluída!&acao=moderacao');
+        } else {
+            header('Location: admin.php?erro=Erro ao excluir interação');
+        }
     }
     exit;
 }

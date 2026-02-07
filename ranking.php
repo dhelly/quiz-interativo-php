@@ -1,6 +1,7 @@
 <?php
-session_start();
+require_once 'session_config.php';
 require_once 'carregar_dados.php';
+require_once 'sanitize.php';
 
 $quiz_id = $_GET['quiz_id'] ?? 1;
 $ranking = obterRanking($quiz_id);

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Concluído - Inútil.App</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="pagina-resultado">
@@ -24,12 +25,12 @@
         </div>
         
         <div class="pontuacao">
-            <?php echo $dados['acertos_total']; ?>/<?php echo $dados['total_perguntas']; ?>
+            <?php echo h($dados['acertos_total']); ?>/<?php echo h($dados['total_perguntas']); ?>
         </div>
         
         <div class="estatisticas">
             <div style="font-size: 1.2em; margin-bottom: 10px; color: var(--text-muted);">
-                <?php echo number_format($percentual, 1); ?>% de acertos
+                <?php echo h(number_format($percentual, 1)); ?>% de acertos
             </div>
             
             <div class="barra-progresso">
@@ -44,7 +45,7 @@
             <?php if (!$dados['modo_revisao']): ?>
                 <div class="estatistica-item">
                     <span>Questões Erradas:</span>
-                    <strong style="color: var(--error-color);"><?php echo $dados['total_erradas']; ?></strong>
+                    <strong style="color: var(--error-color);"><?php echo h($dados['total_erradas']); ?></strong>
                 </div>
             <?php endif; ?>
         </div>
@@ -55,12 +56,12 @@
             </div>
         <?php elseif ($dados['total_erradas'] > 0 && !$dados['modo_revisao']): ?>
             <div class="info-revisao">
-                <strong>📖 Dica de Estudo:</strong> Você errou <?php echo $dados['total_erradas']; ?> questão(ões). 
+                <strong>📖 Dica de Estudo:</strong> Você errou <?php echo h($dados['total_erradas']); ?> questão(ões). 
                 Reveja essas questões para consolidar seu aprendizado!
             </div>
         <?php elseif ($dados['modo_revisao'] && $dados['total_erradas'] > 0): ?>
             <div class="info-revisao">
-                <strong>📖 Continue Revisando:</strong> Você ainda tem <?php echo $dados['total_erradas']; ?> questão(ões) para revisar.
+                <strong>📖 Continue Revisando:</strong> Você ainda tem <?php echo h($dados['total_erradas']); ?> questão(ões) para revisar.
             </div>
         <?php elseif ($dados['total_erradas'] === 0 && !$dados['modo_revisao']): ?>
             <div class="info-sucesso">
@@ -75,11 +76,11 @@
             
             <?php if ($dados['total_erradas'] > 0 && !$dados['modo_revisao']): ?>
                 <button class="btn btn-warning" onclick="location.href='index.php?acao=revisar_erradas'">
-                    📚 Revisar Erradas (<?php echo $dados['total_erradas']; ?>)
+                    📚 Revisar Erradas (<?php echo h($dados['total_erradas']); ?>)
                 </button>
             <?php elseif ($dados['total_erradas'] > 0 && $dados['modo_revisao']): ?>
                 <button class="btn btn-warning" onclick="location.href='index.php?acao=revisar_erradas'">
-                    🔄 Continuar Revisão (<?php echo $dados['total_erradas']; ?>)
+                    🔄 Continuar Revisão (<?php echo h($dados['total_erradas']); ?>)
                 </button>
             <?php endif; ?>
             
@@ -96,7 +97,7 @@
     <script>
         // Anima a barra de progresso
         setTimeout(() => {
-            document.querySelector('.progresso-preenchido').style.width = '<?php echo $percentual; ?>%';
+            document.querySelector('.progresso-preenchido').style.width = '<?php echo h($percentual); ?>%';
         }, 500);
     </script>
 </body>

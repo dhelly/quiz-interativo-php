@@ -1,6 +1,7 @@
 <?php
-session_start();
+require_once 'session_config.php';
 require_once 'carregar_dados.php';
+require_once 'sanitize.php';
 
 $acertos_total = $_GET['acertos'] ?? 0;
 $total_perguntas = $_GET['total'] ?? 0;
@@ -22,8 +23,11 @@ $dados = [
 
 // Salva no banco de dados se não for modo revisão
 if (!$modo_revisao && isset($_SESSION['user_id'])) {
-    $quiz_id = $_GET['quiz_id'] ?? 1;
+    $quiz_id = $_GET['quiz_id'] ?? $_SESSION['current_quiz_id'] ?? 1;
     salvarScore($_SESSION['user_id'], $quiz_id, $acertos_total, $total_perguntas);
+    
+    // Limpa o progresso salvo ao finalizar
+    limparProgresso($_SESSION['user_id']);
 }
 
 
