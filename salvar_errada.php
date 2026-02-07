@@ -17,15 +17,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Variáveis de sessão já inicializadas em session_config.php
     
     if ($action === 'add') {
-        // Adiciona a questão às erradas (se ainda não estiver)
+        // Adiciona a questão às erradas (se ainda não estiver na sessão)
         if (!in_array($questao_id, $_SESSION['questoes_erradas'])) {
             $_SESSION['questoes_erradas'][] = $questao_id;
         }
+        // Registra o erro de forma persistente no banco de dados
+        if (isset($_SESSION['user_id'])) {
+            registrarErroUsuario($_SESSION['user_id'], $questao_id);
+        }
     } elseif ($action === 'remove') {
-        // Remove a questão das erradas
+        // Remove a questão das erradas (sessão)
         $_SESSION['questoes_erradas'] = array_filter($_SESSION['questoes_erradas'], function($id) use ($questao_id) {
             return $id !== $questao_id;
         });
+        // Remove o erro de forma persistente no banco de dados
+        if (isset($_SESSION['user_id'])) {
+            removerErroUsuario($_SESSION['user_id'], $questao_id);
+        }
     }
     
     echo 'OK';

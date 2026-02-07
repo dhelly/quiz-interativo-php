@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <?php echo $dados['modo_revisao'] ? '📚 Revisão de Erradas - ' : '🎓 Quiz Interativo - '; ?>Inútil.App
+        <?php 
+            if ($dados['modo_revisao']) echo '📚 Revisão de Erradas - '; 
+            elseif (isset($dados['modo_reforco']) && $dados['modo_reforco']) echo '🎯 Reforço de Aprendizado - ';
+            else echo '🎓 Quiz Interativo - '; 
+        ?>Inútil.App
     </title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
@@ -17,6 +21,8 @@
                 <h1 style="margin-bottom: 5px; text-align: left;">
                     <?php if ($dados['modo_revisao']): ?>
                         📚 Revisão
+                    <?php elseif (isset($dados['modo_reforco']) && $dados['modo_reforco']): ?>
+                        🎯 Reforço
                     <?php else: ?>
                         🎓 Quiz
                     <?php endif; ?>
@@ -24,7 +30,7 @@
                 <p style="font-size: 0.85rem; color: var(--text-muted);">Logado como <strong><?php echo h($_SESSION['username']); ?></strong></p>
             </div>
             <div style="display: flex; gap: 8px;">
-                <button onclick="salvarProgressoManual()" class="btn btn-primary btn-small" id="btnSalvarState">
+                <button onclick="salvarProgressoManual()" class="btn btn-primary btn-small" id="btnSalvarState" <?php echo (isset($dados['modo_reforco']) && $dados['modo_reforco']) ? 'style="display:none;"' : ''; ?>>
                     💾 Salvar Estado
                 </button>
                 <a href="index.php?acao=home" class="btn btn-secondary btn-small">🏠 Início</a>
@@ -33,6 +39,8 @@
         </div>
         <?php if ($dados['modo_revisao']): ?>
             <div class="modo-revisao" style="margin-top: 10px;">MODO REVISÃO</div>
+        <?php elseif (isset($dados['modo_reforco']) && $dados['modo_reforco']): ?>
+            <div class="modo-revisao" style="margin-top: 10px; background-color: var(--primary);">MODO REFORÇO</div>
         <?php endif; ?>
 
         <div class="content-quiz">
@@ -131,7 +139,11 @@
                 <?php if ($dados['proxima_id']): ?>
                     Próxima Questão ➡️
                 <?php else: ?>
-                    🏁 <?php echo $dados['modo_revisao'] ? 'Finalizar Revisão' : 'Ver Resultado Final'; ?>
+                    🏁 <?php 
+                        if ($dados['modo_revisao']) echo 'Finalizar Revisão';
+                        elseif (isset($dados['modo_reforco']) && $dados['modo_reforco']) echo 'Finalizar Reforço';
+                        else echo 'Ver Resultado Final';
+                    ?>
                 <?php endif; ?>
             </button>
 
@@ -160,6 +172,7 @@
         let acertosAtuais = <?php echo intval($dados['acertos_total'] ?? 0); ?>;
         let questaoRespondida = false;
         const modoRevisao = <?php echo $dados['modo_revisao'] ? 'true' : 'false'; ?>;
+        const modoReforco = <?php echo (isset($dados['modo_reforco']) && $dados['modo_reforco']) ? 'true' : 'false'; ?>;
 
         // Elementos DOM
         const opcoes = document.querySelectorAll('.opcao-label');
@@ -193,8 +206,8 @@
                     acertosAtuais++;
                     document.querySelector('.contador-acertos').textContent = acertosAtuais;
                     
-                    // Remove da lista de erradas se estiver lá (em caso de revisão)
-                    if (modoRevisao) {
+                    // Remove da lista de erradas se estiver lá (em caso de revisão ou reforço)
+                    if (modoRevisao || modoReforco) {
                         // Envia requisição para remover das questões erradas
                         fetch('salvar_errada.php', {
                             method: 'POST',
@@ -255,11 +268,11 @@
             
             if (!isUltimaQuestao && <?php echo $dados['proxima_id'] ? 'true' : 'false'; ?>) {
                 // Avança para próxima questão
-                const url = `index.php?id=<?php echo $dados['proxima_id']; ?>&acertos=${acertosAtuais}<?php echo $dados['modo_revisao'] ? '&modo_revisao=1' : ''; ?>`;
+                const url = `index.php?id=<?php echo $dados['proxima_id']; ?>&acertos=${acertosAtuais}${modoRevisao ? '&modo_revisao=1' : ''}${modoReforco ? '&acao=quiz_erros' : ''}`;
                 window.location.href = url;
             } else {
                 // Vai para tela de resultados
-                const url = `fim_quiz.php?acertos=${acertosAtuais}&total=${totalQuestoes}<?php echo $dados['modo_revisao'] ? '&modo_revisao=1' : ''; ?>`;
+                const url = `fim_quiz.php?acertos=${acertosAtuais}&total=${totalQuestoes}${modoRevisao ? '&modo_revisao=1' : ''}${modoReforco ? '&modo_reforco=1' : ''}`;
                 window.location.href = url;
             }
         });
