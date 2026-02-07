@@ -1,362 +1,362 @@
 [
     {
         "id": 1,
-        "pergunta": "No contexto da infraestrutura como código (IaC) no Jenkins, a utilização do plugin JCasC (Jenkins Configuration as Code) permite a definição de pipelines complexas utilizando a sintaxe YAML, substituindo, dessa forma, a necessidade do uso de arquivos Jenkinsfile escritos em Groovy.",
+        "pergunta": "No Apache Kafka, a garantia de ordenação dos eventos ocorre em nível global do tópico, o que permite que consumidores recuperem dados sequenciais independentemente da partição acessada.",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'JCasC (Jenkins Configuration as Code): Permite parametrizar configurações globais do servidor em arquivos YAML. PaC (Pipeline as Code): Uso do Jenkinsfile para definir o fluxo de CI\/CD... Linguagem: Utiliza a DSL Groovy.'<br><br><b>Análise da Assertiva:<\/b> A questão aplica uma falsa equivalência (inversão de finalidade). O JCasC usa YAML, mas serve para configurar o <i>servidor<\/i> (global), não as pipelines. As pipelines continuam sendo definidas no Jenkinsfile usando Groovy.<br><b>Possíveis induções de erro:<\/b> O candidato pode associar corretamente 'JCasC' a 'YAML', mas falhar ao notar que o examinador trocou o objeto da configuração (de 'servidor' para 'pipeline').",
-        "topico": "Jenkins",
+        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'A partição garante a ordenação dos eventos.'<br><br><b>Análise da Assertiva:<\/b> A questão generaliza a ordenação para o 'tópico' inteiro. No Kafka, a ordem é garantida <i>apenas<\/i> dentro da partição, não no tópico globalmente.<br><br><b>Possíveis induções de erro:<\/b> O candidato pode assumir que, por ser um sistema de streaming, tudo é ordenado, ignorando a arquitetura de particionamento.",
+        "topico": "Apache Kafka",
         "nivel": "Intermediário"
     },
     {
         "id": 2,
-        "pergunta": "O Jenkins adota uma arquitetura de sistemas distribuídos na qual a conectividade entre o nó mestre (Master) e os nós escravos (Agents) pode ser estabelecida via protocolo SSH na porta 22 ou, alternativamente, via protocolo JNLP na porta 50000.",
-        "resposta_correta": "Certo",
+        "pergunta": "Diferentemente do modelo tradicional de mensageria, no Kafka o produtor utiliza o método PULL para enviar dados ao broker, garantindo assim maior controle sobre o fluxo de entrada.",
+        "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Conectividade Master-Agent: Realizada via protocolo SSH (porta 22) ou JNLP (Java Network Launch Protocol, porta 50000).'<br><br><b>Análise da Assertiva:<\/b> A assertiva é uma cópia fiel dos dados técnicos apresentados no resumo, relacionando corretamente os protocolos às suas respectivas portas padrão.<br><b>Possíveis induções de erro:<\/b> A banca poderia trocar as portas (ex: JNLP na 22) ou afirmar que o JNLP é o único método para nós dinâmicos.",
-        "topico": "Jenkins",
+        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'O produtor usa PUSH para enviar dados ao broker, mas o consumidor usa PULL para recuperar os dados.'<br><br><b>Análise da Assertiva:<\/b> A banca CEBRASPE adora inverter PUSH e PULL. O Produtor 'empurra' (PUSH); o Consumidor 'puxa' (PULL).<br><br><b>Possíveis induções de erro:<\/b> Confundir o fluxo de entrada com o de saída.",
+        "topico": "Apache Kafka",
         "nivel": "Básico"
     },
     {
         "id": 3,
-        "pergunta": "Embora o Jenkins suporte a execução de pipelines declarativas com sintaxe simplificada, a segurança das credenciais utilizadas nesses fluxos é comprometida pelo fato de os arquivos Jenkinsfile serem armazenados em texto simples no repositório, expondo senhas caso não haja integração com LDAP.",
+        "pergunta": "Um evento no Kafka, uma vez publicado e armazenado no broker, pode ter seu conteúdo editado caso seja necessário corrigir o Timestamp ou o Valor, mantendo-se a mesma Chave.",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Segurança: Suporta autenticação via base de dados própria, LDAP ou SAML. As credenciais são armazenadas de forma segura e criptografadas (algoritmo AES).'<br><br><b>Análise da Assertiva:<\/b> Premissa verdadeira (Jenkinsfile é texto simples) + Conclusão falsa (segurança comprometida). O Jenkins gerencia credenciais de forma criptografada (AES) e injeta-as no build; elas não ficam <i>hardcoded<\/i> no texto do Jenkinsfile.<br><b>Possíveis induções de erro:<\/b> Confundir a visibilidade do código do pipeline com a exposição das credenciais (secrets) que ele consome.",
-        "topico": "Jenkins",
-        "nivel": "Avançado"
+        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Após publicado, o evento é imutável (não pode ser editado).'<br><br><b>Análise da Assertiva:<\/b> A imutabilidade é uma característica central do Kafka (Logs). Não há 'update' de mensagem enviada.<br><br><b>Possíveis induções de erro:<\/b> Pensar na lógica de banco de dados (CRUD) onde registros são editáveis.",
+        "topico": "Apache Kafka",
+        "nivel": "Básico"
     },
     {
         "id": 4,
-        "pergunta": "No Apache Maven, o arquivo POM (pom.xml) é responsável por descrever as dependências e plugins do projeto, sendo vedada, por questões de segurança, a inserção de senhas na tag &lt;distributionManagement&gt;, a qual define os repositórios para distribuição dos artefatos.",
-        "resposta_correta": "Certo",
+        "pergunta": "A API Kafka Streams é a ferramenta designada para realizar a integração, importação e exportação de dados entre o Kafka e sistemas externos, como bancos de dados relacionais.",
+        "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> '&lt;distributionManagement&gt;: Define os repositórios para distribuição (é vedado inserir senhas aqui).'<br><br><b>Análise da Assertiva:<\/b> A assertiva está correta e alinhada com as boas práticas e o resumo fornecido. As credenciais devem residir no arquivo <i>settings.xml<\/i> (geralmente local), não no POM do projeto.<br><b>Possíveis induções de erro:<\/b> O candidato pode achar que, por ser um arquivo de configuração, o POM deve conter tudo, inclusive credenciais de deploy.",
-        "topico": "Maven",
+        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Kafka Connect: Integração (importação\/exportação)... Kafka Streams: Processamento de dados em tempo real.'<br><br><b>Análise da Assertiva:<\/b> A questão troca as definições. Quem faz integração é o <i>Kafka Connect<\/i>. O <i>Streams<\/i> processa os dados.<br><br><b>Possíveis induções de erro:<\/b> Troca simples de nomes de componentes da arquitetura.",
+        "topico": "Apache Kafka",
         "nivel": "Intermediário"
     },
     {
         "id": 5,
-        "pergunta": "Devido à característica de resolução automática de dependências transitivas, a execução do comando 'mvn test' no ciclo de vida padrão do Maven prescinde da fase de compilação, executando diretamente os testes unitários nas classes existentes.",
+        "pergunta": "O RabbitMQ é um broker que opera nativamente sobre o protocolo AMQP 0-9-1, sendo a sua implementação restrita a aplicações desenvolvidas em linguagem Java.",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Execução: Ao rodar mvn test, o Maven compila as classes principais e de teste antes de executá-las.'<br><br><b>Análise da Assertiva:<\/b> Erro de causalidade e conceito. O ciclo de vida é sequencial. Para testar, é obrigatório compilar antes. O termo 'prescinde' (dispensa) torna a questão errada.<br><b>Possíveis induções de erro:<\/b> Achar que, se o código já foi compilado anteriormente, o Maven 'pula' a etapa automaticamente sem verificar, ou confundir dependência transitiva com ordem de ciclo de vida.",
-        "topico": "Maven",
+        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Dica CEBRASPE: ...afirmar que o RabbitMQ só suporta Java (ele é agnóstico a linguagem).'<br><br><b>Análise da Assertiva:<\/b> O RabbitMQ suporta múltiplas linguagens. A restrição 'somente Java' é uma pegadinha clássica alertada no resumo.<br><br><b>Possíveis induções de erro:<\/b> Confundir com o fato de muitos brokers serem escritos em Java (como o Artemis), achando que isso limita os clientes.",
+        "topico": "RabbitMQ",
         "nivel": "Básico"
     },
     {
         "id": 6,
-        "pergunta": "No GitHub Actions, a definição de workflows de CI\/CD é realizada mediante arquivos YAML localizados no diretório .github\/workflows\/, sendo o componente 'Jobs' executado, por padrão, de forma sequencial para garantir a integridade das dependências entre as tarefas.",
-        "resposta_correta": "Errado",
+        "pergunta": "No fluxo de roteamento do RabbitMQ, a mensagem enviada pelo produtor passa obrigatoriamente por uma Exchange e um Binding antes de chegar à fila (Queue) de destino.",
+        "resposta_correta": "Certo",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Jobs: Conjuntos de tarefas. Por padrão, os jobs rodam em paralelo.'<br><br><b>Análise da Assertiva:<\/b> A primeira parte está correta (localização e formato), mas a segunda inverte a lógica padrão. Jobs rodam em paralelo, a menos que a chave 'needs' seja usada.<br><b>Possíveis induções de erro:<\/b> O senso comum sugere que 'sequencial' é mais seguro, induzindo o candidato a aceitar a premissa como padrão.",
-        "topico": "GitHub Actions",
+        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Fluxo de Roteamento: Produtor -> Exchange (roteador) -> Binding (regra) -> Queue (fila) -> Consumidor.'<br><br><b>Análise da Assertiva:<\/b> Descreve corretamente a topologia do AMQP implementada pelo RabbitMQ.<br><br><b>Possíveis induções de erro:<\/b> O candidato pode achar que é possível publicar direto na fila (sem exchange), o que viola o modelo padrão descrito.",
+        "topico": "RabbitMQ",
         "nivel": "Intermediário"
     },
     {
         "id": 7,
-        "pergunta": "A ação 'actions\/checkout' é um componente essencial na maioria dos workflows do GitHub Actions, pois é responsável por baixar o código do repositório para o runner antes que qualquer script definido na etapa 'run' possa manipulá-lo.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Ações Essenciais... uses: Chama uma ação pronta... A mais importante é actions\/checkout, necessária para baixar o código do repositório para o runner...'<br><br><b>Análise da Assertiva:<\/b> Descreve com exatidão a função da ação de checkout. Sem ela, o runner (que é efêmero\/limpo) não tem acesso aos arquivos do projeto.<br><b>Possíveis induções de erro:<\/b> Achar que o código já está nativamente disponível no runner só porque o workflow está no mesmo repositório.",
-        "topico": "GitHub Actions",
-        "nivel": "Básico"
-    },
-    {
-        "id": 8,
-        "pergunta": "Tanto o Jenkins quanto o Apache Maven são ferramentas baseadas em Java, contudo, diferenciam-se fundamentalmente em sua configuração: o Jenkins utiliza exclusivamente arquivos XML para definição de pipelines, enquanto o Maven utiliza arquivos POM baseados em YAML.",
+        "pergunta": "O tipo de Exchange 'Fanout' no RabbitMQ realiza o roteamento das mensagens com base na verificação exata da chave de roteamento (routing key) definida no binding.",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Tabela Comparativa... Jenkins: Jenkinsfile (Groovy)... Maven: pom.xml (XML)... Dica CEBRASPE... o arquivo de configuração do Maven é XML, enquanto o do Jenkins (JCasC) e GitHub Actions é YAML.'<br><br><b>Análise da Assertiva:<\/b> Inversão total das linguagens de configuração. Maven é XML (não YAML) e Jenkins Pipeline é Groovy (ou JCasC em YAML), nunca XML para pipelines modernas.<br><b>Possíveis induções de erro:<\/b> Confusão mental cruzada entre as tecnologias apresentadas na tabela comparativa.",
-        "topico": "Misto",
+        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Fanout: Multicast; envia para todas as filas vinculadas, ignorando chaves.'<br><br><b>Análise da Assertiva:<\/b> O Fanout ignora a chave. Quem usa chave exata é o <i>Direct<\/i>.<br><br><b>Possíveis induções de erro:<\/b> Confusão entre os tipos de Exchange (Direct vs Fanout).",
+        "topico": "RabbitMQ",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 8,
+        "pergunta": "Filas duráveis no RabbitMQ garantem que as mensagens sejam preservadas em disco, permitindo que sobrevivam a reinicializações do broker.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Podem ser duráveis (salvas em disco para sobreviver a restarts)...'<br><br><b>Análise da Assertiva:<\/b> Reprodução exata do conceito de durabilidade apresentado.<br><br><b>Possíveis induções de erro:<\/b> Confundir durabilidade da fila com persistência da mensagem (embora correlatos, o foco aqui é a sobrevivência ao restart).",
+        "topico": "RabbitMQ",
         "nivel": "Básico"
     },
     {
         "id": 9,
-        "pergunta": "No ciclo de vida padrão (default) do Maven, a execução do comando 'mvn verify' aciona automaticamente todas as fases anteriores, incluindo 'validate', 'compile', 'test' e 'package', garantindo que o artefato gerado seja verificado quanto a critérios de qualidade antes da instalação.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Padrão (Default): validate → compile → test → package (gera JAR\/WAR) → verify → install → deploy.'<br><br><b>Análise da Assertiva:<\/b> Correto. O Maven executa sequencialmente todas as fases até atingir a fase solicitada. 'Verify' vem após 'package', logo, inclui as anteriores.<br><b>Possíveis induções de erro:<\/b> Esquecer a ordem exata e achar que 'verify' vem antes de 'package' ou que é um ciclo separado.",
-        "topico": "Maven",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 10,
-        "pergunta": "Os 'Runners' do GitHub Actions, quando configurados na modalidade GitHub-hosted, mantêm o estado dos arquivos entre execuções de jobs distintos, o que elimina a necessidade de uso frequente da ação 'actions\/checkout' em workflows complexos.",
+        "pergunta": "O NATS diferencia-se de outros sistemas de mensageria por utilizar endereçamento baseado em IP e Host, o que simplifica a descoberta de serviços em nuvem.",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Runners... Podem ser GitHub-hosted (limpas a cada execução)...'<br><br><b>Análise da Assertiva:<\/b> Premissa falsa. Runners hospedados pelo GitHub são efêmeros e limpos a cada execução. Não há persistência de estado entre jobs, tornando o checkout obrigatório a cada job.<br><b>Possíveis induções de erro:<\/b> Confundir runners hospedados (nuvem, efêmeros) com self-hosted (máquinas próprias, persistentes).",
-        "topico": "GitHub Actions",
+        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Diferencia-se por usar Assuntos (Subjects) ... em vez de endereçamento por IP ou Host.'<br><br><b>Análise da Assertiva:<\/b> O NATS usa <i>Subjects<\/i> (strings), abstraindo a localização física (IP). A assertiva afirma o oposto.<br><br><b>Possíveis induções de erro:<\/b> Assumir que todo sistema de rede baseia-se primariamente em IP\/Host para roteamento lógico.",
+        "topico": "NATS",
+        "nivel": "Básico"
+    },
+    {
+        "id": 10,
+        "pergunta": "No sistema NATS, o uso do caractere curinga '>' (maior que) permite a correspondência de múltiplos tokens no final do nome do assunto (subject).",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição do material:<\/b> '>: Corresponde a múltiplos tokens no final do nome (ex: tcu.>).'<br><br><b>Análise da Assertiva:<\/b> Definição correta do wildcard 'full' no NATS.<br><br><b>Possíveis induções de erro:<\/b> Confundir com o asterisco (*), que pega apenas um token.",
+        "topico": "NATS",
         "nivel": "Intermediário"
     },
     {
         "id": 11,
-        "pergunta": "O Jenkins Master atua como o orquestrador do sistema, sendo capaz de distribuir cargas de trabalho para nós escravos (Agents); no entanto, a arquitetura do Jenkins impede tecnicamente que nós dinâmicos sejam provisionados em ambientes de contêineres, como Docker ou Kubernetes, restringindo os agentes a máquinas físicas estáticas.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Nós (Nodes): Podem ser Estáticos... ou Dinâmicos (provisionados sob demanda em nuvem, como Docker ou Kubernetes).'<br><br><b>Análise da Assertiva:<\/b> A questão impõe uma restrição incorreta ('impede tecnicamente... restringindo a máquinas físicas'). O resumo afirma explicitamente o suporte a nós dinâmicos em Docker\/K8s.<br><b>Possíveis induções de erro:<\/b> O candidato pode acreditar que, por ser uma ferramenta mais antiga (Java), o Jenkins não suportaria tecnologias modernas de conteinerização nativamente.",
-        "topico": "Jenkins",
-        "nivel": "Básico"
-    },
-    {
-        "id": 12,
-        "pergunta": "A tag &lt;dependencies&gt; no arquivo pom.xml do Maven é o local onde são declaradas as bibliotecas necessárias para o projeto, cabendo ao Maven a tarefa de resolver automaticamente as dependências transitivas, ou seja, as bibliotecas exigidas pelas dependências declaradas.",
+        "pergunta": "O JetStream é uma ferramenta nativa do NATS que substitui o modelo padrão de 'dispare e esqueça' por um mecanismo que inclui persistência e replay de mensagens.",
         "resposta_correta": "Certo",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> '&lt;dependencies&gt;: Onde se declaram as bibliotecas necessárias... Dependências Transitivas: O Maven resolve automaticamente as 'dependências das dependências'.'<br><br><b>Análise da Assertiva:<\/b> Define corretamente a função da tag e o conceito de dependência transitiva, um dos pilares da automação do Maven.<br><b>Possíveis induções de erro:<\/b> Duvidar da capacidade 'automática' do Maven e achar que o usuário precisa declarar toda a árvore de dependências manualmente.",
-        "topico": "Maven",
-        "nivel": "Básico"
-    },
-    {
-        "id": 13,
-        "pergunta": "No GitHub Actions, a palavra-chave 'needs' é utilizada dentro da definição de um Job para estabelecer dependências, forçando a execução sequencial em relação a outros Jobs, o que altera o comportamento padrão de paralelismo da ferramenta.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Needs: Palavra-chave usada para forçar a execução sequencial de jobs (ex: o deploy precisa que o teste termine).'<br><br><b>Análise da Assertiva:<\/b> Correta. O 'needs' é o mecanismo explícito para criar grafos de dependência e quebrar o paralelismo padrão.<br><b>Possíveis induções de erro:<\/b> Confundir 'needs' (nível de Job) com a ordem dos 'steps' (que já é sequencial por natureza).",
-        "topico": "GitHub Actions",
+        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'JetStream: Ferramenta nativa que adiciona persistência, replay de mensagens... ao NATS (que, por padrão, é dispare e esqueça).'<br><br><b>Análise da Assertiva:<\/b> Correto. O NATS Core é efêmero; o JetStream traz a persistência.<br><br><b>Possíveis induções de erro:<\/b> Achar que o NATS padrão já persiste dados.",
+        "topico": "NATS",
         "nivel": "Intermediário"
     },
     {
-        "id": 14,
-        "pergunta": "Diferentemente dos GitHub Apps, que são extensões persistentes, o GitHub Actions foca na automação efêmera de CI\/CD; contudo, para que um workflow seja válido, ele deve estar localizado em qualquer subdiretório dentro da pasta .github, desde que tenha extensão .yml.",
+        "id": 12,
+        "pergunta": "Para utilizar o recurso de 'Queue Groups' no NATS visando ao balanceamento de carga, é necessário que todos os inscritos do grupo recebam simultaneamente a mesma mensagem.",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Configuração: Os workflows são definidos em arquivos YAML localizados obrigatoriamente no diretório .github\/workflows\/ na raiz do repositório.'<br><br><b>Análise da Assertiva:<\/b> Erro de restrição espacial. A questão generaliza a localização ('qualquer subdiretório dentro da pasta .github'), mas a regra é estrita: deve ser em `.github\/workflows\/`.<br><b>Possíveis induções de erro:<\/b> O candidato focar na comparação correta entre Apps e Actions e ignorar o erro sutil de caminho de diretório.",
-        "topico": "GitHub Actions",
+        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Queue Groups: Usado para balanceamento de carga; apenas um inscrito do grupo recebe a mensagem.'<br><br><b>Análise da Assertiva:<\/b> O objetivo do Queue Group é distribuir trabalho, logo, <i>apenas um<\/i> processa. Se todos recebessem, seria Pub\/Sub padrão (broadcast), não load balancing.<br><br><b>Possíveis induções de erro:<\/b> Confundir com o comportamento padrão de tópicos onde todos recebem.",
+        "topico": "NATS",
         "nivel": "Avançado"
     },
     {
-        "id": 15,
-        "pergunta": "O ciclo de vida 'Clean' do Maven é executado automaticamente sempre que o ciclo 'Default' é invocado, garantindo que o diretório 'target' seja limpo antes da geração de novos artefatos JAR ou WAR.",
+        "id": 13,
+        "pergunta": "O ActiveMQ Artemis, desenvolvido em Java, suporta nativamente apenas o protocolo AMQP, exigindo conversores externos para comunicação via MQTT ou STOMP.",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Ciclos de Vida (Lifecycles): O Maven possui ciclos independentes compostos por fases ordenadas... Padrão (Default)... Clean: Responsável por limpar...'<br><br><b>Análise da Assertiva:<\/b> 'Causalidade Certo + Certo = Errado'. Os ciclos existem, mas são independentes. Rodar o ciclo Default *não* roda o Clean automaticamente. É necessário rodar `mvn clean install` explicitamente para combinar os dois.<br><b>Possíveis induções de erro:<\/b> Assumir que 'limpeza' é um pré-requisito lógico implícito de qualquer build, o que não é verdade no Maven.",
-        "topico": "Maven",
+        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Agnóstico a Protocolos: Suporta AMQP, MQTT, STOMP, OpenWire e HornetQ.'<br><br><b>Análise da Assertiva:<\/b> O Artemis é multiprotocolo nativamente. O termo 'apenas' invalida a questão.<br><br><b>Possíveis induções de erro:<\/b> A restrição indevida de protocolos suportados.",
+        "topico": "ActiveMQ Artemis",
+        "nivel": "Básico"
+    },
+    {
+        "id": 14,
+        "pergunta": "Devido à sua arquitetura baseada em Java, o ActiveMQ Artemis exige um ambiente de execução (runtime) Java versão 11 ou superior para operar.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Desenvolvido em Java (exige runtime Java 11+).'<br><br><b>Análise da Assertiva:<\/b> Fato técnico explícito no resumo.<br><br><b>Possíveis induções de erro:<\/b> Tentar lembrar se é Java 8 ou 11 (detalhe de versão que a banca cobra).",
+        "topico": "ActiveMQ Artemis",
+        "nivel": "Difícil"
+    },
+    {
+        "id": 15,
+        "pergunta": "Uma mensagem JMS no ActiveMQ Artemis é estruturada em três partes fundamentais: Cabeçalho, Propriedades e Corpo, sendo o TextMessage um dos tipos de corpo suportados.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Mensagens JMS: Compostas por Cabeçalho, Propriedades e Corpo. Tipos de corpo incluem TextMessage...'<br><br><b>Análise da Assertiva:<\/b> Descreve corretamente a anatomia da mensagem JMS conforme o resumo.<br><br><b>Possíveis induções de erro:<\/b> Inserir partes inexistentes ou remover 'Propriedades'.",
+        "topico": "ActiveMQ Artemis",
         "nivel": "Intermediário"
     },
     {
         "id": 16,
-        "pergunta": "A API do Jenkins permite o acesso remoto e a integração com outros sistemas, fornecendo respostas em formatos estruturados como XML, JSON e Python, facilitando a automação via scripts externos.",
+        "pergunta": "O protocolo STOMP utiliza uma estrutura baseada em frames similar ao HTTP e foi concebido para facilitar a conexão de linguagens de script, como Python e Ruby, a brokers de mensageria.",
         "resposta_correta": "Certo",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'API: Fornece acesso remoto via REST em formatos XML, JSON e Python.'<br><br><b>Análise da Assertiva:<\/b> Cópia fiel do resumo técnico. O suporte a Python como formato de saída (serialização de objetos) é uma característica específica citada.<br><b>Possíveis induções de erro:<\/b> O candidato pode estranhar 'Python' como formato de resposta de API (confundindo com a linguagem), esperando apenas JSON ou XML.",
-        "topico": "Jenkins",
-        "nivel": "Avançado"
+        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Conceito: Protocolo simples para conectar linguagens de script... Estrutura: Baseada em Frames (Quadros), similar ao HTTP...'<br><br><b>Análise da Assertiva:<\/b> Combina corretamente o conceito, público-alvo e estrutura do protocolo.<br><br><b>Possíveis induções de erro:<\/b> Nenhuma, a questão é uma definição direta.",
+        "topico": "STOMP",
+        "nivel": "Básico"
     },
     {
         "id": 17,
-        "pergunta": "Ao configurar uma pipeline no Jenkins utilizando a sintaxe Declarativa, o desenvolvedor deve utilizar a linguagem DSL Groovy dentro do arquivo Jenkinsfile, beneficiando-se de uma estrutura em blocos mais rígida e simplificada em comparação à sintaxe Escriptada.",
-        "resposta_correta": "Certo",
+        "pergunta": "No protocolo STOMP, o recurso de heart-beating é utilizado para monitorar a saúde dos nós de processamento (CPU\/Memória), definindo o tempo de troca pelo menor valor sugerido entre cliente e servidor.",
+        "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Jenkinsfile... Linguagem: Utiliza a DSL Groovy. Tipos de Pipeline: Declarativa (sintaxe simplificada em blocos) e Escriptada (mais flexível e programática).'<br><br><b>Análise da Assertiva:<\/b> Correta. Ambas (Declarativa e Escriptada) usam Groovy no Jenkinsfile, mas a Declarativa foca em estrutura de blocos simplificada.<br><b>Possíveis induções de erro:<\/b> Achar que a pipeline Declarativa usa YAML (confusão com JCasC) ou que não usa Groovy.",
-        "topico": "Jenkins",
-        "nivel": "Intermediário"
+        "explicacao_feedback": "<b>Transcrição do material:<\/b> '...testar a saúde da conexão TCP (e não dos nós)... O tempo de troca é definido pelo maior valor...'<br><br><b>Análise da Assertiva:<\/b> Dois erros: 1) Monitora a conexão TCP, não os nós. 2) Usa o <i>maior<\/i> valor, não o menor.<br><br><b>Possíveis induções de erro:<\/b> Lógica de negociação (maior vs menor) e escopo do teste (rede vs hardware).",
+        "topico": "STOMP",
+        "nivel": "Avançado"
     },
     {
         "id": 18,
-        "pergunta": "No GitHub Actions, a chave 'uses' é empregada para executar comandos de script de terminal (shell) diretamente no runner, enquanto a chave 'run' é reservada exclusivamente para a chamada de ações reutilizáveis disponíveis no marketplace.",
+        "pergunta": "O Kafka Connect é a API responsável por gerenciar tópicos e recursos do cluster, como a criação de novas partições.",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'uses: Chama uma ação pronta\/reutilizável... run: Executa comandos de script de terminal (shell) no runner.'<br><br><b>Análise da Assertiva:<\/b> Inversão total de conceitos. A questão trocou as definições de `uses` e `run`.<br><b>Possíveis induções de erro:<\/b> Confusão semântica simples, já que 'run' e 'use' são verbos de ação similares em inglês.",
-        "topico": "GitHub Actions",
-        "nivel": "Básico"
+        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Admin API: Gerencia tópicos e recursos.'<br><br><b>Análise da Assertiva:<\/b> Quem gerencia recursos é a <i>Admin API<\/i>. O Connect faz integração.<br><br><b>Possíveis induções de erro:<\/b> Confundir as responsabilidades das três APIs críticas do Kafka.",
+        "topico": "Apache Kafka",
+        "nivel": "Intermediário"
     },
     {
         "id": 19,
-        "pergunta": "O Maven garante a unicidade dos artefatos gerados por meio da combinação das tags &lt;groupId&gt;, que identifica a organização, e &lt;artifactId&gt;, que define o nome do projeto, sendo ambas obrigatórias no arquivo pom.xml.",
+        "pergunta": "No RabbitMQ, uma Exchange do tipo Topic permite o roteamento baseado em padrões, possibilitando o uso de caracteres curingas na chave de roteamento.",
         "resposta_correta": "Certo",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Tags Críticas do POM: <groupId>: Identificador da organização\/grupo. <artifactId>: Nome do projeto\/artefato gerado.'<br><br><b>Análise da Assertiva:<\/b> Correta. Essas são as 'coordenadas' básicas de qualquer projeto Maven (junto com a versão).<br><b>Possíveis induções de erro:<\/b> O candidato pode achar que apenas o nome do projeto é suficiente, esquecendo a necessidade do GroupId para evitar colisões em repositórios globais.",
-        "topico": "Maven",
-        "nivel": "Básico"
+        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Topic: Roteamento baseado em padrões (ex: uso de curingas).'<br><br><b>Análise da Assertiva:<\/b> Correto. É a principal diferença entre Topic (padrões) e Direct (exato).<br><br><b>Possíveis induções de erro:<\/b> Confundir com a Exchange 'Headers', que usa atributos e não chaves.",
+        "topico": "RabbitMQ",
+        "nivel": "Intermediário"
     },
     {
         "id": 20,
-        "pergunta": "A fim de garantir a segurança na comunicação em arquiteturas distribuídas, o nó mestre do Jenkins conecta-se aos agentes exclusivamente via protocolo SSH, uma vez que o protocolo JNLP foi descontinuado nas versões mais recentes da ferramenta.",
+        "pergunta": "No NATS, o uso do curinga '*' no subject 'juiz.*.tcu' permitiria a recepção de mensagens endereçadas a 'juiz.auditor.chefe.tcu'.",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Conectividade Master-Agent: Realizada via protocolo SSH (porta 22) ou JNLP (Java Network Launch Protocol, porta 50000).'<br><br><b>Análise da Assertiva:<\/b> Uso de termo absoluto incorreto ('exclusivamente') e informação falsa sobre descontinuação. O resumo lista JNLP como opção válida e ativa.<br><b>Possíveis induções de erro:<\/b> O candidato pode associar SSH a 'seguro' e JNLP a 'antigo\/inseguro', caindo na falácia de que o método antigo foi removido.",
-        "topico": "Jenkins",
-        "nivel": "Intermediário"
+        "explicacao_feedback": "<b>Transcrição do material:<\/b> '*: Corresponde a um único token.'<br><br><b>Análise da Assertiva:<\/b> O asterisco pega apenas <i>um<\/i> token entre os pontos. 'auditor.chefe' são dois tokens. O correto seria usar '>' ou múltiplos '*'.<br><br><b>Possíveis induções de erro:<\/b> Achar que o asterisco funciona como em SQL ou regex (0 ou mais caracteres), mas aqui ele é limitado a tokens.",
+        "topico": "NATS",
+        "nivel": "Difícil"
     },
     {
         "id": 21,
-        "pergunta": "A fase 'install' do ciclo de vida padrão do Maven tem como função principal copiar o pacote do artefato (JAR\/WAR) para o repositório local do desenvolvedor, tornando-o disponível para outros projetos locais como dependência.",
+        "pergunta": "A Federação Fan-out no ActiveMQ Artemis organiza os nós em uma estrutura de árvore, permitindo que uma mensagem publicada em um nó seja propagada para todos os outros nós da federação.",
         "resposta_correta": "Certo",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Padrão (Default): ... install -> deploy.' (Contexto implícito de Maven: install = repositório local, deploy = repositório remoto).<br><br><b>Análise da Assertiva:<\/b> Correta. A distinção entre `install` (local) e `deploy` (remoto\/compartilhado) é conceitual chave no Maven.<br><b>Possíveis induções de erro:<\/b> Confundir 'install' com a instalação do software Maven em si, ou achar que 'install' envia para o servidor remoto.",
-        "topico": "Maven",
-        "nivel": "Intermediário"
+        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Federação Fan-out: Estrutura em árvore que permite publicar em um único nó e propagar para todos os outros.'<br><br><b>Análise da Assertiva:<\/b> Definição precisa do mecanismo de federação fan-out descrita no texto.<br><br><b>Possíveis induções de erro:<\/b> Nenhuma óbvia, exige memorização do termo.",
+        "topico": "ActiveMQ Artemis",
+        "nivel": "Avançado"
     },
     {
         "id": 22,
-        "pergunta": "No GitHub Actions, os 'Events' (on) funcionam como gatilhos para os workflows; contudo, a ferramenta restringe o disparo automático apenas a eventos de 'push' e 'pull_request', exigindo intervenção manual para execuções agendadas (schedule).",
+        "pergunta": "Embora o RabbitMQ suporte filas duráveis, as mensagens contidas nelas são perdidas em caso de restart do broker, a menos que o mecanismo de ACK tenha sido desativado.",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Events (on): Gatilhos que disparam o workflow (ex: push, pull_request, schedule).'<br><br><b>Análise da Assertiva:<\/b> O resumo cita explicitamente 'schedule' como um exemplo de gatilho. A assertiva cria uma restrição inexistente.<br><b>Possíveis induções de erro:<\/b> O candidato pode não saber que CI\/CD pode ser agendado (cron) e achar que só reage a mudanças de código.",
-        "topico": "GitHub Actions",
-        "nivel": "Básico"
+        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Podem ser duráveis (salvas em disco para sobreviver a restarts)...'<br><br><b>Análise da Assertiva:<\/b> Se a fila é durável e a mensagem marcada como persistente (implícito no conceito de durabilidade útil), elas sobrevivem. O ACK serve para confirmar processamento, não para persistência em disco no restart.<br><br><b>Possíveis induções de erro:<\/b> Causalidade falsa entre ACK e persistência de restart.",
+        "topico": "RabbitMQ",
+        "nivel": "Difícil"
     },
     {
         "id": 23,
-        "pergunta": "O Jenkins Configuration as Code (JCasC) permite a exportação das configurações do Jenkins Master, incluindo jobs e credenciais, para arquivos XML, facilitando a migração entre servidores legados e novos.",
+        "pergunta": "O comando ACK no protocolo STOMP é utilizado para confirmar o estabelecimento da conexão inicial entre o cliente e o broker.",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'JCasC... arquivos YAML.' e 'Jenkinsfile... DSL Groovy'.<br><br><b>Análise da Assertiva:<\/b> Dois erros: 1. JCasC usa YAML, não XML. 2. JCasC foca em configuração global, a definição dos jobs\/pipelines em si é idealmente feita via 'Pipeline as Code' (Jenkinsfile), embora o JCasC possa criar o 'seed' job.<br><b>Possíveis induções de erro:<\/b> A insistência no XML (que é o formato legado do Jenkins pré-JCasC) pode confundir quem conhece o Jenkins antigo.",
-        "topico": "Jenkins",
-        "nivel": "Avançado"
+        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Comandos Essenciais: CONNECT... ACK.'<br><br><b>Análise da Assertiva:<\/b> O comando para conexão é CONNECT. O ACK (Acknowledgement) é para confirmar recebimento\/processamento de mensagens.<br><br><b>Possíveis induções de erro:<\/b> Confundir os verbos da lista de comandos.",
+        "topico": "STOMP",
+        "nivel": "Básico"
     },
     {
         "id": 24,
-        "pergunta": "No Maven, a fase 'package' é responsável por empacotar o código compilado em seu formato de distribuição, como JAR ou WAR, ocorrendo necessariamente após a execução bem-sucedida da fase de testes ('test').",
-        "resposta_correta": "Certo",
+        "pergunta": "O Kafka Event Streaming utiliza o protocolo MQTT nativamente para garantir a imutabilidade dos eventos e a escalabilidade horizontal via brokers.",
+        "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Padrão (Default): validate -> compile -> test -> package...'<br><br><b>Análise da Assertiva:<\/b> Respeita a ordem cronológica do ciclo de vida padrão. Se 'test' falhar, o 'package' não ocorre.<br><b>Possíveis induções de erro:<\/b> Achar que é possível empacotar mesmo com falha nos testes (o que requer flags específicas para pular testes, não mencionadas na regra padrão).",
-        "topico": "Maven",
-        "nivel": "Básico"
+        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Protocolo Nativo: Próprio (TCP).'<br><br><b>Análise da Assertiva:<\/b> O Kafka usa protocolo próprio sobre TCP, não MQTT. O MQTT é citado no RabbitMQ e ActiveMQ.<br><br><b>Possíveis induções de erro:<\/b> Misturar protocolos de diferentes ferramentas (Kafka com MQTT).",
+        "topico": "Apache Kafka",
+        "nivel": "Intermediário"
     },
     {
         "id": 25,
-        "pergunta": "Para a definição de Infraestrutura como Código (IaC) no Jenkins, utiliza-se o conceito de Pipeline as Code (PaC), materializado através do arquivo Jenkinsfile, que pode ser escrito utilizando sintaxe declarativa ou escriptada.",
+        "pergunta": "No RabbitMQ, a Exchange do tipo Headers ignora a routing key e utiliza atributos contidos no cabeçalho da mensagem para definir o roteamento.",
         "resposta_correta": "Certo",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'PaC (Pipeline as Code): Uso do Jenkinsfile para definir o fluxo de CI\/CD... Tipos de Pipeline: Declarativa... e Escriptada'.<br><br><b>Análise da Assertiva:<\/b> Correta. Conecta corretamente o conceito (PaC) à implementação (Jenkinsfile) e suas variações.<br><b>Possíveis induções de erro:<\/b> Confundir PaC com JCasC.",
-        "topico": "Jenkins",
-        "nivel": "Básico"
+        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Headers: Baseado em atributos do cabeçalho da mensagem.'<br><br><b>Análise da Assertiva:<\/b> Correto. O tipo Headers substitui a lógica da routing key por pares chave-valor no header.<br><br><b>Possíveis induções de erro:<\/b> Achar que routing key é obrigatória em todos os tipos.",
+        "topico": "RabbitMQ",
+        "nivel": "Intermediário"
     },
     {
         "id": 26,
-        "pergunta": "No GitHub Actions, um workflow pode conter múltiplos Jobs; se a palavra-chave 'needs' não for especificada, todos os Jobs iniciarão sua execução simultaneamente, aproveitando o paralelismo oferecido pelos runners.",
+        "pergunta": "O ActiveMQ Artemis pode ser implementado no modo Embedded, o que significa que o broker roda dentro da própria aplicação Java, na mesma JVM.",
         "resposta_correta": "Certo",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Jobs: Conjuntos de tarefas. Por padrão, os jobs rodam em paralelo.'<br><br><b>Análise da Assertiva:<\/b> Correta. O paralelismo é o comportamento <i>default<\/i> do GHA para Jobs.<br><b>Possíveis induções de erro:<\/b> Duvidar que o paralelismo seja o padrão, dado que em scripts shell comuns a execução é linear.",
-        "topico": "GitHub Actions",
-        "nivel": "Intermediário"
+        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Modos de Implementação: ... Embedded (dentro da aplicação Java).'<br><br><b>Análise da Assertiva:<\/b> Correto. 'Embedded' significa embutido no processo da aplicação.<br><br><b>Possíveis induções de erro:<\/b> Confundir Embedded com Standalone (isolado).",
+        "topico": "ActiveMQ Artemis",
+        "nivel": "Básico"
     },
     {
         "id": 27,
-        "pergunta": "Embora o Jenkins permita nós dinâmicos, a comunicação via porta 50000 (JNLP) é restrita a ambientes Windows, sendo o SSH o único protocolo suportado para agentes baseados em Linux.",
+        "pergunta": "No Kafka, um evento é composto obrigatoriamente por Chave, Valor e Timestamp, sendo que a Chave é o elemento que determina a qual tópico o evento será enviado.",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Conectividade Master-Agent: Realizada via protocolo SSH (porta 22) ou JNLP...'<br><br><b>Análise da Assertiva:<\/b> Criação de uma restrição de Sistema Operacional inexistente no resumo. O JNLP é baseado em Java, portanto, multiplataforma.<br><b>Possíveis induções de erro:<\/b> Associar SSH estritamente a Linux (comum) e deduzir erroneamente que JNLP não roda lá.",
-        "topico": "Jenkins",
-        "nivel": "Avançado"
+        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'O Evento (Mensagem): Composto obrigatoriamente por Chave, Valor e Timestamp.'<br><br><b>Análise da Assertiva:<\/b> Embora a composição esteja certa, a causalidade final está errada. O produtor define o tópico <i>no envio<\/i>; a chave é usada para roteamento de <i>partição<\/i> (hashing), não para escolher o tópico.<br><br><b>Possíveis induções de erro:<\/b> Falsa causalidade típica do CEBRASPE. A premissa A (composição) é certa, a conclusão B (função da chave) é distorcida.",
+        "topico": "Apache Kafka",
+        "nivel": "Difícil"
     },
     {
         "id": 28,
-        "pergunta": "A fase 'site' do Maven, responsável pela geração de documentação do projeto, está integrada ao ciclo de vida padrão (Default), sendo executada automaticamente antes da fase 'package'.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Ciclos de Vida (Lifecycles): O Maven possui ciclos independentes... Padrão (Default)... Site: Gera a documentação do projeto.'<br><br><b>Análise da Assertiva:<\/b> O ciclo 'Site' é independente do 'Default'. Eles não se misturam automaticamente.<br><b>Possíveis induções de erro:<\/b> Achar que 'gerar documentação' é parte essencial do build do binário.",
-        "topico": "Maven",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 29,
-        "pergunta": "No GitHub Actions, os passos (Steps) dentro de um mesmo Job são executados de forma sequencial, permitindo que alterações de estado feitas em um passo (como a criação de um arquivo) sejam visíveis para os passos subsequentes dentro do mesmo Job.",
+        "pergunta": "O mecanismo de reconhecimento (ACK) no RabbitMQ permite que o broker reenvie uma mensagem caso o consumidor falhe em confirmar seu processamento.",
         "resposta_correta": "Certo",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Steps: Etapas sequenciais dentro de um job.'<br><br><b>Análise da Assertiva:<\/b> Correta. Dentro de um Job, estamos no mesmo Runner, então há compartilhamento de sistema de arquivos e sequência lógica.<br><b>Possíveis induções de erro:<\/b> Confundir o comportamento de Steps (sequencial\/mesmo runner) com o de Jobs (paralelo\/runners diferentes).",
-        "topico": "GitHub Actions",
+        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Reconhecimento (ACK): ... se falhar, o broker pode reenviá-la.'<br><br><b>Análise da Assertiva:<\/b> Descreve a função de confiabilidade do ACK.<br><br><b>Possíveis induções de erro:<\/b> Achar que a mensagem é descartada imediatamente após o envio (falta de confiabilidade).",
+        "topico": "RabbitMQ",
+        "nivel": "Básico"
+    },
+    {
+        "id": 29,
+        "pergunta": "O STOMP diferencia-se por ser um protocolo binário altamente comprimido, o que justifica sua utilização preferencial em situações de baixa largura de banda.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'STOMP: O Protocolo Baseado em Texto...'<br><br><b>Análise da Assertiva:<\/b> STOMP é texto (text-based), não binário. Binários são AMQP, MQTT, etc.<br><br><b>Possíveis induções de erro:<\/b> Associação incorreta de 'protocolo leve\/simples' com 'binário'.",
+        "topico": "STOMP",
         "nivel": "Intermediário"
     },
     {
         "id": 30,
-        "pergunta": "Diferentemente do Maven, que utiliza um arquivo XML (pom.xml) para sua configuração, o Jenkins e o GitHub Actions alinham-se ao utilizarem exclusivamente YAML para todas as suas definições de pipeline e configuração.",
-        "resposta_correta": "Errado",
+        "pergunta": "Diferentemente do NATS padrão, que funciona no modelo 'dispare e esqueça', o Kafka armazena os eventos em disco, tornando-os imutáveis após a publicação.",
+        "resposta_correta": "Certo",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Dica CEBRASPE... Jenkins é Java e o Maven também... arquivo de configuração do Maven é XML, enquanto o do Jenkins (JCasC) e GitHub Actions é YAML.' (Porém, veja: 'Jenkinsfile... Utiliza a DSL Groovy').<br><br><b>Análise da Assertiva:<\/b> Pegadinha clássica de generalização. O Jenkins usa YAML para JCasC (configuração global), mas usa <b>Groovy<\/b> para Pipelines. A palavra 'exclusivamente' torna a questão errada.<br><b>Possíveis induções de erro:<\/b> O candidato lembrar da 'Dica CEBRASPE' sobre YAML no Jenkins (JCasC) e esquecer do Jenkinsfile (Groovy).",
-        "topico": "Misto",
+        "explicacao_feedback": "<b>Transcrição do material:<\/b> NATS: '...padrão, é dispare e esqueça'. Kafka: 'Após publicado, o evento é imutável'.<br><br><b>Análise da Assertiva:<\/b> Comparativo correto entre a persistência do Kafka e a volatilidade do NATS Core (sem JetStream).<br><br><b>Possíveis induções de erro:<\/b> Confusão entre as características de persistência padrão de cada ferramenta.",
+        "topico": "Comparativo",
         "nivel": "Avançado"
     }
 ]

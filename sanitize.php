@@ -6,8 +6,51 @@ function markdownParaHtml($texto) {
         return $texto;
     }
     
-    // Preservar quebras de linha
+    $lines = explode("\n", $texto);
+    $parsedLines = [];
+    $tableBuffer = [];
+    $inTable = false;
+    
+    foreach ($lines as $line) {
+        $trimLine = trim($line);
+        
+        // Detectar tabelas
+        if (strpos($trimLine, '|') === 0 && substr($trimLine, -1) === '|') {
+            $inTable = true;
+            $tableBuffer[] = $trimLine;
+            continue;
+        } else {
+            if ($inTable) {
+                $parsedLines[] = processarTabelaMarkdown($tableBuffer);
+                $tableBuffer = [];
+                $inTable = false;
+            }
+        }
+        
+        // Headers
+        if (preg_match('/^(#{1,6})\s+(.+)$/', $trimLine, $matches)) {
+            $level = strlen($matches[1]);
+            $content = $matches[2];
+            $parsedLines[] = "<h{$level}>{$content}</h{$level}>";
+            continue;
+        }
+        
+        $parsedLines[] = $line;
+    }
+    
+    // Processar buffer de tabela restante
+    if ($inTable) {
+        $parsedLines[] = processarTabelaMarkdown($tableBuffer);
+    }
+    
+    $texto = implode("\n", $parsedLines);
+    
+    // Preservar quebras de linha (mas removemos as quebras extras depois de blocos HTML)
     $texto = nl2br($texto);
+    
+    // Limpar <br> após fechamento de blocos para evitar espaços extras
+    $texto = preg_replace('/(<\/h[1-6]>)\s*<br\s*\/?>/i', '$1', $texto);
+    $texto = preg_replace('/(<\/table>)\s*<br\s*\/?>/i', '$1', $texto);
     
     // Converter código inline
     $texto = preg_replace('/`([^`]+)`/', '<code>$1</code>', $texto);
@@ -25,6 +68,48 @@ function markdownParaHtml($texto) {
     $texto = str_replace(['<\\/', '<\\'], ['</', '<'], $texto);
     
     return $texto;
+}
+
+function processarTabelaMarkdown($lines) {
+    if (empty($lines)) return '';
+    
+    $html = '<div class="table-responsive"><table class="markdown-table">';
+    $isHeader = true;
+    
+    foreach ($lines as $index => $line) {
+        // Ignora linha de separação (|---|)
+        if (preg_match('/^\|\s*:?-+:?\s*\|/', $line)) {
+            continue;
+        }
+        
+        $cells = array_values(array_filter(explode('|', $line), function($v) { 
+            return trim($v) !== ''; 
+        }));
+        
+        // Se for a primeira linha e a próxima parecer um separador, é header
+        if ($isHeader && isset($lines[$index + 1]) && preg_match('/^\|\s*:?-+:?\s*\|/', $lines[$index+1])) {
+            $html .= '<thead><tr>';
+            foreach ($cells as $cell) {
+                $html .= '<th>' . trim($cell) . '</th>';
+            }
+            $html .= '</tr></thead><tbody>';
+            $isHeader = false;
+        } else {
+            if ($index === 0 && $isHeader) {
+                 // Caso especial: tabela sem header explícito ou falha na detecção
+                 $html .= '<tbody>';
+                 $isHeader = false;
+            }
+            $html .= '<tr>';
+            foreach ($cells as $cell) {
+                $html .= '<td>' . trim($cell) . '</td>';
+            }
+            $html .= '</tr>';
+        }
+    }
+    
+    $html .= '</tbody></table></div>';
+    return $html;
 }
 
 function htmlParaMarkdown($texto) {
