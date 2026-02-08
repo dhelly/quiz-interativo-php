@@ -1005,6 +1005,20 @@ input:checked+.slider:before {
     color: #9a3412;
 }
 
+.modo-revisao {
+    background: #fff7ed !important;
+    color: #c2410c;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
+    border: 1px solid #ffedd5;
+    margin-bottom: 10px;
+}
+
 /* Mobile */
 @media (max-width: 640px) {
     body {
@@ -1020,6 +1034,7 @@ input:checked+.slider:before {
         box-shadow: none;
     }
 }
+
 /* Markdown Content Styles */
 .comentario-texto code {
     background-color: #f1f5f9;
@@ -1027,7 +1042,8 @@ input:checked+.slider:before {
     border-radius: 4px;
     font-family: 'Courier New', monospace;
     font-size: 0.9em;
-    color: #ef4444; /* Reddish for code */
+    color: #ef4444;
+    /* Reddish for code */
 }
 
 .comentario-texto pre {
@@ -1058,16 +1074,31 @@ input:checked+.slider:before {
 }
 
 /* Estilos para Comentários em Markdown */
-.comentario-texto h1, .comentario-texto h2, .comentario-texto h3, 
-.comentario-texto h4, .comentario-texto h5, .comentario-texto h6 {
+.comentario-texto h1,
+.comentario-texto h2,
+.comentario-texto h3,
+.comentario-texto h4,
+.comentario-texto h5,
+.comentario-texto h6 {
     margin-top: 16px;
     margin-bottom: 8px;
     font-weight: 700;
     color: var(--text-main);
 }
-.comentario-texto h1 { font-size: 1.5em; border-bottom: 1px solid var(--border); padding-bottom: 4px; }
-.comentario-texto h2 { font-size: 1.3em; }
-.comentario-texto h3 { font-size: 1.1em; }
+
+.comentario-texto h1 {
+    font-size: 1.5em;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 4px;
+}
+
+.comentario-texto h2 {
+    font-size: 1.3em;
+}
+
+.comentario-texto h3 {
+    font-size: 1.1em;
+}
 
 .table-responsive {
     overflow-x: auto;
@@ -1082,7 +1113,8 @@ input:checked+.slider:before {
     font-size: 0.9em;
 }
 
-.markdown-table th, .markdown-table td {
+.markdown-table th,
+.markdown-table td {
     padding: 8px 12px;
     border: 1px solid var(--border);
     text-align: left;
