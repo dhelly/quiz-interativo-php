@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="pagina-quiz">
+    <div id="toast-container" class="toast-container"></div>
     <div class="container-quiz">
         
         <div class="header-quiz" style="display: flex; justify-content: space-between; align-items: center;">
@@ -315,7 +316,7 @@
         // Dica de atalhos
         setTimeout(() => {
             if (!localStorage.getItem('atalhosMostrados')) {
-                alert('💡 Dica: Use as teclas 1-4 para selecionar respostas rapidamente!');
+                showToast('💡 Dica: Use as teclas 1-4 para selecionar respostas rapidamente!', 'info');
                 localStorage.setItem('atalhosMostrados', 'true');
             }
         }, 1000);
@@ -502,13 +503,13 @@
                         btn.classList.add('btn-primary');
                     }, 2000);
                 } else {
-                    alert('Erro ao salvar: ' + data.message);
+                    showToast('Erro ao salvar: ' + data.message, 'error');
                     btn.innerHTML = originalText;
                     btn.disabled = false;
                 }
             })
             .catch(error => {
-                alert('Erro de conexão.');
+                showToast('Erro de conexão.', 'error');
                 btn.innerHTML = originalText;
                 btn.disabled = false;
             });
@@ -527,7 +528,7 @@
             };
 
             let texto = `📌 Questão #${n} (ID: ${q.id})\n`;
-            texto += `📂 Tópico: ${q.topico} | Nível: ${q.nivel}\n\n`;
+            // texto += `📂 Tópico: ${q.topico} | Nível: ${q.nivel}\n\n`;
             texto += `❓ PERGUNTA:\n${stripHtml(q.pergunta)}\n\n`;
             
             texto += `📝 OPÇÕES:\n`;
@@ -535,15 +536,15 @@
                 texto += `${i + 1}. ${stripHtml(opt)}\n`;
             });
             
-            texto += `\n✅ RESPOSTA CORRETA: ${stripHtml(resp)}\n`;
-            texto += `\n📖 EXPLICAÇÃO:\n${stripHtml(expl)}`;
+            // texto += `\n✅ RESPOSTA CORRETA: ${stripHtml(resp)}\n`;
+            // texto += `\n📖 EXPLICAÇÃO:\n${stripHtml(expl)}`;
             
             if (navigator.clipboard && window.isSecureContext) {
                 navigator.clipboard.writeText(texto).then(() => {
-                    alert('✅ Questão copiada para a área de transferência!');
+                    showToast('✅ Questão copiada para a área de transferência!', 'success');
                 }).catch(err => {
                     console.error('Erro ao copiar:', err);
-                    alert('❌ Falha ao copiar a questão.');
+                    showToast('❌ Falha ao copiar a questão.', 'error');
                 });
             } else {
                 const textArea = document.createElement("textarea");
@@ -552,13 +553,48 @@
                 textArea.select();
                 try {
                     document.execCommand('copy');
-                    alert('✅ Questão copiada para a área de transferência!');
+                    showToast('✅ Questão copiada para a área de transferência!', 'success');
                 } catch (err) {
                     console.error('Erro ao copiar (fallback):', err);
-                    alert('❌ Falha ao copiar a questão.');
+                    showToast('❌ Falha ao copiar a questão.', 'error');
                 }
                 document.body.removeChild(textArea);
             }
+        }
+
+        // Função para exibir Toast Notifications
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toast-container');
+            
+            // Criar elemento toast
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            
+            // Ícone baseado no tipo
+            let icon = 'ℹ️';
+            if (type === 'success') icon = '✅';
+            if (type === 'error') icon = '❌';
+            if (type === 'warning') icon = '⚠️';
+            
+            toast.innerHTML = `
+                <span class="toast-icon">${icon}</span>
+                <span class="toast-message">${message}</span>
+            `;
+            
+            container.appendChild(toast);
+            
+            // Mostrar toast (pequeno delay para permitir transição)
+            requestAnimationFrame(() => {
+                toast.classList.add('show');
+            });
+            
+            // Remover após 3 segundos
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => {
+                    container.removeChild(toast);
+                }, 300); // Tempo da transição CSS
+            }, 3000);
         }
     </script>
 </body>
