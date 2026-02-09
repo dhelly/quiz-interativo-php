@@ -26,12 +26,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             registrarErroUsuario($_SESSION['user_id'], $questao_id);
         }
     } elseif ($action === 'remove') {
-        // Remove a questão das erradas (sessão)
+        $mode = $_POST['mode'] ?? 'normal';
+        
+        // Remove a questão das erradas (sessão) - SEMPRE remove da sessão atual
         $_SESSION['questoes_erradas'] = array_filter($_SESSION['questoes_erradas'], function($id) use ($questao_id) {
             return $id !== $questao_id;
         });
-        // Remove o erro de forma persistente no banco de dados
-        if (isset($_SESSION['user_id'])) {
+        
+        // Remove o erro de forma persistente no banco de dados APENAS se estiver em modo REFORÇO
+        // No modo REVISÃO (pós-quiz), o erro deve continuar persistindo para revisão futura
+        if ($mode === 'reforco' && isset($_SESSION['user_id'])) {
             removerErroUsuario($_SESSION['user_id'], $questao_id);
         }
     }

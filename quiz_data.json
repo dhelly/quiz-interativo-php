@@ -1,362 +1,362 @@
 [
     {
         "id": 1,
-        "pergunta": "O princípio da integridade, também denominado confiabilidade, tem como objetivo garantir que uma informação não sofra alterações indevidas durante o seu tráfego ou repouso; contudo, caso uma pessoa mal-intencionada intercepte uma carta, leia seu conteúdo sem alterá-lo e a entregue ao destinatário, terá ocorrido uma violação da integridade, visto que o sigilo foi quebrado.",
+        "pergunta": "O conceito de <i>Bastion Host<\/i> refere-se a um servidor especializado, posicionado na rede interna protegida, que possui configurações de segurança relaxadas para facilitar a manutenção remota por administradores de sistema, atuando como um ponto único de entrada para gerenciamento.",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'casoo alguém envie uma carta dentro de um envelope e alguma pessoa indevidamente tenha acesso ao envelope... Referenciamos tal fato como interceptação dos dados... caso a pessoa mal-intencionada coloque o envelope contra a luz e verifique o conteúdo da carta, aí sim teremos a violação do princípio da confidencialidade... Logo, a mensagem é a mesma que foi gerada pela origem, certo? Exato! Dessa forma, não tivemos violação do princípio da integridade.'<br><br><b>Análise da Assertiva:<\/b> A questão mistura os conceitos. A leitura não autorizada viola a <b>Confidencialidade<\/b>. Se a mensagem chegou intacta (mesmo tendo sido lida), a <b>Integridade<\/b> foi preservada. O CEBRASPE adora confundir violação de sigilo com violação de integridade.<br><br><b>Possíveis induções de erro:<\/b> O candidato pode associar o termo 'confiabilidade' (usado no texto como sinônimo de integridade) com a ideia de confiança geral, achando que se alguém leu, a confiança (e logo a integridade) foi quebrada.",
-        "topico": "Princípios de Segurança",
-        "nivel": "Básico"
-    },
-    {
-        "id": 2,
-        "pergunta": "A irretratabilidade (ou não-repúdio) impede que o emissor negue o envio de uma mensagem, mas não oferece mecanismos para que o emissor prove que o receptor de fato recebeu a mensagem, sendo essa uma característica exclusiva dos protocolos de confirmação de entrega da camada de transporte.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'A irretratabilidade impede que o emissor ou o receptor negue uma mensagem transmitida... De modo semelhante, quando uma mensagem é recebida, o emissor pode provar que o receptor alegado de fato recebeu a mensagem.'<br><br><b>Análise da Assertiva:<\/b> O texto afirma explicitamente que a irretratabilidade funciona para ambos os lados: provar que quem enviou foi o emissor (irretratabilidade de origem) e provar que quem recebeu foi o receptor (irretratabilidade de destino). A restrição 'não oferece mecanismos' torna a questão errada.<br><br><b>Possíveis induções de erro:<\/b> O foco comum no não-repúdio é apenas na assinatura digital (origem), fazendo o candidato esquecer o não-repúdio de destino.",
-        "topico": "Princípios de Segurança",
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Bastion hosts... É um servidor especializado para fornecer serviços ao público externo. Desse modo, é muito bem customizado, com regras de segurança mais rígidas que mitiguem os possíveis riscos... Como regra, é válido lembrar que deve ser instalado exclusivamente os serviços e recursos necessários...'<br><br><b>Análise da Assertiva:<\/b> A questão inverte completamente o conceito. O Bastion Host fica exposto (geralmente na DMZ ou borda), fornece serviços ao público externo (ou atua como gateway de entrada seguro) e possui regras de segurança <b>mais rígidas<\/b> (hardening severo), e não 'relaxadas'. Além disso, ele não é um servidor comum da rede interna.<br><br><b>Possíveis induções de erro:<\/b> Associar a facilidade de acesso administrativo (ponto único) com segurança relaxada.",
+        "topico": "Firewall e Arquiteturas",
         "nivel": "Intermediário"
     },
     {
-        "id": 3,
-        "pergunta": "O princípio da irretroatividade estabelece que não é possível reverter um evento ou ação uma vez que ele tenha sido executado e registrado, como ocorre em transações registradas em blockchain, sendo fundamental para garantir a integridade dos dados.",
+        "id": 2,
+        "pergunta": "Em uma arquitetura de firewall do tipo <i>Screened Subnet Host<\/i>, a segurança é reforçada pela criação de uma zona desmilitarizada (DMZ) isolada por dois firewalls, o que garante que, caso o firewall externo seja comprometido, a rede interna permaneça protegida pelo firewall interno.",
         "resposta_correta": "Certo",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Irretroatividade... estabelece que não é possível reverter um evento ou ação uma vez que ele tenha sido executado e registrado. Este princípio é importante para garantir a integridade dos dados... Uma vez que uma transação é registrada em um blockchain, não é possível alterá-la ou excluí-la.'<br><br><b>Análise da Assertiva:<\/b> A assertiva define corretamente o princípio da irretroatividade conforme o material, citando o exemplo do Blockchain apresentado no texto.<br><br><b>Possíveis induções de erro:<\/b> Confundir 'Irretroatividade' (não voltar no tempo\/não desfazer) com 'Irretratabilidade' (não negar autoria).",
-        "topico": "Princípios de Segurança",
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Screened-subnet host: Tem-se o modelo específico de criação de uma subrede de segurança (DMZ) ou rede de perímetro, a partir da utilização de dois firewalls... Reparem que para um atacante conseguir penetrar na rede através dos servidores da DMZ deverá passar por uma segunda camada de segurança.'<br><br><b>Análise da Assertiva:<\/b> A descrição corresponde exatamente ao modelo de <i>Screened Subnet<\/i> (sub-rede triada) com dois firewalls, criando uma defesa em profundidade onde a DMZ fica entre o firewall de borda e o firewall interno.<br><br><b>Possíveis induções de erro:<\/b> Confundir <i>Screened Subnet<\/i> com <i>Screened Host<\/i> (que usa apenas um firewall e um bastion host).",
+        "topico": "Arquiteturas de Firewall",
         "nivel": "Avançado"
     },
     {
+        "id": 3,
+        "pergunta": "Os firewalls de filtro de pacotes <i>stateless<\/i> (estáticos) baseiam suas decisões de bloqueio ou permissão exclusivamente nas informações contidas nos cabeçalhos das camadas de rede e transporte, sendo incapazes de identificar se um pacote TCP de entrada faz parte de uma conexão previamente estabelecida.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Filtro de Pacotes... Também conhecido como Firewall estático. Ele atua na camada de rede e é capaz de obter algumas informações a respeito da camada de transporte... Filtros de Pacotes Baseados em Estados... Também conhecidos como filtro de pacotes dinâmicos ou Statefull... é criada e utilizada uma tabela auxiliar conhecida como tabela de estados.'<br><br><b>Análise da Assertiva:<\/b> O filtro estático (stateless) analisa cada pacote isoladamente baseando-se em IP e Porta. Ele não mantém uma tabela de estados, logo, não sabe o contexto da conexão (se é uma resposta a uma solicitação interna, por exemplo), diferentemente do <i>Stateful<\/i>.<br><br><b>Possíveis induções de erro:<\/b> Achar que todo firewall moderno sabe o estado da conexão. A questão especifica o tipo 'stateless'.",
+        "topico": "Tipos de Firewall",
+        "nivel": "Básico"
+    },
+    {
         "id": 4,
-        "pergunta": "No contexto de segurança física e lógica, a instalação de um <i>Access Point<\/i> (AP) em uma área pública deve ser evitada para impedir acesso direto à rede interna; essa medida é classificada como um controle de segurança lógica, pois visa proteger o tráfego de dados da rede sem fio.",
+        "pergunta": "O firewall do tipo <i>Circuit-Level Gateway<\/i> atua na camada de aplicação do modelo OSI, inspecionando o conteúdo dos pacotes para bloquear ameaças específicas como Injeção de SQL e Cross-Site Scripting (XSS).",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'I – Trata-se se segurança física, pois a itenção é não permitir o acesso direto ao equipamento, no caso, o Access Point.'<br><br><b>Análise da Assertiva:<\/b> Embora o objetivo final seja proteger a rede (lógico), a medida de 'não instalar o equipamento em área pública' ou restringir o acesso ao hardware é classificada no material como <b>Segurança Física<\/b>. O CEBRASPE explora a fronteira entre o ativo físico e o dado lógico.<br><br><b>Possíveis induções de erro:<\/b> O candidato focar no 'tráfego de dados' (lógico) e ignorar que a ação é sobre a instalação física do equipamento.",
-        "topico": "Segurança Física e Lógica",
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Circuit-Level Gateway... Também conhecidos como filtro de conexão da camada de sessão... No entanto, o circuit-level gateway não analisa o conteúdo dos pacotes e não é tão eficaz quanto os firewalls de camada de aplicação na proteção contra ataques específicos, como injeção de SQL e cross-site scripting.'<br><br><b>Análise da Assertiva:<\/b> O <i>Circuit-Level Gateway<\/i> atua na camada de <b>Sessão<\/b> (monitorando handshakes TCP), e não na de Aplicação. O texto afirma explicitamente que ele <b>não analisa o conteúdo<\/b> e não protege contra ataques web como SQLi\/XSS. Quem faz isso é o WAF ou Proxy de Aplicação.<br><br><b>Possíveis induções de erro:<\/b> O termo 'Gateway' pode levar a crer que é um Application Gateway (Proxy).",
+        "topico": "Tipos de Firewall",
         "nivel": "Intermediário"
     },
     {
         "id": 5,
-        "pergunta": "O processo de <i>Hardening<\/i> visa tornar um servidor mais robusto e seguro; entre as práticas recomendadas, inclui-se a eliminação do usuário <i>root<\/i> do sistema operacional, impedindo que qualquer tarefa administrativa seja realizada com privilégios elevados, mesmo via escalação de privilégios.",
-        "resposta_correta": "Errado",
+        "pergunta": "Diferentemente dos firewalls tradicionais de filtro de pacotes, que permitem a comunicação direta entre o cliente e o servidor, os firewalls baseados em Proxy estabelecem duas conexões distintas: uma entre o cliente e o proxy, e outra entre o proxy e o servidor, impedindo o fluxo direto de pacotes.",
+        "resposta_correta": "Certo",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Acesso de ROOT – Não se deve possibilitar a utilização do usuário ROOT de forma direta... Para tanto, deve-se utilizar apenas o método de escalação de privilégios... isto possibilita a geração de lastros e trilhas de auditorias'.<br><br><b>Análise da Assertiva:<\/b> O <i>Hardening<\/i> recomenda bloquear o login <b>direto<\/b> como root, mas não a eliminação do usuário ou a impossibilidade de tarefas administrativas. Pelo contrário, deve-se usar a escalação de privilégios (ex: sudo) para realizar tais tarefas de forma auditável.<br><br><b>Possíveis induções de erro:<\/b> A extrapolação de 'bloquear acesso direto' para 'eliminar o usuário'.",
-        "topico": "Hardening",
-        "nivel": "Intermediário"
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Um ponto importante é que os firewalls do tipo filtro de pacotes permitem a comunicação direta entre cliente e servidor. Fato que não acontece com o proxy que faz com que sejam estabelecidas duas conexões. Do cliente com o proxy e do proxy com o servidor.'<br><br><b>Análise da Assertiva:<\/b> A assertiva descreve corretamente o funcionamento do Proxy (intermediário) em contraste com o filtro de pacotes (roteador com filtro). Essa quebra de conexão direta é a principal característica de segurança do Proxy.<br><br><b>Possíveis induções de erro:<\/b> Achar que o proxy apenas repassa o pacote mantendo a conexão original.",
+        "topico": "Proxy",
+        "nivel": "Básico"
     },
     {
         "id": 6,
-        "pergunta": "O modelo de controle de acesso MAC (<i>Mandatory Access Control<\/i>) utiliza rótulos (labels) para identificar o nível de sensibilidade dos objetos e é considerado mais flexível que o modelo DAC (<i>Discretionary Access Control<\/i>), pois permite que o administrador do sistema defina exceções granulares para compartilhamento de recursos.",
+        "pergunta": "O Web Application Firewall (WAF) deve ser posicionado na borda da rede para proteger todos os usuários internos da organização contra acessos a sites maliciosos na Internet, atuando como um filtro de conteúdo de navegação.",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Mandatory Access Control (MAC) – O administrador do sistema é responsável por atribuir as devidas permissões... Este modelo utiliza o conceito de “label”... DAC – Este é um modelo mais flexível quando comparado com o MAC'.<br><br><b>Análise da Assertiva:<\/b> O MAC é o modelo mais rígido (mandatório), baseado em rótulos de segurança (ex: militar). O DAC é o modelo flexível onde o dono do arquivo decide (discricionário). A questão inverte a característica de flexibilidade.<br><br><b>Possíveis induções de erro:<\/b> Achar que, por ser controlado pelo administrador, o MAC seria mais 'customizável\/flexível', quando na verdade ele é rígido e não permite que usuários passem permissões adiante.",
-        "topico": "Controle de Acesso",
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Esse tipo de firewall foi criado especificamente para proteger aplicações WEB (na perspectiva do servidor que oferece o serviço)... Ele não protegerá toda a rede. Ele não protegerá os usuários internos. Ele protegerá o servidor de aplicação.'<br><br><b>Análise da Assertiva:<\/b> O WAF protege o <b>servidor<\/b> contra ataques vindos de fora (como SQL Injection), e não os <b>usuários internos<\/b> navegando na internet. Quem filtra navegação de usuário é o Proxy ou Filtro de Conteúdo. A questão inverte o objeto de proteção do WAF.<br><br><b>Possíveis induções de erro:<\/b> Achar que 'Web Firewall' significa 'Firewall para navegação Web'.",
+        "topico": "WAF",
         "nivel": "Intermediário"
     },
     {
         "id": 7,
-        "pergunta": "No modelo RBAC (<i>Role-Based Access Control<\/i>), o nível RBAC 2 é o mais adequado para ambientes corporativos gerais, pois introduz a hierarquia de papéis e a restrição de acesso (separação de tarefas), diferenciando-se do RBAC 1 que apenas permite a criação de grupos de permissões sem hierarquia.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'RBAC 1: Esse modelo introduz a hierarquia de papéis... RBAC 2: Esse modelo... permite a definição de hierarquias de papéis, a delegação de permissões e a restrição de acesso a recursos específicos.'<br><br><b>Análise da Assertiva:<\/b> O erro é sutil. O RBAC 1 <b>já introduz<\/b> a hierarquia de papéis (conforme o PDF). O RBAC 2 adiciona restrições (constraints\/separação de tarefas). A questão afirma que o RBAC 1 é 'sem hierarquia', o que contradiz o material (quem não tem hierarquia é o RBAC 0).<br><br><b>Possíveis induções de erro:<\/b> Confusão entre os níveis 0, 1 e 2 do RBAC.",
-        "topico": "Controle de Acesso",
-        "nivel": "Avançado"
-    },
-    {
-        "id": 8,
-        "pergunta": "O ABAC (<i>Attribute-Based Access Control<\/i>) oferece maior granularidade que o RBAC, permitindo políticas de acesso condicionais, como restringir o acesso a documentos de vendas apenas durante o horário comercial e a partir de uma localização específica (escritório).",
+        "pergunta": "Soluções de segurança do tipo UTM (<i>Unified Threat Management<\/i>) consolidam diversas funcionalidades em um único <i>appliance<\/i>, incluindo firewall, antivírus, antispam e VPN; essa centralização simplifica a gestão e reduz custos de manutenção, mas cria um ponto único de falha na rede.",
         "resposta_correta": "Certo",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'ABAC permite que os administradores de segurança atribuam direitos de acesso com base em uma ampla gama de atributos... Por exemplo... Permitir que usuários do departamento de vendas acessem documentos de vendas apenas durante horário comercial e a partir do escritório'.<br><br><b>Análise da Assertiva:<\/b> A assertiva reproduz exatamente o exemplo de ABAC dado no material, destacando a flexibilidade baseada em atributos de contexto (tempo, local).<br><br><b>Possíveis induções de erro:<\/b> Achar que o RBAC também faria isso nativamente (o RBAC 3 adiciona contexto, mas o exemplo clássico de atributos complexos é do ABAC).",
-        "topico": "Controle de Acesso",
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Unified Threat Management (UTM)... É conhecido como uma solução capaz de incorporar as diversas tecnologias e soluções em um único equipamento... As vantagens dos firewalls UTM... Gerenciamento Centralizado... Custos de Manutenção Mais Baixos'. (Inferência lógica sobre ponto único de falha baseada na centralização descrita).<br><br><b>Análise da Assertiva:<\/b> O UTM centraliza tudo (Certo). Isso reduz custos e simplifica gestão (Certo, conforme o PDF). A consequência técnica lógica de centralizar tudo em um hardware é o ponto único de falha (Single Point of Failure), o que torna a assertiva correta no conjunto.<br><br><b>Possíveis induções de erro:<\/b> O candidato pode achar que 'ponto único de falha' torna o item errado por ser uma desvantagem não explicitada como 'vantagem' no texto, mas é uma característica técnica inerente ao modelo centralizado descrito.",
+        "topico": "UTM",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 8,
+        "pergunta": "Um NIDS (<i>Network-Based Intrusion Detection System<\/i>) posicionado em paralelo na rede (modo passivo) é capaz de analisar o tráfego em tempo real e, ao detectar um ataque, bloquear imediatamente os pacotes maliciosos para impedir que cheguem ao destino.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Em regra, posiciona-se o IDS em paralelo na rede, isto é, ele não afeta o tráfego diretamente, não sendo capaz, portanto, de bloquear o tráfego... O primeiro [modo passivo], simplesmente identifica o ataque, gerará logs e alertas acusando o acontecido.'<br><br><b>Análise da Assertiva:<\/b> Um dispositivo em paralelo (tap\/mirror) recebe uma <b>cópia<\/b> do tráfego. Ele não está na linha de comunicação (inline), logo, fisicamente não consegue 'bloquear' o pacote original que já passou. Ele apenas alerta. Quem bloqueia é o IPS (inline).<br><br><b>Possíveis induções de erro:<\/b> Confundir a capacidade de detecção (IDS) com a de prevenção\/bloqueio (IPS).",
+        "topico": "IDS\/IPS",
         "nivel": "Básico"
     },
     {
         "id": 9,
-        "pergunta": "A autenticação de dois fatores (2FA) exige necessariamente a combinação de dois fatores distintos; portanto, o uso de uma senha (algo que você sabe) combinada com uma pergunta de segurança (como 'nome da mãe', algo que você sabe) não caracteriza um 2FA legítimo, pois ambos pertencem à mesma categoria de fator.",
+        "pergunta": "Diferentemente do IDS, que atua apenas na detecção, o IPS (<i>Intrusion Prevention System<\/i>) é tipicamente instalado <i>in-line<\/i> (em série) com o tráfego da rede, o que lhe confere a capacidade técnica de descartar pacotes maliciosos antes que eles atinjam os sistemas protegidos.",
         "resposta_correta": "Certo",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'esse processo deve, necessariamente, envolver a combinação de ALGO QUE VOCÊ SABE, ALGO QUE VOCÊ TEM ou ALGO QUE VOCÊ É. Muito cuidado com essa combinação.'<br><br><b>Análise da Assertiva:<\/b> Para ser 2FA (Multi-fator), deve-se usar categorias diferentes. Senha + Pergunta de Segurança são ambos 'Algo que você sabe'. Isso é 'Two-Step Verification' (duas etapas), mas não 'Two-Factor Authentication' (dois fatores) no sentido estrito de segurança.<br><br><b>Possíveis induções de erro:<\/b> Achar que por ter duas etapas (senha + pergunta), é 2FA. O CEBRASPE cobra a distinção dos *tipos* de fatores.",
-        "topico": "Autenticação",
-        "nivel": "Intermediário"
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Muitos consideram como sendo um IDS de posicionamento in-line (em sequência), capaz de bloquear ataques de forma ativa e preventiva.'<br><br><b>Análise da Assertiva:<\/b> Correto. A posição <i>in-line<\/i> é o que permite ao IPS atuar no fluxo real dos dados e descartar (drop) pacotes, exercendo a prevenção.<br><br><b>Possíveis induções de erro:<\/b> Achar que o IDS também pode bloquear nativamente sem integração com firewall.",
+        "topico": "IDS\/IPS",
+        "nivel": "Básico"
     },
     {
         "id": 10,
-        "pergunta": "Os tokens do tipo TOTP (<i>Time-based One-Time Password<\/i>) utilizam um segredo compartilhado e o carimbo de tempo para gerar senhas descartáveis; diferentemente do HOTP, que é baseado em contador, o TOTP não requer qualquer tipo de sincronização entre o cliente (aplicativo) e o servidor.",
+        "pergunta": "Para detectar ataques que utilizam tráfego criptografado (HTTPS), o uso de um NIDS (<i>Network-Based IDS<\/i>) é mais eficiente que o uso de um HIDS (<i>Host-Based IDS<\/i>), pois o NIDS possui visibilidade global da rede e capacidade nativa de descriptografar qualquer pacote sem a necessidade de chaves privadas.",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'TOTP... introduz o timestamp atual como entrada dinâmica... Ele, contudo, herda riscos de sincronização temporal... Boas práticas incluem NTP confiável no servidor'.<br><br><b>Análise da Assertiva:<\/b> O TOTP <b>requer<\/b> sincronização de relógio (tempo). Se o relógio do celular estiver muito diferente do servidor, o código falha. O HOTP (contador) requer sincronização de *eventos* (contagem), mas o TOTP exige sincronização temporal.<br><br><b>Possíveis induções de erro:<\/b> Achar que 'baseado em tempo' significa 'automático' e dispensa sincronia, quando na verdade a dependência de tempo preciso é seu ponto crítico.",
-        "topico": "Autenticação",
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'NIDS... Como desvantagens, podemos citar: ... Incapacidade de analisar informações criptografadas... HIDS... Como vantagens, citamos: ... Capacidade de tratar dados criptografados. Na origem antes de ocorrer a criptografia e no destino, após a decriptação.'<br><br><b>Análise da Assertiva:<\/b> O NIDS cego à criptografia (a menos que seja um proxy man-in-the-middle, o que não é o padrão do NIDS puro). O HIDS, estando no host, vê o dado já descriptografado pelo SO\/Aplicação. A assertiva inverte a lógica de eficiência em criptografia.<br><br><b>Possíveis induções de erro:<\/b> Achar que 'visibilidade global' implica 'visibilidade de conteúdo cifrado'.",
+        "topico": "IDS\/IPS",
         "nivel": "Avançado"
     },
     {
         "id": 11,
-        "pergunta": "O protocolo OAuth 2.0 é um padrão aberto de autorização que permite que terceiros acessem recursos limitados de um usuário sem que este precise compartilhar suas credenciais de login; nesse contexto, o *refresh token* é utilizado para obter novos *access tokens* sem a necessidade de nova interação do usuário.",
+        "pergunta": "A técnica de detecção baseada em comportamento (anomalia) utilizada em sistemas IDS\/IPS é capaz de identificar ataques inéditos (zero-day), mas tende a apresentar uma taxa de falsos positivos mais elevada do que a técnica baseada em assinaturas.",
         "resposta_correta": "Certo",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'OAuth 2.0 utiliza refresh tokens para obter novos tokens de acesso, sem pedir ao usuário para fazer login novamente... permite com que provedores de serviços... passe credenciais de autorização...'.<br><br><b>Análise da Assertiva:<\/b> Define corretamente o OAuth como protocolo de autorização (não autenticação primária) e a função do refresh token (manter a sessão viva sem re-login).<br><br><b>Possíveis induções de erro:<\/b> Confundir OAuth com protocolo de Autenticação apenas, ou achar que o refresh token exige login.",
-        "topico": "OAuth 2.0",
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Já o modelo de “Base de Comportamento”... Como ponto positivo podemos citar a capacidade de detectar novos tipos de ataques... Como lado negativo, podemos citar a possibilidade de gerar muitos falsos positivos com regras mais rígidas de desvios'.<br><br><b>Análise da Assertiva:<\/b> Assertiva perfeita conforme o material. Assinatura é precisa mas falha em novos ataques. Comportamento pega novos ataques mas erra mais (confunde uso legítimo anômalo com ataque).<br><br><b>Possíveis induções de erro:<\/b> Achar que 'detectar zero-day' é impossível ou que 'falsos positivos' são defeito de assinatura.",
+        "topico": "Metodologias de Detecção",
         "nivel": "Intermediário"
     },
     {
         "id": 12,
-        "pergunta": "O OpenID Connect (OIDC) é uma camada de identidade construída sobre o protocolo OAuth 2.0; ele introduz o conceito de <i>Identity Token<\/i> (ID Token), que é estruturado no formato JWT (JSON Web Token) e deve ser assinado digitalmente para garantir a integridade das declarações sobre o usuário.",
+        "pergunta": "Na configuração de sistemas de detecção, um 'Falso Negativo' ocorre quando o sistema identifica incorretamente um tráfego legítimo como sendo uma ameaça, bloqueando uma operação válida do usuário.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Tráfego Suspeito Não Detectado ou Falso-Negativo - Ou seja, era para ser acusado como um tráfego suspeito, porém, não foi acusado... Tráfego Legítimo que o Equipamento acusa como suspeito ou Falso-Positivo'.<br><br><b>Análise da Assertiva:<\/b> A questão descreve o <b>Falso Positivo<\/b> (alarme falso). Falso Negativo é quando o ataque passa despercebido (o sistema diz 'negativo' para a ameaça, mas é falso, pois havia ameaça).<br><br><b>Possíveis induções de erro:<\/b> Confusão terminológica clássica entre Falso Positivo e Falso Negativo.",
+        "topico": "Metodologias de Detecção",
+        "nivel": "Básico"
+    },
+    {
+        "id": 13,
+        "pergunta": "O <i>Greylisting<\/i> é uma técnica antispam implementada nos MTAs (<i>Mail Transfer Agents<\/i>) que recusa temporariamente mensagens de remetentes desconhecidos, forçando o servidor de origem a reenviar a mensagem; essa técnica baseia-se na premissa de que servidores de spam geralmente não tentam reenvio.",
         "resposta_correta": "Certo",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'OpenID Connect - OIDC... criação da camada que atua sobre as soluções de gestão de identidade (OAUTH)... um identity token representa o resultado de um processo de autenticação, com assinatura digital...'.<br><br><b>Análise da Assertiva:<\/b> Correto. OIDC adiciona autenticação ao OAuth 2.0 (que é autorização) usando o ID Token (JWT).<br><br><b>Possíveis induções de erro:<\/b> Tentar dizer que o OIDC substitui o OAuth ou que o ID Token é criptografado (ele é assinado, criptografia é opcional\/adicional).",
-        "topico": "OpenID Connect",
-        "nivel": "Avançado"
-    },
-    {
-        "id": 13,
-        "pergunta": "O JWT (JSON Web Token) é criptografado por padrão para garantir a confidencialidade das <i>claims<\/i> (declarações) transportadas, impedindo que qualquer pessoa que intercepte o token consiga ler o seu conteúdo (<i>payload<\/i>) sem a chave privada.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'JWT (JSON web tokens) é um método de token... (Comentário da questão 9 na lista: JWT não é criptografado por padrão, mas assinado digitalmente...)'. E nas boas práticas: 'Inclua apenas as informações necessárias nas claims do token para reduzir o risco de exposição de dados sensíveis.'<br><br><b>Análise da Assertiva:<\/b> O JWT padrão é apenas codificado em Base64 e <b>assinado<\/b> (JWS). O conteúdo é legível por qualquer um que faça o decode Base64. Para ser criptografado, seria necessário usar JWE (JSON Web Encryption), o que não é o padrão. Por isso, não se deve colocar dados sensíveis no payload.<br><br><b>Possíveis induções de erro:<\/b> Confundir 'Assinado' ou 'Codificado' com 'Criptografado'.",
-        "topico": "JWT",
-        "nivel": "Avançado"
-    },
-    {
-        "id": 14,
-        "pergunta": "As soluções de PAM (<i>Privileged Access Management<\/i>) são um subconjunto do IAM focadas em contas comuns de usuários, visando facilitar o acesso via Single Sign-On (SSO) para a maioria dos colaboradores da organização.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'PAM... é um subconjunto do IAM que se concentra no gerenciamento do acesso de usuários privilegiados, como administradores e contas de serviço.'<br><br><b>Análise da Assertiva:<\/b> O PAM foca em contas privilegiadas (admin, root), não em contas comuns. Quem foca em contas comuns e SSO geral é o IAM.<br><br><b>Possíveis induções de erro:<\/b> Trocar a definição de IAM e PAM.",
-        "topico": "IAM e PAM",
-        "nivel": "Básico"
-    },
-    {
-        "id": 15,
-        "pergunta": "O SAML (<i>Security Assertion Markup Language<\/i>) é um padrão aberto baseado em JSON utilizado para troca de dados de autenticação e autorização entre um Provedor de Identidade (IdP) e um Provedor de Serviço (SP), sendo amplamente adotado em soluções de federação de identidade.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'SAML... é um padrão aberto... que permite com que provedores de serviços e recursos de identidade passe credenciais...'. (Nota técnica externa implícita no contexto de 'Markup Language' e contraste com OAUTH\/JWT: SAML é baseado em XML).<br><br><b>Análise da Assertiva:<\/b> O SAML é baseado em <b>XML<\/b>, não em JSON. Quem é baseado em JSON é o OIDC\/JWT. A 'Markup Language' no nome (SAML) entrega a base XML.<br><br><b>Possíveis induções de erro:<\/b> O candidato focar na função correta (troca de autenticação entre IdP e SP) e ignorar o formato dos dados (JSON vs XML).",
-        "topico": "SAML",
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Greylists: É uma técnica que conjuga características das duas técnicas anteriores. São implementadas nos MTA’s exclusivamente. Para que uma mensagem seja devidamente enviada, depende de um reenvio por parte de um servidor legítimo.'<br><br><b>Análise da Assertiva:<\/b> Descreve corretamente o funcionamento da Lista Cinza. Servidores legítimos (RFC compliant) reenviam após erro temporário (4xx). Spammers (\"fire and forget\") geralmente não.<br><br><b>Possíveis induções de erro:<\/b> Achar que a recusa é permanente ou baseada em conteúdo.",
+        "topico": "Antispam",
         "nivel": "Intermediário"
     },
     {
-        "id": 16,
-        "pergunta": "Na metodologia SDL (<i>Security Development Lifecycle<\/i>) da Microsoft, a modelagem de ameaças (Threat Modeling) é uma atividade crítica que deve ser realizada durante a fase de implementação (codificação), momento em que os desenvolvedores têm maior visibilidade das vulnerabilidades do código.",
+        "id": 14,
+        "pergunta": "A técnica SPF (<i>Sender Policy Framework<\/i>) combate a falsificação de e-mails utilizando criptografia de chave pública para assinar digitalmente o conteúdo das mensagens, garantindo assim a integridade e a autenticidade do remetente.",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> '2. FASE DE DESIGN... Os elementos-chave dessa fase são: ... Realizar a modelagem de ameaças'. E na questão comentada 8: 'Na metodologia... SDL... a modelagem de ameaças é realizada na fase de requisitos [Errado, é Design]'.<br><br><b>Análise da Assertiva:<\/b> A modelagem de ameaças ocorre na fase de <b>Design\/Projeto<\/b>, antes da codificação (implementação), para identificar falhas na arquitetura. Fazer isso na implementação seria tarde demais e custoso.<br><br><b>Possíveis induções de erro:<\/b> Achar que se descobre ameaça 'olhando o código'. Ameaças de design devem ser vistas antes do código existir.",
-        "topico": "Desenvolvimento Seguro (SDL)",
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Técnica SPF... O seu princípio básico é buscar garantir a legitimidade do remetente... através da validação de endereços IP’s... Técnica DKIM... Possui uma estrutura mais robusta baseada na autenticação com a utilização de chaves públicas.'<br><br><b>Análise da Assertiva:<\/b> A questão descreve o <b>DKIM<\/b>, mas atribui ao <b>SPF<\/b>. O SPF valida o <b>IP<\/b> de origem via DNS, não usa criptografia\/assinatura no conteúdo.<br><br><b>Possíveis induções de erro:<\/b> Confundir as siglas SPF (IP based) e DKIM (Crypto based).",
+        "topico": "Antispam",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 15,
+        "pergunta": "A Arquitetura <i>Zero Trust<\/i> (Confiança Zero) baseia-se no princípio de que, após a autenticação inicial bem-sucedida do usuário na borda da rede, o tráfego interno deve ser considerado confiável para evitar latência excessiva nas aplicações.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'O modelo confiança zero estabelece que, depois de um usuário ser autenticado, devem-se fornecer a ele todos os acessos. Comentários: ... A prática é justamente ao contrário... Uma rede de confiança zero pressupõe que haja invasores dentro e fora da rede, por isso nenhum usuário ou máquina deve ser automaticamente confiável.'<br><br><b>Análise da Assertiva:<\/b> O cerne do Zero Trust é <b>nunca confiar, sempre verificar<\/b>. Não existe 'confiança implícita' após autenticação. Cada acesso a recurso é verificado novamente. A premissa de 'tráfego interno confiável' viola o conceito de Zero Trust.<br><br><b>Possíveis induções de erro:<\/b> O senso comum de redes tradicionais (perímetro) onde dentro = seguro.",
+        "topico": "Arquitetura Zero Trust",
+        "nivel": "Básico"
+    },
+    {
+        "id": 16,
+        "pergunta": "O SIEM (<i>Security Information and Event Management<\/i>) tem como função principal a coleta, normalização e correlação de logs de diversos dispositivos de segurança; embora fundamental para a visibilidade, o SIEM tradicionalmente não atua bloqueando ataques em tempo real, função essa delegada a ferramentas como IPS ou SOAR integrados.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Situação hipotética: ...instalar ferramenta com capacidade de negar... uma tentativa de acesso... Assertiva: ... instalar um SIEM... Comentários: ...o SIEM não possui capacidade de atuar no modelo preventivo ou reativo... Ele atua no correlacionamento de logs'.<br><br><b>Análise da Assertiva:<\/b> Correto. O SIEM analisa e alerta. A ação de bloqueio (resposta ativa) geralmente requer integração com SOAR ou é nativa do IPS\/Firewall, não do núcleo do SIEM.<br><br><b>Possíveis induções de erro:<\/b> Achar que o SIEM sozinho substitui o IPS.",
+        "topico": "SIEM",
         "nivel": "Intermediário"
     },
     {
         "id": 17,
-        "pergunta": "O conceito de <i>Privacy by Default<\/i> (Privacidade por Padrão) determina que as configurações iniciais de um sistema devem ser as mais restritivas possíveis em relação à coleta e compartilhamento de dados, exigindo uma ação explícita do usuário (opt-in) para habilitar funcionalidades que reduzam sua privacidade.",
-        "resposta_correta": "Certo",
+        "pergunta": "No contexto do SELinux, o modo <i>Permissive<\/i> mantém as políticas de segurança carregadas e ativas, bloqueando ações que violem as regras estabelecidas, mas sem gerar logs de auditoria para evitar sobrecarga do sistema.",
+        "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Privacy by Default assegura que as configurações iniciais favoreçam a privacidade sem exigir perícia do usuário. Perfis públicos desabilitados, rastreamento e compartilhamento opt-in...'.<br><br><b>Análise da Assertiva:<\/b> A definição está perfeita. O usuário não deve precisar 'configurar para ter privacidade'; ela já deve vir configurada. O compartilhamento deve ser uma escolha ativa (opt-in).<br><br><b>Possíveis induções de erro:<\/b> Confundir Privacy by Design (processo\/arquitetura) com Privacy by Default (configuração inicial).",
-        "topico": "Privacidade",
-        "nivel": "Básico"
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Permissive: aqui as regras não são aplicadas. Mas o SELinux registra as ações, que deviriam ser negadas.'<br><br><b>Análise da Assertiva:<\/b> O modo <i>Permissive<\/i> faz o oposto do que a questão diz: ele <b>não bloqueia<\/b> (regras não aplicadas\/impostas), mas <b>gera logs<\/b>. Quem bloqueia é o modo <i>Enforcing<\/i>.<br><br><b>Possíveis induções de erro:<\/b> Confundir os modos Enforcing e Permissive.",
+        "topico": "SELinux",
+        "nivel": "Avançado"
     },
     {
         "id": 18,
-        "pergunta": "A técnica de <i>Fuzzing<\/i>, utilizada em testes de segurança de aplicações, consiste no envio de entradas de dados válidas e esperadas para o sistema, a fim de verificar se o processamento ocorre dentro dos tempos de resposta estipulados nos requisitos não funcionais.",
+        "pergunta": "O Elastic Stack (ELK) é composto pelo Elasticsearch, Logstash e Kibana; nesse conjunto, o Logstash é responsável pela visualização de dados e criação de dashboards, enquanto o Kibana atua no processamento e ingestão dos dados.",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'A referida técnica consiste, basicamente, em enviar entradas randômicas para a aplicação... injetará informações incomuns como tamanhos diferenciados, caracteres não utilizados...'.<br><br><b>Análise da Assertiva:<\/b> O Fuzzing envia dados <b>inválidos, aleatórios ou inesperados<\/b> (inputs randômicos) para tentar travar a aplicação (crash) ou causar comportamento anômalo. Testar com dados 'válidos e esperados' é teste funcional padrão, não Fuzzing.<br><br><b>Possíveis induções de erro:<\/b> Achar que todo teste visa verificar o funcionamento correto ('caminho feliz').",
-        "topico": "Desenvolvimento Seguro",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 19,
-        "pergunta": "No contexto de DevSecOps, a prática de <i>Shift-Left<\/i> refere-se à transferência das responsabilidades de verificação de segurança para as etapas finais do ciclo de desenvolvimento, garantindo que a auditoria seja realizada apenas quando o software estiver estável em ambiente de produção.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'ciclo DevSecOps começa com o shift-left: static code analysis (SAST)... já no pull request... Isso elimina o antigo modelo gatekeeper, no qual a equipe de segurança ficava no fim da esteira'.<br><br><b>Análise da Assertiva:<\/b> <i>Shift-Left<\/i> significa mover a segurança para a <b>esquerda<\/b> na linha do tempo (início), ou seja, para o começo do desenvolvimento (design\/code), e não para o final (produção).<br><br><b>Possíveis induções de erro:<\/b> Interpretar 'Left' (esquerda) como 'fim' ou 'depois', numa leitura errada de uma linha do tempo cronológica da esquerda para direita.",
-        "topico": "DevSecOps",
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> '2. Logstash: É uma ferramenta de processamento de dados que ingere dados... 3. Kibana: É uma interface de usuário extensível que permite visualizar os dados...'<br><br><b>Análise da Assertiva:<\/b> A questão inverte as funções. Logstash = Ingestão\/Processamento. Kibana = Visualização\/Dashboard. Elasticsearch = Armazenamento\/Busca.<br><br><b>Possíveis induções de erro:<\/b> Troca simples de definições das ferramentas do stack.",
+        "topico": "Elasticsearch\/SIEM",
         "nivel": "Básico"
     },
     {
-        "id": 20,
-        "pergunta": "O NIST SSDF (<i>Secure Software Development Framework<\/i>) é organizado em quatro grupos de práticas; o grupo 'Produzir Software Bem Protegido' (PW) inclui práticas como a revisão de código e a verificação de que softwares de terceiros estão em conformidade com os requisitos de segurança.",
+        "id": 19,
+        "pergunta": "As plataformas SOAR (<i>Security Orchestration, Automation, and Response<\/i>) distinguem-se das ferramentas SIEM tradicionais por sua capacidade de orquestrar ferramentas de segurança díspares e automatizar fluxos de trabalho de resposta a incidentes por meio de <i>playbooks<\/i>, reduzindo a necessidade de intervenção manual.",
         "resposta_correta": "Certo",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Grupo 3: Produzir Software Bem Protegido (PW)... Práticas: Revisão de código, testes de segurança... PW.3: Verificar se o Software de Terceiros Está em Conformidade...'.<br><br><b>Análise da Assertiva:<\/b> A assertiva lista corretamente o grupo PW e exemplos de suas práticas descritas no PDF.<br><br><b>Possíveis induções de erro:<\/b> Tentar alocar 'software de terceiros' no grupo de 'Proteger o Software' (PS) ou 'Preparar a Organização' (PO).",
-        "topico": "NIST SSDF",
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'SOAR... permite às equipes de segurança integrar e coordenar ferramentas de segurança separadas, automatizar tarefas repetitivas... As características de automação do SOAR o diferenciam de outros sistemas...'<br><br><b>Análise da Assertiva:<\/b> Define corretamente o SOAR e seu diferencial (Orquestração e Automação\/Playbooks) em relação ao SIEM (Análise\/Log).<br><br><b>Possíveis induções de erro:<\/b> Achar que SIEM e SOAR são a mesma coisa.",
+        "topico": "SOAR",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 20,
+        "pergunta": "O <i>Firewall Bridge<\/i> opera na camada de enlace (Layer 2) do modelo OSI e não possui endereço IP configurado em suas interfaces de tráfego, o que o torna invisível a ferramentas de varredura de rede convencionais e dificulta ataques direcionados ao próprio equipamento.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Firewall Bridge... Esse tipo de firewall atua na camada de enlace do modelo OSI. Justamente por atuar na camada de enlace, temos que ele não possui um endereço IP... este tipo de firewall é considerado estratégico por não possuir visibilidade externa'.<br><br><b>Análise da Assertiva:<\/b> Correto. O modo bridge (transparente) não tem IP na interface de tráfego, agindo como um switch com filtro, sendo invisível ao traceroute\/scan IP.<br><br><b>Possíveis induções de erro:<\/b> Achar que todo firewall precisa de IP para rotear pacotes.",
+        "topico": "Tipos de Firewall",
         "nivel": "Avançado"
     },
     {
         "id": 21,
-        "pergunta": "O OWASP SAMM é um framework prescritivo que fornece um caminho rígido e padronizado para a implementação de segurança, diferenciando-se do BSIMM, que é um modelo descritivo baseado em dados observados de diversas organizações.",
+        "pergunta": "A implementação de um WIPS (<i>Wireless Intrusion Prevention System<\/i>) permite monitorar o espectro de radiofrequência para identificar pontos de acesso não autorizados (<i>Rogue APs<\/i>); ao detectar tal ameaça, o WIPS pode atuar ativamente enviando pacotes de desassociação para desconectar clientes conectados ao dispositivo invasor.",
         "resposta_correta": "Certo",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'O BSIMM fornece um modelo baseado em dados... O OWASP SAMM, por exemplo, é um framework prescritivo que fornece um caminho para organizações implementarem práticas...'.<br><br><b>Análise da Assertiva:<\/b> O texto faz exatamente essa distinção: BSIMM = Descritivo (baseado no que os outros fazem\/dados); SAMM = Prescritivo (diz o que você deve fazer).<br><br><b>Possíveis induções de erro:<\/b> Inverter quem é prescritivo e quem é descritivo.",
-        "topico": "Frameworks de Segurança (SAMM\/BSIMM)",
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'O WIPS... é capaz de monitorar o espectro de ondas de rádio de tal forma que se pode identificar pontos de acesso que estejam tentando utilizar canais não autorizados... passa-se a atuar normalmente como um IPS, bloqueando o tráfego diretamente'.<br><br><b>Análise da Assertiva:<\/b> O WIPS detecta e bloqueia. O método técnico de bloqueio no Wi-Fi é justamente o envio de pacotes de desassociação (deauth), o que é coerente com a função de 'bloquear tráfego diretamente' citada no material.<br><br><b>Possíveis induções de erro:<\/b> Duvidar da capacidade ativa de bloqueio em redes sem fio.",
+        "topico": "IDS\/IPS Wireless",
         "nivel": "Avançado"
     },
     {
         "id": 22,
-        "pergunta": "Em relação à biometria, os sistemas baseados em comportamento, como a dinâmica de digitação, exigem uma correspondência exata (100%) entre o padrão armazenado e a amostra coletada para autenticar o usuário, sob pena de gerar altas taxas de falsa rejeição.",
+        "pergunta": "No protocolo de gerenciamento de e-mails, o <i>Mail Submission Agent<\/i> (MSA) opera tipicamente na porta 25 para receber mensagens dos usuários finais (MUA) e encaminhá-las aos servidores de destino, sendo a porta 587 reservada exclusivamente para comunicação entre servidores MTA.",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'dizer que o gabarito tem que ser exato, não é uma verdade para sua generalização... trabalham com referências variáveis, mas dentro de um padrão aceitável'.<br><br><b>Análise da Assertiva:<\/b> Biometria (especialmente comportamental) trabalha com **similaridade** e limiares de aceitação, nunca com correspondência exata binária (como uma senha), pois o comportamento humano varia levemente a cada execução.<br><br><b>Possíveis induções de erro:<\/b> Achar que segurança exige precisão absoluta.",
-        "topico": "Biometria",
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> (Inferência baseada na imagem 'Gerência de Porta 25 e seu Impacto' e texto sobre Gerência da Porta 25). A prática recomendada (Gerência de Porta 25) bloqueia a 25 para usuários e usa a <b>587 (MSA)<\/b> para submissão (usuário -> servidor). A porta 25 é usada para transporte entre servidores (MTA -> MTA).<br><br><b>Análise da Assertiva:<\/b> A questão inverte as portas\/funções. Porta 587 é MSA (Submissão\/Usuário). Porta 25 é MTA (Transporte\/Servidor).<br><br><b>Possíveis induções de erro:<\/b> A configuração antiga onde a porta 25 era usada para tudo.",
+        "topico": "Antispam e Portas",
         "nivel": "Intermediário"
     },
     {
         "id": 23,
-        "pergunta": "O protocolo OAuth 2.0 utiliza dois tipos de clientes: os clientes confidenciais, que conseguem manter suas credenciais em sigilo (como aplicações web no lado do servidor), e os clientes públicos, que não garantem o sigilo das credenciais (como aplicativos móveis ou Single Page Applications).",
+        "pergunta": "O protocolo ICAP (<i>Internet Content Adaptation Protocol<\/i>) é utilizado para descarregar o processamento de inspeção de conteúdo de dispositivos de borda, permitindo, por exemplo, que um Proxy envie arquivos para um servidor ICAP externo realizar a verificação de antivírus antes de entregar o conteúdo ao usuário.",
         "resposta_correta": "Certo",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Clientes Confidenciais: Estes tipos de clientes são registrados com um segredo do cliente... Clientes Públicos... não conseguem manter a confidencialidade de suas credenciais... usados em cenários como aplicativos móveis ou baseados em navegador'.<br><br><b>Análise da Assertiva:<\/b> Definição correta dos tipos de clientes no OAuth 2.0 e seus exemplos de uso.<br><br><b>Possíveis induções de erro:<\/b> Achar que um app móvel é 'confidencial' porque está no celular do usuário (na verdade é público pois o código pode ser decompilado e o segredo extraído).",
-        "topico": "OAuth 2.0",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 24,
-        "pergunta": "O princípio da funcionalidade completa (Soma Positiva) na privacidade por design estabelece que deve haver um trade-off (troca) entre privacidade e segurança, onde o aumento de uma implica necessariamente na redução da outra para garantir a viabilidade do sistema.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Funcionalidade completa — soma positiva — Busque “privacidade e utilidade” simultaneamente, evitando falsas trocas entre experiência, segurança e negócio... se evitar a pretensão de falsas dicotomias como, por exemplo, privacidade versus segurança.'<br><br><b>Análise da Assertiva:<\/b> O princípio é justamente o oposto: <b>Soma Positiva<\/b> (Win-Win). Não se deve aceitar o trade-off (Soma Zero). Deve-se ter privacidade E segurança, não um OU outro.<br><br><b>Possíveis induções de erro:<\/b> O senso comum de que 'mais segurança = menos privacidade\/usabilidade'. O conceito de Privacy by Design combate esse senso comum.",
-        "topico": "Privacidade",
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'ICAP... permite que clientes ICAP enviem requisições para os servidores ICAP objetivando a “adaptação do conteúdo”, ou seja, pode-se verificar a existência de um vírus em um dado arquivo a partir de uma consulta a um servidor ICAP.'<br><br><b>Análise da Assertiva:<\/b> Define exatamente a função do ICAP: <i>offload<\/i> de tarefas pesadas como antivírus e filtro de URL para servidores dedicados.<br><br><b>Possíveis induções de erro:<\/b> Desconhecimento do protocolo ICAP, achando que o proxy faz tudo sozinho.",
+        "topico": "Protocolos de Segurança",
         "nivel": "Avançado"
     },
     {
-        "id": 25,
-        "pergunta": "O uso de SMS para envio de códigos de autenticação de dois fatores (2FA) é considerado uma prática segura e recomendada pelo NIST, uma vez que as mensagens trafegam criptografadas ponta a ponta na rede de telefonia móvel.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> (Comentário da questão 10 da lista de autenticação) 'SMS não é seguro para autenticação, pois trafega sem criptografia ponta a ponta e pode ser interceptado por ataques como SIM Swap. A recomendação é usar aplicativos autenticadores'.<br><br><b>Análise da Assertiva:<\/b> O SMS é vulnerável (SS7, SIM Swap) e não possui criptografia ponta a ponta garantida no nível de aplicação de segurança. O material desencoraja seu uso em favor de apps autenticadores.<br><br><b>Possíveis induções de erro:<\/b> Confiar na segurança da operadora de telefonia.",
-        "topico": "Autenticação",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 26,
-        "pergunta": "No contexto de MLOps (<i>Machine Learning Operations<\/i>), a prática de 'registro de modelos' visa garantir que artefatos de IA não sejam adulterados; para isso, recomenda-se o uso de registros imutáveis com hash e assinatura digital.",
+        "id": 24,
+        "pergunta": "Um <i>Next Generation Firewall<\/i> (NGFW) diferencia-se de um firewall <i>stateful<\/i> tradicional por sua capacidade de realizar <i>Deep Packet Inspection<\/i> (DPI), o que lhe permite identificar e controlar aplicações específicas (como Facebook ou Skype) independentemente da porta ou protocolo utilizado.",
         "resposta_correta": "Certo",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Registro de modelos... Artefatos adulterados ou não rastreáveis... Registro imutável... com hash, assinatura digital e metadados de procedência.'<br><br><b>Análise da Assertiva:<\/b> Correto. Para evitar que um modelo de IA seja trocado por um malicioso (poisoned), deve-se registrar sua versão com hash e assinatura.<br><br><b>Possíveis induções de erro:<\/b> O tema é novo (IA\/MLOps), o candidato pode não saber que modelos de IA também sofrem controle de integridade como softwares comuns.",
-        "topico": "Segurança em IA\/MLOps",
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'A Gartner define os Firewalls de Próxima Geração como firewalls de inspeção profunda de pacotes que vão além da inspeção e bloqueio de portas\/protocolos; eles também oferecem inspeção em nível de aplicativo...'<br><br><b>Análise da Assertiva:<\/b> Correto. O NGFW não olha apenas porta\/IP (como o stateful), ele olha o <i>payload<\/i> (DPI) para saber qual é a aplicação real (App-ID).<br><br><b>Possíveis induções de erro:<\/b> Achar que o firewall stateful já faz controle de aplicação.",
+        "topico": "NGFW",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 25,
+        "pergunta": "A utilização de <i>Honeypots<\/i> em uma rede corporativa tem como objetivo principal repelir ataques de negação de serviço (DDoS), servindo como um sistema de alta capacidade que absorve o tráfego malicioso e impede a saturação dos servidores reais.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'É um servidor criado especificamente para obter informações a respeito de possíveis atacantes... Como o próprio nome diz, é um verdadeiro pote de mel para atrair os atacantes!'<br><br><b>Análise da Assertiva:<\/b> O objetivo do Honeypot é <b>atrair<\/b>, enganar e <b>estudar<\/b> o atacante, não servir de escudo de carga para DDoS. Quem mitiga DDoS é WAF\/Proteção DDoS\/Scrubbing Center.<br><br><b>Possíveis induções de erro:<\/b> Confundir Honeypot com sistemas de mitigação de DDoS.",
+        "topico": "Ferramentas de Segurança",
+        "nivel": "Básico"
+    },
+    {
+        "id": 26,
+        "pergunta": "Em uma arquitetura de segurança, o uso de criptografia ponta a ponta impede que um NIDS (<i>Network IDS<\/i>) padrão realize a inspeção profunda do conteúdo dos pacotes (<i>Deep Packet Inspection<\/i>), limitando sua análise a metadados de cabeçalho, a menos que o NIDS possua as chaves privadas ou atue como um proxy SSL.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'NIDS... Como desvantagens, podemos citar: ... Incapacidade de analisar informações criptografadas'. (Contexto sobre DPI e criptografia mencionado nas seções de NGFW\/Proxy).<br><br><b>Análise da Assertiva:<\/b> Se o tráfego é cifrado, o NIDS só vê 'lixo' no payload. Ele precisa descriptografar (man-in-the-middle ou posse da chave) para fazer DPI. Caso contrário, só vê cabeçalhos não criptografados (IP\/Porta).<br><br><b>Possíveis induções de erro:<\/b> Achar que DPI quebra criptografia magicamente.",
+        "topico": "IDS\/IPS e Criptografia",
         "nivel": "Avançado"
     },
     {
         "id": 27,
-        "pergunta": "Um ataque de <i>Eavesdropping<\/i> caracteriza-se pela alteração ativa dos pacotes de dados durante a transmissão, comprometendo a integridade da informação trafegada na rede.",
+        "pergunta": "O <i>Elastic Common Schema<\/i> (ECS) é uma especificação proprietária e fechada da Elastic, projetada para impedir a interoperabilidade de dados com ferramentas de outros fabricantes, forçando o uso exclusivo do Kibana para visualização.",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Eavesdropping: Interceptação de dados em redes sem fio ou com fio... Exemplos de ataques passivos'.<br><br><b>Análise da Assertiva:<\/b> <i>Eavesdropping<\/i> (escuta) é um ataque <b>passivo<\/b>. Ele viola a confidencialidade, mas não a integridade (não altera os dados, apenas escuta).<br><br><b>Possíveis induções de erro:<\/b> Confundir interceptação (escuta) com interceptação ativa (Man-in-the-Middle com alteração).",
-        "topico": "Tipos de Ataques",
-        "nivel": "Básico"
-    },
-    {
-        "id": 28,
-        "pergunta": "A utilização de Single Sign-On (SSO) com gerenciamento centralizado de credenciais elimina a necessidade de o usuário memorizar múltiplas senhas, mas traz como desvantagem a dificuldade de revogação imediata de acesso a todos os sistemas integrados em caso de desligamento do funcionário.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'o gerenciamento interno de credenciais é a funcionalidade que permite um melhor controle da equipe de TI, pois centraliza o gerenciamento... facilitando o controle de acesso e a revogação de permissões.'<br><br><b>Análise da Assertiva:<\/b> A premissa de 'não memorizar senhas' é verdadeira, mas a conclusão sobre a desvantagem é falsa. O SSO <b>facilita<\/b> a revogação: bloqueia-se no ponto central e o acesso cai em todos os sistemas integrados.<br><br><b>Possíveis induções de erro:<\/b> Achar que centralização cria um 'ponto único de falha' administrativo que dificulta a gestão, quando na verdade agiliza.",
-        "topico": "SSO",
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Elastic Common Schema (ECS), sendo ela uma especificação open source que define um conjunto comum de campos...'<br><br><b>Análise da Assertiva:<\/b> O ECS é <b>open source<\/b> e visa facilitar a correlação e uniformidade, não o bloqueio de interoperabilidade.<br><br><b>Possíveis induções de erro:<\/b> Assumir que produtos de empresas são sempre proprietários\/fechados.",
+        "topico": "Elasticsearch",
         "nivel": "Intermediário"
     },
     {
-        "id": 29,
-        "pergunta": "No ciclo de vida de desenvolvimento seguro CLASP, a 'Visão de Vulnerabilidades' fornece um catálogo de erros comuns de codificação, como estouro de buffer e injeção de SQL, que podem ser verificados por meio de ferramentas de análise estática (SAST).",
-        "resposta_correta": "Certo",
+        "id": 28,
+        "pergunta": "Na arquitetura Zero Trust, o componente PEP (<i>Policy Enforcement Point<\/i>) é responsável por tomar a decisão de conceder ou negar acesso a um recurso, baseando-se nas políticas definidas pelo administrador, enquanto o PDP (<i>Policy Decision Point<\/i>) é responsável apenas por executar essa decisão, bloqueando ou liberando o tráfego.",
+        "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'A Visão de Vulnerabilidades possui um catálogo que descreve 104 tipos de vulnerabilidades... O CLASP... fornece uma taxonomia de vulnerabilidades... que podem ser verificadas com o uso de ferramentas automatizadas para análise estática de código.'<br><br><b>Análise da Assertiva:<\/b> Assertiva correta, ligando a Visão de Vulnerabilidades do CLASP com o uso de SAST para detecção.<br><br><b>Possíveis induções de erro:<\/b> Confundir as visões do CLASP (ex: achar que vulnerabilidade está na visão de papéis).",
-        "topico": "CLASP",
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> (Baseado na lógica do diagrama do NIST apresentado: 'Policy Decision\/Enforcement Point (PDP\/PEP)'). A lógica padrão (NIST SP 800-207 implícita no texto) é: <b>PDP Decide<\/b> e <b>PEP Executa\/Impõe<\/b>. A questão inverteu as funções: disse que o PEP decide e o PDP executa.<br><br><b>Análise da Assertiva:<\/b> Inversão de papéis. Point of Decision (PDP) decide. Point of Enforcement (PEP) impõe\/executa.<br><br><b>Possíveis induções de erro:<\/b> Confusão entre as siglas PDP e PEP.",
+        "topico": "Arquitetura Zero Trust",
         "nivel": "Avançado"
     },
     {
-        "id": 30,
-        "pergunta": "O <i>Token Binding<\/i> ou <i>Sender-Constrained Token<\/i> é um mecanismo de segurança em que o token de acesso fica vinculado à conexão TLS ou à posse de uma chave privada pelo cliente, impedindo que um token roubado seja utilizado por um atacante em outra conexão.",
+        "id": 29,
+        "pergunta": "O conceito de <i>Microssegmentação<\/i>, fundamental na arquitetura Zero Trust, consiste na divisão da rede em zonas de segurança muito pequenas, às vezes até o nível de carga de trabalho individual, permitindo a aplicação de políticas de segurança granulares que impedem a movimentação lateral de atacantes.",
         "resposta_correta": "Certo",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Sender-Constrained Tokens (Mutual TLS): Garantem que o remetente seja legítimo... vinculados à conexão TLS... Os tokens Sender-constrained exigem que... o cliente OAuth prove... a posse de uma chave privada'.<br><br><b>Análise da Assertiva:<\/b> Correto. Diferente do 'Bearer Token' (quem tem, usa), o Sender-Constrained exige prova de posse da chave ou vínculo com o canal TLS, mitigando o roubo de tokens.<br><br><b>Possíveis induções de erro:<\/b> Confundir com Bearer Token.",
-        "topico": "OAuth 2.0 \/ Tokens",
-        "nivel": "Avançado"
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Microssegmentação: A microssegmentação é um modelo de arquitetura que divide a rede corporativa em pequenas partes, ou segmentos. Cada segmento é protegido por firewalls... torna mais difícil para um invasor se mover lateralmente'.<br><br><b>Análise da Assertiva:<\/b> Definição correta e completa de microssegmentação e seu objetivo (conter movimento lateral) dentro do Zero Trust.<br><br><b>Possíveis induções de erro:<\/b> Achar que segmentação é apenas VLAN tradicional.",
+        "topico": "Zero Trust",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 30,
+        "pergunta": "A técnica de <i>Proxy Reverso<\/i> é utilizada principalmente para proteger os clientes internos de uma organização durante a navegação na web, ocultando seus endereços IP originais dos servidores de destino na Internet.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'o Proxy reverso... gera alguns benefícios na implementação de serviços HTTP no lado do servidor... hospedado na infraestrutura da organização, fornecendo serviços externos... repassa a requisição aos servidores internos'.<br><br><b>Análise da Assertiva:<\/b> A questão descreve o <b>Forward Proxy<\/b> (Proxy Direto). O <b>Proxy Reverso<\/b> protege o <b>servidor<\/b> (publicando aplicações internas para a internet), balanceando carga e ocultando a topologia interna dos servidores. Ele fica na frente do servidor, não do cliente.<br><br><b>Possíveis induções de erro:<\/b> Confusão clássica entre Proxy Direto (protege cliente) e Reverso (protege servidor).",
+        "topico": "Proxy",
+        "nivel": "Intermediário"
     }
 ]

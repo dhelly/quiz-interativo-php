@@ -210,13 +210,18 @@
                     
                     // Remove da lista de erradas se estiver lá (em caso de revisão ou reforço)
                     if (modoRevisao || modoReforco) {
+                        // Determina o modo para enviar ao backend
+                        let mode = 'normal';
+                        if (modoRevisao) mode = 'revisao';
+                        if (modoReforco) mode = 'reforco';
+
                         // Envia requisição para remover das questões erradas
                         fetch('salvar_errada.php', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/x-www-form-urlencoded',
                             },
-                            body: `questao_id=${questaoId}&action=remove&csrf_token=${csrfToken}`
+                            body: `questao_id=${questaoId}&action=remove&csrf_token=${csrfToken}&mode=${mode}`
                         });
                     }
                 } else {
