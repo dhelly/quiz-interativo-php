@@ -179,6 +179,9 @@ function exibirPainelAdmin($quiz_data) {
                                     <button class="btn btn-warning" onclick="formatJson()">
                                         ✨ Format JSON
                                     </button>
+                                    <button class="btn btn-error" onclick="clearEditor()">
+                                        🗑️ Limpar Editor
+                                    </button>
                                 </div>
                                 
                                 <div class="action-title" style="margin-top: 25px;">⚡ Ações Rápidas</div>
@@ -787,6 +790,12 @@ function exibirPainelAdmin($quiz_data) {
 
             function fecharModalSalvarComo() {
                 document.getElementById('modalSalvarComo').style.display = 'none';
+            }
+
+            function clearEditor() {
+                if (confirm('Tem certeza que deseja limpar o editor? Esta ação não pode ser desfeita.')) {
+                    document.getElementById('jsonEditor').value = '';
+                }
             }
 
             // Mostrar/ocultar campo de nova disciplina

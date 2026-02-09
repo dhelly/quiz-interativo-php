@@ -1,82 +1,122 @@
 [
     {
         "id": 1,
-        "quiz_id": 1,
-        "external_id": 1,
-        "pergunta": "O ActiveMQ Artemis pode ser implementado no modo Embedded, o que significa que o broker roda dentro da própria aplicação Java, na mesma JVM.",
+        "pergunta": "De acordo com a Instrução Normativa SGD\/ME nº 01\/2019, a utilização da métrica homem-hora para aferição de esforço em contratações de TIC é permitida em casos excepcionais; contudo, para sua validade, o pagamento deve estar vinculado obrigatoriamente à entrega de produtos, sendo vedada a remuneração baseada exclusivamente na disponibilidade dos profissionais.",
         "resposta_correta": "Certo",
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Modos de Implementação: ... Embedded (dentro da aplicação Java).'<br><br><b>Análise da Assertiva:<\/b> Correto. 'Embedded' significa embutido no processo da aplicação.<br><br><b>Possíveis induções de erro:<\/b> Confundir Embedded com Standalone (isolado).",
-        "topico": "ActiveMQ Artemis",
-        "nivel": "Básico",
-        "is_visible": 1,
-        "created_at": "2026-02-07 19:43:14",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
-        ]
+        ],
+        "explicacao_feedback": "<b>Transcrição:<\/b> Art. 5º É vedado: VIII - Adotar a métrica homem-hora ou equivalente para aferição de esforço, salvo mediante justificativa e sempre vinculada à entrega de produtos de acordo com prazos e qualidade previamente definidos.<br><br><b>Análise da Assertiva:<\/b> A assertiva está correta ao destacar a condição de exceção imposta pela norma. O TCU e a IN 01\/2019 combatem o modelo de 'corpo alocado' (body shopping). Assim, mesmo que se use homem-hora excepcionalmente, o desembolso só ocorre se houver produto entregue, e não apenas por o profissional estar à disposição do órgão.",
+        "topico": "Vedações e Métricas",
+        "nivel": "Intermediário"
     },
     {
         "id": 2,
-        "quiz_id": 1,
-        "external_id": 2,
-        "pergunta": "No Kafka, um evento é composto obrigatoriamente por Chave, Valor e Timestamp, sendo que a Chave é o elemento que determina a qual tópico o evento será enviado.",
+        "pergunta": "No que tange aos instrumentos de planejamento estratégico de TI, o Plano Diretor de Tecnologia da Informação e Comunicação (PDTIC) é definido como o documento que lista as soluções de TIC que o órgão pretende contratar no exercício subsequente, servindo de base para a oficialização da demanda.",
         "resposta_correta": "Errado",
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'O Evento (Mensagem): Composto obrigatoriamente por Chave, Valor e Timestamp.'<br><br><b>Análise da Assertiva:<\/b> Embora a composição esteja certa, a causalidade final está errada. O produtor define o tópico <i>no envio<\/i>; a chave é usada para roteamento de <i>partição<\/i> (hashing), não para escolher o tópico.<br><br><b>Possíveis induções de erro:<\/b> Falsa causalidade típica do CEBRASPE. A premissa A (composição) é certa, a conclusão B (função da chave) é distorcida.",
-        "topico": "Apache Kafka",
-        "nivel": "Difícil",
-        "is_visible": 1,
-        "created_at": "2026-02-07 19:43:14",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
-        ]
+        ],
+        "explicacao_feedback": "<b>Transcrição:<\/b> Plano Anual de Contratações (PAC): Instrumento de planejamento que contempla bens, serviços, obras e soluções de TIC que o órgão ou entidade pretende contratar no exercício subsequente.<br><br><b>Análise da Assertiva:<\/b> A assertiva inverte os conceitos de PDTIC e PAC. O PDTIC é um instrumento de diagnóstico, planejamento e gestão estratégica para um período determinado. Quem detalha as contratações específicas para o 'exercício subsequente' é o Plano Anual de Contratações (PAC).",
+        "topico": "Instrumentos de Planejamento",
+        "nivel": "Avançado"
     },
     {
         "id": 3,
-        "quiz_id": 1,
-        "external_id": 3,
-        "pergunta": "O mecanismo de reconhecimento (ACK) no RabbitMQ permite que o broker reenvie uma mensagem caso o consumidor falhe em confirmar seu processamento.",
+        "pergunta": "Com base na IN SGD\/ME nº 01\/2019, a fase de Seleção do Fornecedor possui marcos temporais definidos: inicia-se com o encaminhamento do Termo de Referência ou Projeto Básico à Área de Licitações e encerra-se com a publicação do resultado da licitação, após a adjudicação e a homologação.",
         "resposta_correta": "Certo",
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Reconhecimento (ACK): ... se falhar, o broker pode reenviá-la.'<br><br><b>Análise da Assertiva:<\/b> Descreve a função de confiabilidade do ACK.<br><br><b>Possíveis induções de erro:<\/b> Achar que a mensagem é descartada imediatamente após o envio (falta de confiabilidade).",
-        "topico": "RabbitMQ",
-        "nivel": "Básico",
-        "is_visible": 1,
-        "created_at": "2026-02-07 19:43:14",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
-        ]
+        ],
+        "explicacao_feedback": "<b>Transcrição:<\/b> A fase de Seleção do Fornecedor inicia-se com o encaminhamento do Termo de Referência ou Projeto Básico à Área de Licitações e encerra-se com a publicação do resultado da licitação após a adjudicação e a homologação.<br><br><b>Análise da Assertiva:<\/b> A assertiva reproduz fielmente a literalidade da norma sobre o ciclo de vida da contratação. É importante não confundir o encerramento da fase de seleção (homologação) com o início da fase de gestão (assinatura do contrato).",
+        "topico": "Processo de Contratação",
+        "nivel": "Básico"
     },
     {
         "id": 4,
-        "quiz_id": 1,
-        "external_id": 4,
-        "pergunta": "O STOMP diferencia-se por ser um protocolo binário altamente comprimido, o que justifica sua utilização preferencial em situações de baixa largura de banda.",
-        "resposta_correta": "Errado",
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'STOMP: O Protocolo Baseado em Texto...'<br><br><b>Análise da Assertiva:<\/b> STOMP é texto (text-based), não binário. Binários são AMQP, MQTT, etc.<br><br><b>Possíveis induções de erro:<\/b> Associação incorreta de 'protocolo leve\/simples' com 'binário'.",
-        "topico": "STOMP",
-        "nivel": "Intermediário",
-        "is_visible": 1,
-        "created_at": "2026-02-07 19:43:14",
+        "pergunta": "Na fase de planejamento, o Documento de Oficialização da Demanda (DOD) deve conter requisitos mínimos para sua validade, entre os quais se inclui a indicação da fonte dos recursos para a contratação, sob pena de sobrestamento do processo pela área de TIC.",
+        "resposta_correta": "Certo",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
-        ]
+        ],
+        "explicacao_feedback": "<b>Transcrição:<\/b> DOD conterá no mínimo: III - indicação da fonte dos recursos para a contratação.<br><br><b>Análise da Assertiva:<\/b> O DOD é o marco inicial da contratação. Sem a indicação da disponibilidade orçamentária (fonte de recursos), a administração não pode garantir a exequibilidade da demanda, impedindo o avanço para a elaboração do Estudo Técnico Preliminar (ETP).",
+        "topico": "Planejamento da Contratação",
+        "nivel": "Intermediário"
     },
     {
         "id": 5,
-        "quiz_id": 1,
-        "external_id": 5,
-        "pergunta": "Diferentemente do NATS padrão, que funciona no modelo 'dispare e esqueça', o Kafka armazena os eventos em disco, tornando-os imutáveis após a publicação.",
-        "resposta_correta": "Certo",
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> NATS: '...padrão, é dispare e esqueça'. Kafka: 'Após publicado, o evento é imutável'.<br><br><b>Análise da Assertiva:<\/b> Comparativo correto entre a persistência do Kafka e a volatilidade do NATS Core (sem JetStream).<br><br><b>Possíveis induções de erro:<\/b> Confusão entre as características de persistência padrão de cada ferramenta.",
-        "topico": "Comparativo",
-        "nivel": "Avançado",
-        "is_visible": 1,
-        "created_at": "2026-02-07 19:43:14",
+        "pergunta": "Considere que um órgão integrante do SISP pretenda adquirir uma solução de segurança de rede através de inexigibilidade de licitação. Nessa situação, é permitido aceitar uma carta de exclusividade emitida diretamente pelo fabricante da solução para fins de comprovação da inviabilidade de competição.",
+        "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
-        ]
+        ],
+        "explicacao_feedback": "<b>Transcrição:<\/b> Art. 5º É vedado: XII - Aceitar carta de exclusividade emitida pelos próprios fabricantes... devendo ser observado o disposto no inciso I do art. 25 da Lei nº 8.666.<br><br><b>Análise da Assertiva:<\/b> A IN 01\/2019 e o TCU proíbem a aceitação de 'autodeclarações' de exclusividade dos fabricantes. A prova de exclusividade deve seguir o rito legal (atestado fornecido pelo órgão de registro do comércio, sindicato, federação ou confederação patronal).",
+        "topico": "Vedações",
+        "nivel": "Avançado"
+    },
+    {
+        "id": 6,
+        "pergunta": "A norma estabelece a diretriz 'Cloud First' para o SISP; por conseguinte, órgãos que necessitem criar ou renovar infraestrutura de centro de dados devem priorizar a contratação de serviços em nuvem, sendo a criação de salas-cofre vedada, salvo autorização prévia do Órgão Central do SISP.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição:<\/b> Os órgãos e entidades que necessitem criar, ampliar ou renovar infraestrutura de centro de dados deverão fazê-lo por meio da contratação de serviços de computação em nuvem... É vedada a contratação para criação ou ampliação de salas-cofre e salas seguras, salvo nos casos em que o órgão ou entidade tenha obtido autorização prévia do Órgão Central do SISP.<br><br><b>Análise da Assertiva:<\/b> A assertiva reflete a política de centralização e eficiência em TI do Governo Federal, que busca reduzir custos com infraestrutura física local em favor da escalabilidade da nuvem.",
+        "topico": "Computação em Nuvem",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 7,
+        "pergunta": "A assinatura do contrato marca a transição entre o planejamento e a execução; nesse momento, a Equipe de Planejamento da Contratação é automaticamente destituída, passando a responsabilidade pela fiscalização exclusivamente ao Gestor do Contrato indicado pela Área Requisitante.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição:<\/b> A Equipe de Planejamento da Contratação será automaticamente destituída quando da assinatura do contrato. A Equipe de Fiscalização do Contrato é composta por: Gestor do Contrato, Fiscal Técnico, Fiscal Administrativo, Fiscal Requisitante.<br><br><b>Análise da Assertiva:<\/b> Embora a primeira parte esteja correta (destituição automática), a conclusão está errada. A responsabilidade não é exclusiva do Gestor, mas de toda a Equipe de Fiscalização (Fiscais Técnico, Administrativo e Requisitante).",
+        "topico": "Equipes e Papéis",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 8,
+        "pergunta": "Na elaboração da estimativa de preço da contratação, o Integrante Técnico deve obrigatoriamente realizar pesquisa junto a fornecedores, sendo vedada a utilização de preços praticados diretamente pelos fabricantes para evitar conflito de interesses na fase de seleção.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição:<\/b> Essa pesquisa de preço derivada exclusivamente de propostas de fornecedores, deverá considerar, sempre que possível, os valores praticados diretamente pelos fabricantes.<br><br><b>Análise da Assertiva:<\/b> A assertiva inverte a lógica normativa. O ideal é buscar o preço do fabricante para evitar o sobrepreço de revendas e intermediários. A pesquisa junto a fornecedores (propostas) é, inclusive, uma exceção que exige justificativa quando não há preços públicos similares.",
+        "topico": "Estimativa de Preços",
+        "nivel": "Avançado"
+    },
+    {
+        "id": 9,
+        "pergunta": "De acordo com as competências definidas para a especificação de requisitos, cabe ao Integrante Requisitante, com apoio do Integrante Técnico, definir os aspectos de segurança e privacidade da solução de TIC contratada.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição:<\/b> Art. 16. Na especificação dos requisitos... compete: I - Ao Integrante Requisitante... definir... f) De segurança e privacidade, juntamente com o Integrante Técnico.<br><br><b>Análise da Assertiva:<\/b> A assertiva está correta. A norma atribui a responsabilidade de segurança e privacidade a ambos os atores (Requisitante e Técnico), pois tais requisitos impactam tanto a regra de negócio quanto a arquitetura tecnológica.",
+        "topico": "Papéis e Responsabilidades",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 10,
+        "pergunta": "Nas licitações para contratação de TIC, os setores requisitantes devem encaminhar suas demandas à Área de TIC até o dia 1º de abril do ano de elaboração do PAC, sob pena de exclusão da demanda por intempestividade.",
+        "resposta_correta": "Errado",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição:<\/b> Os setores requisitantes deverão encaminhar à Área de TIC as contratações... até 15 (quinze) dias antes da data prevista no art. 7º (1º de abril).<br><br><b>Análise da Assertiva:<\/b> O erro está na data. Os requisitantes devem enviar a demanda para a TIC 15 dias antes de 1º de abril. O prazo de 1º de abril é a data limite para a Área de TIC consolidar tudo e encaminhar ao setor de licitações.",
+        "topico": "Programação Estratégica",
+        "nivel": "Avançado"
     }
 ]

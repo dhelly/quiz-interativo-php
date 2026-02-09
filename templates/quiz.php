@@ -153,6 +153,7 @@
                 <div class="admin-links">
                     <a href="admin.php">⚙️ Gerenciar Dados</a>
                     <a href="javascript:void(0)" onclick="recarregarPagina()">🔄 Recarregar</a>
+                    <a href="javascript:void(0)" onclick="copiarQuestao()">📋 Copiar Questão</a>
                     <?php if (!$dados['modo_revisao'] && $dados['total_erradas'] > 0): ?>
                         <a href="index.php?acao=revisar_erradas">📚 Revisar Erradas (<?php echo $dados['total_erradas']; ?>)</a>
                     <?php endif; ?>
@@ -511,6 +512,53 @@
                 btn.innerHTML = originalText;
                 btn.disabled = false;
             });
+        }
+
+        function copiarQuestao() {
+            const q = <?php echo json_encode($dados['questao']); ?>;
+            const n = <?php echo json_encode($dados['numero_questao']); ?>;
+            const resp = <?php echo json_encode($dados['resposta_correta']); ?>;
+            const expl = <?php echo json_encode($dados['explicacao'] ?? ''); ?>;
+            
+            // Função simples para remover tags HTML
+            const stripHtml = (html) => {
+                const doc = new DOMParser().parseFromString(html, 'text/html');
+                return doc.body.textContent || "";
+            };
+
+            let texto = `📌 Questão #${n} (ID: ${q.id})\n`;
+            texto += `📂 Tópico: ${q.topico} | Nível: ${q.nivel}\n\n`;
+            texto += `❓ PERGUNTA:\n${stripHtml(q.pergunta)}\n\n`;
+            
+            texto += `📝 OPÇÕES:\n`;
+            q.opcoes_disponiveis.forEach((opt, i) => {
+                texto += `${i + 1}. ${stripHtml(opt)}\n`;
+            });
+            
+            texto += `\n✅ RESPOSTA CORRETA: ${stripHtml(resp)}\n`;
+            texto += `\n📖 EXPLICAÇÃO:\n${stripHtml(expl)}`;
+            
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(texto).then(() => {
+                    alert('✅ Questão copiada para a área de transferência!');
+                }).catch(err => {
+                    console.error('Erro ao copiar:', err);
+                    alert('❌ Falha ao copiar a questão.');
+                });
+            } else {
+                const textArea = document.createElement("textarea");
+                textArea.value = texto;
+                document.body.appendChild(textArea);
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    alert('✅ Questão copiada para a área de transferência!');
+                } catch (err) {
+                    console.error('Erro ao copiar (fallback):', err);
+                    alert('❌ Falha ao copiar a questão.');
+                }
+                document.body.removeChild(textArea);
+            }
         }
     </script>
 </body>
