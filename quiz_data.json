@@ -1,362 +1,122 @@
 [
     {
         "id": 1,
-        "pergunta": "O conceito de <i>Bastion Host<\/i> refere-se a um servidor especializado, posicionado na rede interna protegida, que possui configurações de segurança relaxadas para facilitar a manutenção remota por administradores de sistema, atuando como um ponto único de entrada para gerenciamento.",
+        "pergunta": "A métrica conhecida como revocação (recall) mede a proporção de exemplos positivos corretamente identificados em relação ao total de exemplos classificados como positivos pelo modelo.",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Bastion hosts... É um servidor especializado para fornecer serviços ao público externo. Desse modo, é muito bem customizado, com regras de segurança mais rígidas que mitiguem os possíveis riscos... Como regra, é válido lembrar que deve ser instalado exclusivamente os serviços e recursos necessários...'<br><br><b>Análise da Assertiva:<\/b> A questão inverte completamente o conceito. O Bastion Host fica exposto (geralmente na DMZ ou borda), fornece serviços ao público externo (ou atua como gateway de entrada seguro) e possui regras de segurança <b>mais rígidas<\/b> (hardening severo), e não 'relaxadas'. Além disso, ele não é um servidor comum da rede interna.<br><br><b>Possíveis induções de erro:<\/b> Associar a facilidade de acesso administrativo (ponto único) com segurança relaxada.",
-        "topico": "Firewall e Arquiteturas",
-        "nivel": "Intermediário"
+        "explicacao_feedback": "<b>Transcrição:<\/b> Definição padrão da literatura de machine learning: Recall = VP \/ (VP + FN), onde VP são verdadeiros positivos e FN falsos negativos. A definição dada no enunciado se refere à precisão: Precisão = VP \/ (VP + FP).<br><br><b>Análise da Assertiva:<\/b> A afirmação confunde recall com precisão. Recall (revocação) é a fração de positivos reais que foram corretamente detectados; precisão é a fração de predições positivas que estavam corretas. Portanto, a assertiva está incorreta.",
+        "topico": "Métricas de Avaliação",
+        "nivel": "Básico"
     },
     {
         "id": 2,
-        "pergunta": "Em uma arquitetura de firewall do tipo <i>Screened Subnet Host<\/i>, a segurança é reforçada pela criação de uma zona desmilitarizada (DMZ) isolada por dois firewalls, o que garante que, caso o firewall externo seja comprometido, a rede interna permaneça protegida pelo firewall interno.",
+        "pergunta": "Em um problema de classificação binária desbalanceado, a acurácia pode ser uma métrica enganosa porque um modelo que sempre prevê a classe majoritária pode atingir alta acurácia sem detectar corretamente nenhum exemplo da classe minoritária.",
         "resposta_correta": "Certo",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Screened-subnet host: Tem-se o modelo específico de criação de uma subrede de segurança (DMZ) ou rede de perímetro, a partir da utilização de dois firewalls... Reparem que para um atacante conseguir penetrar na rede através dos servidores da DMZ deverá passar por uma segunda camada de segurança.'<br><br><b>Análise da Assertiva:<\/b> A descrição corresponde exatamente ao modelo de <i>Screened Subnet<\/i> (sub-rede triada) com dois firewalls, criando uma defesa em profundidade onde a DMZ fica entre o firewall de borda e o firewall interno.<br><br><b>Possíveis induções de erro:<\/b> Confundir <i>Screened Subnet<\/i> com <i>Screened Host<\/i> (que usa apenas um firewall e um bastion host).",
-        "topico": "Arquiteturas de Firewall",
-        "nivel": "Avançado"
+        "explicacao_feedback": "<b>Transcrição:<\/b> Acurácia = (VP + VN) \/ (VP + VN + FP + FN). Em cenários com classes desbalanceadas (ex.: 95% não-spam, 5% spam), um modelo que sempre prevê 'não-spam' terá acurácia de 95%, mas recall de 0% para spam, demonstrando que a acurácia não reflete a capacidade de identificar a classe minoritária.<br><br><b>Análise da Assertiva:<\/b> A afirmação está correta: a acurácia é sensível ao desbalanceamento e pode mascarar um desempenho ruim na classe de interesse. Por isso, recomenda-se usar métricas como recall, precisão, F1-score ou AUC-ROC em tais contextos.",
+        "topico": "Métricas de Avaliação",
+        "nivel": "Intermediário"
     },
     {
         "id": 3,
-        "pergunta": "Os firewalls de filtro de pacotes <i>stateless<\/i> (estáticos) baseiam suas decisões de bloqueio ou permissão exclusivamente nas informações contidas nos cabeçalhos das camadas de rede e transporte, sendo incapazes de identificar se um pacote TCP de entrada faz parte de uma conexão previamente estabelecida.",
-        "resposta_correta": "Certo",
+        "pergunta": "O F1-score é a média aritmética simples entre precisão e recall, sendo uma medida de equilíbrio entre essas duas métricas.",
+        "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Filtro de Pacotes... Também conhecido como Firewall estático. Ele atua na camada de rede e é capaz de obter algumas informações a respeito da camada de transporte... Filtros de Pacotes Baseados em Estados... Também conhecidos como filtro de pacotes dinâmicos ou Statefull... é criada e utilizada uma tabela auxiliar conhecida como tabela de estados.'<br><br><b>Análise da Assertiva:<\/b> O filtro estático (stateless) analisa cada pacote isoladamente baseando-se em IP e Porta. Ele não mantém uma tabela de estados, logo, não sabe o contexto da conexão (se é uma resposta a uma solicitação interna, por exemplo), diferentemente do <i>Stateful<\/i>.<br><br><b>Possíveis induções de erro:<\/b> Achar que todo firewall moderno sabe o estado da conexão. A questão especifica o tipo 'stateless'.",
-        "topico": "Tipos de Firewall",
+        "explicacao_feedback": "<b>Transcrição:<\/b> F1-score = 2 * (precisão * recall) \/ (precisão + recall). Trata-se da média harmônica, não da média aritmética. A média harmônica penaliza mais valores discrepantes, sendo mais adequada para avaliar o equilíbrio.<br><br><b>Análise da Assertiva:<\/b> A assertiva afirma incorretamente que é a média aritmética. O F1-score utiliza a média harmônica, que é mais rigorosa quando precisão e recall são muito diferentes. Portanto, a afirmação está errada.",
+        "topico": "Métricas de Avaliação",
         "nivel": "Básico"
     },
     {
         "id": 4,
-        "pergunta": "O firewall do tipo <i>Circuit-Level Gateway<\/i> atua na camada de aplicação do modelo OSI, inspecionando o conteúdo dos pacotes para bloquear ameaças específicas como Injeção de SQL e Cross-Site Scripting (XSS).",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Circuit-Level Gateway... Também conhecidos como filtro de conexão da camada de sessão... No entanto, o circuit-level gateway não analisa o conteúdo dos pacotes e não é tão eficaz quanto os firewalls de camada de aplicação na proteção contra ataques específicos, como injeção de SQL e cross-site scripting.'<br><br><b>Análise da Assertiva:<\/b> O <i>Circuit-Level Gateway<\/i> atua na camada de <b>Sessão<\/b> (monitorando handshakes TCP), e não na de Aplicação. O texto afirma explicitamente que ele <b>não analisa o conteúdo<\/b> e não protege contra ataques web como SQLi\/XSS. Quem faz isso é o WAF ou Proxy de Aplicação.<br><br><b>Possíveis induções de erro:<\/b> O termo 'Gateway' pode levar a crer que é um Application Gateway (Proxy).",
-        "topico": "Tipos de Firewall",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 5,
-        "pergunta": "Diferentemente dos firewalls tradicionais de filtro de pacotes, que permitem a comunicação direta entre o cliente e o servidor, os firewalls baseados em Proxy estabelecem duas conexões distintas: uma entre o cliente e o proxy, e outra entre o proxy e o servidor, impedindo o fluxo direto de pacotes.",
+        "pergunta": "A especificidade mede a proporção de verdadeiros negativos corretamente identificados em relação ao total de exemplos negativos existentes, sendo complementar ao recall para a classe negativa.",
         "resposta_correta": "Certo",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Um ponto importante é que os firewalls do tipo filtro de pacotes permitem a comunicação direta entre cliente e servidor. Fato que não acontece com o proxy que faz com que sejam estabelecidas duas conexões. Do cliente com o proxy e do proxy com o servidor.'<br><br><b>Análise da Assertiva:<\/b> A assertiva descreve corretamente o funcionamento do Proxy (intermediário) em contraste com o filtro de pacotes (roteador com filtro). Essa quebra de conexão direta é a principal característica de segurança do Proxy.<br><br><b>Possíveis induções de erro:<\/b> Achar que o proxy apenas repassa o pacote mantendo a conexão original.",
-        "topico": "Proxy",
+        "explicacao_feedback": "<b>Transcrição:<\/b> Especificidade = VN \/ (VN + FP). Recall (sensibilidade) foca na classe positiva; especificidade foca na classe negativa. Ambas são taxas de acerto dentro de cada classe.<br><br><b>Análise da Assertiva:<\/b> A definição está correta: especificidade é a proporção de negativos reais que foram corretamente classificados. De fato, é análoga ao recall, mas aplicada à classe negativa. A assertiva está certa.",
+        "topico": "Métricas de Avaliação",
         "nivel": "Básico"
     },
     {
-        "id": 6,
-        "pergunta": "O Web Application Firewall (WAF) deve ser posicionado na borda da rede para proteger todos os usuários internos da organização contra acessos a sites maliciosos na Internet, atuando como um filtro de conteúdo de navegação.",
+        "id": 5,
+        "pergunta": "Se um modelo de classificação apresenta precisão de 0,8 e recall de 0,6, isso significa que, dentre todas as instâncias positivas reais, o modelo identificou corretamente 80% delas, e das instâncias classificadas como positivas, 60% são realmente positivas.",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Esse tipo de firewall foi criado especificamente para proteger aplicações WEB (na perspectiva do servidor que oferece o serviço)... Ele não protegerá toda a rede. Ele não protegerá os usuários internos. Ele protegerá o servidor de aplicação.'<br><br><b>Análise da Assertiva:<\/b> O WAF protege o <b>servidor<\/b> contra ataques vindos de fora (como SQL Injection), e não os <b>usuários internos<\/b> navegando na internet. Quem filtra navegação de usuário é o Proxy ou Filtro de Conteúdo. A questão inverte o objeto de proteção do WAF.<br><br><b>Possíveis induções de erro:<\/b> Achar que 'Web Firewall' significa 'Firewall para navegação Web'.",
-        "topico": "WAF",
+        "explicacao_feedback": "<b>Transcrição:<\/b> Precisão = VP\/(VP+FP) – fração de predições positivas corretas. Recall = VP\/(VP+FN) – fração de positivos reais capturados. Os valores dados foram trocados na interpretação.<br><br><b>Análise da Assertiva:<\/b> A frase inverte os conceitos: com precisão 0,8, 80% das predições positivas são corretas; com recall 0,6, 60% dos positivos reais são capturados. A assertiva diz o oposto. Portanto, está errada.",
+        "topico": "Métricas de Avaliação",
         "nivel": "Intermediário"
     },
     {
-        "id": 7,
-        "pergunta": "Soluções de segurança do tipo UTM (<i>Unified Threat Management<\/i>) consolidam diversas funcionalidades em um único <i>appliance<\/i>, incluindo firewall, antivírus, antispam e VPN; essa centralização simplifica a gestão e reduz custos de manutenção, mas cria um ponto único de falha na rede.",
+        "id": 6,
+        "pergunta": "Em um modelo de detecção de spam, um recall alto é desejável mesmo que isso aumente o número de falsos positivos, pois o custo de um falso negativo (spam não detectado) pode ser maior do que o de um falso positivo (e-mail legítimo marcado como spam).",
         "resposta_correta": "Certo",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Unified Threat Management (UTM)... É conhecido como uma solução capaz de incorporar as diversas tecnologias e soluções em um único equipamento... As vantagens dos firewalls UTM... Gerenciamento Centralizado... Custos de Manutenção Mais Baixos'. (Inferência lógica sobre ponto único de falha baseada na centralização descrita).<br><br><b>Análise da Assertiva:<\/b> O UTM centraliza tudo (Certo). Isso reduz custos e simplifica gestão (Certo, conforme o PDF). A consequência técnica lógica de centralizar tudo em um hardware é o ponto único de falha (Single Point of Failure), o que torna a assertiva correta no conjunto.<br><br><b>Possíveis induções de erro:<\/b> O candidato pode achar que 'ponto único de falha' torna o item errado por ser uma desvantagem não explicitada como 'vantagem' no texto, mas é uma característica técnica inerente ao modelo centralizado descrito.",
-        "topico": "UTM",
+        "explicacao_feedback": "<b>Transcrição:<\/b> Não há norma técnica, mas é uma análise de trade-off baseada no contexto de negócio: recall alto minimiza falsos negativos, mas pode aumentar falsos positivos. A decisão depende do custo relativo de cada erro.<br><br><b>Análise da Assertiva:<\/b> A afirmação é coerente: se o objetivo é não perder nenhum spam (evitar que um spam chegue à caixa de entrada), prioriza-se recall. A assertiva descreve corretamente esse trade-off, assumindo que o custo de um spam não bloqueado supera o incômodo de um e-mail legítimo na caixa de spam. Portanto, está certa.",
+        "topico": "Métricas de Avaliação",
+        "nivel": "Avançado"
+    },
+    {
+        "id": 7,
+        "pergunta": "A curva ROC (Receiver Operating Characteristic) é construída plotando a taxa de verdadeiros positivos (recall) contra a taxa de falsos positivos (1 - especificidade) para diferentes limiares de classificação, e a área sob a curva (AUC) resume o desempenho geral do modelo.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição:<\/b> Definição clássica: a curva ROC representa TPR (True Positive Rate = recall) versus FPR (False Positive Rate = 1 - especificidade) para vários thresholds. AUC mede a capacidade de discriminação do modelo.<br><br><b>Análise da Assertiva:<\/b> A descrição está correta. A curva ROC é uma ferramenta fundamental para avaliar modelos probabilísticos, mostrando o trade-off entre sensibilidade e especificidade. A assertiva está certa.",
+        "topico": "Métricas de Avaliação",
         "nivel": "Intermediário"
     },
     {
         "id": 8,
-        "pergunta": "Um NIDS (<i>Network-Based Intrusion Detection System<\/i>) posicionado em paralelo na rede (modo passivo) é capaz de analisar o tráfego em tempo real e, ao detectar um ataque, bloquear imediatamente os pacotes maliciosos para impedir que cheguem ao destino.",
-        "resposta_correta": "Errado",
+        "pergunta": "Considere uma base com 100 e-mails: 80 são normais (negativos) e 20 são spam (positivos). Um modelo classifica 15 e-mails como spam, dos quais 10 são realmente spam. O recall desse modelo é 50% e a precisão é aproximadamente 66,7%.",
+        "resposta_correta": "Certo",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Em regra, posiciona-se o IDS em paralelo na rede, isto é, ele não afeta o tráfego diretamente, não sendo capaz, portanto, de bloquear o tráfego... O primeiro [modo passivo], simplesmente identifica o ataque, gerará logs e alertas acusando o acontecido.'<br><br><b>Análise da Assertiva:<\/b> Um dispositivo em paralelo (tap\/mirror) recebe uma <b>cópia<\/b> do tráfego. Ele não está na linha de comunicação (inline), logo, fisicamente não consegue 'bloquear' o pacote original que já passou. Ele apenas alerta. Quem bloqueia é o IPS (inline).<br><br><b>Possíveis induções de erro:<\/b> Confundir a capacidade de detecção (IDS) com a de prevenção\/bloqueio (IPS).",
-        "topico": "IDS\/IPS",
-        "nivel": "Básico"
+        "explicacao_feedback": "<b>Transcrição:<\/b> VP = 10 (spam corretos), FN = total de spam (20) - VP = 10, FP = classificados como spam (15) - VP = 5. Recall = VP\/(VP+FN) = 10\/20 = 0,5 (50%). Precisão = VP\/(VP+FP) = 10\/15 ≈ 0,667 (66,7%).<br><br><b>Análise da Assertiva:<\/b> Os cálculos estão corretos. A assertiva apresenta os valores corretos de recall e precisão, com base nos dados fornecidos. Portanto, está certa.",
+        "topico": "Métricas de Avaliação",
+        "nivel": "Intermediário"
     },
     {
         "id": 9,
-        "pergunta": "Diferentemente do IDS, que atua apenas na detecção, o IPS (<i>Intrusion Prevention System<\/i>) é tipicamente instalado <i>in-line<\/i> (em série) com o tráfego da rede, o que lhe confere a capacidade técnica de descartar pacotes maliciosos antes que eles atinjam os sistemas protegidos.",
-        "resposta_correta": "Certo",
+        "pergunta": "A métrica F1-score é sempre maior ou igual à média aritmética entre precisão e recall, pois a média harmônica é menos sensível a valores extremos.",
+        "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Muitos consideram como sendo um IDS de posicionamento in-line (em sequência), capaz de bloquear ataques de forma ativa e preventiva.'<br><br><b>Análise da Assertiva:<\/b> Correto. A posição <i>in-line<\/i> é o que permite ao IPS atuar no fluxo real dos dados e descartar (drop) pacotes, exercendo a prevenção.<br><br><b>Possíveis induções de erro:<\/b> Achar que o IDS também pode bloquear nativamente sem integração com firewall.",
-        "topico": "IDS\/IPS",
-        "nivel": "Básico"
+        "explicacao_feedback": "<b>Transcrição:<\/b> Para números positivos, a média harmônica é sempre menor ou igual à média aritmética (igualdade apenas quando todos os valores são iguais). Portanto, F1 ≤ (precisão+recall)\/2.<br><br><b>Análise da Assertiva:<\/b> A afirmação inverte a relação: a média harmônica é menor ou igual à aritmética, não maior. Assim, o F1-score é menor ou igual à média aritmética, exceto quando precisão = recall. A assertiva está errada.",
+        "topico": "Métricas de Avaliação",
+        "nivel": "Avançado"
     },
     {
         "id": 10,
-        "pergunta": "Para detectar ataques que utilizam tráfego criptografado (HTTPS), o uso de um NIDS (<i>Network-Based IDS<\/i>) é mais eficiente que o uso de um HIDS (<i>Host-Based IDS<\/i>), pois o NIDS possui visibilidade global da rede e capacidade nativa de descriptografar qualquer pacote sem a necessidade de chaves privadas.",
-        "resposta_correta": "Errado",
+        "pergunta": "Em problemas de classificação multiclasse, as métricas como precisão, recall e F1-score podem ser calculadas de forma macro (média simples das métricas por classe) ou micro (agregando totais de VP, VN, FP, FN globalmente), sendo que a micro-média é influenciada pelo desbalanceamento das classes.",
+        "resposta_correta": "Certo",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'NIDS... Como desvantagens, podemos citar: ... Incapacidade de analisar informações criptografadas... HIDS... Como vantagens, citamos: ... Capacidade de tratar dados criptografados. Na origem antes de ocorrer a criptografia e no destino, após a decriptação.'<br><br><b>Análise da Assertiva:<\/b> O NIDS cego à criptografia (a menos que seja um proxy man-in-the-middle, o que não é o padrão do NIDS puro). O HIDS, estando no host, vê o dado já descriptografado pelo SO\/Aplicação. A assertiva inverte a lógica de eficiência em criptografia.<br><br><b>Possíveis induções de erro:<\/b> Achar que 'visibilidade global' implica 'visibilidade de conteúdo cifrado'.",
-        "topico": "IDS\/IPS",
+        "explicacao_feedback": "<b>Transcrição:<\/b> Na média macro, calcula-se a métrica para cada classe e tira-se a média aritmética (cada classe tem mesmo peso). Na média micro, somam-se os VP, FN, FP de todas as classes e calcula-se a métrica global, que é dominada pelas classes com mais instâncias.<br><br><b>Análise da Assertiva:<\/b> A descrição está correta: a micro-média é influenciada pelo tamanho das classes (dá mais peso às classes maiores), enquanto a macro-média trata todas as classes igualmente. A assertiva está certa.",
+        "topico": "Métricas de Avaliação",
         "nivel": "Avançado"
-    },
-    {
-        "id": 11,
-        "pergunta": "A técnica de detecção baseada em comportamento (anomalia) utilizada em sistemas IDS\/IPS é capaz de identificar ataques inéditos (zero-day), mas tende a apresentar uma taxa de falsos positivos mais elevada do que a técnica baseada em assinaturas.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Já o modelo de “Base de Comportamento”... Como ponto positivo podemos citar a capacidade de detectar novos tipos de ataques... Como lado negativo, podemos citar a possibilidade de gerar muitos falsos positivos com regras mais rígidas de desvios'.<br><br><b>Análise da Assertiva:<\/b> Assertiva perfeita conforme o material. Assinatura é precisa mas falha em novos ataques. Comportamento pega novos ataques mas erra mais (confunde uso legítimo anômalo com ataque).<br><br><b>Possíveis induções de erro:<\/b> Achar que 'detectar zero-day' é impossível ou que 'falsos positivos' são defeito de assinatura.",
-        "topico": "Metodologias de Detecção",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 12,
-        "pergunta": "Na configuração de sistemas de detecção, um 'Falso Negativo' ocorre quando o sistema identifica incorretamente um tráfego legítimo como sendo uma ameaça, bloqueando uma operação válida do usuário.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Tráfego Suspeito Não Detectado ou Falso-Negativo - Ou seja, era para ser acusado como um tráfego suspeito, porém, não foi acusado... Tráfego Legítimo que o Equipamento acusa como suspeito ou Falso-Positivo'.<br><br><b>Análise da Assertiva:<\/b> A questão descreve o <b>Falso Positivo<\/b> (alarme falso). Falso Negativo é quando o ataque passa despercebido (o sistema diz 'negativo' para a ameaça, mas é falso, pois havia ameaça).<br><br><b>Possíveis induções de erro:<\/b> Confusão terminológica clássica entre Falso Positivo e Falso Negativo.",
-        "topico": "Metodologias de Detecção",
-        "nivel": "Básico"
-    },
-    {
-        "id": 13,
-        "pergunta": "O <i>Greylisting<\/i> é uma técnica antispam implementada nos MTAs (<i>Mail Transfer Agents<\/i>) que recusa temporariamente mensagens de remetentes desconhecidos, forçando o servidor de origem a reenviar a mensagem; essa técnica baseia-se na premissa de que servidores de spam geralmente não tentam reenvio.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Greylists: É uma técnica que conjuga características das duas técnicas anteriores. São implementadas nos MTA’s exclusivamente. Para que uma mensagem seja devidamente enviada, depende de um reenvio por parte de um servidor legítimo.'<br><br><b>Análise da Assertiva:<\/b> Descreve corretamente o funcionamento da Lista Cinza. Servidores legítimos (RFC compliant) reenviam após erro temporário (4xx). Spammers (\"fire and forget\") geralmente não.<br><br><b>Possíveis induções de erro:<\/b> Achar que a recusa é permanente ou baseada em conteúdo.",
-        "topico": "Antispam",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 14,
-        "pergunta": "A técnica SPF (<i>Sender Policy Framework<\/i>) combate a falsificação de e-mails utilizando criptografia de chave pública para assinar digitalmente o conteúdo das mensagens, garantindo assim a integridade e a autenticidade do remetente.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Técnica SPF... O seu princípio básico é buscar garantir a legitimidade do remetente... através da validação de endereços IP’s... Técnica DKIM... Possui uma estrutura mais robusta baseada na autenticação com a utilização de chaves públicas.'<br><br><b>Análise da Assertiva:<\/b> A questão descreve o <b>DKIM<\/b>, mas atribui ao <b>SPF<\/b>. O SPF valida o <b>IP<\/b> de origem via DNS, não usa criptografia\/assinatura no conteúdo.<br><br><b>Possíveis induções de erro:<\/b> Confundir as siglas SPF (IP based) e DKIM (Crypto based).",
-        "topico": "Antispam",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 15,
-        "pergunta": "A Arquitetura <i>Zero Trust<\/i> (Confiança Zero) baseia-se no princípio de que, após a autenticação inicial bem-sucedida do usuário na borda da rede, o tráfego interno deve ser considerado confiável para evitar latência excessiva nas aplicações.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'O modelo confiança zero estabelece que, depois de um usuário ser autenticado, devem-se fornecer a ele todos os acessos. Comentários: ... A prática é justamente ao contrário... Uma rede de confiança zero pressupõe que haja invasores dentro e fora da rede, por isso nenhum usuário ou máquina deve ser automaticamente confiável.'<br><br><b>Análise da Assertiva:<\/b> O cerne do Zero Trust é <b>nunca confiar, sempre verificar<\/b>. Não existe 'confiança implícita' após autenticação. Cada acesso a recurso é verificado novamente. A premissa de 'tráfego interno confiável' viola o conceito de Zero Trust.<br><br><b>Possíveis induções de erro:<\/b> O senso comum de redes tradicionais (perímetro) onde dentro = seguro.",
-        "topico": "Arquitetura Zero Trust",
-        "nivel": "Básico"
-    },
-    {
-        "id": 16,
-        "pergunta": "O SIEM (<i>Security Information and Event Management<\/i>) tem como função principal a coleta, normalização e correlação de logs de diversos dispositivos de segurança; embora fundamental para a visibilidade, o SIEM tradicionalmente não atua bloqueando ataques em tempo real, função essa delegada a ferramentas como IPS ou SOAR integrados.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Situação hipotética: ...instalar ferramenta com capacidade de negar... uma tentativa de acesso... Assertiva: ... instalar um SIEM... Comentários: ...o SIEM não possui capacidade de atuar no modelo preventivo ou reativo... Ele atua no correlacionamento de logs'.<br><br><b>Análise da Assertiva:<\/b> Correto. O SIEM analisa e alerta. A ação de bloqueio (resposta ativa) geralmente requer integração com SOAR ou é nativa do IPS\/Firewall, não do núcleo do SIEM.<br><br><b>Possíveis induções de erro:<\/b> Achar que o SIEM sozinho substitui o IPS.",
-        "topico": "SIEM",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 17,
-        "pergunta": "No contexto do SELinux, o modo <i>Permissive<\/i> mantém as políticas de segurança carregadas e ativas, bloqueando ações que violem as regras estabelecidas, mas sem gerar logs de auditoria para evitar sobrecarga do sistema.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Permissive: aqui as regras não são aplicadas. Mas o SELinux registra as ações, que deviriam ser negadas.'<br><br><b>Análise da Assertiva:<\/b> O modo <i>Permissive<\/i> faz o oposto do que a questão diz: ele <b>não bloqueia<\/b> (regras não aplicadas\/impostas), mas <b>gera logs<\/b>. Quem bloqueia é o modo <i>Enforcing<\/i>.<br><br><b>Possíveis induções de erro:<\/b> Confundir os modos Enforcing e Permissive.",
-        "topico": "SELinux",
-        "nivel": "Avançado"
-    },
-    {
-        "id": 18,
-        "pergunta": "O Elastic Stack (ELK) é composto pelo Elasticsearch, Logstash e Kibana; nesse conjunto, o Logstash é responsável pela visualização de dados e criação de dashboards, enquanto o Kibana atua no processamento e ingestão dos dados.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> '2. Logstash: É uma ferramenta de processamento de dados que ingere dados... 3. Kibana: É uma interface de usuário extensível que permite visualizar os dados...'<br><br><b>Análise da Assertiva:<\/b> A questão inverte as funções. Logstash = Ingestão\/Processamento. Kibana = Visualização\/Dashboard. Elasticsearch = Armazenamento\/Busca.<br><br><b>Possíveis induções de erro:<\/b> Troca simples de definições das ferramentas do stack.",
-        "topico": "Elasticsearch\/SIEM",
-        "nivel": "Básico"
-    },
-    {
-        "id": 19,
-        "pergunta": "As plataformas SOAR (<i>Security Orchestration, Automation, and Response<\/i>) distinguem-se das ferramentas SIEM tradicionais por sua capacidade de orquestrar ferramentas de segurança díspares e automatizar fluxos de trabalho de resposta a incidentes por meio de <i>playbooks<\/i>, reduzindo a necessidade de intervenção manual.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'SOAR... permite às equipes de segurança integrar e coordenar ferramentas de segurança separadas, automatizar tarefas repetitivas... As características de automação do SOAR o diferenciam de outros sistemas...'<br><br><b>Análise da Assertiva:<\/b> Define corretamente o SOAR e seu diferencial (Orquestração e Automação\/Playbooks) em relação ao SIEM (Análise\/Log).<br><br><b>Possíveis induções de erro:<\/b> Achar que SIEM e SOAR são a mesma coisa.",
-        "topico": "SOAR",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 20,
-        "pergunta": "O <i>Firewall Bridge<\/i> opera na camada de enlace (Layer 2) do modelo OSI e não possui endereço IP configurado em suas interfaces de tráfego, o que o torna invisível a ferramentas de varredura de rede convencionais e dificulta ataques direcionados ao próprio equipamento.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Firewall Bridge... Esse tipo de firewall atua na camada de enlace do modelo OSI. Justamente por atuar na camada de enlace, temos que ele não possui um endereço IP... este tipo de firewall é considerado estratégico por não possuir visibilidade externa'.<br><br><b>Análise da Assertiva:<\/b> Correto. O modo bridge (transparente) não tem IP na interface de tráfego, agindo como um switch com filtro, sendo invisível ao traceroute\/scan IP.<br><br><b>Possíveis induções de erro:<\/b> Achar que todo firewall precisa de IP para rotear pacotes.",
-        "topico": "Tipos de Firewall",
-        "nivel": "Avançado"
-    },
-    {
-        "id": 21,
-        "pergunta": "A implementação de um WIPS (<i>Wireless Intrusion Prevention System<\/i>) permite monitorar o espectro de radiofrequência para identificar pontos de acesso não autorizados (<i>Rogue APs<\/i>); ao detectar tal ameaça, o WIPS pode atuar ativamente enviando pacotes de desassociação para desconectar clientes conectados ao dispositivo invasor.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'O WIPS... é capaz de monitorar o espectro de ondas de rádio de tal forma que se pode identificar pontos de acesso que estejam tentando utilizar canais não autorizados... passa-se a atuar normalmente como um IPS, bloqueando o tráfego diretamente'.<br><br><b>Análise da Assertiva:<\/b> O WIPS detecta e bloqueia. O método técnico de bloqueio no Wi-Fi é justamente o envio de pacotes de desassociação (deauth), o que é coerente com a função de 'bloquear tráfego diretamente' citada no material.<br><br><b>Possíveis induções de erro:<\/b> Duvidar da capacidade ativa de bloqueio em redes sem fio.",
-        "topico": "IDS\/IPS Wireless",
-        "nivel": "Avançado"
-    },
-    {
-        "id": 22,
-        "pergunta": "No protocolo de gerenciamento de e-mails, o <i>Mail Submission Agent<\/i> (MSA) opera tipicamente na porta 25 para receber mensagens dos usuários finais (MUA) e encaminhá-las aos servidores de destino, sendo a porta 587 reservada exclusivamente para comunicação entre servidores MTA.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> (Inferência baseada na imagem 'Gerência de Porta 25 e seu Impacto' e texto sobre Gerência da Porta 25). A prática recomendada (Gerência de Porta 25) bloqueia a 25 para usuários e usa a <b>587 (MSA)<\/b> para submissão (usuário -> servidor). A porta 25 é usada para transporte entre servidores (MTA -> MTA).<br><br><b>Análise da Assertiva:<\/b> A questão inverte as portas\/funções. Porta 587 é MSA (Submissão\/Usuário). Porta 25 é MTA (Transporte\/Servidor).<br><br><b>Possíveis induções de erro:<\/b> A configuração antiga onde a porta 25 era usada para tudo.",
-        "topico": "Antispam e Portas",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 23,
-        "pergunta": "O protocolo ICAP (<i>Internet Content Adaptation Protocol<\/i>) é utilizado para descarregar o processamento de inspeção de conteúdo de dispositivos de borda, permitindo, por exemplo, que um Proxy envie arquivos para um servidor ICAP externo realizar a verificação de antivírus antes de entregar o conteúdo ao usuário.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'ICAP... permite que clientes ICAP enviem requisições para os servidores ICAP objetivando a “adaptação do conteúdo”, ou seja, pode-se verificar a existência de um vírus em um dado arquivo a partir de uma consulta a um servidor ICAP.'<br><br><b>Análise da Assertiva:<\/b> Define exatamente a função do ICAP: <i>offload<\/i> de tarefas pesadas como antivírus e filtro de URL para servidores dedicados.<br><br><b>Possíveis induções de erro:<\/b> Desconhecimento do protocolo ICAP, achando que o proxy faz tudo sozinho.",
-        "topico": "Protocolos de Segurança",
-        "nivel": "Avançado"
-    },
-    {
-        "id": 24,
-        "pergunta": "Um <i>Next Generation Firewall<\/i> (NGFW) diferencia-se de um firewall <i>stateful<\/i> tradicional por sua capacidade de realizar <i>Deep Packet Inspection<\/i> (DPI), o que lhe permite identificar e controlar aplicações específicas (como Facebook ou Skype) independentemente da porta ou protocolo utilizado.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'A Gartner define os Firewalls de Próxima Geração como firewalls de inspeção profunda de pacotes que vão além da inspeção e bloqueio de portas\/protocolos; eles também oferecem inspeção em nível de aplicativo...'<br><br><b>Análise da Assertiva:<\/b> Correto. O NGFW não olha apenas porta\/IP (como o stateful), ele olha o <i>payload<\/i> (DPI) para saber qual é a aplicação real (App-ID).<br><br><b>Possíveis induções de erro:<\/b> Achar que o firewall stateful já faz controle de aplicação.",
-        "topico": "NGFW",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 25,
-        "pergunta": "A utilização de <i>Honeypots<\/i> em uma rede corporativa tem como objetivo principal repelir ataques de negação de serviço (DDoS), servindo como um sistema de alta capacidade que absorve o tráfego malicioso e impede a saturação dos servidores reais.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'É um servidor criado especificamente para obter informações a respeito de possíveis atacantes... Como o próprio nome diz, é um verdadeiro pote de mel para atrair os atacantes!'<br><br><b>Análise da Assertiva:<\/b> O objetivo do Honeypot é <b>atrair<\/b>, enganar e <b>estudar<\/b> o atacante, não servir de escudo de carga para DDoS. Quem mitiga DDoS é WAF\/Proteção DDoS\/Scrubbing Center.<br><br><b>Possíveis induções de erro:<\/b> Confundir Honeypot com sistemas de mitigação de DDoS.",
-        "topico": "Ferramentas de Segurança",
-        "nivel": "Básico"
-    },
-    {
-        "id": 26,
-        "pergunta": "Em uma arquitetura de segurança, o uso de criptografia ponta a ponta impede que um NIDS (<i>Network IDS<\/i>) padrão realize a inspeção profunda do conteúdo dos pacotes (<i>Deep Packet Inspection<\/i>), limitando sua análise a metadados de cabeçalho, a menos que o NIDS possua as chaves privadas ou atue como um proxy SSL.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'NIDS... Como desvantagens, podemos citar: ... Incapacidade de analisar informações criptografadas'. (Contexto sobre DPI e criptografia mencionado nas seções de NGFW\/Proxy).<br><br><b>Análise da Assertiva:<\/b> Se o tráfego é cifrado, o NIDS só vê 'lixo' no payload. Ele precisa descriptografar (man-in-the-middle ou posse da chave) para fazer DPI. Caso contrário, só vê cabeçalhos não criptografados (IP\/Porta).<br><br><b>Possíveis induções de erro:<\/b> Achar que DPI quebra criptografia magicamente.",
-        "topico": "IDS\/IPS e Criptografia",
-        "nivel": "Avançado"
-    },
-    {
-        "id": 27,
-        "pergunta": "O <i>Elastic Common Schema<\/i> (ECS) é uma especificação proprietária e fechada da Elastic, projetada para impedir a interoperabilidade de dados com ferramentas de outros fabricantes, forçando o uso exclusivo do Kibana para visualização.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Elastic Common Schema (ECS), sendo ela uma especificação open source que define um conjunto comum de campos...'<br><br><b>Análise da Assertiva:<\/b> O ECS é <b>open source<\/b> e visa facilitar a correlação e uniformidade, não o bloqueio de interoperabilidade.<br><br><b>Possíveis induções de erro:<\/b> Assumir que produtos de empresas são sempre proprietários\/fechados.",
-        "topico": "Elasticsearch",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 28,
-        "pergunta": "Na arquitetura Zero Trust, o componente PEP (<i>Policy Enforcement Point<\/i>) é responsável por tomar a decisão de conceder ou negar acesso a um recurso, baseando-se nas políticas definidas pelo administrador, enquanto o PDP (<i>Policy Decision Point<\/i>) é responsável apenas por executar essa decisão, bloqueando ou liberando o tráfego.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> (Baseado na lógica do diagrama do NIST apresentado: 'Policy Decision\/Enforcement Point (PDP\/PEP)'). A lógica padrão (NIST SP 800-207 implícita no texto) é: <b>PDP Decide<\/b> e <b>PEP Executa\/Impõe<\/b>. A questão inverteu as funções: disse que o PEP decide e o PDP executa.<br><br><b>Análise da Assertiva:<\/b> Inversão de papéis. Point of Decision (PDP) decide. Point of Enforcement (PEP) impõe\/executa.<br><br><b>Possíveis induções de erro:<\/b> Confusão entre as siglas PDP e PEP.",
-        "topico": "Arquitetura Zero Trust",
-        "nivel": "Avançado"
-    },
-    {
-        "id": 29,
-        "pergunta": "O conceito de <i>Microssegmentação<\/i>, fundamental na arquitetura Zero Trust, consiste na divisão da rede em zonas de segurança muito pequenas, às vezes até o nível de carga de trabalho individual, permitindo a aplicação de políticas de segurança granulares que impedem a movimentação lateral de atacantes.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'Microssegmentação: A microssegmentação é um modelo de arquitetura que divide a rede corporativa em pequenas partes, ou segmentos. Cada segmento é protegido por firewalls... torna mais difícil para um invasor se mover lateralmente'.<br><br><b>Análise da Assertiva:<\/b> Definição correta e completa de microssegmentação e seu objetivo (conter movimento lateral) dentro do Zero Trust.<br><br><b>Possíveis induções de erro:<\/b> Achar que segmentação é apenas VLAN tradicional.",
-        "topico": "Zero Trust",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 30,
-        "pergunta": "A técnica de <i>Proxy Reverso<\/i> é utilizada principalmente para proteger os clientes internos de uma organização durante a navegação na web, ocultando seus endereços IP originais dos servidores de destino na Internet.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do PDF:<\/b> 'o Proxy reverso... gera alguns benefícios na implementação de serviços HTTP no lado do servidor... hospedado na infraestrutura da organização, fornecendo serviços externos... repassa a requisição aos servidores internos'.<br><br><b>Análise da Assertiva:<\/b> A questão descreve o <b>Forward Proxy<\/b> (Proxy Direto). O <b>Proxy Reverso<\/b> protege o <b>servidor<\/b> (publicando aplicações internas para a internet), balanceando carga e ocultando a topologia interna dos servidores. Ele fica na frente do servidor, não do cliente.<br><br><b>Possíveis induções de erro:<\/b> Confusão clássica entre Proxy Direto (protege cliente) e Reverso (protege servidor).",
-        "topico": "Proxy",
-        "nivel": "Intermediário"
     }
 ]
