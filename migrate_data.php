@@ -6,6 +6,12 @@
 
 require_once 'db_config.php';
 
+// Proteção: Este script só deve ser executado via linha de comando
+if (php_sapi_name() !== 'cli') {
+    header('HTTP/1.1 403 Forbidden');
+    die("Acesso negado. Este script só pode ser executado via CLI.");
+}
+
 // Carrega o JSON original
 $json_file = 'quiz_data.json';
 if (!file_exists($json_file)) {

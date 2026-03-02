@@ -1,6 +1,12 @@
 <?php
 require_once 'carregar_dados.php';
 
+// Proteção: Este script só deve ser executado via linha de comando
+if (php_sapi_name() !== 'cli') {
+    header('HTTP/1.1 403 Forbidden');
+    die("Acesso negado. Este script só pode ser executado via CLI.");
+}
+
 $json_content = file_get_contents('quiz_data.json');
 $dados = json_decode($json_content, true);
 

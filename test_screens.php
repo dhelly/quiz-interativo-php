@@ -4,6 +4,12 @@
  * Verifica se as telas principais estão respondendo com HTTP 200 e contém elementos esperados.
  */
 
+// Proteção: Este script só deve ser executado via linha de comando
+if (php_sapi_name() !== 'cli') {
+    header('HTTP/1.1 403 Forbidden');
+    die("Acesso negado. Este script só pode ser executado via CLI.");
+}
+
 $baseUrl = "http://localhost:8000";
 
 $tests = [

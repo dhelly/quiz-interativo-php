@@ -5,7 +5,7 @@
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
-Um sistema de quiz interativo desenvolvido em PHP para estudo e prática de questões de Direito, com interface web moderna e recursos avançados de aprendizado adaptativo.
+Um sistema de quiz interativo desenvolvido em PHP para estudo e prática de questões de fização, com interface web moderna e recursos avançados de aprendizado adaptativo.
 
 ## 🎯 Demonstração
 

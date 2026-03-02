@@ -1,5 +1,5 @@
 # Deny access to sensitive files
-<FilesMatch "^\.env|quiz_data\.json|.*\.db$">
+<FilesMatch "^\.env|quiz_data\.json|.*\.db$|setup_db\.php|migrate_data\.php|migrate_progress_table\.php|sync_db\.php|test_screens\.php">
     Order allow,deny
     Deny from all
 </FilesMatch>
