@@ -63,6 +63,17 @@
             </div>
         <?php endforeach; ?>
 
+        <?php if (isset($dados['total_erros_persistentes']) && $dados['total_erros_persistentes'] > 0): ?>
+            <div class="reforco-container" style="margin-top: 20px; padding: 20px; background: var(--bg-card); border-radius: 12px; border: 1px solid var(--border); text-align: center; box-shadow: var(--shadow-sm);">
+                <h3 style="margin-bottom: 10px; color: var(--primary);">🎯 Reforçar Aprendizado</h3>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">
+                    Você tem <strong><?php echo $dados['total_erros_persistentes']; ?></strong> questões para revisar. 
+                    Foque nos pontos onde você teve dificuldade!
+                </p>
+                <a href="index.php?acao=quiz_erros" class="btn btn-primary">Começar Revisão de Erros 🚀</a>
+            </div>
+        <?php endif; ?>
+
         <div class="home-footer" style="margin-top: 20px; text-align: center; border-top: 1px solid var(--border); padding-top: 30px; display: flex; justify-content: center; gap: 15px;">
             <a href="ranking.php" class="btn btn-secondary">🏆 Ranking Global</a>
             <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']): ?>

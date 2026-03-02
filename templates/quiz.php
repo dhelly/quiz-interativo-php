@@ -4,12 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <?php echo $dados['modo_revisao'] ? '📚 Revisão de Erradas - ' : '🎓 Quiz Interativo - '; ?>Inútil.App
+        <?php 
+            if ($dados['modo_revisao']) echo '📚 Revisão de Erradas - '; 
+            elseif (isset($dados['modo_reforco']) && $dados['modo_reforco']) echo '🎯 Reforço de Aprendizado - ';
+            else echo '🎓 Quiz Interativo - '; 
+        ?>Inútil.App
     </title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="pagina-quiz">
+    <div id="toast-container" class="toast-container"></div>
     <div class="container-quiz">
         
         <div class="header-quiz" style="display: flex; justify-content: space-between; align-items: center;">
@@ -17,6 +22,8 @@
                 <h1 style="margin-bottom: 5px; text-align: left;">
                     <?php if ($dados['modo_revisao']): ?>
                         📚 Revisão
+                    <?php elseif (isset($dados['modo_reforco']) && $dados['modo_reforco']): ?>
+                        🎯 Reforço
                     <?php else: ?>
                         🎓 Quiz
                     <?php endif; ?>
@@ -24,7 +31,7 @@
                 <p style="font-size: 0.85rem; color: var(--text-muted);">Logado como <strong><?php echo h($_SESSION['username']); ?></strong></p>
             </div>
             <div style="display: flex; gap: 8px;">
-                <button onclick="salvarProgressoManual()" class="btn btn-primary btn-small" id="btnSalvarState">
+                <button onclick="salvarProgressoManual()" class="btn btn-primary btn-small" id="btnSalvarState" <?php echo (isset($dados['modo_reforco']) && $dados['modo_reforco']) ? 'style="display:none;"' : ''; ?>>
                     💾 Salvar Estado
                 </button>
                 <a href="index.php?acao=home" class="btn btn-secondary btn-small">🏠 Início</a>
@@ -33,6 +40,8 @@
         </div>
         <?php if ($dados['modo_revisao']): ?>
             <div class="modo-revisao" style="margin-top: 10px;">MODO REVISÃO</div>
+        <?php elseif (isset($dados['modo_reforco']) && $dados['modo_reforco']): ?>
+            <div class="modo-revisao" style="margin-top: 10px; background-color: var(--primary);">MODO REFORÇO</div>
         <?php endif; ?>
 
         <div class="content-quiz">
@@ -131,7 +140,11 @@
                 <?php if ($dados['proxima_id']): ?>
                     Próxima Questão ➡️
                 <?php else: ?>
-                    🏁 <?php echo $dados['modo_revisao'] ? 'Finalizar Revisão' : 'Ver Resultado Final'; ?>
+                    🏁 <?php 
+                        if ($dados['modo_revisao']) echo 'Finalizar Revisão';
+                        elseif (isset($dados['modo_reforco']) && $dados['modo_reforco']) echo 'Finalizar Reforço';
+                        else echo 'Ver Resultado Final';
+                    ?>
                 <?php endif; ?>
             </button>
 
@@ -141,6 +154,7 @@
                 <div class="admin-links">
                     <a href="admin.php">⚙️ Gerenciar Dados</a>
                     <a href="javascript:void(0)" onclick="recarregarPagina()">🔄 Recarregar</a>
+                    <a href="javascript:void(0)" onclick="copiarQuestao()">📋 Copiar Questão</a>
                     <?php if (!$dados['modo_revisao'] && $dados['total_erradas'] > 0): ?>
                         <a href="index.php?acao=revisar_erradas">📚 Revisar Erradas (<?php echo $dados['total_erradas']; ?>)</a>
                     <?php endif; ?>
@@ -160,6 +174,7 @@
         let acertosAtuais = <?php echo intval($dados['acertos_total'] ?? 0); ?>;
         let questaoRespondida = false;
         const modoRevisao = <?php echo $dados['modo_revisao'] ? 'true' : 'false'; ?>;
+        const modoReforco = <?php echo (isset($dados['modo_reforco']) && $dados['modo_reforco']) ? 'true' : 'false'; ?>;
 
         // Elementos DOM
         const opcoes = document.querySelectorAll('.opcao-label');
@@ -193,15 +208,20 @@
                     acertosAtuais++;
                     document.querySelector('.contador-acertos').textContent = acertosAtuais;
                     
-                    // Remove da lista de erradas se estiver lá (em caso de revisão)
-                    if (modoRevisao) {
+                    // Remove da lista de erradas se estiver lá (em caso de revisão ou reforço)
+                    if (modoRevisao || modoReforco) {
+                        // Determina o modo para enviar ao backend
+                        let mode = 'normal';
+                        if (modoRevisao) mode = 'revisao';
+                        if (modoReforco) mode = 'reforco';
+
                         // Envia requisição para remover das questões erradas
                         fetch('salvar_errada.php', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/x-www-form-urlencoded',
                             },
-                            body: `questao_id=${questaoId}&action=remove&csrf_token=${csrfToken}`
+                            body: `questao_id=${questaoId}&action=remove&csrf_token=${csrfToken}&mode=${mode}`
                         });
                     }
                 } else {
@@ -255,11 +275,11 @@
             
             if (!isUltimaQuestao && <?php echo $dados['proxima_id'] ? 'true' : 'false'; ?>) {
                 // Avança para próxima questão
-                const url = `index.php?id=<?php echo $dados['proxima_id']; ?>&acertos=${acertosAtuais}<?php echo $dados['modo_revisao'] ? '&modo_revisao=1' : ''; ?>`;
+                const url = `index.php?id=<?php echo $dados['proxima_id']; ?>&acertos=${acertosAtuais}${modoRevisao ? '&modo_revisao=1' : ''}${modoReforco ? '&acao=quiz_erros' : ''}`;
                 window.location.href = url;
             } else {
                 // Vai para tela de resultados
-                const url = `fim_quiz.php?acertos=${acertosAtuais}&total=${totalQuestoes}<?php echo $dados['modo_revisao'] ? '&modo_revisao=1' : ''; ?>`;
+                const url = `fim_quiz.php?acertos=${acertosAtuais}&total=${totalQuestoes}${modoRevisao ? '&modo_revisao=1' : ''}${modoReforco ? '&modo_reforco=1' : ''}`;
                 window.location.href = url;
             }
         });
@@ -301,7 +321,7 @@
         // Dica de atalhos
         setTimeout(() => {
             if (!localStorage.getItem('atalhosMostrados')) {
-                alert('💡 Dica: Use as teclas 1-4 para selecionar respostas rapidamente!');
+                showToast('💡 Dica: Use as teclas 1-4 para selecionar respostas rapidamente!', 'info');
                 localStorage.setItem('atalhosMostrados', 'true');
             }
         }, 1000);
@@ -488,16 +508,98 @@
                         btn.classList.add('btn-primary');
                     }, 2000);
                 } else {
-                    alert('Erro ao salvar: ' + data.message);
+                    showToast('Erro ao salvar: ' + data.message, 'error');
                     btn.innerHTML = originalText;
                     btn.disabled = false;
                 }
             })
             .catch(error => {
-                alert('Erro de conexão.');
+                showToast('Erro de conexão.', 'error');
                 btn.innerHTML = originalText;
                 btn.disabled = false;
             });
+        }
+
+        function copiarQuestao() {
+            const q = <?php echo json_encode($dados['questao']); ?>;
+            const n = <?php echo json_encode($dados['numero_questao']); ?>;
+            const resp = <?php echo json_encode($dados['resposta_correta']); ?>;
+            const expl = <?php echo json_encode($dados['explicacao'] ?? ''); ?>;
+            
+            // Função simples para remover tags HTML
+            const stripHtml = (html) => {
+                const doc = new DOMParser().parseFromString(html, 'text/html');
+                return doc.body.textContent || "";
+            };
+
+            let texto = `📌 Questão #${n} (ID: ${q.id})\n`;
+            // texto += `📂 Tópico: ${q.topico} | Nível: ${q.nivel}\n\n`;
+            texto += `❓ PERGUNTA:\n${stripHtml(q.pergunta)}\n\n`;
+            
+            texto += `📝 OPÇÕES:\n`;
+            q.opcoes_disponiveis.forEach((opt, i) => {
+                texto += `${i + 1}. ${stripHtml(opt)}\n`;
+            });
+            
+            // texto += `\n✅ RESPOSTA CORRETA: ${stripHtml(resp)}\n`;
+            // texto += `\n📖 EXPLICAÇÃO:\n${stripHtml(expl)}`;
+            
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(texto).then(() => {
+                    showToast('✅ Questão copiada para a área de transferência!', 'success');
+                }).catch(err => {
+                    console.error('Erro ao copiar:', err);
+                    showToast('❌ Falha ao copiar a questão.', 'error');
+                });
+            } else {
+                const textArea = document.createElement("textarea");
+                textArea.value = texto;
+                document.body.appendChild(textArea);
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    showToast('✅ Questão copiada para a área de transferência!', 'success');
+                } catch (err) {
+                    console.error('Erro ao copiar (fallback):', err);
+                    showToast('❌ Falha ao copiar a questão.', 'error');
+                }
+                document.body.removeChild(textArea);
+            }
+        }
+
+        // Função para exibir Toast Notifications
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toast-container');
+            
+            // Criar elemento toast
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            
+            // Ícone baseado no tipo
+            let icon = 'ℹ️';
+            if (type === 'success') icon = '✅';
+            if (type === 'error') icon = '❌';
+            if (type === 'warning') icon = '⚠️';
+            
+            toast.innerHTML = `
+                <span class="toast-icon">${icon}</span>
+                <span class="toast-message">${message}</span>
+            `;
+            
+            container.appendChild(toast);
+            
+            // Mostrar toast (pequeno delay para permitir transição)
+            requestAnimationFrame(() => {
+                toast.classList.add('show');
+            });
+            
+            // Remover após 3 segundos
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => {
+                    container.removeChild(toast);
+                }, 300); // Tempo da transição CSS
+            }, 3000);
         }
     </script>
 </body>

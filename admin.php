@@ -109,6 +109,7 @@ function exibirPainelAdmin($quiz_data) {
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
+        <div id="toast-container" class="toast-container"></div>
         <div class="container">
             <div class="header">
                 <h1>⚙️ Painel de Administração</h1>
@@ -152,9 +153,6 @@ function exibirPainelAdmin($quiz_data) {
                     <div class="tab" onclick="showTab('moderacao')">👮 Moderação</div>
                 </div>
 
-                <!-- Alertas dinâmicos para JavaScript -->
-                <div id="alertSuccess" class="alert alert-success" style="display: none;"></div>
-                <div id="alertError" class="alert alert-error" style="display: none;"></div>
 
                 <!-- Tab 1: Editor JSON -->
                 <div id="editor" class="tab-content active">
@@ -178,6 +176,9 @@ function exibirPainelAdmin($quiz_data) {
                                     </button>
                                     <button class="btn btn-warning" onclick="formatJson()">
                                         ✨ Format JSON
+                                    </button>
+                                    <button class="btn btn-error" onclick="clearEditor()">
+                                        🗑️ Limpar Editor
                                     </button>
                                 </div>
                                 
@@ -531,18 +532,41 @@ function exibirPainelAdmin($quiz_data) {
                 }
             }
 
-            // Alertas
+            // Alertas - Substituído por Toasts
             function showAlert(message, type) {
-                const alertDiv = type === 'success' ? 
-                    document.getElementById('alertSuccess') : 
-                    document.getElementById('alertError');
+                showToast(message, type);
+            }
+
+            // Função Global de Toast
+            function showToast(message, type = 'info') {
+                const container = document.getElementById('toast-container');
+                if (!container) return; // Segurança
+
+                const toast = document.createElement('div');
+                toast.className = `toast ${type}`;
                 
-                alertDiv.textContent = message;
-                alertDiv.style.display = 'block';
+                let icon = 'ℹ️';
+                if (type === 'success') icon = '✅';
+                if (type === 'error') icon = '❌';
+                if (type === 'warning') icon = '⚠️';
+                
+                toast.innerHTML = `
+                    <span class="toast-icon">${icon}</span>
+                    <span class="toast-message">${message}</span>
+                `;
+                
+                container.appendChild(toast);
+                
+                requestAnimationFrame(() => {
+                    toast.classList.add('show');
+                });
                 
                 setTimeout(() => {
-                    alertDiv.style.display = 'none';
-                }, 5000);
+                    toast.classList.remove('show');
+                    setTimeout(() => {
+                        container.removeChild(toast);
+                    }, 300);
+                }, 3000);
             }
 
             // ========== MODERAÇÃO ==========
@@ -789,6 +813,13 @@ function exibirPainelAdmin($quiz_data) {
                 document.getElementById('modalSalvarComo').style.display = 'none';
             }
 
+            function clearEditor() {
+                if (confirm('Tem certeza que deseja limpar o editor? Esta ação não pode ser desfeita.')) {
+                    document.getElementById('jsonEditor').value = '';
+                    showToast('Editor limpo.', 'info');
+                }
+            }
+
             // Mostrar/ocultar campo de nova disciplina
             document.getElementById('disciplina').addEventListener('change', function() {
                 const novaDisciplinaGroup = document.getElementById('novaDisciplinaGroup');
@@ -805,7 +836,7 @@ function exibirPainelAdmin($quiz_data) {
                 if (disciplina === 'nova') {
                     disciplina = document.getElementById('nova_disciplina').value;
                     if (!disciplina) {
-                        alert('Por favor, informe o nome da nova disciplina');
+                        showToast('Por favor, informe o nome da nova disciplina', 'warning');
                         return;
                     }
                 }

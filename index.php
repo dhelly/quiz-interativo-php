@@ -140,6 +140,9 @@ switch ($acao) {
     case 'limpar_revisao':
         limparRevisao();
         break;
+    case 'quiz_erros':
+        exibirQuizErros();
+        break;
     default:
         if (isset($_SESSION['user_id'])) {
             exibirHome($quizzes_disponiveis);
@@ -152,13 +155,14 @@ switch ($acao) {
 function exibirHome($quizzes) {
     $dados = [
         'quizzes' => $quizzes,
-        'username' => $_SESSION['username']
+        'username' => $_SESSION['username'],
+        'total_erros_persistentes' => contarErrosUsuario($_SESSION['user_id'])
     ];
     include 'templates/home.php';
 }
 
 
-function exibirQuiz($quiz_data, $questao_id = null, $acertos = 0, $modo_revisao = false) {
+function exibirQuiz($quiz_data, $questao_id = null, $acertos = 0, $modo_revisao = false, $modo_reforco = false) {
     if (empty($quiz_data)) {
         if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true) {
             header('Location: admin.php?erro=sem_questoes');
@@ -252,6 +256,7 @@ function exibirQuiz($quiz_data, $questao_id = null, $acertos = 0, $modo_revisao 
         'resposta_correta' => $questao_atual['resposta_correta'],
         'explicacao' => $questao_atual['explicacao_feedback'],
         'modo_revisao' => $modo_revisao,
+        'modo_reforco' => $modo_reforco,
         'total_erradas' => count($_SESSION['questoes_erradas'])
     ];
     
@@ -288,5 +293,26 @@ function recarregarDados() {
     // Força recarregamento dos dados
     header('Location: index.php?acao=admin');
     exit;
+}
+
+function exibirQuizErros() {
+    if (!isset($_SESSION['user_id'])) {
+        header('Location: index.php');
+        exit;
+    }
+    
+    $user_id = $_SESSION['user_id'];
+    $questoes_erradas = carregarQuestoesErradasPermanentes($user_id);
+    
+    if (empty($questoes_erradas)) {
+        header('Location: index.php?acao=home&aviso=sem_erros');
+        exit;
+    }
+    
+    // Configura o estado para o quiz de erros
+    $_SESSION['modo_reforco'] = true;
+    
+    // Usa a mesma função exibirQuiz mas com as questões filtradas
+    exibirQuiz($questoes_erradas, $_GET['id'] ?? null, $_GET['acertos'] ?? 0, false, true);
 }
 ?>

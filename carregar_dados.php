@@ -63,6 +63,68 @@ function obterProgresso($user_id) {
     }
 }
 
+function registrarErroUsuario($user_id, $question_id) {
+    try {
+        $pdo = get_db_connection();
+        $sql = "INSERT INTO user_errors (user_id, question_id, error_count) 
+                VALUES (?, ?, 1) 
+                ON DUPLICATE KEY UPDATE 
+                error_count = error_count + 1, 
+                last_error_at = CURRENT_TIMESTAMP";
+        $stmt = $pdo->prepare($sql);
+        return $stmt->execute([$user_id, $question_id]);
+    } catch (Exception $e) {
+        error_log("Erro ao registrar erro persistente: " . $e->getMessage());
+        return false;
+    }
+}
+
+function removerErroUsuario($user_id, $question_id) {
+    try {
+        $pdo = get_db_connection();
+        $stmt = $pdo->prepare("DELETE FROM user_errors WHERE user_id = ? AND question_id = ?");
+        return $stmt->execute([$user_id, $question_id]);
+    } catch (Exception $e) {
+        error_log("Erro ao remover erro persistente: " . $e->getMessage());
+        return false;
+    }
+}
+
+function carregarQuestoesErradasPermanentes($user_id) {
+    try {
+        $pdo = get_db_connection();
+        $sql = "SELECT q.* FROM questions q 
+                JOIN user_errors e ON q.id = e.question_id 
+                WHERE e.user_id = ? AND q.is_visible = 1 
+                ORDER BY e.error_count DESC, e.last_error_at DESC";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$user_id]);
+        $questoes = $stmt->fetchAll();
+        
+        foreach ($questoes as &$q) {
+            $stmt_opt = $pdo->prepare("SELECT option_text FROM options WHERE question_id = ?");
+            $stmt_opt->execute([$q['id']]);
+            $q['opcoes_disponiveis'] = $stmt_opt->fetchAll(PDO::FETCH_COLUMN);
+        }
+        
+        return $questoes;
+    } catch (Exception $e) {
+        error_log("Erro ao carregar questões erradas persistentes: " . $e->getMessage());
+        return [];
+    }
+}
+
+function contarErrosUsuario($user_id) {
+    try {
+        $pdo = get_db_connection();
+        $stmt = $pdo->prepare("SELECT COUNT(*) FROM user_errors WHERE user_id = ?");
+        $stmt->execute([$user_id]);
+        return (int)$stmt->fetchColumn();
+    } catch (Exception $e) {
+        return 0;
+    }
+}
+
 function limparProgresso($user_id) {
     try {
         $pdo = get_db_connection();

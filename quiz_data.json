@@ -1,362 +1,122 @@
 [
     {
         "id": 1,
-        "pergunta": "No Apache Kafka, a garantia de ordenação dos eventos ocorre em nível global do tópico, o que permite que consumidores recuperem dados sequenciais independentemente da partição acessada.",
+        "pergunta": "A métrica conhecida como revocação (recall) mede a proporção de exemplos positivos corretamente identificados em relação ao total de exemplos classificados como positivos pelo modelo.",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'A partição garante a ordenação dos eventos.'<br><br><b>Análise da Assertiva:<\/b> A questão generaliza a ordenação para o 'tópico' inteiro. No Kafka, a ordem é garantida <i>apenas<\/i> dentro da partição, não no tópico globalmente.<br><br><b>Possíveis induções de erro:<\/b> O candidato pode assumir que, por ser um sistema de streaming, tudo é ordenado, ignorando a arquitetura de particionamento.",
-        "topico": "Apache Kafka",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 2,
-        "pergunta": "Diferentemente do modelo tradicional de mensageria, no Kafka o produtor utiliza o método PULL para enviar dados ao broker, garantindo assim maior controle sobre o fluxo de entrada.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'O produtor usa PUSH para enviar dados ao broker, mas o consumidor usa PULL para recuperar os dados.'<br><br><b>Análise da Assertiva:<\/b> A banca CEBRASPE adora inverter PUSH e PULL. O Produtor 'empurra' (PUSH); o Consumidor 'puxa' (PULL).<br><br><b>Possíveis induções de erro:<\/b> Confundir o fluxo de entrada com o de saída.",
-        "topico": "Apache Kafka",
+        "explicacao_feedback": "<b>Transcrição:<\/b> Definição padrão da literatura de machine learning: Recall = VP \/ (VP + FN), onde VP são verdadeiros positivos e FN falsos negativos. A definição dada no enunciado se refere à precisão: Precisão = VP \/ (VP + FP).<br><br><b>Análise da Assertiva:<\/b> A afirmação confunde recall com precisão. Recall (revocação) é a fração de positivos reais que foram corretamente detectados; precisão é a fração de predições positivas que estavam corretas. Portanto, a assertiva está incorreta.",
+        "topico": "Métricas de Avaliação",
         "nivel": "Básico"
     },
     {
+        "id": 2,
+        "pergunta": "Em um problema de classificação binária desbalanceado, a acurácia pode ser uma métrica enganosa porque um modelo que sempre prevê a classe majoritária pode atingir alta acurácia sem detectar corretamente nenhum exemplo da classe minoritária.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição:<\/b> Acurácia = (VP + VN) \/ (VP + VN + FP + FN). Em cenários com classes desbalanceadas (ex.: 95% não-spam, 5% spam), um modelo que sempre prevê 'não-spam' terá acurácia de 95%, mas recall de 0% para spam, demonstrando que a acurácia não reflete a capacidade de identificar a classe minoritária.<br><br><b>Análise da Assertiva:<\/b> A afirmação está correta: a acurácia é sensível ao desbalanceamento e pode mascarar um desempenho ruim na classe de interesse. Por isso, recomenda-se usar métricas como recall, precisão, F1-score ou AUC-ROC em tais contextos.",
+        "topico": "Métricas de Avaliação",
+        "nivel": "Intermediário"
+    },
+    {
         "id": 3,
-        "pergunta": "Um evento no Kafka, uma vez publicado e armazenado no broker, pode ter seu conteúdo editado caso seja necessário corrigir o Timestamp ou o Valor, mantendo-se a mesma Chave.",
+        "pergunta": "O F1-score é a média aritmética simples entre precisão e recall, sendo uma medida de equilíbrio entre essas duas métricas.",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Após publicado, o evento é imutável (não pode ser editado).'<br><br><b>Análise da Assertiva:<\/b> A imutabilidade é uma característica central do Kafka (Logs). Não há 'update' de mensagem enviada.<br><br><b>Possíveis induções de erro:<\/b> Pensar na lógica de banco de dados (CRUD) onde registros são editáveis.",
-        "topico": "Apache Kafka",
+        "explicacao_feedback": "<b>Transcrição:<\/b> F1-score = 2 * (precisão * recall) \/ (precisão + recall). Trata-se da média harmônica, não da média aritmética. A média harmônica penaliza mais valores discrepantes, sendo mais adequada para avaliar o equilíbrio.<br><br><b>Análise da Assertiva:<\/b> A assertiva afirma incorretamente que é a média aritmética. O F1-score utiliza a média harmônica, que é mais rigorosa quando precisão e recall são muito diferentes. Portanto, a afirmação está errada.",
+        "topico": "Métricas de Avaliação",
         "nivel": "Básico"
     },
     {
         "id": 4,
-        "pergunta": "A API Kafka Streams é a ferramenta designada para realizar a integração, importação e exportação de dados entre o Kafka e sistemas externos, como bancos de dados relacionais.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Kafka Connect: Integração (importação\/exportação)... Kafka Streams: Processamento de dados em tempo real.'<br><br><b>Análise da Assertiva:<\/b> A questão troca as definições. Quem faz integração é o <i>Kafka Connect<\/i>. O <i>Streams<\/i> processa os dados.<br><br><b>Possíveis induções de erro:<\/b> Troca simples de nomes de componentes da arquitetura.",
-        "topico": "Apache Kafka",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 5,
-        "pergunta": "O RabbitMQ é um broker que opera nativamente sobre o protocolo AMQP 0-9-1, sendo a sua implementação restrita a aplicações desenvolvidas em linguagem Java.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Dica CEBRASPE: ...afirmar que o RabbitMQ só suporta Java (ele é agnóstico a linguagem).'<br><br><b>Análise da Assertiva:<\/b> O RabbitMQ suporta múltiplas linguagens. A restrição 'somente Java' é uma pegadinha clássica alertada no resumo.<br><br><b>Possíveis induções de erro:<\/b> Confundir com o fato de muitos brokers serem escritos em Java (como o Artemis), achando que isso limita os clientes.",
-        "topico": "RabbitMQ",
-        "nivel": "Básico"
-    },
-    {
-        "id": 6,
-        "pergunta": "No fluxo de roteamento do RabbitMQ, a mensagem enviada pelo produtor passa obrigatoriamente por uma Exchange e um Binding antes de chegar à fila (Queue) de destino.",
+        "pergunta": "A especificidade mede a proporção de verdadeiros negativos corretamente identificados em relação ao total de exemplos negativos existentes, sendo complementar ao recall para a classe negativa.",
         "resposta_correta": "Certo",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Fluxo de Roteamento: Produtor -> Exchange (roteador) -> Binding (regra) -> Queue (fila) -> Consumidor.'<br><br><b>Análise da Assertiva:<\/b> Descreve corretamente a topologia do AMQP implementada pelo RabbitMQ.<br><br><b>Possíveis induções de erro:<\/b> O candidato pode achar que é possível publicar direto na fila (sem exchange), o que viola o modelo padrão descrito.",
-        "topico": "RabbitMQ",
-        "nivel": "Intermediário"
+        "explicacao_feedback": "<b>Transcrição:<\/b> Especificidade = VN \/ (VN + FP). Recall (sensibilidade) foca na classe positiva; especificidade foca na classe negativa. Ambas são taxas de acerto dentro de cada classe.<br><br><b>Análise da Assertiva:<\/b> A definição está correta: especificidade é a proporção de negativos reais que foram corretamente classificados. De fato, é análoga ao recall, mas aplicada à classe negativa. A assertiva está certa.",
+        "topico": "Métricas de Avaliação",
+        "nivel": "Básico"
     },
     {
-        "id": 7,
-        "pergunta": "O tipo de Exchange 'Fanout' no RabbitMQ realiza o roteamento das mensagens com base na verificação exata da chave de roteamento (routing key) definida no binding.",
+        "id": 5,
+        "pergunta": "Se um modelo de classificação apresenta precisão de 0,8 e recall de 0,6, isso significa que, dentre todas as instâncias positivas reais, o modelo identificou corretamente 80% delas, e das instâncias classificadas como positivas, 60% são realmente positivas.",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Fanout: Multicast; envia para todas as filas vinculadas, ignorando chaves.'<br><br><b>Análise da Assertiva:<\/b> O Fanout ignora a chave. Quem usa chave exata é o <i>Direct<\/i>.<br><br><b>Possíveis induções de erro:<\/b> Confusão entre os tipos de Exchange (Direct vs Fanout).",
-        "topico": "RabbitMQ",
+        "explicacao_feedback": "<b>Transcrição:<\/b> Precisão = VP\/(VP+FP) – fração de predições positivas corretas. Recall = VP\/(VP+FN) – fração de positivos reais capturados. Os valores dados foram trocados na interpretação.<br><br><b>Análise da Assertiva:<\/b> A frase inverte os conceitos: com precisão 0,8, 80% das predições positivas são corretas; com recall 0,6, 60% dos positivos reais são capturados. A assertiva diz o oposto. Portanto, está errada.",
+        "topico": "Métricas de Avaliação",
+        "nivel": "Intermediário"
+    },
+    {
+        "id": 6,
+        "pergunta": "Em um modelo de detecção de spam, um recall alto é desejável mesmo que isso aumente o número de falsos positivos, pois o custo de um falso negativo (spam não detectado) pode ser maior do que o de um falso positivo (e-mail legítimo marcado como spam).",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição:<\/b> Não há norma técnica, mas é uma análise de trade-off baseada no contexto de negócio: recall alto minimiza falsos negativos, mas pode aumentar falsos positivos. A decisão depende do custo relativo de cada erro.<br><br><b>Análise da Assertiva:<\/b> A afirmação é coerente: se o objetivo é não perder nenhum spam (evitar que um spam chegue à caixa de entrada), prioriza-se recall. A assertiva descreve corretamente esse trade-off, assumindo que o custo de um spam não bloqueado supera o incômodo de um e-mail legítimo na caixa de spam. Portanto, está certa.",
+        "topico": "Métricas de Avaliação",
+        "nivel": "Avançado"
+    },
+    {
+        "id": 7,
+        "pergunta": "A curva ROC (Receiver Operating Characteristic) é construída plotando a taxa de verdadeiros positivos (recall) contra a taxa de falsos positivos (1 - especificidade) para diferentes limiares de classificação, e a área sob a curva (AUC) resume o desempenho geral do modelo.",
+        "resposta_correta": "Certo",
+        "opcoes_disponiveis": [
+            "Certo",
+            "Errado"
+        ],
+        "explicacao_feedback": "<b>Transcrição:<\/b> Definição clássica: a curva ROC representa TPR (True Positive Rate = recall) versus FPR (False Positive Rate = 1 - especificidade) para vários thresholds. AUC mede a capacidade de discriminação do modelo.<br><br><b>Análise da Assertiva:<\/b> A descrição está correta. A curva ROC é uma ferramenta fundamental para avaliar modelos probabilísticos, mostrando o trade-off entre sensibilidade e especificidade. A assertiva está certa.",
+        "topico": "Métricas de Avaliação",
         "nivel": "Intermediário"
     },
     {
         "id": 8,
-        "pergunta": "Filas duráveis no RabbitMQ garantem que as mensagens sejam preservadas em disco, permitindo que sobrevivam a reinicializações do broker.",
+        "pergunta": "Considere uma base com 100 e-mails: 80 são normais (negativos) e 20 são spam (positivos). Um modelo classifica 15 e-mails como spam, dos quais 10 são realmente spam. O recall desse modelo é 50% e a precisão é aproximadamente 66,7%.",
         "resposta_correta": "Certo",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Podem ser duráveis (salvas em disco para sobreviver a restarts)...'<br><br><b>Análise da Assertiva:<\/b> Reprodução exata do conceito de durabilidade apresentado.<br><br><b>Possíveis induções de erro:<\/b> Confundir durabilidade da fila com persistência da mensagem (embora correlatos, o foco aqui é a sobrevivência ao restart).",
-        "topico": "RabbitMQ",
-        "nivel": "Básico"
+        "explicacao_feedback": "<b>Transcrição:<\/b> VP = 10 (spam corretos), FN = total de spam (20) - VP = 10, FP = classificados como spam (15) - VP = 5. Recall = VP\/(VP+FN) = 10\/20 = 0,5 (50%). Precisão = VP\/(VP+FP) = 10\/15 ≈ 0,667 (66,7%).<br><br><b>Análise da Assertiva:<\/b> Os cálculos estão corretos. A assertiva apresenta os valores corretos de recall e precisão, com base nos dados fornecidos. Portanto, está certa.",
+        "topico": "Métricas de Avaliação",
+        "nivel": "Intermediário"
     },
     {
         "id": 9,
-        "pergunta": "O NATS diferencia-se de outros sistemas de mensageria por utilizar endereçamento baseado em IP e Host, o que simplifica a descoberta de serviços em nuvem.",
+        "pergunta": "A métrica F1-score é sempre maior ou igual à média aritmética entre precisão e recall, pois a média harmônica é menos sensível a valores extremos.",
         "resposta_correta": "Errado",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Diferencia-se por usar Assuntos (Subjects) ... em vez de endereçamento por IP ou Host.'<br><br><b>Análise da Assertiva:<\/b> O NATS usa <i>Subjects<\/i> (strings), abstraindo a localização física (IP). A assertiva afirma o oposto.<br><br><b>Possíveis induções de erro:<\/b> Assumir que todo sistema de rede baseia-se primariamente em IP\/Host para roteamento lógico.",
-        "topico": "NATS",
-        "nivel": "Básico"
+        "explicacao_feedback": "<b>Transcrição:<\/b> Para números positivos, a média harmônica é sempre menor ou igual à média aritmética (igualdade apenas quando todos os valores são iguais). Portanto, F1 ≤ (precisão+recall)\/2.<br><br><b>Análise da Assertiva:<\/b> A afirmação inverte a relação: a média harmônica é menor ou igual à aritmética, não maior. Assim, o F1-score é menor ou igual à média aritmética, exceto quando precisão = recall. A assertiva está errada.",
+        "topico": "Métricas de Avaliação",
+        "nivel": "Avançado"
     },
     {
         "id": 10,
-        "pergunta": "No sistema NATS, o uso do caractere curinga '>' (maior que) permite a correspondência de múltiplos tokens no final do nome do assunto (subject).",
+        "pergunta": "Em problemas de classificação multiclasse, as métricas como precisão, recall e F1-score podem ser calculadas de forma macro (média simples das métricas por classe) ou micro (agregando totais de VP, VN, FP, FN globalmente), sendo que a micro-média é influenciada pelo desbalanceamento das classes.",
         "resposta_correta": "Certo",
         "opcoes_disponiveis": [
             "Certo",
             "Errado"
         ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> '>: Corresponde a múltiplos tokens no final do nome (ex: tcu.>).'<br><br><b>Análise da Assertiva:<\/b> Definição correta do wildcard 'full' no NATS.<br><br><b>Possíveis induções de erro:<\/b> Confundir com o asterisco (*), que pega apenas um token.",
-        "topico": "NATS",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 11,
-        "pergunta": "O JetStream é uma ferramenta nativa do NATS que substitui o modelo padrão de 'dispare e esqueça' por um mecanismo que inclui persistência e replay de mensagens.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'JetStream: Ferramenta nativa que adiciona persistência, replay de mensagens... ao NATS (que, por padrão, é dispare e esqueça).'<br><br><b>Análise da Assertiva:<\/b> Correto. O NATS Core é efêmero; o JetStream traz a persistência.<br><br><b>Possíveis induções de erro:<\/b> Achar que o NATS padrão já persiste dados.",
-        "topico": "NATS",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 12,
-        "pergunta": "Para utilizar o recurso de 'Queue Groups' no NATS visando ao balanceamento de carga, é necessário que todos os inscritos do grupo recebam simultaneamente a mesma mensagem.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Queue Groups: Usado para balanceamento de carga; apenas um inscrito do grupo recebe a mensagem.'<br><br><b>Análise da Assertiva:<\/b> O objetivo do Queue Group é distribuir trabalho, logo, <i>apenas um<\/i> processa. Se todos recebessem, seria Pub\/Sub padrão (broadcast), não load balancing.<br><br><b>Possíveis induções de erro:<\/b> Confundir com o comportamento padrão de tópicos onde todos recebem.",
-        "topico": "NATS",
-        "nivel": "Avançado"
-    },
-    {
-        "id": 13,
-        "pergunta": "O ActiveMQ Artemis, desenvolvido em Java, suporta nativamente apenas o protocolo AMQP, exigindo conversores externos para comunicação via MQTT ou STOMP.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Agnóstico a Protocolos: Suporta AMQP, MQTT, STOMP, OpenWire e HornetQ.'<br><br><b>Análise da Assertiva:<\/b> O Artemis é multiprotocolo nativamente. O termo 'apenas' invalida a questão.<br><br><b>Possíveis induções de erro:<\/b> A restrição indevida de protocolos suportados.",
-        "topico": "ActiveMQ Artemis",
-        "nivel": "Básico"
-    },
-    {
-        "id": 14,
-        "pergunta": "Devido à sua arquitetura baseada em Java, o ActiveMQ Artemis exige um ambiente de execução (runtime) Java versão 11 ou superior para operar.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Desenvolvido em Java (exige runtime Java 11+).'<br><br><b>Análise da Assertiva:<\/b> Fato técnico explícito no resumo.<br><br><b>Possíveis induções de erro:<\/b> Tentar lembrar se é Java 8 ou 11 (detalhe de versão que a banca cobra).",
-        "topico": "ActiveMQ Artemis",
-        "nivel": "Difícil"
-    },
-    {
-        "id": 15,
-        "pergunta": "Uma mensagem JMS no ActiveMQ Artemis é estruturada em três partes fundamentais: Cabeçalho, Propriedades e Corpo, sendo o TextMessage um dos tipos de corpo suportados.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Mensagens JMS: Compostas por Cabeçalho, Propriedades e Corpo. Tipos de corpo incluem TextMessage...'<br><br><b>Análise da Assertiva:<\/b> Descreve corretamente a anatomia da mensagem JMS conforme o resumo.<br><br><b>Possíveis induções de erro:<\/b> Inserir partes inexistentes ou remover 'Propriedades'.",
-        "topico": "ActiveMQ Artemis",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 16,
-        "pergunta": "O protocolo STOMP utiliza uma estrutura baseada em frames similar ao HTTP e foi concebido para facilitar a conexão de linguagens de script, como Python e Ruby, a brokers de mensageria.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Conceito: Protocolo simples para conectar linguagens de script... Estrutura: Baseada em Frames (Quadros), similar ao HTTP...'<br><br><b>Análise da Assertiva:<\/b> Combina corretamente o conceito, público-alvo e estrutura do protocolo.<br><br><b>Possíveis induções de erro:<\/b> Nenhuma, a questão é uma definição direta.",
-        "topico": "STOMP",
-        "nivel": "Básico"
-    },
-    {
-        "id": 17,
-        "pergunta": "No protocolo STOMP, o recurso de heart-beating é utilizado para monitorar a saúde dos nós de processamento (CPU\/Memória), definindo o tempo de troca pelo menor valor sugerido entre cliente e servidor.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> '...testar a saúde da conexão TCP (e não dos nós)... O tempo de troca é definido pelo maior valor...'<br><br><b>Análise da Assertiva:<\/b> Dois erros: 1) Monitora a conexão TCP, não os nós. 2) Usa o <i>maior<\/i> valor, não o menor.<br><br><b>Possíveis induções de erro:<\/b> Lógica de negociação (maior vs menor) e escopo do teste (rede vs hardware).",
-        "topico": "STOMP",
-        "nivel": "Avançado"
-    },
-    {
-        "id": 18,
-        "pergunta": "O Kafka Connect é a API responsável por gerenciar tópicos e recursos do cluster, como a criação de novas partições.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Admin API: Gerencia tópicos e recursos.'<br><br><b>Análise da Assertiva:<\/b> Quem gerencia recursos é a <i>Admin API<\/i>. O Connect faz integração.<br><br><b>Possíveis induções de erro:<\/b> Confundir as responsabilidades das três APIs críticas do Kafka.",
-        "topico": "Apache Kafka",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 19,
-        "pergunta": "No RabbitMQ, uma Exchange do tipo Topic permite o roteamento baseado em padrões, possibilitando o uso de caracteres curingas na chave de roteamento.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Topic: Roteamento baseado em padrões (ex: uso de curingas).'<br><br><b>Análise da Assertiva:<\/b> Correto. É a principal diferença entre Topic (padrões) e Direct (exato).<br><br><b>Possíveis induções de erro:<\/b> Confundir com a Exchange 'Headers', que usa atributos e não chaves.",
-        "topico": "RabbitMQ",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 20,
-        "pergunta": "No NATS, o uso do curinga '*' no subject 'juiz.*.tcu' permitiria a recepção de mensagens endereçadas a 'juiz.auditor.chefe.tcu'.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> '*: Corresponde a um único token.'<br><br><b>Análise da Assertiva:<\/b> O asterisco pega apenas <i>um<\/i> token entre os pontos. 'auditor.chefe' são dois tokens. O correto seria usar '>' ou múltiplos '*'.<br><br><b>Possíveis induções de erro:<\/b> Achar que o asterisco funciona como em SQL ou regex (0 ou mais caracteres), mas aqui ele é limitado a tokens.",
-        "topico": "NATS",
-        "nivel": "Difícil"
-    },
-    {
-        "id": 21,
-        "pergunta": "A Federação Fan-out no ActiveMQ Artemis organiza os nós em uma estrutura de árvore, permitindo que uma mensagem publicada em um nó seja propagada para todos os outros nós da federação.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Federação Fan-out: Estrutura em árvore que permite publicar em um único nó e propagar para todos os outros.'<br><br><b>Análise da Assertiva:<\/b> Definição precisa do mecanismo de federação fan-out descrita no texto.<br><br><b>Possíveis induções de erro:<\/b> Nenhuma óbvia, exige memorização do termo.",
-        "topico": "ActiveMQ Artemis",
-        "nivel": "Avançado"
-    },
-    {
-        "id": 22,
-        "pergunta": "Embora o RabbitMQ suporte filas duráveis, as mensagens contidas nelas são perdidas em caso de restart do broker, a menos que o mecanismo de ACK tenha sido desativado.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Podem ser duráveis (salvas em disco para sobreviver a restarts)...'<br><br><b>Análise da Assertiva:<\/b> Se a fila é durável e a mensagem marcada como persistente (implícito no conceito de durabilidade útil), elas sobrevivem. O ACK serve para confirmar processamento, não para persistência em disco no restart.<br><br><b>Possíveis induções de erro:<\/b> Causalidade falsa entre ACK e persistência de restart.",
-        "topico": "RabbitMQ",
-        "nivel": "Difícil"
-    },
-    {
-        "id": 23,
-        "pergunta": "O comando ACK no protocolo STOMP é utilizado para confirmar o estabelecimento da conexão inicial entre o cliente e o broker.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Comandos Essenciais: CONNECT... ACK.'<br><br><b>Análise da Assertiva:<\/b> O comando para conexão é CONNECT. O ACK (Acknowledgement) é para confirmar recebimento\/processamento de mensagens.<br><br><b>Possíveis induções de erro:<\/b> Confundir os verbos da lista de comandos.",
-        "topico": "STOMP",
-        "nivel": "Básico"
-    },
-    {
-        "id": 24,
-        "pergunta": "O Kafka Event Streaming utiliza o protocolo MQTT nativamente para garantir a imutabilidade dos eventos e a escalabilidade horizontal via brokers.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Protocolo Nativo: Próprio (TCP).'<br><br><b>Análise da Assertiva:<\/b> O Kafka usa protocolo próprio sobre TCP, não MQTT. O MQTT é citado no RabbitMQ e ActiveMQ.<br><br><b>Possíveis induções de erro:<\/b> Misturar protocolos de diferentes ferramentas (Kafka com MQTT).",
-        "topico": "Apache Kafka",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 25,
-        "pergunta": "No RabbitMQ, a Exchange do tipo Headers ignora a routing key e utiliza atributos contidos no cabeçalho da mensagem para definir o roteamento.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Headers: Baseado em atributos do cabeçalho da mensagem.'<br><br><b>Análise da Assertiva:<\/b> Correto. O tipo Headers substitui a lógica da routing key por pares chave-valor no header.<br><br><b>Possíveis induções de erro:<\/b> Achar que routing key é obrigatória em todos os tipos.",
-        "topico": "RabbitMQ",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 26,
-        "pergunta": "O ActiveMQ Artemis pode ser implementado no modo Embedded, o que significa que o broker roda dentro da própria aplicação Java, na mesma JVM.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Modos de Implementação: ... Embedded (dentro da aplicação Java).'<br><br><b>Análise da Assertiva:<\/b> Correto. 'Embedded' significa embutido no processo da aplicação.<br><br><b>Possíveis induções de erro:<\/b> Confundir Embedded com Standalone (isolado).",
-        "topico": "ActiveMQ Artemis",
-        "nivel": "Básico"
-    },
-    {
-        "id": 27,
-        "pergunta": "No Kafka, um evento é composto obrigatoriamente por Chave, Valor e Timestamp, sendo que a Chave é o elemento que determina a qual tópico o evento será enviado.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'O Evento (Mensagem): Composto obrigatoriamente por Chave, Valor e Timestamp.'<br><br><b>Análise da Assertiva:<\/b> Embora a composição esteja certa, a causalidade final está errada. O produtor define o tópico <i>no envio<\/i>; a chave é usada para roteamento de <i>partição<\/i> (hashing), não para escolher o tópico.<br><br><b>Possíveis induções de erro:<\/b> Falsa causalidade típica do CEBRASPE. A premissa A (composição) é certa, a conclusão B (função da chave) é distorcida.",
-        "topico": "Apache Kafka",
-        "nivel": "Difícil"
-    },
-    {
-        "id": 28,
-        "pergunta": "O mecanismo de reconhecimento (ACK) no RabbitMQ permite que o broker reenvie uma mensagem caso o consumidor falhe em confirmar seu processamento.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'Reconhecimento (ACK): ... se falhar, o broker pode reenviá-la.'<br><br><b>Análise da Assertiva:<\/b> Descreve a função de confiabilidade do ACK.<br><br><b>Possíveis induções de erro:<\/b> Achar que a mensagem é descartada imediatamente após o envio (falta de confiabilidade).",
-        "topico": "RabbitMQ",
-        "nivel": "Básico"
-    },
-    {
-        "id": 29,
-        "pergunta": "O STOMP diferencia-se por ser um protocolo binário altamente comprimido, o que justifica sua utilização preferencial em situações de baixa largura de banda.",
-        "resposta_correta": "Errado",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> 'STOMP: O Protocolo Baseado em Texto...'<br><br><b>Análise da Assertiva:<\/b> STOMP é texto (text-based), não binário. Binários são AMQP, MQTT, etc.<br><br><b>Possíveis induções de erro:<\/b> Associação incorreta de 'protocolo leve\/simples' com 'binário'.",
-        "topico": "STOMP",
-        "nivel": "Intermediário"
-    },
-    {
-        "id": 30,
-        "pergunta": "Diferentemente do NATS padrão, que funciona no modelo 'dispare e esqueça', o Kafka armazena os eventos em disco, tornando-os imutáveis após a publicação.",
-        "resposta_correta": "Certo",
-        "opcoes_disponiveis": [
-            "Certo",
-            "Errado"
-        ],
-        "explicacao_feedback": "<b>Transcrição do material:<\/b> NATS: '...padrão, é dispare e esqueça'. Kafka: 'Após publicado, o evento é imutável'.<br><br><b>Análise da Assertiva:<\/b> Comparativo correto entre a persistência do Kafka e a volatilidade do NATS Core (sem JetStream).<br><br><b>Possíveis induções de erro:<\/b> Confusão entre as características de persistência padrão de cada ferramenta.",
-        "topico": "Comparativo",
+        "explicacao_feedback": "<b>Transcrição:<\/b> Na média macro, calcula-se a métrica para cada classe e tira-se a média aritmética (cada classe tem mesmo peso). Na média micro, somam-se os VP, FN, FP de todas as classes e calcula-se a métrica global, que é dominada pelas classes com mais instâncias.<br><br><b>Análise da Assertiva:<\/b> A descrição está correta: a micro-média é influenciada pelo tamanho das classes (dá mais peso às classes maiores), enquanto a macro-média trata todas as classes igualmente. A assertiva está certa.",
+        "topico": "Métricas de Avaliação",
         "nivel": "Avançado"
     }
 ]
