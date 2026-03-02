@@ -14,24 +14,25 @@ Um sistema de quiz interativo desenvolvido em PHP para estudo e prática de ques
 ## ✨ Funcionalidades Principais
 
 ### 🎮 Quiz Interativo Avançado
-- **Interface moderna** com design responsivo
+- **Interface moderna** com design responsivo e **Glassmorphism**
 - **Resposta imediata** - Processamento instantâneo ao clicar nas opções
-- **Feedback visual** com cores para acertos/erros
-- **Barra de progresso** em tempo real
+- **Feedback visual** com cores para acertos/erros e **Toast Notifications**
+- **Suporte a Markdown** nas perguntas e explicações para formatação rica
+- **Barra de progresso** em tempo real e animações suaves
 - **Explicações integradas** - Visualização durante a resolução
 
 ### 📚 Sistema Inteligente de Revisão
-- **Armazenamento automático** das questões erradas
-- **Modo revisão dedicado** - Foca apenas nas dificuldades
-- **Contadores em tempo real** de acertos e erros
-- **Persistência por sessão** - Dados mantidos durante a navegação
+- **Banco de Dados MySQL** - Persistência robusta de questões e usuários
+- **Modo Reinforcement** - Foca automaticamente nas questões que você errou
+- **Contadores em tempo real** de acertos e erros via AJAX
+- **Ranking Global** - Compare seu desempenho com outros usuários
 
-### ⚙️ Painel de Administração Completo
-- **Editor JSON integrado** - Edite questões diretamente no navegador
-- **Upload de arquivos** com drag & drop
-- **Visualização organizada** de todas as questões
-- **Backup e restore** - Download e upload de dados
-- **Validação em tempo real** da estrutura JSON
+### ⚙️ Painel de Administração 2.0
+- **Gerenciamento CRUD** - Adicione, edite e remova questões via interface
+- **Importação inteligente** - Sincronize dados de JSON para o MySQL
+- **Editor Markdown** - Escreva questões com formatação profissional
+- **Backup e restore** - Download e upload de dados em JSON
+- **Sistema de Logs** - Acompanhe interações e erros no sistema
 
 ### 🎯 Modo Estudo Avançado
 - **Atalhos de teclado** - Navegação rápida (1-4, Enter, E, R)
@@ -49,7 +50,8 @@ Um sistema de quiz interativo desenvolvido em PHP para estudo e prática de ques
 
 ### Pré-requisitos
 - PHP 7.4 ou superior
-- Servidor web (Apache, Nginx, ou PHP built-in server)
+- MySQL 5.7+ ou MariaDB
+- Servidor web (Apache com mod_rewrite habilitado)
 - Navegador web moderno
 
 ### Passo a Passo
@@ -60,30 +62,44 @@ git clone https://github.com/dhelly/quiz-interativo-php.git
 cd quiz-interativo-php
 ```
 
-2. **Configure o servidor web:**
+2. **Configure o ambiente:**
+   - Copie o arquivo `.env.example` para `.env`
+   - Configure suas credenciais do banco de dados no `.env`
 ```bash
-# Usando servidor PHP embutido (recomendado para desenvolvimento)
-php -S localhost:8000
+cp .env.example .env
 ```
 
-3. **Acesse a aplicação:**
+3. **Instalação do Banco de Dados:**
+   - O sistema utiliza script de setup automático.
+```bash
+# Via CLI
+php setup_db.php
+# Ou acesse via navegador: http://localhost/setup_db.php
 ```
-http://localhost:8000
+
+4. **Importe as questões iniciais (opcional):**
+```bash
+php migrate_data.php
 ```
+
+5. **Acesse a aplicação:**
+   - URL: `http://localhost` (ou sua configuração de VirtualHost)
+   - Admin padrão: `admin` / `admin123`
 
 ### Estrutura de Arquivos
 ```
 quiz-interativo-php/
-├── index.php                 # Página principal do quiz
-├── admin.php                # Painel de administração
-├── salvar_errada.php        # API para gerenciar questões erradas
-├── fim_quiz.php             # Tela de resultados finais
-├── carregar_dados.php       # Funções para carregar dados do quiz
-├── quiz_data.json           # Banco de questões (criado automaticamente)
-└── templates/
-    ├── quiz.php            # Template do quiz
-    ├── admin_panel.php     # Template do painel admin
-    └── fim_quiz.php        # Template dos resultados
+├── index.php                 # Landing page e entrada do app
+├── admin.php                # Painel de administração (CRUD)
+├── api.php                  # Endpoint centralizado para AJAX
+├── db_config.php            # Configurações de conexão PDO
+├── setup_db.php             # Script de criação de tabelas
+├── migrate_data.php         # Migra do JSON para o MySQL
+├── ranking.php              # Visualização de pontuações
+└── templates/               # Componentes de UI separados
+    ├── quiz.php            # Engine do quiz
+    ├── admin_panel.php     # Template administrativo
+    └── results.php         # Tela de performance
 ```
 
 ## 📝 Estrutura das Questões
@@ -238,10 +254,10 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para de
 ## 🌟 Destaques Técnicos
 
 ### Arquitetura
-- **PHP Vanilla** - Sem frameworks pesados
-- **Sessões PHP** - Persistência de dados do usuário
-- **JSON nativo** - Armazenamento simples e eficiente
-- **CSS Variables** - Tema consistente e customizável
+- **PHP 7.4+ Vanilla** - Performance e simplicidade
+- **MySQL c/ PDO** - Camada de dados segura e eficiente
+- **Parsedown (Markdown)** - Formatação rica em questões
+- **CSS Variables** - Design System consistente
 
 ### Performance
 - ⚡ **Carregamento rápido** - Interface otimizada
