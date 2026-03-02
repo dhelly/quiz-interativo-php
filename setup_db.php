@@ -6,6 +6,12 @@
 
 require_once 'db_config.php';
 
+// Proteção: Este script só deve ser executado via linha de comando
+if (php_sapi_name() !== 'cli') {
+    header('HTTP/1.1 403 Forbidden');
+    die("Acesso negado. Este script só pode ser executado via CLI.");
+}
+
 try {
     // Primeiro tentamos conectar sem o banco de dados para criá-lo
     $pdo = new PDO("mysql:host=" . DB_HOST . ";charset=" . DB_CHARSET, DB_USER, DB_PASS);
@@ -127,10 +133,15 @@ try {
     echo "✅ Tabela 'comment_votes' pronta.\n";
     
     // Inserir usuários iniciais
-    $adminPassword = password_hash('admin123', PASSWORD_DEFAULT);
+    $adminPassRaw = getenv('ADMIN_PASS') ?: 'admin123';
+    if (!getenv('ADMIN_PASS')) {
+        echo "⚠️  AVISO: ADMIN_PASS não definido no .env. Usando senha padrão 'admin123'.\n";
+    }
+    
+    $adminPassword = password_hash($adminPassRaw, PASSWORD_DEFAULT);
     $pdo->prepare("INSERT INTO users (username, password, is_admin) VALUES (?, ?, ?)")
         ->execute(['admin', $adminPassword, 1]);
-    echo "✅ Usuário administrador criado (admin / admin123).\n";
+    echo "✅ Usuário administrador criado (admin / " . ($adminPassRaw === 'admin123' ? 'admin123' : '********') . ").\n";
 
     // Inserir quiz padrão
     $pdo->exec("INSERT INTO quizzes (name, discipline) VALUES ('Quiz Inicial', 'geral')");
